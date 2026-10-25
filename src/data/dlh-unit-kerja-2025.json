@@ -1,0 +1,84 @@
+{
+ "sumber": "LKIP Dinas Lingkungan Hidup Jakarta 2025",
+ "tabel": "Tabel 3.33 Anggaran Tahun 2025 Berdasarkan Unit Kerja",
+ "satuan": "Rupiah",
+ "catatan": "Nilai realisasi Sudin LH Kepulauan Seribu tercetak tanpa pemisah yang benar pada PDF (13.5294.891.173). Nilai 135.294.891.173 dipastikan lewat uji persentase 97,99%.",
+ "unit": [
+  {
+   "unit": "Dinas Lingkungan Hidup",
+   "penetapan": 602289919778,
+   "perubahan": 611076418825,
+   "realisasi": 504720476505,
+   "pct": 82.6
+  },
+  {
+   "unit": "Sudin LH Jakarta Pusat",
+   "penetapan": 199693181759,
+   "perubahan": 198757925909,
+   "realisasi": 191081913537,
+   "pct": 96.14
+  },
+  {
+   "unit": "Sudin LH Jakarta Utara",
+   "penetapan": 272663382393,
+   "perubahan": 278538557964,
+   "realisasi": 269368906528,
+   "pct": 96.71
+  },
+  {
+   "unit": "Sudin LH Jakarta Barat",
+   "penetapan": 257683194293,
+   "perubahan": 264854674866,
+   "realisasi": 250143848161,
+   "pct": 94.45
+  },
+  {
+   "unit": "Sudin LH Jakarta Selatan",
+   "penetapan": 323286420458,
+   "perubahan": 266469983041,
+   "realisasi": 247749626628,
+   "pct": 92.97
+  },
+  {
+   "unit": "Sudin LH Jakarta Timur",
+   "penetapan": 249334930898,
+   "perubahan": 247877842924,
+   "realisasi": 222165286809,
+   "pct": 89.63
+  },
+  {
+   "unit": "Sudin LH Kepulauan Seribu",
+   "penetapan": 125551994639,
+   "perubahan": 138067207175,
+   "realisasi": 135294891173,
+   "pct": 97.99
+  },
+  {
+   "unit": "Laboratorium LH Daerah",
+   "penetapan": 34011641736,
+   "perubahan": 34044763778,
+   "realisasi": 31791039718,
+   "pct": 93.38
+  },
+  {
+   "unit": "UPST",
+   "penetapan": 873900743102,
+   "perubahan": 837344597482,
+   "realisasi": 718117355804,
+   "pct": 85.76
+  },
+  {
+   "unit": "UPS Badan Air",
+   "penetapan": 862511863612,
+   "perubahan": 842814762806,
+   "realisasi": 792514287989,
+   "pct": 94.03
+  }
+ ],
+ "jumlah": {
+  "penetapan": 3800927272668,
+  "perubahan": 3719846734770,
+  "realisasi": 3362947632852,
+  "pct": 90.4
+ }
+}

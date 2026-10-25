@@ -1,0 +1,394 @@
+{
+ "sumber": "LKIP Dinas Lingkungan Hidup Jakarta 2025",
+ "tabel": "Tabel 3.34 Realisasi Anggaran 2025 Berdasarkan Program/Kegiatan/Sub Kegiatan",
+ "satuan": "Rupiah",
+ "catatan_konflik": [
+  "Baris PROGRAM PENGENDALIAN B3: nilai APBD-P 3.684.567.176 (benar, sesuai Tabel 3.34 dan rekonsiliasi total)",
+  "Tabel 2.4 mencetak 67.876.101.084 untuk baris yang sama (duplikasi dari program sebelumnya)",
+  "Kegiatan 1. Administrasi Keuangan: jumlah sub kegiatan 245.364.844.643 tidak sama dengan induk 245.226.684.643; selisih 138.160.000"
+ ],
+ "program": [
+  {
+   "program": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+   "apbdp": 1304175789368,
+   "realisasi": 1113821387918,
+   "pct": "85,40%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Administrasi Keuangan Perangkat Daerah",
+     "apbdp": 245226684643,
+     "realisasi": 191663683793,
+     "pct": "78,16",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Penyediaan Gaji dan Tunjangan ASN",
+       "apbdp": 245226684643,
+       "realisasi": 191663683793,
+       "pct": "78,15"
+      },
+      {
+       "sub_kegiatan": "1.2 Pelaksanaan Penatausahaan dan Pengujian/ Verifikasi Keuangan SKPD",
+       "apbdp": 138160000,
+       "realisasi": 138160000,
+       "pct": null
+      }
+     ]
+    },
+    {
+     "kegiatan": "2. Administrasi Umum Perangkat Daerah",
+     "apbdp": 304528890828,
+     "realisasi": 250544872601,
+     "pct": "82,27%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "2.1 Penyediaan Peralatan dan Perlengkapan Kantor",
+       "apbdp": 6630414166,
+       "realisasi": 5922570847,
+       "pct": "89,32%"
+      },
+      {
+       "sub_kegiatan": "2.2 Penyediaan Bahan Logistik Kantor",
+       "apbdp": 4269302682,
+       "realisasi": 4214937540,
+       "pct": "98,73%"
+      },
+      {
+       "sub_kegiatan": "2.3 Penyediaan Barang Cetakan dan Penggandaan",
+       "apbdp": 1234512313,
+       "realisasi": 1190854202,
+       "pct": "96,46%"
+      },
+      {
+       "sub_kegiatan": "2.4 Penyediaan Bahan/Material",
+       "apbdp": 289111228748,
+       "realisasi": 236058517192,
+       "pct": "81,65%"
+      },
+      {
+       "sub_kegiatan": "2.5 Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD",
+       "apbdp": 3283432919,
+       "realisasi": 3157992820,
+       "pct": "96,18%"
+      }
+     ]
+    },
+    {
+     "kegiatan": "6. Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+     "apbdp": 54355378171,
+     "realisasi": 38801066577,
+     "pct": "71,38%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "3.1 Pengadaan Peralatan dan Mesin Lainnya",
+       "apbdp": 4452002884,
+       "realisasi": 4163733407,
+       "pct": "93,52%"
+      },
+      {
+       "sub_kegiatan": "3.2 Pengadaan Gedung Kantor atau Bangunan Lainnya",
+       "apbdp": 40105414721,
+       "realisasi": 25424217100,
+       "pct": "63,39%"
+      },
+      {
+       "sub_kegiatan": "3.3 Pengadaan Sarana dan Prasarana Pendukung Gedung Kantor atau Bangunan Lainnya",
+       "apbdp": 9797960566,
+       "realisasi": 9213116070,
+       "pct": "94,03"
+      }
+     ]
+    },
+    {
+     "kegiatan": "7. Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+     "apbdp": 83284179886,
+     "realisasi": 70820507785,
+     "pct": "85,03",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "4.1 Penyediaan Jasa Komunikasi, Sumber Daya Air dan Listrik",
+       "apbdp": 38868621780,
+       "realisasi": 27728207165,
+       "pct": "71,34%"
+      },
+      {
+       "sub_kegiatan": "4.2 Penyediaan Jasa Peralatan dan Perlengkapan Kantor",
+       "apbdp": 1941428591,
+       "realisasi": 1746070183,
+       "pct": "89,94%"
+      },
+      {
+       "sub_kegiatan": "4.3 Penyediaan Jasa Pelayanan Umum Kantor",
+       "apbdp": 42474129515,
+       "realisasi": 41346230437,
+       "pct": "97,34%"
+      }
+     ]
+    },
+    {
+     "kegiatan": "8. Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+     "apbdp": 538369780027,
+     "realisasi": 514971598885,
+     "pct": "95,65%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "5.1 Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan",
+       "apbdp": 496640029524,
+       "realisasi": 475984654471,
+       "pct": "95,84%"
+      },
+      {
+       "sub_kegiatan": "5.2 Pemeliharaan Peralatan dan Mesin Lainnya",
+       "apbdp": 2327777757,
+       "realisasi": 2220251365,
+       "pct": "95,38%"
+      },
+      {
+       "sub_kegiatan": "5.3 Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya",
+       "apbdp": 37767140377,
+       "realisasi": 35230411560,
+       "pct": "93,28%"
+      },
+      {
+       "sub_kegiatan": "5.4 Pemeliharaan/Rehabilitasi Sarana dan Prasarana Pendukung Gedung Kantor atau Bangunan Lainnya",
+       "apbdp": 1634832369,
+       "realisasi": 1536281489,
+       "pct": "93,97%"
+      }
+     ]
+    },
+    {
+     "kegiatan": "9. Peningkatan Pelayanan BLUD",
+     "apbdp": 64334760955,
+     "realisasi": 34894945173,
+     "pct": "54,24%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "6.1 Pelayanan dan Penunjang Pelayanan BLUD",
+       "apbdp": 64334760955,
+       "realisasi": 34894945173,
+       "pct": "52,24"
+      }
+     ]
+    },
+    {
+     "kegiatan": "10. Administrasi Barang Milik Daerah pada Perangkat Daerah",
+     "apbdp": 14076114858,
+     "realisasi": 12124713104,
+     "pct": "86,14%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "7.1 Pengamanan Barang Milik Daerah SKPD",
+       "apbdp": 14076114858,
+       "realisasi": 12124713104,
+       "pct": "86,14%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "program": "PROGRAM PENGELOLAAN PERSAMPAHAN",
+   "apbdp": 2319315815354,
+   "realisasi": 2157631885457,
+   "pct": "93,03%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Peanganan Sampah di TPA/TPST Regional",
+     "apbdp": 2290442180678,
+     "realisasi": 2130965461761,
+     "pct": "93,04%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Pemrosesan Akhir di TPA/TPST Regional",
+       "apbdp": 1997480185261,
+       "realisasi": 1854974728097,
+       "pct": "92,87%"
+      },
+      {
+       "sub_kegiatan": "1.2 Pengoperasian dan Pemeliharaan TPA/TPST Regional",
+       "apbdp": 283380616810,
+       "realisasi": 268307153261,
+       "pct": "94,68%"
+      },
+      {
+       "sub_kegiatan": "1.3 Penyusunan Rencana, Kebijakan dan Strategi Daerah Pengelolaan Sampah Provinsi",
+       "apbdp": 9581378607,
+       "realisasi": 7683580403,
+       "pct": "80,19%"
+      }
+     ]
+    },
+    {
+     "kegiatan": "2. Pengelolaan Sampah",
+     "apbdp": 28873634676,
+     "realisasi": 26666423696,
+     "pct": "92,36%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "2.1 Penanganan sampah melalui pemilahan dan pengolahan sampah di instalasi pengolahan sampah TPS3R, PDU, TPST, TPS, SPA, PSEL/PLTSa, RDF, pusat pengomposan, biodigester, Bank Sampah dan fasilitas lainnya sesuai dengan peraturan perundangan",
+       "apbdp": 28873634676,
+       "realisasi": 26666423696,
+       "pct": "92,36%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "program": "PROGRAM PERENCANAAN LINGKUNGAN HIDUP",
+   "apbdp": 3219818500,
+   "realisasi": 3075414500,
+   "pct": "95,52%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Rencana Perlindungan dan Pengelolaan Lingkungan Hidup (RPPLH) Provinsi",
+     "apbdp": 3219818500,
+     "realisasi": 3075414500,
+     "pct": "95,52%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Penyusunan RPPLH Provinsi",
+       "apbdp": 3219818500,
+       "realisasi": 3075414500,
+       "pct": "95,52%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "program": "PROGRAM PENGENDALIAN PENCEMARAN DAN/ATAU KERUSAKAN LINGKUNGAN HIDUP",
+   "apbdp": 67876101084,
+   "realisasi": 65118106294,
+   "pct": "95,94%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Pencegahan Pencemaran dan/atau Kerusakan Lingkugan Hidup",
+     "apbdp": 67876101084,
+     "realisasi": 65118106294,
+     "pct": "95,94%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Koordinasi, Sinkronisasi dan Pelaksanaan Pencegahan Pencemaran Lingkungan Hidup",
+       "apbdp": 39525719092,
+       "realisasi": 38368388281,
+       "pct": "97,07%"
+      },
+      {
+       "sub_kegiatan": "1.2 Koordinasi, Sinkronisasi dan Pelaksanaan Pengendalian Emisi Gas Rumah Kaca, Mitigasi dan Adaptasi Perubahan Iklim",
+       "apbdp": 2707122896,
+       "realisasi": 2576785450,
+       "pct": "95,19%"
+      },
+      {
+       "sub_kegiatan": "1.3 Pengelolaan Laboratorium Lingkungan Hidup Provinsi",
+       "apbdp": 25643259096,
+       "realisasi": 24172932563,
+       "pct": "94,27%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "program": "PROGRAM PENGENDALIAN BAHAN BERBAHAYA DAN BERACUN (B3) DAN LIMBAH BAHAN BERBAHAYA DAN BERACUN (LIMBAH B3)",
+   "apbdp": 3684567176,
+   "realisasi": 2853052415,
+   "pct": "77,43%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Pengumpulan Limbah B3 Lintas Daerah Kabupaten/Kota dalam 1 (satu) Daerah Provinsi",
+     "apbdp": 3684567176,
+     "realisasi": 2853052415,
+     "pct": "77,43%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Koordinasi dan Sinkronisasi Pengelolaan Limbah B3 dengan Pemerintah Pusat dalam rangka Pengangkutan, Pemanfaatan, Pengolahan, dan/atau Penimbunan",
+       "apbdp": 3684567176,
+       "realisasi": 2853052415,
+       "pct": "77,43%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "program": "PROGRAM PEMBINAAN DAN PENGAWASAN TERHADAP IZIN LINGKUNGAN DAN IZIN PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP (PPLH)",
+   "apbdp": 6059800956,
+   "realisasi": 5664506880,
+   "pct": "93,48%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Pembinaan dan Pengawasan Izin Lingkungan dan Izin PPLH yang diterbitkan oleh Pemerintah Daerah Provinsi",
+     "apbdp": 6059800956,
+     "realisasi": 5664506880,
+     "pct": "93,48%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Fasilitasi Pemenuhan Ketentuan dan Kewajiban Izin Lingkungan dan/atau Izin PPLH",
+       "apbdp": 2054825493,
+       "realisasi": 1919697325,
+       "pct": "93,42%"
+      },
+      {
+       "sub_kegiatan": "1.2 Pengawasan Perizinan Berusaha atau Persetujuan Pemerintah terkait Persetujuan Lingkungan yang diterbitkan oleh Pemerintah Daerah Provinsi dan Peraturan Perundang-undangan di bidang Perlindungan dan Pengelolaan Lingkungan Hidup",
+       "apbdp": 4004975463,
+       "realisasi": 3744809555,
+       "pct": "93,50%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "program": "PROGRAM PENINGKATAN PENDIDIKAN, PELATIHAN DAN PENYULUHAN LINGKUNGAN HIDUP UNTUK MASYARAKAT",
+   "apbdp": 15075311576,
+   "realisasi": 14418998797,
+   "pct": "95,65%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Penyelenggaraan Pendidikan, Pelatihan, dan Penyuluhan Lingkungan Hidup untuk Lembaga KeMasyarakatan Tingkat Daerah Provinsi",
+     "apbdp": 15075311576,
+     "realisasi": 14418998797,
+     "pct": "95,65%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Pendampingan Gerakan Peduli Lingkungan Hidup",
+       "apbdp": 7876383419,
+       "realisasi": 7545016116,
+       "pct": "95,79%"
+      },
+      {
+       "sub_kegiatan": "1.2 Penyelengaraan Penyuluhan dan Kampanye Lingkungan Hidup Tingkat Daerah Provinsi",
+       "apbdp": 7198928157,
+       "realisasi": 6873982681,
+       "pct": "95,49%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "program": "PROGRAM PENANGANAN PENGADUAN LINGKUNGAN HIDUP",
+   "apbdp": 439530756,
+   "realisasi": 364280591,
+   "pct": "82,88%",
+   "kegiatan": [
+    {
+     "kegiatan": "1. Penyelesaian Pengaduan Masyarakat di Bidang Perlindungan dan Pengelolaan Lingkungan Hidup (PPLH) Provinsi",
+     "apbdp": 439530756,
+     "realisasi": 364280591,
+     "pct": "82,88%",
+     "sub_kegiatan": [
+      {
+       "sub_kegiatan": "1.1 Pengelolaan Pengaduan permasalahan Pencemaran dan Perusakan Lingkungan Hidup tingkat Provinsi",
+       "apbdp": 439530756,
+       "realisasi": 364280591,
+       "pct": "82,88%"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

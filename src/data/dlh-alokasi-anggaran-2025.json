@@ -1,0 +1,392 @@
+{
+ "sumber": "LKIP Dinas Lingkungan Hidup Jakarta 2025",
+ "tabel": "Tabel 2.4",
+ "catatan": "APBD-P baris PROGRAM PENGENDALIAN B3 terduplikasi di sumber",
+ "baris": [
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+   "apbd": 1285169630805,
+   "apbdp": 1304175789368
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Administrasi Keuangan Perangkat Daerah",
+   "apbd": 247026684643,
+   "apbdp": 245226684643
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.1",
+   "nama": "Penyediaan Gaji dan Tunjangan ASN",
+   "apbd": 246888524643,
+   "apbdp": 245226684643
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.2",
+   "nama": "Pelaksanaan Penatausahaan dan Pengujian/ Verifikasi Keuangan SKPD",
+   "apbd": 138160000,
+   "apbdp": 138160000
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2",
+   "nama": "Administrasi Umum Perangkat Daerah",
+   "apbd": 301838024637,
+   "apbdp": 304528890828
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2.1",
+   "nama": "Penyediaan Peralatan dan Perlengkapan Kantor",
+   "apbd": 3586382543,
+   "apbdp": 6630414166
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2.2",
+   "nama": "Penyediaan Bahan Logistik Kantor",
+   "apbd": 4459267339,
+   "apbdp": 4269302682
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2.3",
+   "nama": "Penyediaan Barang Cetakan dan Penggandaan",
+   "apbd": 1254759778,
+   "apbdp": 1234512313
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2.4",
+   "nama": "Penyediaan Bahan/Material",
+   "apbd": 289245887929,
+   "apbdp": 289111228748
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2.5",
+   "nama": "Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD",
+   "apbd": 3291727048,
+   "apbdp": 3283432919
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+   "apbd": 52458434683,
+   "apbdp": 54355378171
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "3.1",
+   "nama": "Pengadaan Peralatan dan Mesin Lainnya",
+   "apbd": 4675156726,
+   "apbdp": 4452002884
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "3.2",
+   "nama": "Pengadaan Gedung Kantor atau Bangunan Lainnya",
+   "apbd": 40600613411,
+   "apbdp": 40105414721
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "3.3",
+   "nama": "Pengadaan Sarana dan Prasarana Pendukung Gedung Kantor atau Bangunan Lainnya",
+   "apbd": 7182664546,
+   "apbdp": 9797960566
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2",
+   "nama": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+   "apbd": 90509253346,
+   "apbdp": 83284179886
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "4.1",
+   "nama": "Penyediaan Jasa Komunikasi, Sumber Daya Air dan Listrik",
+   "apbd": 44260846277,
+   "apbdp": 38868621780
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "4.2",
+   "nama": "Penyediaan Jasa Peralatan dan Perlengkapan Kantor",
+   "apbd": 1941428591,
+   "apbdp": 1941428591
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "4.3",
+   "nama": "Penyediaan Jasa Pelayanan Umum Kantor",
+   "apbd": 44306978478,
+   "apbdp": 42474129515
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "5.1",
+   "nama": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan",
+   "apbd": 459167283860,
+   "apbdp": 496640029524
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "5.2",
+   "nama": "Pemeliharaan Peralatan dan Mesin Lainnya",
+   "apbd": 2340803113,
+   "apbdp": 2327777757
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "5.3",
+   "nama": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya",
+   "apbd": 39727630402,
+   "apbdp": 37767140377
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "5.4",
+   "nama": "Pemeliharaan/Rehabilitasi Sarana dan Prasarana Pendukung Gedung Kantor atau Bangunan Lainnya",
+   "apbd": 1665052809,
+   "apbdp": 1634832369
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "4",
+   "nama": "Peningkatan Pelayanan BLUD",
+   "apbd": 76360348454,
+   "apbdp": 64334760955
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "6.1",
+   "nama": "Pelayanan dan Penunjang Pelayanan BLUD",
+   "apbd": 76360348454,
+   "apbdp": 64334760955
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "5",
+   "nama": "Administrasi Barang Milik Daerah pada Perangkat Daerah",
+   "apbd": 14076114858,
+   "apbdp": 14076114858
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "7.1",
+   "nama": "Pengamanan Barang Milik Daerah SKPD",
+   "apbd": 14076114858,
+   "apbdp": 14076114858
+  },
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PENGELOLAAN PERSAMPAHAN",
+   "apbd": 2414214683171,
+   "apbdp": 2319315815354
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Peanganan Sampah di TPA/TPST Regional",
+   "apbd": 2396570696108,
+   "apbdp": 2290442180678
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.1",
+   "nama": "Pemrosesan Akhir di TPA/TPST Regional",
+   "apbd": 2082513499327,
+   "apbdp": 1997480185261
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.2",
+   "nama": "Pengoperasian dan Pemeliharaan TPA/TPST Regional",
+   "apbd": 306427843537,
+   "apbdp": 283380616810
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.3",
+   "nama": "Penyusunan Rencana, Kebijakan dan Strategi Daerah Pengelolaan Sampah Provinsi",
+   "apbd": 7629353244,
+   "apbdp": 9581378607
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2",
+   "nama": "Pengelolaan Sampah",
+   "apbd": 17643987063,
+   "apbdp": 28873634676
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "2.1",
+   "nama": "Penanganan sampah melalui pemilahan dan pengolahan sampah di instalasi pengolahan sampah TPS",
+   "apbd": 17643987063,
+   "apbdp": 28873634676
+  },
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PERENCANAAN LINGKUNGAN HIDUP",
+   "apbd": 3122749500,
+   "apbdp": 3219818500
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Rencana Perlindungan dan Pengelolaan Lingkungan Hidup (RPPLH) Provinsi",
+   "apbd": 3122749500,
+   "apbdp": 3219818500
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.1",
+   "nama": "Penyusunan RPPLH Provinsi",
+   "apbd": 3122749500,
+   "apbdp": 3219818500
+  },
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PENGENDALIAN PENCEMARAN DAN/ATAU KERUSAKAN LINGKUNGAN HIDUP",
+   "apbd": 71748641032,
+   "apbdp": 67876101084
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Pencegahan Pencemaran dan/atau Kerusakan Lingkugan Hidup",
+   "apbd": 71748641032,
+   "apbdp": 67876101084
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.1",
+   "nama": "Koordinasi, Sinkronisasi dan Pelaksanaan Pencegahan Pencemaran Lingkungan Hidup Dilaksanakan terhadap Media Tanah, Air, Udara, dan Laut",
+   "apbd": 43310438294,
+   "apbdp": 39525719092
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.2",
+   "nama": "Koordinasi, Sinkronisasi dan Pelaksanaan Pengendalian Emisi Gas Rumah Kaca, Mitigasi dan Adaptasi Perubahan Iklim",
+   "apbd": 2759622896,
+   "apbdp": 2707122896
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.3",
+   "nama": "Pengelolaan Laboratorium Lingkungan Hidup Provinsi",
+   "apbd": 25678579842,
+   "apbdp": 25643259096
+  },
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PENGENDALIAN BAHAN BERBAHAYA DAN BERACUN (B",
+   "apbd": 4530968830,
+   "apbdp": 67876101084
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "3",
+   "nama": "Lintas Daerah Kabupaten/Kota dalam",
+   "apbd": 4530968830,
+   "apbdp": 67876101084
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "3",
+   "nama": "dengan Pemerintah Pusat dalam rangka Pengangkutan, Pemanfaatan, Pengolahan, dan/atau Penimbunan",
+   "apbd": 4530968830,
+   "apbdp": 39525719092
+  },
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PEMBINAAN DAN PENGAWASAN TERHADAP IZIN LINGKUNGAN DAN IZIN PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP (PPLH)",
+   "apbd": 6224840976,
+   "apbdp": 6059800956
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Pembinaan dan Pengawasan Izin Lingkungan dan Izin PPLH yang diterbitkan oleh Pemerintah Daerah Provinsi",
+   "apbd": 6224840976,
+   "apbdp": 6059800956
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.1",
+   "nama": "Fasilitasi Pemenuhan Ketentuan dan Kewajiban Izin Lingkungan dan/atau Izin PPLH",
+   "apbd": 2155150493,
+   "apbdp": 2054825493
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.2",
+   "nama": "Pengawasan Perizinan Berusaha atau Persetujuan Pemerintah terkait Persetujuan Lingkungan yang diterbitkan oleh Pemerintah Daerah Provinsi dan Peraturan Perundang-undangan di bidang Perlindungan dan Pengelolaan Lingkungan Hidup",
+   "apbd": 4069690483,
+   "apbdp": 4004975463
+  },
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PENINGKATAN PENDIDIKAN, PELATIHAN DAN PENYULUHAN LINGKUNGAN HIDUP UNTUK MASYARAKAT",
+   "apbd": 15393914669,
+   "apbdp": 15075311576
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Penyelenggaraan Pendidikan, Pelatihan, dan Penyuluhan Lingkungan Hidup untuk Lembaga KeMasyarakatan Tingkat Daerah Provinsi",
+   "apbd": 15393914669,
+   "apbdp": 15075311576
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.1",
+   "nama": "Pendampingan Gerakan Peduli Lingkungan Hidup",
+   "apbd": 8155459091,
+   "apbdp": 7876383419
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.2",
+   "nama": "Penyelengaraan Penyuluhan dan Kampanye Lingkungan Hidup Tingkat Daerah Provinsi",
+   "apbd": 7238455578,
+   "apbdp": 7198928157
+  },
+  {
+   "jenis": "program",
+   "kode": "",
+   "nama": "PROGRAM PENANGANAN PENGADUAN LINGKUNGAN HIDUP",
+   "apbd": 521843685,
+   "apbdp": 439530756
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1",
+   "nama": "Penyelesaian Pengaduan Masyarakat di Bidang Perlindungan dan Pengelolaan Lingkungan Hidup (PPLH) Provinsi",
+   "apbd": 521843685,
+   "apbdp": 439530756
+  },
+  {
+   "jenis": "kegiatan",
+   "kode": "1.1",
+   "nama": "Pengelolaan Pengaduan permasalahan Pencemaran dan Perusakan Lingkungan Hidup tingkat Provinsi",
+   "apbd": 521843685,
+   "apbdp": 439530756
+  }
+ ]
+}

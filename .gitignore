@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build artifacts
+dist/
+build/
+web/dist/
+web/node_modules/
+
+# Environment & Local files
+.env
+.env.local
+.env.*.local
+
+# Editor & OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Obsidian workspace cache (keep notes, ignore internal workspace state)
+.obsidian/workspace.json

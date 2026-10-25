@@ -1,0 +1,388 @@
+[
+ {
+  "id": 1,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Kebijakan Umum",
+  "n_docs": 10,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=27",
+    "KUA Penetapan  2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=28",
+    "Perubahan KUA TA 2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=101",
+    "PERUBAHAN KUA 2023.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=103",
+    "KUA Penetapan 2017.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 2,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Ringkasan Doku",
+  "n_docs": 8,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=55",
+    "Perubahan PPAS TA 2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=56",
+    "PPAS Penetapan 2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=102",
+    "PERUBAHAN PPAS 2023.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=111",
+    "PPAS Perubahan 2017.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 3,
+  "title": "Realisasi Transparansi RKA Transparansi RKA",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 4,
+  "title": "ERR HTTPError",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 5,
+  "title": "ERR HTTPError",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 6,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Ringkasan Doku",
+  "n_docs": 2,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=129",
+    "Penetapan_Perda TA 2023.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=145",
+    "Penetapan_Perda TA 2024.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 7,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Peraturan Daer",
+  "n_docs": 6,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=65",
+    "PERDA 5 TAHUN 2022 - TENTANG APBD TA 2023.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=72",
+    "PERDA NO. 1 TAHUN 2022 TENTANG APBD 2022.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=73",
+    "PERDA NO. 4 TAHUN 2020 TENTANG APBD 2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=74",
+    "PERDA NO. 7 TAHUN 2019 TENTANG APBD 2020.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 8,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Peraturan Kepa",
+  "n_docs": 7,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=66",
+    "Pergub No. 70 Tahun 2022 tentang Penjababaran APBD TA. 2023.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=79",
+    "PERGUB 66 TAHUN 2022 (PERGESERAN KE7).pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=80",
+    "PERGUB NOMOR 96 TAHUN 2021 TENTANG PERUBAHAN KEEMPAT ATAS PERGUB NOMOR 1 TAHUN 2021 TENTANG PERUBAHAN PENJABARAN TA. 2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=81",
+    "PERGUB NO. 113 TAHUN 2020 TENTANG PENJABARAN PERUBAHAN APBD 2020.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 9,
+  "title": "ERR HTTPError",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 10,
+  "title": "ERR HTTPError",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 11,
+  "title": "ERR HTTPError",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 12,
+  "title": "ERR HTTPError",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 13,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi SK Kepala Daer",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 14,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Peraturan Kepa",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 15,
+  "title": "Realisasi Transparansi Realisasi Transparansi Realisasi Informasi Real",
+  "n_docs": 7,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=34",
+    "LRA 2018 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=178",
+    "LRA 2019 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=179",
+    "LRA 2020 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=180",
+    "LRA 2021 Audited.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 16,
+  "title": "Realisasi Transparansi Realisasi Transparansi Realisasi Informasi Lapo",
+  "n_docs": 7,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=35",
+    "LAK 2018 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=36",
+    "LAK 2019 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=37",
+    "LAK 2020 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=38",
+    "LAK 2021 Audited.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 17,
+  "title": "Realisasi Transparansi LRA Transparansi Realisasi LRA",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 18,
+  "title": "Realisasi Transparansi LRA BPKD sebagai PPKD Transparansi Realisasi LR",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 19,
+  "title": "Realisasi Transparansi Realisasi Transparansi Realisasi Informasi Nera",
+  "n_docs": 7,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=39",
+    "Neraca 2018 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=40",
+    "Neraca 2019 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=41",
+    "Neraca 2020 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=42",
+    "Neraca 2021 Audited.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 20,
+  "title": "Realisasi Transparansi Realisasi Transparansi Realisasi Informasi CaLK",
+  "n_docs": 6,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=43",
+    "CaLK 2018 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=44",
+    "CaLK 2019 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=45",
+    "CaLK 2020 Audited.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=46",
+    "CALK 2021 Audited.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 21,
+  "title": "Realisasi Transparansi Realisasi Transparansi Realisasi Informasi Pene",
+  "n_docs": 8,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=51",
+    "Perda Pertanggungjawaban APBD 2018.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=52",
+    "Perda Pertanggungjawaban APBD 2019.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=53",
+    "Perda Pertanggungjawaban APBD 2020.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=64",
+    "PERDA NO 2 TAHUN 2022 TENTANG P2APBD TA 2021.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 22,
+  "title": "Realisasi Transparansi Realisasi Transparansi Realisasi Informasi Opin",
+  "n_docs": 8,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=47",
+    "Opini 2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=48",
+    "Opini 2020.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=49",
+    "Opini 2019.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=50",
+    "Opini 2018.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 23,
+  "title": "ERR HTTPError",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 24,
+  "title": "Realisasi Transparansi RKA Transparansi RKA",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 25,
+  "title": "Realisasi Transparansi DPA Transparansi DPA",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 26,
+  "title": "Realisasi Transparansi DPA Transparansi DPA",
+  "n_docs": 0,
+  "sample": []
+ },
+ {
+  "id": 27,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Ringkasan Doku",
+  "n_docs": 1,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=123",
+    "Lampiran_Penetapan_Perda_1_2023.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 28,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Peraturan Daer",
+  "n_docs": 1,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=124",
+    "Perda No 7 Tahun 2019 tentang APBD TA 2020.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 29,
+  "title": "Realisasi Transparansi APBD Transparansi APBD Informasi Peraturan Kepa",
+  "n_docs": 4,
+  "sample": [
+   [
+    "/transparansi/index/download/?apbdDetailId=125",
+    "Pergub Nomor 113 Tahun 2020.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=126",
+    "PERGUB NOMOR 96 TAHUN 2021 TENTANG PERUBAHAN KEEMPAT ATAS PERGUB NOMOR 1 TAHUN 2021 TENTANG PERUBAHAN PENJABARAN TA. 2021.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=127",
+    "PERGUB 66 TAHUN 2022.pdf"
+   ],
+   [
+    "/transparansi/index/download/?apbdDetailId=128",
+    "Pergub No.3 Tahun 2023 Tentang Perubahan atas Pergub No.70 Tahun 2022 Tentang Penjabaran APBD TA 2023.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 30,
+  "title": "Realisasi Transparansi RKA Transparansi RKA",
+  "n_docs": 0,
+  "sample": []
+ }
+]
