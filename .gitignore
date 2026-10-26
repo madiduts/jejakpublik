@@ -1,13 +1,15 @@
 # Dependencies
 node_modules/
+**/node_modules/
 .pnp
 .pnp.js
 
 # Build artifacts
 dist/
+**/dist/
 build/
-web/dist/
-web/node_modules/
+**/build/
+*.tsbuildinfo
 
 # Environment & Local files
 .env
@@ -19,6 +21,8 @@ web/node_modules/
 Thumbs.db
 *.swp
 *.swo
+.vscode/
+.idea/
 
-# Obsidian workspace cache (keep notes, ignore internal workspace state)
+# Obsidian workspace cache
 .obsidian/workspace.json

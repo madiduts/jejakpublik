@@ -8,7 +8,30 @@ Tema: *Designing Digital Futures – Powering Public Transparency*
 
 ---
 
-## Tech Stack
+## 📁 Struktur Repositori
+
+Proyek ini disusun secara modular menjadi direktori **Frontend** dan **Backend**:
+
+```text
+jejakpublic-web/
+├── frontend/             # Aplikasi antarmuka web (React, TypeScript, Vite)
+│   ├── src/
+│   │   ├── components/   # Komponen modular (layout, engine, home, instansi)
+│   │   ├── pages/        # Halaman utama (Home, InstansiDetail, Glossary, About)
+│   │   ├── types/        # Definisi TypeScript anggaran & data
+│   │   └── data/         # Data JSON terverifikasi (BPKD, LKIP DLH)
+│   ├── package.json
+│   └── vite.config.ts
+│
+├── backend/              # Modul Backend API & Database 
+(Tahap pengembangan berikutnya)
+│
+└── README.md             # Dokumentasi utama proyek
+```
+
+---
+
+## 🛠️ Tech Stack
 
 - **Frontend Core:** React 19, TypeScript, Vite
 - **Routing:** React Router v6
@@ -19,7 +42,7 @@ Tema: *Designing Digital Futures – Powering Public Transparency*
 
 ---
 
-## Cara Menjalankan Project (Local Development)
+## 💻 Cara Menjalankan Project (Local Development)
 
 ### Prasyarat
 - Node.js versi 18+ (direkomendasikan Node.js 20 LTS atau 24)
@@ -27,9 +50,8 @@ Tema: *Designing Digital Futures – Powering Public Transparency*
 
 ### Langkah Menjalankan
 ```bash
-# 1. Clone repositori
-git clone https://github.com/<akun-tim>/jejakpublik.git
-cd jejakpublik/web
+# 1. Masuk ke direktori frontend
+cd frontend
 
 # 2. Instalasi dependencies
 npm install
@@ -41,14 +63,14 @@ Buka peramban pada alamat `http://localhost:5173`.
 
 ### Build untuk Produksi
 ```bash
-cd web
+cd frontend
 npm run build
 npm run preview
 ```
 
 ---
 
-## Progres Saat Ini (First Draft — 1 November 2026)
+## 📌 Progres Saat Ini (First Draft — 1 November 2026)
 
 - [x] **Beranda & Ringkasan Provinsi (F-01, F-02):** Agregasi 3 pilar APBD DKI Jakarta 2025 (Pendapatan, Belanja, Pembiayaan), label eksplisit instansi tanpa pembiayaan, dan filter katalog 43 SKPD.
 - [x] **Penelusuran Mendalam Dinas Lingkungan Hidup (F-03, F-04):** Rincian hierarkis 8 Program, 15 Kegiatan, dan 33 Subkegiatan berdasarkan LKIP 2025.
@@ -63,7 +85,7 @@ npm run preview
 
 ---
 
-## Tim Pengembang (miamiu)
+## 👥 Tim Pengembang (miamiu)
 
 1. **Muhammad Zayyan Rizka** — Data & Knowledge Lead, Quality Gate
 2. **Mahdi Imantaka Sutejo** — Lead Frontend & Financial Data Engine
