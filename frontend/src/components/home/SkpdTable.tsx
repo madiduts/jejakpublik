@@ -2,23 +2,71 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SkpdItem } from '../../types';
 import { formatRupiah, formatPersen } from '../../utils/format';
-import { Search, Layers, HelpCircle, ArrowRight } from 'lucide-react';
+import { Search, Layers, HelpCircle, ArrowRight, ArrowUpDown } from 'lucide-react';
 
 interface SkpdTableProps {
   data: SkpdItem[];
 }
 
+type SortField = 'nama' | 'belanja' | 'realisasi' | 'serapan';
+type SortOrder = 'asc' | 'desc';
+
 export const SkpdTable: React.FC<SkpdTableProps> = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedKomisi, setSelectedKomisi] = useState<string>('all');
+  const [depthFilter, setDepthFilter] = useState<'all' | 'detailed' | 'basic'>('all');
+  const [sortField, setSortField] = useState<SortField>('belanja');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
 
-  const filteredData = useMemo(() => {
-    return data.filter((item) => {
-      const matchName = item.NAMA_SKPD.toLowerCase().includes(searchTerm.toLowerCase());
+  const handleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortOrder('desc');
+    }
+  };
+
+  const filteredAndSortedData = useMemo(() => {
+    const filtered = data.filter((item) => {
+      const matchName = item.NAMA_SKPD.toLowerCase().includes(searchTerm.toLowerCase().trim());
       const matchKomisi = selectedKomisi === 'all' || item.C_KOMISI === selectedKomisi;
-      return matchName && matchKomisi;
+      const isDlh = item.NAMA_SKPD.includes('LINGKUNGAN HIDUP');
+      const matchDepth =
+        depthFilter === 'all' ||
+        (depthFilter === 'detailed' && isDlh) ||
+        (depthFilter === 'basic' && !isDlh);
+
+      return matchName && matchKomisi && matchDepth;
     });
-  }, [data, searchTerm, selectedKomisi]);
+
+    return filtered.sort((a, b) => {
+      let comparison = 0;
+      if (sortField === 'nama') {
+        comparison = a.NAMA_SKPD.localeCompare(b.NAMA_SKPD, 'id');
+      } else if (sortField === 'belanja') {
+        const aVal = parseFloat(a.BELANJA_ANGGARAN || '0') || 0;
+        const bVal = parseFloat(b.BELANJA_ANGGARAN || '0') || 0;
+        comparison = aVal - bVal;
+      } else if (sortField === 'realisasi') {
+        const aVal = parseFloat(a.BELANJA_REALISASI || '0') || 0;
+        const bVal = parseFloat(b.BELANJA_REALISASI || '0') || 0;
+        comparison = aVal - bVal;
+      } else if (sortField === 'serapan') {
+        const aAngg = parseFloat(a.BELANJA_ANGGARAN || '0') || 0;
+        const aReal = parseFloat(a.BELANJA_REALISASI || '0') || 0;
+        const aPct = aAngg > 0 ? aReal / aAngg : 0;
+
+        const bAngg = parseFloat(b.BELANJA_ANGGARAN || '0') || 0;
+        const bReal = parseFloat(b.BELANJA_REALISASI || '0') || 0;
+        const bPct = bAngg > 0 ? bReal / bAngg : 0;
+
+        comparison = aPct - bPct;
+      }
+
+      return sortOrder === 'asc' ? comparison : -comparison;
+    });
+  }, [data, searchTerm, selectedKomisi, depthFilter, sortField, sortOrder]);
 
   const komisiList = useMemo(() => {
     const set = new Set<string>();
@@ -29,41 +77,96 @@ export const SkpdTable: React.FC<SkpdTableProps> = ({ data }) => {
   }, [data]);
 
   return (
-    <div style={{ marginBottom: '40px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
+    <section aria-label="Katalog SKPD DKI Jakarta" style={{ marginBottom: '40px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: '16px',
+          flexWrap: 'wrap',
+          gap: '12px',
+        }}
+      >
         <div>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)' }}>
-            Katalog 43 Satuan Kerja Perangkat Daerah (SKPD)
-          </h2>
-          <p style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '2px' }}>
-            Data resmi Dashboard BPKD DKI Jakarta 2025. Klik instansi untuk menelusuri rincian data.
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--ink)' }}>
+              Katalog 43 Satuan Kerja Perangkat Daerah (SKPD)
+            </h2>
+            <span
+              className="badge"
+              style={{ fontSize: '12px', background: '#E2E8F0', color: 'var(--ink-soft)' }}
+            >
+              {filteredAndSortedData.length} dari {data.length} SKPD
+            </span>
+          </div>
+          <p style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '4px' }}>
+            Data resmi Dashboard Keuangan BPKD DKI Jakarta TA 2025. Dilengkapi penanda kedalaman data (two-tier).
           </p>
         </div>
 
-        {/* Search & Filter */}
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+        {/* Controls: Search, Komisi filter, and Depth filter */}
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+          {/* Search bar */}
           <div style={{ position: 'relative' }}>
-            <Search size={16} color="var(--muted)" style={{ position: 'absolute', left: '12px', top: '11px' }} />
+            <Search
+              size={16}
+              color="var(--muted)"
+              style={{ position: 'absolute', left: '12px', top: '10px' }}
+              aria-hidden="true"
+            />
             <input
               type="text"
-              placeholder="Cari nama instansi..."
+              placeholder="Cari nama SKPD..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              aria-label="Cari nama SKPD"
               style={{
                 padding: '8px 14px 8px 36px',
                 borderRadius: '8px',
                 border: '1px solid var(--line)',
                 fontSize: '13.5px',
-                width: '240px',
+                width: '220px',
                 outline: 'none',
                 fontFamily: 'inherit',
+                background: 'var(--surface)',
+                color: 'var(--ink)',
               }}
             />
           </div>
 
+          {/* Filter Komisi */}
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+            <select
+              value={selectedKomisi}
+              onChange={(e) => setSelectedKomisi(e.target.value)}
+              aria-label="Filter berdasarkan Komisi DPRD"
+              style={{
+                padding: '8px 12px',
+                borderRadius: '8px',
+                border: '1px solid var(--line)',
+                fontSize: '13.5px',
+                background: 'var(--surface)',
+                color: 'var(--ink)',
+                fontFamily: 'inherit',
+                outline: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              <option value="all">Semua Komisi DPRD</option>
+              {komisiList.map((k) => (
+                <option key={k} value={k}>
+                  Komisi {k}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Filter Kedalaman Data */}
           <select
-            value={selectedKomisi}
-            onChange={(e) => setSelectedKomisi(e.target.value)}
+            value={depthFilter}
+            onChange={(e) => setDepthFilter(e.target.value as 'all' | 'detailed' | 'basic')}
+            aria-label="Filter kedalaman data"
             style={{
               padding: '8px 12px',
               borderRadius: '8px',
@@ -73,68 +176,162 @@ export const SkpdTable: React.FC<SkpdTableProps> = ({ data }) => {
               color: 'var(--ink)',
               fontFamily: 'inherit',
               outline: 'none',
+              cursor: 'pointer',
             }}
           >
-            <option value="all">Semua Komisi DPRD</option>
-            {komisiList.map((k) => (
-              <option key={k} value={k}>
-                Komisi {k}
-              </option>
-            ))}
+            <option value="all">Semua Kedalaman</option>
+            <option value="detailed">Pilot Rinci (DLH)</option>
+            <option value="basic">Hanya Tingkat SKPD (42 Dinas)</option>
           </select>
         </div>
       </div>
 
-      {/* Table */}
-      <div className="table-wrap">
+      {/* Responsive Table */}
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Tabel Anggaran 43 SKPD">
         <table className="data-table">
           <thead>
             <tr>
-              <th style={{ width: '38%' }}>Nama Perangkat Daerah</th>
-              <th style={{ width: '22%' }}>Belanja (Realisasi / Anggaran)</th>
-              <th style={{ width: '15%' }}>Serapan Belanja</th>
-              <th style={{ width: '15%' }}>Pembiayaan</th>
-              <th style={{ width: '10%', textAlign: 'right' }}>Aksi</th>
+              <th scope="col" style={{ width: '38%' }}>
+                <button
+                  type="button"
+                  onClick={() => handleSort('nama')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    font: 'inherit',
+                    color: 'inherit',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: 0,
+                  }}
+                  title="Urutkan berdasarkan Nama"
+                >
+                  Nama Perangkat Daerah (SKPD)
+                  <ArrowUpDown size={13} aria-hidden="true" />
+                </button>
+              </th>
+              <th scope="col" style={{ width: '24%' }}>
+                <button
+                  type="button"
+                  onClick={() => handleSort('belanja')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    font: 'inherit',
+                    color: 'inherit',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: 0,
+                  }}
+                  title="Urutkan berdasarkan Belanja"
+                >
+                  Belanja (Realisasi / Pagu)
+                  <ArrowUpDown size={13} aria-hidden="true" />
+                </button>
+              </th>
+              <th scope="col" style={{ width: '14%' }}>
+                <button
+                  type="button"
+                  onClick={() => handleSort('serapan')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    font: 'inherit',
+                    color: 'inherit',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: 0,
+                  }}
+                  title="Urutkan berdasarkan % Serapan"
+                >
+                  Serapan
+                  <ArrowUpDown size={13} aria-hidden="true" />
+                </button>
+              </th>
+              <th scope="col" style={{ width: '14%' }}>
+                Pembiayaan
+              </th>
+              <th scope="col" style={{ width: '10%', textAlign: 'right' }}>
+                Aksi
+              </th>
             </tr>
           </thead>
           <tbody>
-            {filteredData.length === 0 ? (
+            {filteredAndSortedData.length === 0 ? (
               <tr>
                 <td colSpan={5} style={{ textAlign: 'center', padding: '36px', color: 'var(--muted)' }}>
-                  Tidak ditemukan instansi dengan kata kunci "{searchTerm}".
+                  Tidak ditemukan perangkat daerah dengan kriteria pencarian & filter saat ini.
                 </td>
               </tr>
             ) : (
-              filteredData.map((item) => {
+              filteredAndSortedData.map((item) => {
                 const isDlh = item.NAMA_SKPD.includes('LINGKUNGAN HIDUP');
                 const belanjaAnggaran = parseFloat(item.BELANJA_ANGGARAN || '0') || 0;
                 const belanjaRealisasi = parseFloat(item.BELANJA_REALISASI || '0') || 0;
                 const pct = belanjaAnggaran > 0 ? (belanjaRealisasi / belanjaAnggaran) * 100 : 0;
-                const hasPembiayaan = item.PEMBIAYAAN_ANGGARAN !== null && item.PEMBIAYAAN_ANGGARAN !== '0';
+
+                // F-02 Contract: IF kolom PEMBIAYAAN_ANGGARAN bernilai null THEN render teks "Tidak dilaporkan" (bukan Rp0)
+                const isPembiayaanNull = item.PEMBIAYAAN_ANGGARAN === null;
 
                 return (
-                  <tr key={item.I_IDINDUK} style={isDlh ? { background: '#F0FDFA' } : {}}>
+                  <tr
+                    key={item.I_IDINDUK}
+                    style={
+                      isDlh
+                        ? { background: '#F0FDFA', borderLeft: '3px solid var(--accent)' }
+                        : {}
+                    }
+                  >
                     <td>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div>
-                          <strong style={{ fontSize: '14.5px', color: 'var(--ink)' }}>
-                            {item.NAMA_SKPD}
-                          </strong>
-                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '4px' }}>
-                            <span style={{ fontSize: '11px', color: 'var(--muted)' }}>
-                              Komisi {item.C_KOMISI || '-'} &middot; ID: {item.I_IDINDUK}
+                      <div>
+                        <strong style={{ fontSize: '14.5px', color: 'var(--ink)' }}>
+                          {item.NAMA_SKPD}
+                        </strong>
+                        <div
+                          style={{
+                            display: 'flex',
+                            gap: '8px',
+                            alignItems: 'center',
+                            marginTop: '4px',
+                            flexWrap: 'wrap',
+                          }}
+                        >
+                          <span style={{ fontSize: '11px', color: 'var(--muted)' }}>
+                            Komisi {item.C_KOMISI || '-'} &middot; ID: {item.I_IDINDUK}
+                          </span>
+
+                          {/* Badge Kedalaman Data Sesuai PRD F-02 */}
+                          {isDlh ? (
+                            <span
+                              className="badge badge-accent"
+                              style={{
+                                fontSize: '11px',
+                                padding: '2px 8px',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                              }}
+                            >
+                              <Layers size={11} aria-hidden="true" />
+                              Dapat ditelusuri sampai sub kegiatan
                             </span>
-                            {isDlh ? (
-                              <span className="badge badge-accent" style={{ fontSize: '11px', padding: '2px 7px' }}>
-                                <Layers size={11} />
-                                Penelusuran Penuh sampai Subkegiatan
-                              </span>
-                            ) : (
-                              <span className="badge badge-hold" style={{ fontSize: '11px', padding: '2px 7px' }}>
-                                Hanya Tingkat SKPD
-                              </span>
-                            )}
-                          </div>
+                          ) : (
+                            <span
+                              className="badge badge-hold"
+                              style={{ fontSize: '11px', padding: '2px 7px' }}
+                            >
+                              Hanya tingkat SKPD
+                            </span>
+                          )}
                         </div>
                       </div>
                     </td>
@@ -164,15 +361,29 @@ export const SkpdTable: React.FC<SkpdTableProps> = ({ data }) => {
                       </span>
                     </td>
 
+                    {/* F-02 Pembiayaan Column: Penanganan Khusus Null */}
                     <td>
-                      {hasPembiayaan ? (
-                        <div style={{ fontSize: '12.5px', color: 'var(--ink-soft)' }}>
-                          {formatRupiah(item.PEMBIAYAAN_REALISASI)}
-                        </div>
-                      ) : (
-                        <span style={{ fontSize: '12px', color: 'var(--muted)', fontStyle: 'italic' }}>
+                      {isPembiayaanNull ? (
+                        <span
+                          style={{
+                            fontSize: '12px',
+                            color: 'var(--muted)',
+                            fontStyle: 'italic',
+                          }}
+                        >
                           Tidak dilaporkan
                         </span>
+                      ) : (
+                        <div>
+                          <div style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--ink-soft)' }}>
+                            {formatRupiah(item.PEMBIAYAAN_REALISASI)}
+                          </div>
+                          {item.PEMBIAYAAN_ANGGARAN && item.PEMBIAYAAN_ANGGARAN !== '0' && (
+                            <div style={{ fontSize: '11px', color: 'var(--muted)' }}>
+                              Plafon: {formatRupiah(item.PEMBIAYAAN_ANGGARAN)}
+                            </div>
+                          )}
+                        </div>
                       )}
                     </td>
 
@@ -191,21 +402,25 @@ export const SkpdTable: React.FC<SkpdTableProps> = ({ data }) => {
                             fontSize: '12.5px',
                             fontWeight: 600,
                             textDecoration: 'none',
+                            whiteSpace: 'nowrap',
                           }}
+                          aria-label="Buka detail penelusuran hierarki Dinas Lingkungan Hidup"
                         >
-                          Buka Detail <ArrowRight size={14} />
+                          Buka Detail <ArrowRight size={14} aria-hidden="true" />
                         </Link>
                       ) : (
                         <span
                           style={{
-                            fontSize: '12px',
+                            fontSize: '11.5px',
                             color: 'var(--muted)',
                             background: 'var(--bg)',
                             padding: '4px 8px',
                             borderRadius: '6px',
                             border: '1px solid var(--line)',
+                            display: 'inline-block',
+                            whiteSpace: 'nowrap',
                           }}
-                          title="Format LKIP dinas ini belum distandarisasi untuk penelusuran hierarki subkegiatan."
+                          title="Data rincian program/kegiatan belum dipublikasikan dalam format terstruktur pada dinas ini."
                         >
                           Tingkat SKPD
                         </span>
@@ -219,26 +434,29 @@ export const SkpdTable: React.FC<SkpdTableProps> = ({ data }) => {
         </table>
       </div>
 
+      {/* Catatan Asimetri Kedalaman Dua Lapis */}
       <div
         style={{
           display: 'flex',
           alignItems: 'flex-start',
-          gap: '8px',
+          gap: '10px',
           background: 'var(--surface)',
           border: '1px solid var(--line)',
-          borderRadius: '8px',
+          borderRadius: '10px',
           padding: '12px 16px',
           fontSize: '12.5px',
-          color: 'var(--muted)',
+          color: 'var(--ink-soft)',
+          marginTop: '12px',
         }}
       >
-        <HelpCircle size={16} color="var(--muted)" style={{ flexShrink: 0, marginTop: '2px' }} />
+        <HelpCircle size={17} color="var(--accent)" style={{ flexShrink: 0, marginTop: '2px' }} aria-hidden="true" />
         <div>
-          <strong>Transparansi Asimetri Data:</strong> Dari 43 SKPD, saat ini baru <strong>Dinas Lingkungan Hidup</strong> yang 
-          memiliki rantai audit lengkap sampai 33 subkegiatan dan 12 indikator kinerja terverifikasi silang. 
-          SKPD lainnya hanya disajikan pada tingkat agregat SKPD karena ketiadaan format pelaporan LKIP publik yang seragam.
+          <strong>Transparansi Arsitektur Dua Lapis (Two-Tier Model):</strong> Dari 43 SKPD, saat ini baru{' '}
+          <strong>Dinas Lingkungan Hidup</strong> yang memiliki rantai audit lengkap sampai 33 subkegiatan (dengan Data State Engine),
+          12 indikator kinerja LKIP, dan 10 unit kerja pelaksana. 42 SKPD lainnya disajikan pada tingkat agregat SKPD sesuai
+          publikasi resmi Dashboard BPKD DKI Jakarta.
         </div>
       </div>
-    </div>
+    </section>
   );
 };
