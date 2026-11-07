@@ -1,151 +1,180 @@
 import React from 'react';
 import { LayoutShell } from '../components/layout/LayoutShell';
-import { SummaryCards } from '../components/home/SummaryCards';
-import { SkpdTable } from '../components/home/SkpdTable';
-import rawSkpdData from '../data/bpkd-skpd-2025.json';
-import { SkpdItem } from '../types';
-import { Search, FileText, CheckCircle2, AlertOctagon, Info, ArrowRight, ShieldCheck, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Home: React.FC = () => {
-  const skpdList = (rawSkpdData as { data: SkpdItem[] }).data;
+  // Daftar 8 Program DLH (Sesuai Figma Frame 01 node-id 90:247)
+  const figmaPrograms = [
+    {
+      nama: 'PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI',
+      apbdp: 'Rp1.304.175.789.368',
+      serapan: '85,40%',
+    },
+    {
+      nama: 'PROGRAM PENGELOLAAN PERSAMPAHAN',
+      apbdp: 'Rp2.319.315.815.354',
+      serapan: '93,03%',
+    },
+    {
+      nama: 'PROGRAM PERENCANAAN LINGKUNGAN HIDUP',
+      apbdp: 'Rp3.219.818.500',
+      serapan: '95,52%',
+    },
+    {
+      nama: 'PROGRAM PENGENDALIAN PENCEMARAN DAN/ATAU KERUSAKAN LINGKUNGAN HIDUP',
+      apbdp: 'Rp67.876.101.084',
+      serapan: '95,94%',
+    },
+    {
+      nama: 'PROGRAM PENGENDALIAN BAHAN BERBAHAYA DAN BERACUN (B3) DAN LIMBAH B3',
+      apbdp: 'Rp3.684.567.176',
+      serapan: '77,43%',
+      isCorrected: true,
+    },
+    {
+      nama: 'PROGRAM PEMBINAAN DAN PENGAWASAN TERHADAP IZIN LINGKUNGAN DAN IZIN PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP (PPLH)',
+      apbdp: 'Rp6.059.800.956',
+      serapan: '93,48%',
+    },
+    {
+      nama: 'PROGRAM PENINGKATAN PENDIDIKAN, PELATIHAN DAN PENYULUHAN LINGKUNGAN HIDUP UNTUK MASYARAKAT',
+      apbdp: 'Rp15.075.311.576',
+      serapan: '95,65%',
+    },
+    {
+      nama: 'PROGRAM PENANGANAN PENGADUAN LINGKUNGAN HIDUP',
+      apbdp: 'Rp439.530.756',
+      serapan: '82,88%',
+    },
+  ];
 
   return (
     <LayoutShell>
-      <div className="wrap" style={{ paddingTop: '24px' }}>
-        {/* Notice Banner */}
-        <div className="notice-banner" role="status">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Info size={16} color="var(--accent)" aria-hidden="true" />
-            <span>
-              <strong>Transparansi Periode:</strong> Seluruh data bersumber dari dokumen resmi APBD & LKIP TA 2025 (periode selesai), penarikan data resmi <strong>21 Oktober 2026</strong>. Bukan data real-time.
-            </span>
-          </div>
-          <Link to="/tentang" style={{ fontWeight: 600, textDecoration: 'underline', whiteSpace: 'nowrap' }}>
-            Baca Metodologi &rarr;
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <section aria-labelledby="hero-title" style={{ marginBottom: '32px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 10px', background: 'var(--accent-soft)', color: 'var(--accent)', borderRadius: '20px', fontSize: '12px', fontWeight: 700, marginBottom: '12px' }}>
-            <ShieldCheck size={14} aria-hidden="true" />
-            Platform Transparansi Anggaran Independen &middot; Provinsi DKI Jakarta 2025
-          </div>
-
-          <h1 id="hero-title" style={{ fontSize: '32px', fontWeight: 800, color: 'var(--ink)', letterSpacing: '-0.5px', lineHeight: 1.25 }}>
-            Uang Publik Provinsi DKI Jakarta
-          </h1>
-          <p style={{ fontSize: '16px', color: 'var(--muted)', marginTop: '8px', maxWidth: '780px', lineHeight: 1.6 }}>
-            Website independen yang membantu warga menelusuri anggaran, realisasi belanja, dan indikator hasil
-            pemerintah provinsi. Kami menyajikan angka apa adanya, menandai anomali salah ketik resmi secara terbuka,
-            dan tidak meratakan data anomali menjadi nol.
-          </p>
-
-          {/* 4 Feature Highlights / Nilai Pembeda (Sesuai PRD Modul 1 & 2) */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '14px',
-              marginTop: '24px',
-            }}
-          >
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <Search size={18} color="var(--accent)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Arsitektur Dua Lapis</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Akses ringkasan 43 perangkat daerah, tembus hingga 33 subkegiatan dan 10 unit kerja pada dinas percontohan (DLH).
-              </p>
+      {/* 1. Hero Container Figma (node-id 90:244) */}
+      <section className="figma-hero-wrapper">
+        <div className="figma-hero-box">
+          <img
+            src="/assets/hero-bg-raw.jpg"
+            alt="Jakarta City Panorama"
+            className="figma-hero-bg"
+          />
+          <div className="figma-hero-overlay" />
+          <div className="figma-hero-content">
+            <div className="figma-hero-kicker">
+              TAHUN ANGGARAN 2025 &middot; DKI JAKARTA
             </div>
-
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <FileText size={18} color="var(--accent)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Jejak Sumber Terbuka</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Tiap angka mencantumkan rujukan tabel (Tabel 2.4, 3.33, 3.34, 3.35 LKIP), dokumen sumber, dan tanggal ekstraksi.
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <AlertOctagon size={18} color="var(--warn)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Data State Engine</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Menangani 3 status data (Normal, Dikoreksi kasus B3, dan Ditahan kasus Gaji ASN) dengan modal audit transparan.
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <CheckCircle2 size={18} color="var(--accent)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Pelurus Istilah Nyata</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Membedakan pagu penetapan vs perubahan akibat Inpres 1/2025, serta meluruskan arti "efisiensi" anggaran.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Pilot Callout Card */}
-        <div
-          style={{
-            background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
-            border: '1px solid #99F6E4',
-            borderRadius: '12px',
-            padding: '18px 22px',
-            marginBottom: '32px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '16px',
-          }}
-        >
-          <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 700, color: '#0F766E', marginBottom: '4px' }}>
-              <Database size={14} aria-hidden="true" />
-              Pilot Penelusuran Mendalam (Lapis Dalam)
-            </div>
-            <h3 style={{ fontSize: '17px', fontWeight: 800, color: '#0F172A' }}>
-              Dinas Lingkungan Hidup Provinsi DKI Jakarta (TA 2025)
-            </h3>
-            <p style={{ fontSize: '13px', color: '#334155', marginTop: '2px', maxWidth: '640px' }}>
-              Menembus 8 Program, 15 Kegiatan, 33 Subkegiatan, 12 Indikator Kinerja LKIP (Tabel 3.35), serta 10 Unit Kerja Pelaksana.
+            <h1 className="figma-hero-h1">
+              Uang publik Jakarta, sampai ke sub kegiatan
+            </h1>
+            <p className="figma-hero-p">
+              Pagu, realisasi, dan hasil yang dilaporkan pemerintah daerah, lengkap dengan dokumen asalnya. Warga membaca, memeriksa, lalu menilai sendiri.
             </p>
+            <div>
+              <Link to="/jelajahi" className="figma-hero-btn">
+                Jelajahi data <span>&rarr;</span>
+              </Link>
+            </div>
           </div>
-          <Link
-            to="/instansi/lingkungan-hidup"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              background: '#0F766E',
-              color: '#FFFFFF',
-              padding: '10px 18px',
-              borderRadius: '8px',
-              fontSize: '13.5px',
-              fontWeight: 700,
-              textDecoration: 'none',
-              boxShadow: '0 2px 4px rgba(15, 118, 110, 0.2)',
-            }}
-          >
-            Buka Rincian DLH <ArrowRight size={16} aria-hidden="true" />
-          </Link>
+        </div>
+      </section>
+
+      {/* 2. Stat Metrics Banner (4 Kolom Sesuai Figma node-id 90:43) */}
+      <section aria-label="Ringkasan 4 Pilar APBD" className="figma-stat-banner">
+        <div className="figma-stat-banner-inner">
+          <div className="figma-stat-item">
+            <span className="figma-stat-label">Instansi</span>
+            <div className="figma-stat-number">43</div>
+            <span className="figma-stat-sub">Seluruh perangkat daerah</span>
+          </div>
+
+          <div className="figma-stat-item">
+            <span className="figma-stat-label">Anggaran belanja</span>
+            <div className="figma-stat-number">Rp86,0 T</div>
+            <span className="figma-stat-sub">Rp85.979.175.838.982</span>
+          </div>
+
+          <div className="figma-stat-item">
+            <span className="figma-stat-label">Realisasi</span>
+            <div className="figma-stat-number">Rp74,2 T</div>
+            <span className="figma-stat-sub">Dilaporkan 43 instansi</span>
+          </div>
+
+          <div className="figma-stat-item">
+            <span className="figma-stat-label">Terserap</span>
+            <div className="figma-stat-number">86,30%</div>
+            <span className="figma-stat-sub">Terhadap anggaran perubahan</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Feature Banner (Foto Street + 3 Kartu Glass Sesuai Figma node-id 90:246) */}
+      <section aria-label="Prinsip Integritas Data" className="figma-features-wrapper">
+        <div className="figma-features-box">
+          <img
+            src="/assets/features-bg-raw.jpg"
+            alt="Jakarta Pedestrian Street"
+            className="figma-features-bg"
+          />
+          <div className="figma-features-overlay" />
+          <div className="figma-features-grid">
+            <div className="figma-glass-card">
+              <div className="figma-glass-num">01</div>
+              <h3 className="figma-glass-title">Angka dikoreksi</h3>
+              <p className="figma-glass-desc">
+                Dokumen sumber memuat dua nilai berbeda. Yang dipakai adalah nilai yang cocok dengan total dokumen dan BPKD, disertai riwayat.
+              </p>
+            </div>
+
+            <div className="figma-glass-card">
+              <div className="figma-glass-num">02</div>
+              <h3 className="figma-glass-title">Nilai ditahan</h3>
+              <p className="figma-glass-desc">
+                Bila tidak ada pembanding, angka tidak diubah menjadi nol. Ditulis apa adanya dan tidak dipakai dalam persentase.
+              </p>
+            </div>
+
+            <div className="figma-glass-card">
+              <div className="figma-glass-num">03</div>
+              <h3 className="figma-glass-title">Sumber terbuka</h3>
+              <p className="figma-glass-desc">
+                Setiap angka membawa dokumen, nomor tabel, periode, dan tanggal pengambilan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Daftar 8 Program Pilot DLH (Figma node-id 90:247) */}
+      <section aria-label="Program Pilot DLH" className="figma-program-section">
+        <div className="figma-program-header">
+          <div className="figma-program-tag">01 &middot; Program</div>
+          <h2 className="figma-program-title">Delapan program yang bisa ditelusuri</h2>
         </div>
 
-        {/* Tiga Pilar Anggaran Provinsi (F-01) */}
-        <SummaryCards data={skpdList} />
-
-        {/* Katalog 43 SKPD (F-02) */}
-        <SkpdTable data={skpdList} />
-      </div>
+        <div className="figma-program-list">
+          {figmaPrograms.map((prog, idx) => (
+            <Link
+              key={idx}
+              to="/instansi/lingkungan-hidup"
+              className="figma-program-row"
+            >
+              <div className="figma-program-left">
+                <span className="figma-program-name">{prog.nama}</span>
+                {prog.isCorrected && (
+                  <span className="figma-badge-corrected">
+                    angka dikoreksi
+                  </span>
+                )}
+              </div>
+              <div className="figma-program-right">
+                <span className="figma-program-nominal">{prog.apbdp}</span>
+                <span className="figma-program-pct">{prog.serapan}</span>
+                <div className="figma-program-arrow">&rarr;</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </LayoutShell>
   );
 };

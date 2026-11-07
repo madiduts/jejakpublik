@@ -14,7 +14,8 @@ build/
 # Environment & Local files
 .env
 .env.local
-.env.*.local
+.env.*
+!.env.example
 
 # Editor & OS
 .DS_Store
@@ -26,3 +27,4 @@ Thumbs.db
 
 # Obsidian workspace cache
 .obsidian/workspace.json
+.neon

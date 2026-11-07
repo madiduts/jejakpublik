@@ -1,66 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { ShieldCheck, Menu, X } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const closeMenu = () => setIsOpen(false);
-
   return (
-    <header className="topbar" role="banner">
-      <div className="wrap">
-        <Link to="/" className="brand" onClick={closeMenu} aria-label="JejakPublik Beranda">
-          <ShieldCheck size={28} color="#2DD4BF" aria-hidden="true" />
-          <div>
-            JejakPublik
-            <small>Menelusuri Penggunaan Uang Publik</small>
-          </div>
+    <header className="figma-navbar" role="banner">
+      <div className="figma-navbar-inner">
+        {/* Brand: "J E J A K" di atas "Publik" */}
+        <Link to="/" className="figma-brand" aria-label="JejakPublik Beranda">
+          <span className="figma-brand-jejak">J E J A K</span>
+          <span className="figma-brand-publik">Publik</span>
         </Link>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          type="button"
-          className="nav-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-label={isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-        >
-          {isOpen ? <X size={22} color="#FFFFFF" /> : <Menu size={22} color="#FFFFFF" />}
-        </button>
-
-        <nav
-          className={`topnav ${isOpen ? 'open' : ''}`}
-          aria-label="Navigasi Utama"
-        >
+        {/* Navigation Items sesuai Frame Figma */}
+        <nav className="figma-nav-links" aria-label="Navigasi Utama">
           <NavLink
-            to="/"
-            end
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
+            to="/jelajahi"
+            className={({ isActive }) => `figma-nav-item ${isActive ? 'active' : ''}`}
           >
-            Beranda
+            Jelajahi Data
           </NavLink>
           <NavLink
-            to="/instansi/lingkungan-hidup"
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
+            to="/panduan"
+            className={({ isActive }) => `figma-nav-item ${isActive ? 'active' : ''}`}
           >
-            Dinas LH (Detail)
+            Panduan
           </NavLink>
           <NavLink
             to="/istilah"
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
+            className={({ isActive }) => `figma-nav-item ${isActive ? 'active' : ''}`}
           >
-            Penjelasan Istilah
+            Glosarium
           </NavLink>
-          <NavLink
-            to="/tentang"
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            Tentang & Keterbatasan
+          <NavLink to="/tentang" className="figma-nav-pill">
+            Tentang <span>&rarr;</span>
           </NavLink>
         </nav>
       </div>

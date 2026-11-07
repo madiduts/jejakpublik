@@ -1,111 +1,100 @@
 import React from 'react';
 import { LayoutShell } from '../components/layout/LayoutShell';
-import { Breadcrumbs } from '../components/layout/Breadcrumbs';
-import { AlertTriangle, Users, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const About: React.FC = () => {
   return (
     <LayoutShell>
-      <div className="wrap">
-        <Breadcrumbs items={[{ label: 'Tentang & Keterbatasan' }]} />
+      {/* Hero Visual Container Frame 06 Tentang (node-id 95:198) */}
+      <div className="figma-hero-wrapper" style={{ marginBottom: '32px' }}>
+        <div className="figma-hero-box" style={{ minHeight: '320px', padding: '48px 32px' }}>
+          <img
+            src="/assets/hero-bg-raw.jpg"
+            alt="Tentang JejakPublik"
+            className="figma-hero-bg"
+          />
+          <div className="figma-hero-overlay" />
+          <div className="figma-hero-content" style={{ maxWidth: '840px' }}>
+            <div className="figma-breadcrumb" style={{ justifyContent: 'center', color: 'rgba(255,255,255,0.7)', marginBottom: '16px' }}>
+              <Link to="/" style={{ color: 'rgba(255,255,255,0.85)' }}>Beranda</Link>
+              <span className="sep" style={{ color: 'rgba(255,255,255,0.5)' }}>/</span>
+              <span className="current" style={{ color: '#ffffff' }}>Tentang</span>
+            </div>
+            <h1 className="figma-hero-h1" style={{ fontSize: '42px', marginBottom: '12px' }}>
+              Tentang JejakPublik
+            </h1>
+            <p className="figma-hero-p" style={{ marginBottom: 0 }}>
+              Portal informasi anggaran publik. Warga membaca fakta, sumber, dan keterbatasannya, lalu menilai sendiri.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        <div className="pagehead">
-          <div>
-            <h1>Tentang JejakPublik & Batas Keterbatasan</h1>
-            <div className="meta">
-              Komitmen transparansi data publik, metodologi penelusuran audit, dan batasan tanggung jawab platform.
+      <div className="figma-container" style={{ paddingTop: 0 }}>
+        {/* Section 01: Cakupan dan Periode Sesuai Figma node-id 95:35 */}
+        <div className="figma-program-section" style={{ padding: 0, margin: '0 0 48px' }}>
+          <div className="figma-program-header">
+            <div className="figma-program-tag">01 &middot; Cakupan dan Periode</div>
+            <h2 className="figma-program-title">Dua lapis keterbukaan anggaran</h2>
+          </div>
+
+          <div className="figma-stat-grid" style={{ margin: '24px 0' }}>
+            <div className="figma-stat-card">
+              <span className="figma-stat-label">Lapis Luas</span>
+              <div className="figma-stat-value" style={{ fontSize: '24px' }}>43 Instansi</div>
+              <span className="figma-stat-subtext">Dashboard Keuangan BPKD DKI tingkat dinas</span>
+            </div>
+            <div className="figma-stat-card">
+              <span className="figma-stat-label">Lapis Dalam</span>
+              <div className="figma-stat-value" style={{ fontSize: '24px' }}>Pilot DLH</div>
+              <span className="figma-stat-subtext">8 Program, 15 Kegiatan, 33 Subkegiatan LKIP 2025</span>
             </div>
           </div>
-          <span className="badge badge-accent">
-            <Award size={14} /> Multimedia In Action 2026 &middot; Web In Action
-          </span>
         </div>
 
-        {/* Section 1: Visi & Nilai Inti */}
-        <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '12px', padding: '28px', marginBottom: '24px' }}>
-          <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--ink)', marginBottom: '12px' }}>
-            Visi Kami: Dari Anggaran, Terlihat Hasilnya
-          </h2>
-          <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'var(--ink-soft)', marginBottom: '16px' }}>
-            JejakPublik lahir dari keresahan bahwa informasi anggaran pemerintah sering disajikan dalam bentuk dashboard pasif 
-            atau dokumen PDF ratusan halaman yang sulit ditelusuri warga. Warga yang ingin memeriksa aliran dana publik 
-            dihadapkan pada istilah rumit, angka yang terputus dari hasil pekerjaan, dan portal resmi yang cenderung 
-            meratakan anomali cetak tanpa penjelasan.
+        {/* Section 02: Batas Tanggung Jawab / Keterbatasan */}
+        <div className="figma-program-section" style={{ padding: 0, margin: '0 0 48px' }}>
+          <div className="figma-program-header">
+            <div className="figma-program-tag">02 &middot; Batas Sistem</div>
+            <h2 className="figma-program-title">Hal yang tidak kami klaim</h2>
+          </div>
+
+          <div className="figma-feature-grid" style={{ margin: '24px 0' }}>
+            <div className="figma-feature-card">
+              <div className="figma-feature-num">01</div>
+              <h3 className="figma-feature-title">Bukan data real-time</h3>
+              <p className="figma-feature-desc">
+                Data bersumber dari dokumen resmi tahun anggaran 2025 (periode selesai) bertanggal penarikan 21 Oktober 2026.
+              </p>
+            </div>
+
+            <div className="figma-feature-card">
+              <div className="figma-feature-num">02</div>
+              <h3 className="figma-feature-title">Bukan kanal pengaduan</h3>
+              <p className="figma-feature-desc">
+                JejakPublik adalah sarana audit independen warga, bukan sistem layanan tiket pengaduan pemerintah resmi.
+              </p>
+            </div>
+
+            <div className="figma-feature-card">
+              <div className="figma-feature-num">03</div>
+              <h3 className="figma-feature-title">Bukan vonis korupsi</h3>
+              <p className="figma-feature-desc">
+                Anomali angka ditandai untuk menjaga keabsahan dokumen dan transparansi, bukan bentuk penetapan tindak pidana hukum.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 03: Profil Tim miamiu */}
+        <div className="figma-program-section" style={{ padding: 0, margin: '0 0 48px' }}>
+          <div className="figma-program-header">
+            <div className="figma-program-tag">03 &middot; Pengembang</div>
+            <h2 className="figma-program-title">Tim miamiu &middot; MIA 2026</h2>
+          </div>
+          <p style={{ fontSize: '14.5px', color: 'var(--text-sub)', lineHeight: 1.6 }}>
+            Karya kompetisi Multimedia In Action (MIA 2026) cabang Web In Action (WIA). Dikembangkan oleh Muhammad Zayyan Rizka, Mahdi Imantaka Sutejo, dan Liaurentino.
           </p>
-          <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'var(--ink-soft)' }}>
-            Nilai utama yang kami bawa bukan sekadar memvisualisasikan angka, melainkan <strong>menguji dan memverifikasi integritas data</strong>: 
-            menandai salah ketik resmi secara terbuka, menahan data yang hierarkinya bermasalah, dan menyajikan audit trail yang bisa diverifikasi hingga nomor tabel dokumen aslinya.
-          </p>
-        </div>
-
-        {/* Section 2: Keterbatasan & Anti-Goals (Honesty) */}
-        <div style={{ background: '#FFFDF5', border: '1px solid var(--warn-line)', borderRadius: '12px', padding: '28px', marginBottom: '24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <AlertTriangle size={22} color="var(--warn)" />
-            <h2 style={{ fontSize: '19px', fontWeight: 800, color: '#78350F' }}>
-              Batasan Tanggung Jawab & Hal yang Tidak Kami Klaim
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gap: '14px', fontSize: '14px', color: '#78350F', lineHeight: 1.6 }}>
-            <div>
-              <strong>1. Bukan Data Real-Time:</strong> Seluruh dataset adalah laporan tahunan periode selesai (Tahun Anggaran 2025) yang sudah melalui pembukuan resmi BPKD dan dokumen LKIP. Kami tidak mengklaim integrasi API real-time pemerintah.
-            </div>
-            <div>
-              <strong>2. Bukan Vonis Hukum atau Dakwaan Korupsi:</strong> Selisih angka, sisa anggaran, atau kesalahan salin pada dokumen resmi disajikan sebagai fakta audit data administratif, bukan bukti tindak pidana korupsi. Keputusan hukum berada di tangan penegak hukum dan BPK.
-            </div>
-            <div>
-              <strong>3. Bukan Kanal Aduan Fisik Lapangan Pengganti JAKI/SP4N-LAPOR:</strong> Platform ini berfokus pada audit keterbukaan informasi anggaran dan kinerja administratif, bukan menjanjikan tindak lanjut fisik perbaikan infrastruktur di jalan oleh pemda.
-            </div>
-            <div>
-              <strong>4. Asimetri Kedalaman Data:</strong> Saat ini baru Dinas Lingkungan Hidup yang datanya berhasil ditelusuri sampai tingkat subkegiatan dan indikator kinerja karena format pelaporan LKIP antar-dinas di DKI Jakarta belum seragam.
-            </div>
-            <div>
-              <strong>5. Tanpa Pengumpulan Identitas Asli:</strong> Platform tidak pernah mengumpulkan data pribadi warga seperti NIK, foto KTP asli, atau biometrik.
-            </div>
-          </div>
-        </div>
-
-        {/* Section 3: Tim Pengembang */}
-        <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '12px', padding: '28px', marginBottom: '40px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
-            <Users size={22} color="var(--accent)" />
-            <h2 style={{ fontSize: '19px', fontWeight: 800, color: 'var(--ink)' }}>
-              Tim Pengembang — Tim miamiu
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
-            <div style={{ background: 'var(--bg)', borderRadius: '8px', padding: '16px' }}>
-              <strong style={{ fontSize: '15px', color: 'var(--ink)' }}>Muhammad Zayyan Rizka</strong>
-              <div style={{ fontSize: '12.5px', color: 'var(--accent)', fontWeight: 600, marginTop: '2px' }}>
-                Ketua Tim &middot; Data & Knowledge Lead
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Memimpin riset sumber primer BPKD/LKIP, verifikasi rekonsiliasi angka, arsitektur indikator kinerja, dan narasi presentasi.
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--bg)', borderRadius: '8px', padding: '16px' }}>
-              <strong style={{ fontSize: '15px', color: 'var(--ink)' }}>Mahdi Imantaka Sutejo</strong>
-              <div style={{ fontSize: '12.5px', color: 'var(--accent)', fontWeight: 600, marginTop: '2px' }}>
-                Lead Frontend & Data Engine
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Membangun arsitektur React, komponen engine status angka (normal, dikoreksi, ditahan), hierarki interaktif DLH, dan pipeline data.
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--bg)', borderRadius: '8px', padding: '16px' }}>
-              <strong style={{ fontSize: '15px', color: 'var(--ink)' }}>Liaurentino</strong>
-              <div style={{ fontSize: '12.5px', color: 'var(--accent)', fontWeight: 600, marginTop: '2px' }}>
-                UI/UX & Frontend Developer
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Merancang sitemap, sistem tata letak halaman Beranda, responsivitas multi-perangkat, dan katalog interaktif 43 SKPD.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </LayoutShell>
