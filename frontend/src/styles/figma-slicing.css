@@ -446,7 +446,7 @@ a {
 }
 
 /* =========================================
-   6. FOOTER GELAP FIGMA (node-id 90:248)
+   6. FOOTER GELAP FIGMA (node-id 90:248 & 148:214)
    ========================================= */
 .figma-footer {
   background-color: #0d1117;
@@ -459,6 +459,36 @@ a {
   max-width: 1344px;
   margin: 0 auto;
   padding: 0 48px;
+}
+
+.figma-footer-branding-new {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 48px;
+  padding: 16px 0 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.figma-footer-footprints {
+  width: 100%;
+  max-width: 1080px;
+  height: auto;
+  opacity: 0.35;
+  margin-bottom: -50px;
+  pointer-events: none;
+}
+
+.figma-footer-publik-title {
+  font-family: var(--font-sans);
+  font-size: 110px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .figma-footer-brand {
@@ -551,6 +581,13 @@ a {
   }
   .figma-hero-h1 {
     font-size: 32px;
+  }
+  .figma-footer-publik-title {
+    font-size: 54px;
+    letter-spacing: 0.04em;
+  }
+  .figma-footer-footprints {
+    margin-bottom: -20px;
   }
   .figma-program-row {
     flex-direction: column;

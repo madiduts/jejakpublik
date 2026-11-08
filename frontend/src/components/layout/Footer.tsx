@@ -5,12 +5,17 @@ export const Footer: React.FC = () => {
   return (
     <footer className="figma-footer" role="contentinfo">
       <div className="figma-footer-inner">
-        {/* Brand Header */}
-        <div className="figma-footer-brand">
-          <Link to="/" aria-label="JejakPublik Beranda">
-            <span className="figma-footer-logo-jejak">J E J A K</span>
-            <span className="figma-footer-logo-publik">Publik</span>
-          </Link>
+        {/* New Branding Header (Figma node-id 148:214: Jejak Kaki + PUBLIK) */}
+        <div className="figma-footer-branding-new">
+          <img
+            src="/assets/jejak-kaki.svg"
+            alt=""
+            className="figma-footer-footprints"
+            aria-hidden="true"
+          />
+          <div className="figma-footer-publik-title">
+            PUBLIK
+          </div>
         </div>
 
         {/* 4 Kolom Navigasi & Informasi */}
