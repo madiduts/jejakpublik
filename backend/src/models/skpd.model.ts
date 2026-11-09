@@ -112,9 +112,44 @@ class SkpdModel {
   public getDeepDiveDetails(): Record<string, unknown> | null {
     try {
       const alokasiPath = path.join(DATA_DIR, 'dlh-alokasi-anggaran-2025.json');
-      if (fs.existsSync(alokasiPath)) {
-        return JSON.parse(fs.readFileSync(alokasiPath, 'utf-8'));
-      }
+      const realisasiPath = path.join(DATA_DIR, 'dlh-realisasi-anggaran-2025.json');
+      const efisiensiPath = path.join(DATA_DIR, 'dlh-efisiensi-indikator-2025.json');
+      const unitKerjaPath = path.join(DATA_DIR, 'dlh-unit-kerja-2025.json');
+
+      const alokasi = fs.existsSync(alokasiPath) ? JSON.parse(fs.readFileSync(alokasiPath, 'utf-8')) : null;
+      const realisasi = fs.existsSync(realisasiPath) ? JSON.parse(fs.readFileSync(realisasiPath, 'utf-8')) : null;
+      const efisiensi = fs.existsSync(efisiensiPath) ? JSON.parse(fs.readFileSync(efisiensiPath, 'utf-8')) : null;
+      const unitKerja = fs.existsSync(unitKerjaPath) ? JSON.parse(fs.readFileSync(unitKerjaPath, 'utf-8')) : null;
+
+      return {
+        legal_basis: 'LKIP Dinas Lingkungan Hidup Provinsi DKI Jakarta TA 2025',
+        sumber_dokumen: [
+          'Tabel 2.4 Alokasi Anggaran Menurut Program dan Kegiatan',
+          'Tabel 3.33 Anggaran Berdasarkan Unit Kerja',
+          'Tabel 3.34 Realisasi Program dan Kegiatan',
+          'Tabel 3.35 Efisiensi Realisasi Anggaran Terhadap Capaian Indikator Kinerja'
+        ],
+        audit_trail: [
+          {
+            tabel: 'Tabel 3.33',
+            isu: 'Salah ketik nilai realisasi Sudin LH Kepulauan Seribu (tercetak 13.5294.891.173)',
+            koreksi: '135.294.891.173',
+            metode: 'Uji matematis persentase serapan 97,99% terhadap pagu perubahan Rp138.070.730.822',
+            state: 'DIKOREKSI'
+          },
+          {
+            tabel: 'Tabel 2.4 vs Realisasi',
+            isu: 'Realisasi Program Pengendalian B3 selisih antara dokumen paparan awal dan buku besar',
+            koreksi: 'Pagu Perubahan Rp3.684.567.176, Realisasi Rp2.853.052.415 (Serapan 77,43%)',
+            metode: 'Rekonsiliasi angka resmi LKIP DLH Tabel 3.35',
+            state: 'DIKOREKSI'
+          }
+        ],
+        hirarki_anggaran: alokasi,
+        realisasi_anggaran: realisasi,
+        indikator_kinerja: efisiensi,
+        unit_kerja: unitKerja
+      };
     } catch (err) {
       console.warn('SkpdModel: Gagal membaca rincian DLH:', err);
     }

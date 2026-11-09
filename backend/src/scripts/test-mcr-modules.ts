@@ -90,6 +90,30 @@ async function runTests() {
   console.log('  Total Belanja Realisasi: Rp' + summary.belanja.realisasi.toLocaleString('id-ID'));
   console.log('  Serapan Belanja:', summary.belanja.persentase_serapan + '%');
 
+  // Deep dive DLH Pilot testing
+  const deepDive = skpdModel.getDeepDiveDetails();
+  console.assert(deepDive !== null, 'DLH Deep Dive details should not be null');
+  console.assert((deepDive as any).indikator_kinerja !== null, 'Should contain 12 indikator kinerja');
+  console.assert((deepDive as any).unit_kerja !== null, 'Should contain 10 unit kerja pelaksana');
+  console.assert((deepDive as any).audit_trail.length >= 2, 'Should contain audit trail');
+  console.log('✓ DLH Pilot Data Mendalam verified:');
+  console.log('  Legal basis:', (deepDive as any).legal_basis);
+  console.log('  Audit trail entries:', (deepDive as any).audit_trail.length);
+
+  console.log('\n--- 4. Testing Content & Knowledge Base ---');
+  const { ContentModel } = await import('../models/content.model.js');
+  const glossary = ContentModel.getGlossary();
+  console.assert(glossary.length >= 8, 'Glossary should have at least 8 key terms');
+  console.log('✓ Glossary terms verified. Count:', glossary.length);
+
+  const about = ContentModel.getAbout();
+  console.assert(about.sections.length === 4, 'About should have 4 sections matching sitemap');
+  console.log('✓ About sections verified (Profil, Metodologi, Sumber, Batasan/Anti-Goals)');
+
+  const guide = ContentModel.getGuide();
+  console.assert(guide.modules.length === 4, 'Guide should have 4 step modules matching sitemap');
+  console.log('✓ Guide modules verified (Mulai, Status Data, Hirarki, APBD & Efisiensi)');
+
   console.log('\n=============================================');
   console.log('ALL MODULAR MCR BACKEND TESTS PASSED CLEANLY!');
   console.log('=============================================');
