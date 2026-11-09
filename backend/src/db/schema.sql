@@ -14,7 +14,18 @@ EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
 
--- 2. TABEL SKPD (Lapis Luas: 43 Instansi Daerah)
+-- 2. TABEL USERS & MODERATOR (Autentikasi Pengguna & Tim Audit)
+CREATE TABLE IF NOT EXISTS users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(120) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'warga', -- 'warga' | 'moderator'
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. TABEL SKPD (Lapis Luas: 43 Instansi Daerah)
 CREATE TABLE IF NOT EXISTS skpd (
     id VARCHAR(50) PRIMARY KEY,                 -- slug: e.g. 'dinas-lingkungan-hidup'
     id_induk VARCHAR(20),                       -- BPKD IDINDUK
@@ -77,11 +88,12 @@ CREATE TABLE IF NOT EXISTS performance_indicators (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 6. TABEL PELAPORAN WARGA (Citizen Audit)
+-- 7. TABEL PELAPORAN WARGA (Citizen Audit Partisipatif)
 CREATE TABLE IF NOT EXISTS citizen_reports (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     ticket_number VARCHAR(25) UNIQUE NOT NULL,
-    reporter_name VARCHAR(100) DEFAULT 'Anonim',
+    user_id UUID REFERENCES users(id) ON DELETE SET NULL,
+    reporter_name VARCHAR(100) DEFAULT 'Warga Anonim',
     reporter_email VARCHAR(120),
     reporter_phone VARCHAR(25),
     skpd_id VARCHAR(50) REFERENCES skpd(id),
@@ -89,12 +101,14 @@ CREATE TABLE IF NOT EXISTS citizen_reports (
     report_type VARCHAR(30) NOT NULL,          -- 'anomali_angka' | 'observasi_lapangan' | 'salah_ketik'
     title VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    evidence_urls JSONB DEFAULT '[]'::jsonb,
+    evidence_urls JSONB DEFAULT '[]'::jsonb,   -- Daftar URL foto / dokumen bukti
     status report_status_enum DEFAULT 'pending',
     is_public BOOLEAN DEFAULT false,
+    audit_notes TEXT,                          -- Catatan verifikator / moderator
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS idx_reports_status ON citizen_reports(status);
 CREATE INDEX IF NOT EXISTS idx_reports_skpd ON citizen_reports(skpd_id);
+CREATE INDEX IF NOT EXISTS idx_reports_user ON citizen_reports(user_id);

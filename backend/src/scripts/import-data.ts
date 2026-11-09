@@ -81,4 +81,38 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 
   const totalBelanja = results.reduce((acc, curr) => acc + curr.belanja_anggaran, 0);
   console.log(`\nTotal Belanja 43 SKPD: Rp${totalBelanja.toLocaleString('id-ID')}`);
+
+  // Sinkronisasi ke Neon PostgreSQL jika terkonfigurasi
+  import('../db/neon.js').then(async ({ sql }) => {
+    if (sql) {
+      console.log('Menyimpan 43 SKPD ke Neon PostgreSQL...');
+      for (const item of results) {
+        await (sql as any).query(
+          `INSERT INTO skpd (id, id_induk, nama, komisi, asisten, pendapatan_anggaran, pendapatan_realisasi, belanja_anggaran, belanja_realisasi, pembiayaan_anggaran, pembiayaan_realisasi, has_deep_dive)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+           ON CONFLICT (id) DO UPDATE SET
+             id_induk = EXCLUDED.id_induk,
+             nama = EXCLUDED.nama,
+             belanja_anggaran = EXCLUDED.belanja_anggaran,
+             belanja_realisasi = EXCLUDED.belanja_realisasi,
+             updated_at = NOW()`,
+          [
+            item.id,
+            item.id_induk,
+            item.nama,
+            item.komisi,
+            item.asisten,
+            item.pendapatan_anggaran,
+            item.pendapatan_realisasi,
+            item.belanja_anggaran,
+            item.belanja_realisasi,
+            item.pembiayaan_anggaran,
+            item.pembiayaan_realisasi,
+            item.has_deep_dive,
+          ]
+        );
+      }
+      console.log('✓ Seluruh 43 SKPD berhasil tersimpan di tabel skpd Neon PostgreSQL.');
+    }
+  });
 }

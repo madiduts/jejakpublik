@@ -88,4 +88,13 @@ export class SkpdController {
       instansi: skpd,
     });
   }
+
+  public static async getSummaryApbd2025(c: Context) {
+    const summary = skpdModel.getSummary();
+    return c.json({
+      success: true,
+      data: summary,
+      source: 'Ringkasan APBD Perubahan DKI Jakarta TA 2025'
+    });
+  }
 }

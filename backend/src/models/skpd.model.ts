@@ -120,6 +120,38 @@ class SkpdModel {
     }
     return null;
   }
+
+  public getSummary() {
+    let totalBelanjaAnggaran = 0;
+    let totalBelanjaRealisasi = 0;
+    let totalPendapatanAnggaran = 0;
+    let totalPendapatanRealisasi = 0;
+
+    for (const item of this.cache) {
+      totalBelanjaAnggaran += Number(item.belanja_anggaran || 0);
+      totalBelanjaRealisasi += Number(item.belanja_realisasi || 0);
+      totalPendapatanAnggaran += Number(item.pendapatan_anggaran || 0);
+      totalPendapatanRealisasi += Number(item.pendapatan_realisasi || 0);
+    }
+
+    const persentaseSerapanBelanja =
+      totalBelanjaAnggaran > 0
+        ? Number(((totalBelanjaRealisasi / totalBelanjaAnggaran) * 100).toFixed(2))
+        : 0;
+
+    return {
+      total_skpd: this.cache.length,
+      belanja: {
+        anggaran: totalBelanjaAnggaran,
+        realisasi: totalBelanjaRealisasi,
+        persentase_serapan: persentaseSerapanBelanja,
+      },
+      pendapatan: {
+        anggaran: totalPendapatanAnggaran,
+        realisasi: totalPendapatanRealisasi,
+      },
+    };
+  }
 }
 
 export const skpdModel = new SkpdModel();
