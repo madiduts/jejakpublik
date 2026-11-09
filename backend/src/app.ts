@@ -9,6 +9,7 @@ import authRoutes from './routes/auth.routes.js';
 import reportRoutes from './routes/report.routes.js';
 import contentRoutes from './routes/content.routes.js';
 import moderationRoutes from './routes/moderation.routes.js';
+import ingestionRoutes from './routes/ingestion.routes.js';
 
 export const app = new Hono();
 
@@ -42,3 +43,6 @@ app.route('/api/v1/instansi', skpdRoutes); // Alias resmi sesuai sitemap
 app.route('/api/v1/auth', authRoutes);
 app.route('/api/v1/reports', reportRoutes);
 app.route('/api/v1/moderation', moderationRoutes);
+
+// Jalur C: Ingestion & Automated Webhook/Sync Pipeline
+app.route('/api/v1/ingestion', ingestionRoutes);

@@ -76,6 +76,21 @@ class SkpdModel {
     }
   }
 
+  public reload(): void {
+    this.init();
+  }
+
+  public upsertBatch(records: SkpdRecord[]): void {
+    for (const record of records) {
+      const idx = this.cache.findIndex((s) => s.id === record.id);
+      if (idx >= 0) {
+        this.cache[idx] = { ...this.cache[idx], ...record };
+      } else {
+        this.cache.push(record);
+      }
+    }
+  }
+
   public count(): number {
     return this.cache.length;
   }

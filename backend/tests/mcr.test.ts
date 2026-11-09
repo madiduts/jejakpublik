@@ -130,6 +130,28 @@ async function runTests() {
   console.assert(guide.modules.length === 4, 'Guide should have 4 step modules matching sitemap');
   console.log('✓ Guide modules verified (Mulai, Status Data, Hirarki, APBD & Efisiensi)');
 
+  console.log('\n--- 5. Testing Ingestion & Webhook Pipeline ---');
+  const { IngestionService } = await import('../src/services/ingestion.service.js');
+  const syncResults = await IngestionService.syncAllSources();
+  console.assert(syncResults.length === 2, 'Should sync 2 primary sources');
+  console.log('✓ 2 primary sources synced:', syncResults.map((s) => `${s.source} (${s.status})`).join(', '));
+
+  // Test webhook ingest
+  const webhookResult = await IngestionService.ingestPayload({
+    source: 'bpkd-jakarta',
+    records: [
+      {
+        id: 'dinas-lingkungan-hidup',
+        nama: 'DINAS LINGKUNGAN HIDUP',
+        belanja_anggaran: 3719846734770,
+        belanja_realisasi: 3362947632852,
+        has_deep_dive: true
+      }
+    ]
+  });
+  console.assert(webhookResult.processed === 1, 'Webhook should process 1 record');
+  console.log('✓ Webhook ingestion processed:', webhookResult.processed, 'record for source:', webhookResult.source);
+
   console.log('\n=============================================');
   console.log('ALL MODULAR MCR BACKEND TESTS PASSED CLEANLY!');
   console.log('=============================================');
