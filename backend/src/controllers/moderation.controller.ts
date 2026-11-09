@@ -1,5 +1,8 @@
 import type { Context } from 'hono';
-import { ReportModel, type ReportStatus } from '../models/report.model.js';
+import { ReportModel } from '../models/report.model.js';
+import { moderationDecisionSchema } from '../schemas/report.schema.js';
+import { AppError } from '../utils/errors.js';
+import { successResponse } from '../utils/responses.js';
 
 export class ModerationController {
   /**
@@ -21,12 +24,12 @@ export class ModerationController {
   static async getReportDetail(c: Context) {
     const id = c.req.param('id');
     if (!id) {
-      return c.json({ success: false, error: 'ID laporan wajib disertakan.' }, 400);
+      throw new AppError('BAD_REQUEST' as any, 'ID laporan wajib disertakan.', 400);
     }
 
     const report = await ReportModel.findById(id);
     if (!report) {
-      return c.json({ success: false, error: 'Laporan tidak ditemukan.' }, 404);
+      throw new AppError('NOT_FOUND' as any, 'Laporan tidak ditemukan.', 404);
     }
 
     return c.json({
@@ -40,60 +43,29 @@ export class ModerationController {
    * Tanggapan dan keputusan verifikator
    */
   static async submitDecision(c: Context) {
-    try {
-      const id = c.req.param('id');
-      if (!id) {
-        return c.json({ success: false, error: 'ID laporan wajib disertakan.' }, 400);
-      }
-
-      const body = await c.req.json();
-      const currentUser = c.get('user');
-      const { status, audit_notes, is_public } = body;
-
-      const validStatuses: ReportStatus[] = ['verified', 'rejected', 'forwarded'];
-      if (!status || !validStatuses.includes(status)) {
-        return c.json(
-          {
-            success: false,
-            error: 'Keputusan harus berupa: verified (diverifikasi), rejected (ditolak), atau forwarded (diteruskan).'
-          },
-          400
-        );
-      }
-
-      if (!audit_notes || typeof audit_notes !== 'string' || audit_notes.trim().length < 5) {
-        return c.json(
-          {
-            success: false,
-            error: 'Catatan audit wajib dicantumkan minimal 5 karakter untuk jejak akuntabilitas keputusan.'
-          },
-          400
-        );
-      }
-
-      const updated = await ReportModel.updateStatus({
-        id,
-        status,
-        audit_notes: audit_notes.trim(),
-        actor: currentUser ? currentUser.name : 'Tim Auditor JejakPublik',
-        is_public: typeof is_public === 'boolean' ? is_public : status === 'verified'
-      });
-
-      return c.json({
-        success: true,
-        stage: 'Tanggapan dan Keputusan Selesai',
-        message: `Laporan berhasil diproses dengan status: ${status}`,
-        data: updated
-      });
-    } catch (err: any) {
-      return c.json(
-        {
-          success: false,
-          error: err.message || 'Gagal memproses keputusan moderasi.'
-        },
-        500
-      );
+    const id = c.req.param('id');
+    if (!id) {
+      throw new AppError('BAD_REQUEST' as any, 'ID laporan wajib disertakan.', 400);
     }
+
+    const body = await c.req.json();
+    const currentUser = c.get('user');
+    const validated = moderationDecisionSchema.parse(body);
+
+    const updated = await ReportModel.updateStatus({
+      id,
+      status: validated.status,
+      audit_notes: validated.audit_notes,
+      actor: currentUser ? currentUser.name : 'Tim Auditor JejakPublik',
+      is_public: typeof validated.is_public === 'boolean' ? validated.is_public : validated.status === 'verified'
+    });
+
+    return c.json({
+      success: true,
+      stage: 'Tanggapan dan Keputusan Selesai',
+      message: `Laporan berhasil diproses dengan status: ${validated.status}`,
+      data: updated
+    });
   }
 
   /**

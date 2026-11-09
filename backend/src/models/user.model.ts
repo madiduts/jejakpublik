@@ -1,7 +1,6 @@
 import crypto from 'node:crypto';
 import { query } from '../db/neon.js';
-
-export type UserRole = 'warga' | 'moderator';
+import type { UserRole, UserPublic } from '../schemas/auth.schema.js';
 
 export interface User {
   id: string;
@@ -12,8 +11,6 @@ export interface User {
   created_at: string;
   updated_at: string;
 }
-
-export type UserPublic = Omit<User, 'password_hash'>;
 
 export function hashPassword(password: string): string {
   const salt = crypto.randomBytes(16).toString('hex');

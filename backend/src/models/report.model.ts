@@ -1,36 +1,6 @@
 import crypto from 'node:crypto';
 import { query } from '../db/neon.js';
-
-export type ReportType = 'anomali_angka' | 'observasi_lapangan' | 'salah_ketik';
-export type ReportStatus = 'draft' | 'pending' | 'verified' | 'rejected' | 'forwarded';
-
-export interface AuditTrailItem {
-  timestamp: string;
-  action: string;
-  note: string;
-  actor: string;
-}
-
-export interface CitizenReport {
-  id: string;
-  ticket_number: string;
-  user_id: string | null;
-  reporter_name: string;
-  reporter_email: string;
-  reporter_phone?: string;
-  skpd_id: string;
-  program_id?: string;
-  report_type: ReportType;
-  title: string;
-  description: string;
-  evidence_urls: string[];
-  status: ReportStatus;
-  is_public: boolean;
-  audit_notes?: string;
-  audit_trail: AuditTrailItem[];
-  created_at: string;
-  updated_at: string;
-}
+import type { ReportType, ReportStatus, CitizenReport, AuditTrailItem } from '../schemas/report.schema.js';
 
 // In-memory cache fallback jika PostgreSQL offline / demo testing
 const inMemoryReports: Map<string, CitizenReport> = new Map();

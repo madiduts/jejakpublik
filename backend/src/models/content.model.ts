@@ -1,25 +1,4 @@
-export interface GlossaryTerm {
-  slug: string;
-  term: string;
-  category: 'Anggaran & Akuntansi' | 'Integritas Data' | 'Kinerja & Evaluasi';
-  definition: string;
-  legal_reference?: string;
-}
-
-export interface AboutSection {
-  id: string;
-  title: string;
-  subtitle: string;
-  content: string[];
-}
-
-export interface GuideSection {
-  id: string;
-  step: number;
-  title: string;
-  summary: string;
-  points: string[];
-}
+import type { GlossaryTerm, AboutSection, GuideSection } from '../schemas/content.schema.js';
 
 export class ContentModel {
   static getGlossary(): GlossaryTerm[] {

@@ -1,6 +1,7 @@
 import type { MiddlewareHandler } from 'hono';
 import { verify } from 'hono/jwt';
-import { UserModel, type UserPublic } from '../models/user.model.js';
+import { UserModel } from '../models/user.model.js';
+import type { UserPublic } from '../schemas/auth.schema.js';
 
 export const JWT_SECRET = process.env.JWT_SECRET || 'jejakpublik-secret-token-mia2026-secure-key';
 

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import type { SkpdQueryParams } from '../schemas/skpd.schema.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,13 +20,6 @@ export interface SkpdRecord {
   pembiayaan_anggaran: number | null;
   pembiayaan_realisasi: number | null;
   has_deep_dive: boolean;
-}
-
-export interface SkpdQueryParams {
-  q?: string;
-  komisi?: string;
-  page: number;
-  limit: number;
 }
 
 function slugify(text: string): string {

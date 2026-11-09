@@ -1,6 +1,15 @@
 import type { Context } from 'hono';
-import { ReportModel, type ReportType, type ReportStatus } from '../models/report.model.js';
+import { ReportModel } from '../models/report.model.js';
+import {
+  createReportSchema,
+  updateReportSchema,
+  moderationDecisionSchema,
+  type ReportType,
+  type ReportStatus
+} from '../schemas/report.schema.js';
 import { StorageService } from '../services/storage.service.js';
+import { AppError } from '../utils/errors.js';
+import { successResponse } from '../utils/responses.js';
 
 export class ReportController {
   /**
@@ -77,102 +86,39 @@ export class ReportController {
    * Buat laporan warga partisipatif
    */
   static async createReport(c: Context) {
-    try {
-      const body = await c.req.json();
-      const currentUser = c.get('user');
+    const body = await c.req.json();
+    const currentUser = c.get('user');
+    const validated = createReportSchema.parse(body);
 
-      const {
-        title,
-        description,
-        skpd_id,
-        program_id,
-        report_type,
-        reporter_name,
-        reporter_email,
-        reporter_phone,
-        evidence_urls,
-        is_draft
-      } = body;
+    const report = await ReportModel.create({
+      user_id: currentUser ? currentUser.id : null,
+      reporter_name: currentUser ? currentUser.name : (validated.reporter_name || 'Warga Anonim'),
+      reporter_email: currentUser ? currentUser.email : (validated.reporter_email || ''),
+      reporter_phone: validated.reporter_phone || '',
+      skpd_id: validated.skpd_id,
+      program_id: validated.program_id,
+      report_type: validated.report_type,
+      title: validated.title,
+      description: validated.description,
+      evidence_urls: validated.evidence_urls,
+      is_draft: validated.is_draft
+    });
 
-      if (!title || typeof title !== 'string' || title.trim().length < 5) {
-        return c.json(
-          {
-            success: false,
-            error: 'Judul laporan wajib diisi minimal 5 karakter.'
-          },
-          400
-        );
-      }
-
-      if (!description || typeof description !== 'string' || description.trim().length < 15) {
-        return c.json(
-          {
-            success: false,
-            error: 'Deskripsi temuan wajib diisi minimal 15 karakter secara rinci.'
-          },
-          400
-        );
-      }
-
-      if (!skpd_id || typeof skpd_id !== 'string') {
-        return c.json(
-          {
-            success: false,
-            error: 'Instansi SKPD terkait wajib dipilih.'
-          },
-          400
-        );
-      }
-
-      const validTypes: ReportType[] = ['anomali_angka', 'observasi_lapangan', 'salah_ketik'];
-      if (!report_type || !validTypes.includes(report_type)) {
-        return c.json(
-          {
-            success: false,
-            error: 'Jenis laporan harus salah satu dari: anomali_angka, observasi_lapangan, atau salah_ketik.'
-          },
-          400
-        );
-      }
-
-      const report = await ReportModel.create({
-        user_id: currentUser ? currentUser.id : null,
-        reporter_name: currentUser ? currentUser.name : (reporter_name || 'Warga Anonim'),
-        reporter_email: currentUser ? currentUser.email : (reporter_email || ''),
-        reporter_phone: reporter_phone || '',
-        skpd_id,
-        program_id,
-        report_type,
-        title,
-        description,
-        evidence_urls: Array.isArray(evidence_urls) ? evidence_urls : [],
-        is_draft: Boolean(is_draft)
-      });
-
-      return c.json(
-        {
-          success: true,
-          message: is_draft
-            ? 'Draf laporan berhasil disimpan.'
-            : 'Laporan warga berhasil diajukan dan sedang menunggu verifikasi tim.',
-          data: {
-            ticket_number: report.ticket_number,
-            report_id: report.id,
-            status: report.status,
-            created_at: report.created_at
-          }
-        },
-        201
-      );
-    } catch (err: any) {
-      return c.json(
-        {
-          success: false,
-          error: err.message || 'Gagal mengajukan laporan partisipatif.'
-        },
-        500
-      );
-    }
+    return c.json(
+      {
+        success: true,
+        message: validated.is_draft
+          ? 'Draf laporan berhasil disimpan.'
+          : 'Laporan warga berhasil diajukan dan sedang menunggu verifikasi tim.',
+        data: {
+          ticket_number: report.ticket_number,
+          report_id: report.id,
+          status: report.status,
+          created_at: report.created_at
+        }
+      },
+      201
+    );
   }
 
   /**
