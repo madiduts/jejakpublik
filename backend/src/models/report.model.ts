@@ -35,10 +35,10 @@ export interface CitizenReport {
 // In-memory cache fallback jika PostgreSQL offline / demo testing
 const inMemoryReports: Map<string, CitizenReport> = new Map();
 
-// Helper untuk format nomor tiket resmi Figma: L-2026-XXXX (misal: L-2026-0031)
+// Helper untuk format nomor tiket resmi Figma: L-2026-XXXX (misal: L-2026-0031 atau L-2026-A1B2)
 function generateTicketNumber(): string {
-  const seq = String(inMemoryReports.size + 1).padStart(4, '0');
-  return `L-2026-${seq}`;
+  const rand = crypto.randomBytes(2).toString('hex').toUpperCase();
+  return `L-2026-${rand}`;
 }
 
 export class ReportModel {

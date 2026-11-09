@@ -24,32 +24,31 @@ export class StorageService {
   private static r2Client: S3Client | null = null;
 
   private static isR2Configured(): boolean {
-    const {
-      CLOUDFLARE_R2_ACCOUNT_ID,
-      CLOUDFLARE_R2_ACCESS_KEY_ID,
-      CLOUDFLARE_R2_SECRET_ACCESS_KEY,
-      CLOUDFLARE_R2_BUCKET_NAME
-    } = process.env;
+    const accountId = (process.env.CLOUDFLARE_R2_ACCOUNT_ID || '').trim();
+    const accessKey = (process.env.CLOUDFLARE_R2_ACCESS_KEY_ID || '').trim();
+    const secretKey = (process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY || '').trim();
+    const bucket = (process.env.CLOUDFLARE_R2_BUCKET_NAME || '').trim();
 
     return Boolean(
-      CLOUDFLARE_R2_ACCOUNT_ID &&
-        CLOUDFLARE_R2_ACCESS_KEY_ID &&
-        CLOUDFLARE_R2_SECRET_ACCESS_KEY &&
-        CLOUDFLARE_R2_BUCKET_NAME &&
-        !CLOUDFLARE_R2_ACCOUNT_ID.includes('placeholder')
+      accountId &&
+        accessKey &&
+        secretKey &&
+        bucket &&
+        !accountId.includes('placeholder')
     );
   }
 
   private static getR2Client(): S3Client {
     if (!this.r2Client) {
-      const accountId = process.env.CLOUDFLARE_R2_ACCOUNT_ID!;
+      const accountId = process.env.CLOUDFLARE_R2_ACCOUNT_ID!.trim();
       this.r2Client = new S3Client({
         region: 'auto',
         endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
         credentials: {
-          accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!,
-          secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY!
-        }
+          accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!.trim(),
+          secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY!.trim()
+        },
+        forcePathStyle: true
       });
     }
     return this.r2Client;
