@@ -53,9 +53,25 @@ async function runTests() {
     evidence_urls: ['/uploads/sample-evidence-tps3r.jpg']
   });
 
-  console.assert(report.ticket_number.startsWith('JP-2025-'), 'Ticket number should match format JP-2025-XXXX');
+  console.assert(report.ticket_number.startsWith('L-2026-'), 'Ticket number should match Figma format L-2026-XXXX');
   console.assert(report.status === 'pending', 'Initial status should be pending');
   console.log('✓ Citizen report created successfully. Ticket Number:', report.ticket_number);
+
+  // Test Update Report (Pelapor mengubah laporan)
+  const edited = await ReportModel.updateReport({
+    id: report.id,
+    user_id: newUser.id,
+    title: 'Laporan Pengadaan TPS 3R Belum Beroperasi di Lokasi (Diperbarui)'
+  });
+  console.assert(edited.title.includes('(Diperbarui)'), 'Title should be updated');
+  console.log('✓ Citizen report update works:', edited.title);
+
+  // Test Cloudflare Storage Service
+  const { StorageService } = await import('../src/services/storage.service.js');
+  const dummyBuffer = Buffer.from('FAKE-IMAGE-CONTENT-FOR-TESTING');
+  const uploadResult = await StorageService.uploadEvidence(dummyBuffer, 'evidence.jpg', 'image/jpeg');
+  console.assert(uploadResult.url.length > 0, 'Storage upload should return URL');
+  console.log('✓ Storage service upload verified:', uploadResult.provider, uploadResult.url);
 
   // Track by ticket
   const tracked = await ReportModel.findByTicket(report.ticket_number);

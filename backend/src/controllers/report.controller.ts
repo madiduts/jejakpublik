@@ -1,22 +1,10 @@
 import type { Context } from 'hono';
-import fs from 'node:fs';
-import path from 'node:path';
-import crypto from 'node:crypto';
-import { fileURLToPath } from 'node:url';
 import { ReportModel, type ReportType, type ReportStatus } from '../models/report.model.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const UPLOAD_DIR = path.resolve(__dirname, '../../uploads');
-
-// Pastikan folder uploads ada
-if (!fs.existsSync(UPLOAD_DIR)) {
-  fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-}
+import { StorageService } from '../services/storage.service.js';
 
 export class ReportController {
   /**
-   * Upload berkas bukti gambar / foto dokumen lapangan
+   * Upload berkas bukti gambar / foto dokumen lapangan (Cloudflare R2 / Local fallback)
    */
   static async uploadEvidence(c: Context) {
     try {
@@ -56,25 +44,20 @@ export class ReportController {
         );
       }
 
-      const ext = path.extname(file.name) || (file.type === 'application/pdf' ? '.pdf' : '.png');
-      const filename = `evidence-${Date.now()}-${crypto.randomBytes(4).toString('hex')}${ext}`;
-      const filePath = path.join(UPLOAD_DIR, filename);
-
       const arrayBuffer = await file.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      await fs.promises.writeFile(filePath, buffer);
-
-      const fileUrl = `/uploads/${filename}`;
+      const uploadResult = await StorageService.uploadEvidence(buffer, file.name, file.type);
 
       return c.json(
         {
           success: true,
           message: 'Bukti dokumen/foto berhasil diunggah.',
           data: {
-            filename,
-            fileUrl,
-            size: file.size,
-            mimeType: file.type
+            filename: uploadResult.filename,
+            fileUrl: uploadResult.url,
+            size: uploadResult.size,
+            mimeType: uploadResult.mimeType,
+            provider: uploadResult.provider
           }
         },
         201
@@ -107,7 +90,8 @@ export class ReportController {
         reporter_name,
         reporter_email,
         reporter_phone,
-        evidence_urls
+        evidence_urls,
+        is_draft
       } = body;
 
       if (!title || typeof title !== 'string' || title.trim().length < 5) {
@@ -161,13 +145,16 @@ export class ReportController {
         report_type,
         title,
         description,
-        evidence_urls: Array.isArray(evidence_urls) ? evidence_urls : []
+        evidence_urls: Array.isArray(evidence_urls) ? evidence_urls : [],
+        is_draft: Boolean(is_draft)
       });
 
       return c.json(
         {
           success: true,
-          message: 'Laporan warga berhasil diajukan dan sedang menunggu verifikasi tim.',
+          message: is_draft
+            ? 'Draf laporan berhasil disimpan.'
+            : 'Laporan warga berhasil diajukan dan sedang menunggu verifikasi tim.',
           data: {
             ticket_number: report.ticket_number,
             report_id: report.id,
@@ -185,6 +172,74 @@ export class ReportController {
         },
         500
       );
+    }
+  }
+
+  /**
+   * Detail laporan berdasarkan ID
+   */
+  static async getReportById(c: Context) {
+    const id = c.req.param('id');
+    if (!id) {
+      return c.json({ success: false, error: 'ID laporan wajib disertakan.' }, 400);
+    }
+
+    const report = await ReportModel.findById(id);
+    if (!report) {
+      return c.json({ success: false, error: 'Laporan tidak ditemukan.' }, 404);
+    }
+
+    return c.json({ success: true, data: report });
+  }
+
+  /**
+   * Pembaruan laporan (Khusus pelapor pemilik akun)
+   */
+  static async updateReport(c: Context) {
+    try {
+      const id = c.req.param('id');
+      if (!id) {
+        return c.json({ success: false, error: 'ID laporan wajib disertakan.' }, 400);
+      }
+      const user = c.get('user');
+      const body = await c.req.json();
+
+      const updated = await ReportModel.updateReport({
+        id,
+        user_id: user.id,
+        title: body.title,
+        description: body.description,
+        report_type: body.report_type,
+        evidence_urls: body.evidence_urls,
+        is_draft: body.is_draft
+      });
+
+      return c.json({
+        success: true,
+        message: 'Laporan berhasil diperbarui.',
+        data: updated
+      });
+    } catch (err: any) {
+      return c.json({ success: false, error: err.message || 'Gagal memperbarui laporan.' }, 400);
+    }
+  }
+
+  /**
+   * Hapus laporan (Khusus pelapor pemilik draf atau moderator)
+   */
+  static async deleteReport(c: Context) {
+    try {
+      const id = c.req.param('id');
+      if (!id) {
+        return c.json({ success: false, error: 'ID laporan wajib disertakan.' }, 400);
+      }
+      const user = c.get('user');
+      const isModerator = user.role === 'moderator';
+
+      await ReportModel.deleteReport(id, user.id, isModerator);
+      return c.json({ success: true, message: 'Laporan berhasil dihapus.' });
+    } catch (err: any) {
+      return c.json({ success: false, error: err.message || 'Gagal menghapus laporan.' }, 400);
     }
   }
 

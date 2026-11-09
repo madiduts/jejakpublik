@@ -10,8 +10,11 @@ reportRoutes.get('/track/:ticket', ReportController.trackByTicket);
 reportRoutes.post('/upload', optionalAuth, ReportController.uploadEvidence);
 reportRoutes.post('/', optionalAuth, ReportController.createReport);
 
-// 2. Terproteksi Pengguna (Warga Terdaftar)
+// 2. Terproteksi Pengguna (Warga Terdaftar) — CRUD Pelaporan
 reportRoutes.get('/my-reports', requireAuth, ReportController.getMyReports);
+reportRoutes.get('/:id', requireAuth, ReportController.getReportById);
+reportRoutes.put('/:id', requireAuth, ReportController.updateReport);
+reportRoutes.delete('/:id', requireAuth, ReportController.deleteReport);
 
 // 3. Terproteksi Moderator (Tim Auditor / Verifikator)
 reportRoutes.get('/', requireAuth, requireModerator, ReportController.getAllReports);

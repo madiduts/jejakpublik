@@ -2,7 +2,7 @@ import crypto from 'node:crypto';
 import { query } from '../db/neon.js';
 
 export type ReportType = 'anomali_angka' | 'observasi_lapangan' | 'salah_ketik';
-export type ReportStatus = 'pending' | 'verified' | 'rejected' | 'forwarded';
+export type ReportStatus = 'draft' | 'pending' | 'verified' | 'rejected' | 'forwarded';
 
 export interface AuditTrailItem {
   timestamp: string;
@@ -35,11 +35,10 @@ export interface CitizenReport {
 // In-memory cache fallback jika PostgreSQL offline / demo testing
 const inMemoryReports: Map<string, CitizenReport> = new Map();
 
-// Helper untuk format nomor tiket resmi JP-2025-XXXX
+// Helper untuk format nomor tiket resmi Figma: L-2026-XXXX (misal: L-2026-0031)
 function generateTicketNumber(): string {
-  const rand = crypto.randomBytes(2).toString('hex').toUpperCase();
-  const seq = String(inMemoryReports.size + 1).padStart(2, '0');
-  return `JP-2025-${seq}${rand}`;
+  const seq = String(inMemoryReports.size + 1).padStart(4, '0');
+  return `L-2026-${seq}`;
 }
 
 export class ReportModel {
@@ -54,10 +53,12 @@ export class ReportModel {
     title: string;
     description: string;
     evidence_urls?: string[];
+    is_draft?: boolean;
   }): Promise<CitizenReport> {
     const id = crypto.randomUUID();
     const ticket_number = generateTicketNumber();
     const now = new Date().toISOString();
+    const status: ReportStatus = params.is_draft ? 'draft' : 'pending';
 
     const report: CitizenReport = {
       id,
@@ -72,14 +73,14 @@ export class ReportModel {
       title: params.title.trim(),
       description: params.description.trim(),
       evidence_urls: params.evidence_urls || [],
-      status: 'pending',
+      status,
       is_public: false,
       audit_notes: undefined,
       audit_trail: [
         {
           timestamp: now,
-          action: 'SUBMITTED',
-          note: 'Laporan baru diterima oleh sistem.',
+          action: params.is_draft ? 'DRAFT_CREATED' : 'SUBMITTED',
+          note: params.is_draft ? 'Draf laporan disimpan.' : 'Laporan baru diterima oleh sistem.',
           actor: params.reporter_name || 'Warga'
         }
       ],
@@ -209,6 +210,81 @@ export class ReportModel {
       list = list.filter((r) => r.skpd_id === filters.skpd_id);
     }
     return list.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+  }
+
+  static async updateReport(params: {
+    id: string;
+    user_id: string;
+    title?: string;
+    description?: string;
+    report_type?: ReportType;
+    evidence_urls?: string[];
+    is_draft?: boolean;
+  }): Promise<CitizenReport> {
+    const report = await this.findById(params.id);
+    if (!report) {
+      throw new Error(`Laporan dengan ID ${params.id} tidak ditemukan.`);
+    }
+
+    if (report.user_id && report.user_id !== params.user_id) {
+      throw new Error('Anda tidak memiliki izin untuk mengubah laporan ini.');
+    }
+
+    if (report.status === 'verified') {
+      throw new Error('Laporan yang sudah diverifikasi tidak dapat diubah.');
+    }
+
+    const now = new Date().toISOString();
+    if (params.title) report.title = params.title.trim();
+    if (params.description) report.description = params.description.trim();
+    if (params.report_type) report.report_type = params.report_type;
+    if (params.evidence_urls) report.evidence_urls = params.evidence_urls;
+    if (typeof params.is_draft === 'boolean') {
+      report.status = params.is_draft ? 'draft' : 'pending';
+    }
+    report.updated_at = now;
+
+    try {
+      await query(
+        `UPDATE citizen_reports 
+         SET title = $1, description = $2, report_type = $3, evidence_urls = $4::jsonb, status = $5, updated_at = $6
+         WHERE id = $7`,
+        [
+          report.title,
+          report.description,
+          report.report_type,
+          JSON.stringify(report.evidence_urls),
+          report.status,
+          now,
+          report.id
+        ]
+      );
+    } catch {
+      // Fallback
+    }
+
+    inMemoryReports.set(report.id, report);
+    return report;
+  }
+
+  static async deleteReport(id: string, userId: string, isModerator: boolean = false): Promise<boolean> {
+    const report = await this.findById(id);
+    if (!report) {
+      throw new Error(`Laporan dengan ID ${id} tidak ditemukan.`);
+    }
+
+    if (!isModerator && report.user_id !== userId) {
+      throw new Error('Anda tidak memiliki otoritas untuk menghapus laporan ini.');
+    }
+
+    try {
+      await query('DELETE FROM citizen_reports WHERE id = $1', [id]);
+    } catch {
+      // Fallback
+    }
+
+    inMemoryReports.delete(id);
+    return true;
   }
 
   static async updateStatus(params: {
