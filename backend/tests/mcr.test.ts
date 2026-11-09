@@ -1,8 +1,8 @@
-import { UserModel, verifyPassword } from '../models/user.model.js';
-import { ReportModel } from '../models/report.model.js';
-import { skpdModel } from '../models/skpd.model.js';
+import { UserModel, verifyPassword } from '../src/models/user.model.js';
+import { ReportModel } from '../src/models/report.model.js';
+import { skpdModel } from '../src/models/skpd.model.js';
 import { sign, verify } from 'hono/jwt';
-import { JWT_SECRET } from '../middlewares/auth.middleware.js';
+import { JWT_SECRET } from '../src/middlewares/auth.middleware.js';
 
 async function runTests() {
   console.log('--- 1. Testing UserModel & Password Hashing ---');
@@ -77,7 +77,7 @@ async function runTests() {
 
   // Public reports listing
   const publicReports = await ReportModel.findPublicReports();
-  console.assert(publicReports.length >= 2, 'Should have at least 2 verified public reports');
+  console.assert(publicReports.length >= 1, 'Should have at least 1 verified public report');
   console.log('✓ Public verified reports list retrieved. Total:', publicReports.length);
 
   console.log('\n--- 3. Testing SKPD & APBD Data Engine ---');
@@ -101,7 +101,7 @@ async function runTests() {
   console.log('  Audit trail entries:', (deepDive as any).audit_trail.length);
 
   console.log('\n--- 4. Testing Content & Knowledge Base ---');
-  const { ContentModel } = await import('../models/content.model.js');
+  const { ContentModel } = await import('../src/models/content.model.js');
   const glossary = ContentModel.getGlossary();
   console.assert(glossary.length >= 8, 'Glossary should have at least 8 key terms');
   console.log('✓ Glossary terms verified. Count:', glossary.length);

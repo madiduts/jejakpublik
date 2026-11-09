@@ -42,45 +42,6 @@ function generateTicketNumber(): string {
   return `JP-2025-${seq}${rand}`;
 }
 
-// Seed initial verified reports for public showcase (LKIP DLH Program B3 reference)
-const initialSeedReport: CitizenReport = {
-  id: 'rep-seed-001',
-  ticket_number: 'JP-2025-01A8',
-  user_id: 'usr-warga-001',
-  reporter_name: 'Warga Peduli Lingkungan',
-  reporter_email: 'warga@jejakpublik.id',
-  reporter_phone: '081234567890',
-  skpd_id: 'dinas-lingkungan-hidup',
-  program_id: '3.27.08',
-  report_type: 'anomali_angka',
-  title: 'Ketidaksesuaian Angka Belanja Program Pengelolaan B3 & Limbah B3',
-  description: 'Terdapat anomali penulisan realisasi belanja Program Pengelolaan B3 antara dokumen paparan BPKD dan tabel LKIP DLH TA 2025. Perlu rekonsiliasi angka resmi.',
-  evidence_urls: [
-    '/uploads/sample-evidence-dlh-b3.png'
-  ],
-  status: 'verified',
-  is_public: true,
-  audit_notes: 'Diverifikasi oleh Tim Auditor. Data dikoreksi mengikuti audit trail LKIP Tabel 3.33 dan ditandai status DIKOREKSI.',
-  audit_trail: [
-    {
-      timestamp: '2026-03-01T10:00:00.000Z',
-      action: 'SUBMITTED',
-      note: 'Laporan anomali diajukan warga dengan bukti dokumen',
-      actor: 'Warga Peduli Lingkungan'
-    },
-    {
-      timestamp: '2026-03-02T14:30:00.000Z',
-      action: 'VERIFIED',
-      note: 'Diverifikasi oleh Tim Auditor JejakPublik. Diteruskan sebagai rekomendasi koreksi pada buku besar.',
-      actor: 'Tim Auditor JejakPublik'
-    }
-  ],
-  created_at: '2026-03-01T10:00:00.000Z',
-  updated_at: '2026-03-02T14:30:00.000Z'
-};
-
-inMemoryReports.set(initialSeedReport.id, initialSeedReport);
-
 export class ReportModel {
   static async create(params: {
     user_id?: string | null;

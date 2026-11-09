@@ -28,32 +28,8 @@ export function verifyPassword(password: string, stored: string): boolean {
   return key === hash;
 }
 
-// In-memory store fallback & default seed accounts
+// In-memory runtime cache fallback
 const inMemoryUsers: Map<string, User> = new Map();
-
-// Seed initial demo users
-const seededWarga: User = {
-  id: 'usr-warga-001',
-  name: 'Warga Peduli Jakarta',
-  email: 'warga@jejakpublik.id',
-  password_hash: hashPassword('warga123'),
-  role: 'warga',
-  created_at: new Date().toISOString(),
-  updated_at: new Date().toISOString()
-};
-
-const seededModerator: User = {
-  id: 'usr-mod-001',
-  name: 'Tim Auditor JejakPublik',
-  email: 'moderator@jejakpublik.id',
-  password_hash: hashPassword('admin123'),
-  role: 'moderator',
-  created_at: new Date().toISOString(),
-  updated_at: new Date().toISOString()
-};
-
-inMemoryUsers.set(seededWarga.email.toLowerCase(), seededWarga);
-inMemoryUsers.set(seededModerator.email.toLowerCase(), seededModerator);
 
 export class UserModel {
   static toPublic(user: User): UserPublic {

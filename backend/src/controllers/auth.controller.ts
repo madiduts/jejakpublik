@@ -154,20 +154,46 @@ export class AuthController {
   }
 
   static async getDemoAccounts(c: Context) {
+    const isEnabled = process.env.ENABLE_DEMO_ACCOUNTS === 'true';
+    if (!isEnabled) {
+      return c.json(
+        {
+          success: false,
+          error: 'Mode demonstrasi akun dinonaktifkan di lingkungan produksi.'
+        },
+        403
+      );
+    }
+
+    const wargaEmail = process.env.DEMO_WARGA_EMAIL;
+    const wargaPassword = process.env.DEMO_WARGA_PASSWORD;
+    const modEmail = process.env.DEMO_MODERATOR_EMAIL;
+    const modPassword = process.env.DEMO_MODERATOR_PASSWORD;
+
+    if (!wargaEmail || !modEmail) {
+      return c.json(
+        {
+          success: false,
+          error: 'Konfigurasi akun demo belum diatur pada berkas lingkungan (.env).'
+        },
+        500
+      );
+    }
+
     return c.json({
       success: true,
-      description: 'Akun pengujian evaluasi juri & kompetisi MIA 2026',
+      description: 'Akun demonstrasi terkonfigurasi dari environment variables (mode evaluasi)',
       accounts: [
         {
           role: 'warga',
-          email: 'warga@jejakpublik.id',
-          password: 'warga123',
+          email: wargaEmail,
+          password: wargaPassword,
           capability: 'Mengajukan laporan partisipatif dengan bukti foto dokumen & tracking status tiket'
         },
         {
           role: 'moderator',
-          email: 'moderator@jejakpublik.id',
-          password: 'admin123',
+          email: modEmail,
+          password: modPassword,
           capability: 'Verifikasi anomali, memberikan catatan audit trail, mengubah status tiket'
         }
       ]
