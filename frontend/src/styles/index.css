@@ -391,22 +391,9 @@ td.r,th.r{text-align:right}
 .ex-page:hover{background:#FAFAFB}
 .ex-page.on{background:#3F3F46;border-color:#3F3F46;color:#fff;font-weight:600}
 .ex-r{text-align:right}
-
-@media(max-width:1100px){
-  .ex-hero{height:auto;padding:24px 20px 20px}
-  .ex-sec{padding:24px 20px 0}
-  .ex-input-wrap{width:100%}
-  .ex-chips{grid-template-columns:1fr 1fr;height:auto;gap:10px}
-  .ex-chips-wrap{height:auto}
-  .ex-body{grid-template-columns:1fr;height:auto}
-  .ex-filters{width:100%;height:auto}
-  .ex-list{width:100%;margin-left:0;margin-top:16px}
-  .ex-cardwrap,.ex-card{height:auto}
-  .ex-thead{grid-template-columns:1fr auto auto auto}
-  .ex-row{grid-template-columns:1fr auto;gap:8px;height:auto;min-height:75px}
-  .ex-name,.ex-nameblock{width:auto}
-  .ex-depth{display:none}
-}
+.ex-c-depth{width:230px}
+.ex-c-total{width:180px}
+.ex-c-aksi{width:110px}
 
 /* Foto hero: versi 2x hanya di muat pada layar lebar. */
 @media (min-width:1000px){
@@ -626,11 +613,16 @@ td.r,th.r{text-align:right}
   .ex-body{grid-template-columns:260px minmax(0,1fr);height:auto}
   .ex-filters{width:260px}
   .ex-list{width:auto;min-width:0;margin-left:18px}
-  .ex-card{height:auto;overflow-x:auto}
-  .ex-thead,.ex-row{grid-template-columns:minmax(260px,1fr) 150px 120px;min-width:760px}
-  .ex-thead > div:nth-child(2),.ex-row > div:nth-child(2){margin-left:0;display:none}
+  .ex-card{height:auto}
+  .ex-thead,.ex-row{grid-template-columns:minmax(0,1fr) minmax(150px,180px) 110px;min-width:0}
+  .ex-thead > div:nth-child(n+2),.ex-row > div:nth-child(n+2){margin-left:18px}
+  .ex-thead > div:nth-child(2),.ex-row > div:nth-child(2){display:none}
   .ex-row .ex-depth{display:none}
-  .ex-thead,.ex-row{grid-template-columns:minmax(240px,1fr) 170px 110px}
+  .ex-c-depth,.ex-c-total,.ex-c-aksi{width:auto}
+  .ex-name,.ex-nameblock{width:auto;min-width:0}
+  .ex-namewrap,.ex-name-t,.ex-sub,.ex-subwrap{min-width:0;max-width:100%}
+  .ex-name-t,.ex-sub{overflow:hidden;text-overflow:ellipsis}
+  .ex-amount{white-space:nowrap}
   .lp-foot-cols{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
   .lp-foot-brand{font-size:56px;line-height:58px}
 
@@ -652,6 +644,44 @@ td.r,th.r{text-align:right}
   .pg .dt-grid{height:auto}
   .pg-illus{width:280px}
 }
+/* Jelajahi: sidebar lebih sempit di laptop kecil, tetap dua kolom. */
+@media(max-width:1100px){
+  .ex-body{grid-template-columns:220px minmax(0,1fr)}
+  .ex-filters{width:220px}
+}
+
+/* Jelajahi: saringan menumpuk di atas daftar. Blok ini harus berada sesudah
+   aturan 1439 px agar tidak kalah oleh urutan cascade. */
+@media(max-width:860px){
+  .ex-hero{height:auto;padding:24px 20px 20px}
+  .ex-sec{padding:24px 20px 0}
+  .ex-input-wrap{width:100%}
+  .ex-chips{grid-template-columns:1fr 1fr;height:auto;gap:10px}
+  .ex-chips-wrap{height:auto}
+  .ex-body{grid-template-columns:minmax(0,1fr);height:auto}
+  .ex-filters{width:100%;height:auto}
+  .ex-list{width:100%;margin-left:0;margin-top:16px}
+  .ex-cardwrap,.ex-card{height:auto}
+  .ex-thead,.ex-row{grid-template-columns:minmax(0,1fr) auto auto;min-width:0}
+  .ex-row{height:auto;min-height:75px}
+  .ex-name,.ex-nameblock{width:auto;min-width:0}
+  .ex-namewrap,.ex-subwrap{min-width:0;overflow:hidden}
+  .ex-name-t,.ex-sub{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ex-depth{display:none}
+}
+
+/* Ponsel: baris jadi dua tingkat, nama di atas nominal, panah di kanan. */
+@media(max-width:560px){
+  .ex-thead{display:none}
+  .ex-row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name action" "amount action";
+    gap:2px 10px;min-height:0;padding:14px 16px}
+  .ex-name{grid-area:name}
+  .ex-amount{grid-area:amount;text-align:left}
+  .ex-action{grid-area:action;align-self:center}
+  .ex-card{border-radius:12px}
+}
+
+
 
 /* ── Panduan indeks (frame 219:2) — kartu dua kolom + saring kategori ─── */
 .gd-hero-img{position:absolute;inset:0;background:url(/img/hero-panduan-900.webp) center/cover no-repeat}
