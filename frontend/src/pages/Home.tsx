@@ -132,10 +132,6 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        <p className="lp-footnote">
-          Angka yang tidak dilaporkan tidak dihitung sebagai nol. <Link to="/tentang">Rinciannya di Metodologi</Link>.
-        </p>
-
         <div className="lp-h2wrap" data-node-id="203:132">
           <p className="lp-label" data-node-id="203:133">Program yang bisa ditelusuri</p>
         </div>
