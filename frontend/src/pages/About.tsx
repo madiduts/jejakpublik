@@ -143,10 +143,6 @@ export const About: React.FC = () => {
         </div>
       </div>
 
-      <p className="ab-credits">
-        Data diambil 21 Oktober 2026. Foto: Wikimedia Commons (CC BY-SA 3.0, CC BY 3.0). Ikon: Lucide (ISC).
-        Menemukan angka yang janggal? <a href="/lapor">Kirim laporan</a> — setiap koreksi yang diterima dicatat pada riwayat angka.
-      </p>
     </section>
 
     <Footer ids={FOOT_222} />
