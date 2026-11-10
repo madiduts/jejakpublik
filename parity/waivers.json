@@ -231,6 +231,76 @@
       "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "203:2",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:45",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:199",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:91",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:92",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:108",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:120",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:132",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:201",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:238",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
