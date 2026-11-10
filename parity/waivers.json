@@ -1045,6 +1045,41 @@
       "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "223:33",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:41",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:69",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:41",
+      "property": "y (lokal)",
+      "reason": "Figma menaruh kapital di awal kotak baris; Chrome membagi leading 37,4 px di atas dan bawah sehingga glif 3 px lebih tinggi. Tinggi baris dan kotak sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:79",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }

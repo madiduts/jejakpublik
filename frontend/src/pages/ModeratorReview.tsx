@@ -21,7 +21,7 @@ export const ModeratorReview: React.FC = () => {
     return (
       <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }]}>
         <div className="wrap page" style={{ maxWidth: 620 }}>
-          <Empty title="Ruang moderator terkunci"><Link to="/masuk">Masuk</Link> untuk memeriksa laporan.</Empty>
+          <Empty title="Ruang moderator terkunci"><Link to="/masuk" state={{ from: '/moderator' }}>Masuk</Link> untuk memeriksa laporan.</Empty>
         </div>
       </LayoutShell>
     );
