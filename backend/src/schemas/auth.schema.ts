@@ -4,7 +4,7 @@ export const userRoleSchema = z.enum(['warga', 'moderator']);
 export type UserRole = z.infer<typeof userRoleSchema>;
 
 export const registerSchema = z.object({
-  name: z.string().trim().min(2, 'Nama lengkap wajib diisi minimal 2 karakter.').max(100),
+  name: z.string().trim().max(100).optional(),
   email: z.string().trim().email('Format email tidak valid.').max(120),
   password: z.string().min(6, 'Kata sandi minimal 6 karakter.').max(100),
   role: userRoleSchema.optional().default('warga')

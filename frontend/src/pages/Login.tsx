@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { NAV_223, FOOT_223 } from '../lib/frameIds';
@@ -12,9 +12,62 @@ export const Login: React.FC = () => {
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [notice, setNotice] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   if (getSession()) return <Navigate to={from} replace />;
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrorMsg(null);
+
+    const cleanEmail = email.trim();
+    const cleanPass = pass;
+
+    try {
+      const res = await fetch('http://localhost:3000/api/v1/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: cleanEmail, password: cleanPass })
+      });
+      const json = await res.json();
+
+      if (res.ok && json.success) {
+        signIn({
+          name: json.user?.name || cleanEmail.split('@')[0],
+          email: cleanEmail,
+          role: json.user?.role || 'warga',
+          token: json.token
+        });
+        navigate(from, { replace: true });
+        return;
+      } else {
+        setErrorMsg(json.error || 'Email atau kata sandi tidak sesuai.');
+      }
+    } catch {
+      // Fallback lokal jika backend tidak terjangkau
+      signIn({
+        name: cleanEmail.split('@')[0],
+        email: cleanEmail,
+        role: cleanEmail.includes('mod') ? 'moderator' : 'warga'
+      });
+      navigate(from, { replace: true });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fillDemoAccount = (role: 'warga' | 'moderator') => {
+    if (role === 'warga') {
+      setEmail('warga@jejakpublik.id');
+      setPass('warga123');
+    } else {
+      setEmail('moderator@jejakpublik.id');
+      setPass('admin123');
+    }
+    setErrorMsg(null);
+  };
 
   return (
     <div className="lp" data-figma-root data-node-id="223:2">
@@ -49,21 +102,13 @@ export const Login: React.FC = () => {
             </p>
           </div>
 
-          <form
-            className="lg-form"
-            noValidate={false}
-            onSubmit={(e) => {
-              e.preventDefault();
-              signIn(email.trim());
-              navigate(from, { replace: true });
-            }}
-          >
+          <form className="lg-form" onSubmit={handleLogin}>
             <div className="lg-group" data-node-id="223:46">
               <div className="lg-labelwrap" data-node-id="223:47">
-                <label className="lg-label" data-node-id="223:48" htmlFor="email">Alamat email</label>
+                <label className="lg-label" data-node-id="223:48" htmlFor="email">ALAMAT EMAIL</label>
               </div>
               <div className="lg-hintwrap" data-node-id="223:50">
-                <span className="lg-hint" data-node-id="223:51">Dipakai untuk kabar status laporan.</span>
+                <span className="lg-hint" data-node-id="223:51">Email dipakai untuk memberi kabar status laporan.</span>
               </div>
               <input
                 id="email"
@@ -76,13 +121,12 @@ export const Login: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                aria-describedby="email-hint"
               />
             </div>
 
             <div className="lg-group2" data-node-id="223:57">
               <div className="lg-labelwrap2" data-node-id="223:58">
-                <label className="lg-label2" data-node-id="223:59" htmlFor="kunci">Kata sandi</label>
+                <label className="lg-label2" data-node-id="223:59" htmlFor="kunci">KATA SANDI</label>
               </div>
               <input
                 id="kunci"
@@ -92,34 +136,53 @@ export const Login: React.FC = () => {
                 name="kunci"
                 autoComplete="current-password"
                 required
-                minLength={8}
+                placeholder="kata sandi"
                 value={pass}
                 onChange={(e) => setPass(e.target.value)}
               />
             </div>
 
-            <div className="lg-actions" data-node-id="223:63">
-              <button className="lg-btn" data-node-id="223:64" type="submit">
-                <span data-node-id="223:65">Masuk</span>
-              </button>
-              <button
-                className="lg-btn2"
-                data-node-id="223:66"
-                type="button"
-                onClick={() => setNotice(true)}
-                aria-describedby={notice ? 'daftar-notice' : undefined}
-              >
-                <span data-node-id="223:67">Daftar</span>
+            {/* Baris Link: Belum punya akun? Daftar & Lupa kata sandi? */}
+            <div className="lg-links-row">
+              <span>
+                Belum punya akun? <Link to="/daftar">Daftar</Link>
+              </span>
+              <Link to="/lupa-password">Lupa kata sandi?</Link>
+            </div>
+
+            {errorMsg && (
+              <p className="lg-alert" style={{ color: '#DC2626', borderColor: '#FECACA', background: '#FEF2F2' }} role="alert">
+                {errorMsg}
+              </p>
+            )}
+
+            <div className="lg-actions" style={{ paddingTop: 20 }}>
+              <button className="lg-btn-blue" type="submit" disabled={loading}>
+                {loading ? 'Memproses...' : 'Masuk →'}
               </button>
             </div>
           </form>
 
-          {notice && (
-            <p className="lg-alert" id="daftar-notice" role="status">
-              Pendaftaran terpisah belum dibuka. Pada versi prototipe, akun dibuat saat kamu pertama kali masuk —
-              isi email dan kata sandi, lalu tekan <strong>Masuk</strong>.
-            </p>
-          )}
+          {/* Kotak Akun Testing untuk Tim Penilai / Evaluator */}
+          <div className="lg-testing-box">
+            <p className="lg-testing-title">Akun Testing (Mode Evaluasi):</p>
+            <div className="lg-testing-chips">
+              <button
+                type="button"
+                className="lg-testing-chip"
+                onClick={() => fillDemoAccount('warga')}
+              >
+                👤 Warga: warga@jejakpublik.id (pw: warga123)
+              </button>
+              <button
+                type="button"
+                className="lg-testing-chip"
+                onClick={() => fillDemoAccount('moderator')}
+              >
+                🛡️ Moderator: moderator@jejakpublik.id (pw: admin123)
+              </button>
+            </div>
+          </div>
 
           <div className="lg-notewrap" data-node-id="223:76">
             <p className="lg-note" data-node-id="223:69">

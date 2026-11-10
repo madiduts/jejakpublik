@@ -18,7 +18,7 @@ export class AuthController {
     const validated = registerSchema.parse(body);
 
     const user = await UserModel.create({
-      name: validated.name,
+      name: validated.name || validated.email.split('@')[0],
       email: validated.email,
       password: validated.password,
       role: validated.role
