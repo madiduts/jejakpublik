@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { LayoutShell } from '../components/layout/LayoutShell';
 import { Card, CardHead, PageHead, Empty, Notice } from '../components/ui';
 import { Evidence } from '../components/Evidence';
 import { getCorrection } from '../lib/data';
 import { createReport } from '../lib/reports';
+import { getSession } from '../lib/session';
 import { formatRupiah } from '../utils/format';
 
 export const CorrectionForm: React.FC = () => {
   const { id = '' } = useParams();
   const navigate = useNavigate();
+  const session = getSession();
+
+  if (!session) {
+    return <Navigate to="/masuk" state={{ from: `/koreksi/${id}` }} replace />;
+  }
+
   const correction = getCorrection(id);
   const [value, setValue] = useState('');
   const [reason, setReason] = useState('');

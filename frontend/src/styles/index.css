@@ -978,3 +978,59 @@ td.r,th.r{text-align:right}
   .lp-input-wrap{flex:1 1 100%}
   .lp-go{flex:1 1 100%}
 }
+
+/* ── Lapor / Koreksi Informasi (Mockup Slicing Langkah 3 dari 3) ─────── */
+.rp-page{min-height:100vh;background:#F7F7F8;padding-bottom:60px}
+.rp-wrap{width:100%;max-width:880px;margin:0 auto;padding:36px 24px 0}
+.rp-crumb{margin:0;font-size:12px;line-height:16px;color:var(--muted);letter-spacing:.4px}
+.rp-crumb a{color:var(--muted);text-decoration:none}
+.rp-crumb a:hover{color:var(--ink)}
+.rp-headwrap{padding-top:14px;padding-bottom:20px}
+.rp-step{display:inline-block;font-size:11px;line-height:14px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.rp-h1{margin:0;font-size:32px;line-height:38px;font-weight:700;letter-spacing:-1px;color:var(--ink)}
+
+.rp-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.02)}
+.rp-group{margin-bottom:20px}
+.rp-label{display:block;margin:0 0 6px;font-size:11.5px;line-height:15px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-2)}
+.rp-hint{display:block;margin:-2px 0 8px;font-size:12px;line-height:16px;color:var(--faint)}
+.rp-locked{display:flex;align-items:center;min-height:44px;padding:12px 14px;background:#F4F4F5;border:1px solid #E4E4E7;border-radius:8px;font-size:13.5px;line-height:18px;font-weight:500;color:var(--ink)}
+
+.rp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rp-select{width:100%;height:44px;padding:0 12px;border:1px solid #D4D4D8;border-radius:8px;background:#fff;font:inherit;font-size:13.5px;color:var(--ink);cursor:pointer;outline:0}
+.rp-select:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(24,24,27,.08)}
+
+.rp-input{width:100%;height:44px;padding:0 12px;border:1px solid #D4D4D8;border-radius:8px;background:#fff;font:inherit;font-size:13.5px;color:var(--ink);outline:0;box-sizing:border-box}
+.rp-input::placeholder{color:#A1A1AA}
+.rp-input:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(24,24,27,.08)}
+
+.rp-textarea{width:100%;min-height:120px;padding:12px;border:1px solid #D4D4D8;border-radius:8px;background:#fff;font:inherit;font-size:13.5px;line-height:20px;color:var(--ink);outline:0;resize:vertical;box-sizing:border-box}
+.rp-textarea::placeholder{color:#A1A1AA}
+.rp-textarea:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(24,24,27,.08)}
+
+.rp-checkrow{display:flex;align-items:flex-start;gap:10px;margin-top:22px;margin-bottom:26px;cursor:pointer}
+.rp-checkrow input[type="checkbox"]{width:16px;height:16px;margin:2px 0 0;flex:none;accent-color:#18181B;cursor:pointer}
+.rp-checktext{font-size:13px;line-height:18px;color:var(--ink-2)}
+
+.rp-actions{display:flex;align-items:center;gap:12px}
+.rp-btn-primary{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 22px;background:#18181B;color:#fff;border:0;border-radius:8px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;transition:background .15s ease}
+.rp-btn-primary:hover{background:#27272A}
+.rp-btn-primary:disabled{background:#A1A1AA;cursor:not-allowed}
+.rp-btn-sec{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 20px;background:#F4F4F5;color:#18181B;border:1px solid #D4D4D8;border-radius:8px;font:inherit;font-size:13.5px;font-weight:500;cursor:pointer;transition:background .15s ease,border-color .15s ease}
+.rp-btn-sec:hover{background:#E4E4E7;border-color:#C4C4C8}
+
+.rp-upload-wrap{display:flex;flex-direction:column;gap:6px}
+.rp-upload-field{display:flex;gap:8px;align-items:center}
+.rp-file-btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 12px;border:1px solid #D4D4D8;border-radius:8px;background:#FAFAFB;color:var(--ink-2);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;flex:none}
+.rp-file-btn:hover{background:#F4F4F5;color:var(--ink)}
+.rp-file-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:#F4F4F5;border:1px solid #E4E4E7;border-radius:6px;font-size:12px;color:var(--ink-2)}
+.rp-file-remove{background:transparent;border:0;cursor:pointer;color:#71717A;font-size:13px;font-weight:bold;line-height:1}
+.rp-file-remove:hover{color:#EF4444}
+
+@media(max-width:768px){
+  .rp-wrap{padding:24px 16px 0}
+  .rp-card{padding:20px 16px}
+  .rp-grid2{grid-template-columns:1fr;gap:16px}
+  .rp-h1{font-size:26px;line-height:32px}
+  .rp-actions{flex-direction:column;align-items:stretch}
+  .rp-btn-primary,.rp-btn-sec{width:100%}
+}
