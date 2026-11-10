@@ -1,0 +1,183 @@
+203:2 | FRAME | '01 Landing gabungan' | 1440x1670.063@0,0
+203:3 | FRAME | 'Container' | 1440x76@0,0 | s={"paints": [{"type": "SOLID", "hex": "#e7e7ea", "opacity": 1}], "weigh
+203:4 | FRAME | 'Container' | 113x28@44,23.5
+203:5 | TEXT | 'JejakPublik' | 113x28@44,23.5 | T='JejakPublik'
+203:7 | FRAME | 'Container' | 318x18@197,28.5
+203:8 | FRAME | 'Text' | 51x18@197,28.5
+203:9 | TEXT | 'Beranda' | 51x18@197,28.5 | T='Beranda'
+203:11 | FRAME | 'Text' | 79x18@276,28.5
+203:12 | TEXT | 'Jelajahi Data' | 79x18@276,28.5 | T='Jelajahi Data'
+203:13 | FRAME | 'Text' | 54x18@383,28.5
+203:14 | TEXT | 'Panduan' | 54x18@383,28.5 | T='Panduan'
+203:15 | FRAME | 'Text' | 50x18@465,28.5
+203:16 | TEXT | 'Tentang' | 50x18@465,28.5 | T='Tentang'
+203:17 | FRAME | 'Container' | 599x0@555,37.5
+203:18 | FRAME | 'Container' | 34x34@1194,20.5 | s={"paints": [{"type": "SOLID", "hex": "#e7e7ea", "opacity": 1}], "weigh | r={"all": 17}
+203:21 | FRAME | 'Container' | 128x39@1268,18 | r={"all": 8}
+203:22 | TEXT | 'Lapor Anggaran' | 92x17@1286,29 | T='Lapor Anggaran'
+203:24 | FRAME | 'Container' | 1440x470@0,76
+203:27 | FRAME | 'Container' | 760x412@0,76
+203:28 | FRAME | 'Container' | 672x14@44,140
+203:29 | TEXT | 'Transparansi anggaran DKI Jakarta' | 245x14@44,140 | T='Transparansi anggaran DKI Jakarta'
+203:31 | FRAME | 'Heading 1' | 480.168x126@44,154
+203:32 | TEXT | 'Telusuri anggaran publik Jakarta' | 481x110@44,170 | T='Telusuri anggaran publik Jakarta'
+203:43 | FRAME | 'Paragraph:margin' | 414x68@44,280
+203:35 | TEXT | 'Pagu, realisasi, dan hasil yang dilapor | 414x52@44,296 | T='Pagu, realisasi, dan hasil yang dilaporkan pemerint
+203:37 | FRAME | 'Container' | 620x76@44,348
+203:38 | FRAME | 'Container' | 542x50@44,374 | r={"all": 10}
+203:39 | TEXT | 'Cari instansi, program, atau kata kunci | 242x18@60,390 | T='Cari instansi, program, atau kata kunci...'
+203:40 | FRAME | 'Container' | 68x50@596,374 | r={"all": 8}
+203:41 | TEXT | 'Cari' | 24x17@618,390.5 | T='Cari'
+203:45 | FRAME | 'Container' | 1440x774.375@0,546
+203:46 | FRAME | 'Container' | 1352x14@44,580
+203:47 | TEXT | 'Ringkasan tahun anggaran 2025' | 213x14@44,580 | T='Ringkasan tahun anggaran 2025'
+203:197 | FRAME | 'Container:margin' | 1352x132@44,594
+203:49 | FRAME | 'Container' | 1352x118@44,608
+203:50 | FRAME | 'Container' | 327.5x118@44,608 | s={"paints": [{"type": "SOLID", "hex": "#e7e7ea", "opacity": 1}], "weigh | r={"all": 14}
+203:51 | FRAME | 'Container' | 281.5x14@67,629
+203:52 | TEXT | 'Instansi' | 52x14@67,629 | T='Instansi'
+203:54 | FRAME | 'Container' | 281.5x42@67,643
+203:55 | TEXT | '43' | 27x33@67,652 | T='43'
+203:57 | FRAME | 'Container' | 281.5x20@67,685
+203:58 | TEXT | 'Seluruh perangkat daerah' | 130x15@67,690 | T='Seluruh perangkat daerah'
+203:62 | FRAME | 'Container' | 327.5x118@385.5,608 | s={"paints": [{"type": "SOLID", "hex": "#e7e7ea", "opacity": 1}], "weigh | r={"all": 14}
+203:63 | FRAME | 'Container' | 281.5x14@408.5,629
+203:64 | TEXT | 'Anggaran belanja' | 115x14@408.5,629 | T='Anggaran belanja'
+203:65 | FRAME | 'Container' | 281.5x42@408.5,643
+203:66 | TEXT | 'Rp85,98 T' | 108x33@408.5,652 | T='Rp85,98 T'
+203:67 | FRAME | 'Container' | 281.5x20@408.5,685
+203:68 | TEXT | 'Rp85.979.175.838.982' | 109x15@408.5,690 | T='Rp85.979.175.838.982'
+203:71 | FRAME | 'Container' | 327.5x118@727,608 | s={"paints": [{"type": "SOLID", "hex": "#e7e7ea", "opacity": 1}], "weigh | r={"all": 14}
+203:72 | FRAME | 'Container' | 281.5x14@750,629
+203:73 | TEXT | 'Realisasi' | 58x14@750,629 | T='Realisasi'
+203:74 | FRAME | 'Container' | 281.5x42@750,643
+203:75 | TEXT | 'Rp74,20 T' | 108x33@750,652 | T='Rp74,20 T'
+203:76 | FRAME | 'Container' | 281.5x20@750,685
+203:77 | TEXT | 'Dilaporkan 43 instansi' | 111x15@750,690 | T='Dilaporkan 43 instansi'
+203:80 | FRAME | 'Container' | 327.5x118@1068.5,608 | s={"paints": [{"type": "SOLID", "hex": "#e7e7ea", "opacity": 1}], "weigh | r={"all": 14}
+203:81 | FRAME | 'Container' | 281.5x14@1091.5,629
+203:82 | TEXT | 'Terserap' | 57x14@1091.5,629 | T='Terserap'
+203:83 | FRAME | 'Container' | 281.5x42@1091.5,643
+203:84 | TEXT | '86,30%' | 82x33@1091.5,652 | T='86,30%'
+203:85 | FRAME | 'Container' | 281.5x20@1091.5,685
+203:86 | TEXT | 'Terhadap anggaran perubahan' | 155x15@1091.5,690 | T='Terhadap anggaran perubahan'
+203:89 | FRAME | 'Container' | 1352x48@44,726
+203:90 | TEXT | 'Tiga kelompok anggaran' | 165x14@44,760 | T='Tiga kelompok anggaran'
+203:199 | FRAME | 'Container:margin' | 1352x149.375@44,774
+203:91 | FRAME | 'Container' | 1352x131.375@44,792 | s={"paints": [{"type": "SOLID", "hex": "#10151a", "opacity": 1}], "weigh
+203:92 | FRAME | 'Container' | 450.656x130.375@44,793
+203:93 | FRAME | 'Container' | 422.656x14@44,813
+203:94 | TEXT | '01' | 12x14@44,813 | T='01'
+203:96 | FRAME | 'Heading 3' | 422.656x29@44,827
+203:97 | TEXT | 'Belanja' | 55x21@44,835 | T='Belanja'
+203:99 | FRAME | 'Container' | 422.656x40@44,856
+203:100 | TEXT | 'Rp85.979.175.838.982' | 199x28@44,868 | T='Rp85.979.175.838.982'
+203:102 | FRAME | 'Container' | 422.656x27@44,896
+203:103 | TEXT | '43 dari 43 instansi melaporkan. Realisa | 330x20@44,903 | T='43 dari 43 instansi melaporkan. Realisasi Rp74.196.
+203:108 | FRAME | 'Container' | 450.672x130.375@494.656,793 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e4", "opacity": 1}], "weigh
+203:109 | FRAME | 'Container' | 393.672x14@523.656,813
+203:110 | TEXT | '02' | 12x14@523.656,813 | T='02'
+203:111 | FRAME | 'Heading 3' | 393.672x29@523.656,827
+203:112 | TEXT | 'Pendapatan' | 88x21@523.656,835 | T='Pendapatan'
+203:113 | FRAME | 'Container' | 393.672x40@523.656,856
+203:114 | TEXT | 'Rp84.454.424.378.366' | 199x28@523.656,868 | T='Rp84.454.424.378.366'
+203:115 | FRAME | 'Container' | 393.672x27@523.656,896
+203:116 | TEXT | '23 dari 43 instansi. Realisasi Rp79.310 | 264x20@523.656,903 | T='23 dari 43 instansi. Realisasi Rp79.310.965.037.779
+203:120 | FRAME | 'Container' | 450.656x130.375@945.328,793 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e4", "opacity": 1}], "weigh
+203:121 | FRAME | 'Container' | 393.656x14@974.328,813
+203:122 | TEXT | '03' | 12x14@974.328,813 | T='03'
+203:123 | FRAME | 'Heading 3' | 393.656x29@974.328,827
+203:124 | TEXT | 'Pembiayaan' | 91x21@974.328,835 | T='Pembiayaan'
+203:125 | FRAME | 'Container' | 393.656x40@974.328,856
+203:126 | TEXT | 'Rp13.292.178.707.476' | 199x28@974.328,868 | T='Rp13.292.178.707.476'
+203:127 | FRAME | 'Container' | 393.656x27@974.328,896
+203:128 | TEXT | '14 dari 43 instansi. Sebagian tidak dil | 336x20@974.328,903 | T='14 dari 43 instansi. Sebagian tidak dilaporkan, dan
+203:132 | FRAME | 'Container' | 1352x48@44,923.375
+203:133 | TEXT | 'Program yang bisa ditelusuri' | 199x14@44,957.375 | T='Program yang bisa ditelusuri'
+203:201 | FRAME | 'Container:margin' | 1352x349@44,971.375
+203:134 | FRAME | 'Container' | 1352x337@44,983.375 | s={"paints": [{"type": "SOLID", "hex": "#e7e7ea", "opacity": 1}], "weigh | r={"all": 14}
+203:135 | FRAME | 'Container' | 1350x41@45,984.375 | s={"paints": [{"type": "SOLID", "hex": "#efeff1", "opacity": 1}], "weigh
+203:136 | FRAME | 'Text' | 852x14@67,997.375
+203:137 | TEXT | 'Program' | 44x14@67,997.375 | T='Program'
+203:139 | FRAME | 'Text' | 200x14@937,997.375
+203:140 | TEXT | 'Anggaran perubahan' | 107x14@1030,997.375 | T='Anggaran perubahan'
+203:142 | FRAME | 'Text' | 100x14@1155,997.375
+203:143 | TEXT | 'Terserap' | 45x14@1210,997.375 | T='Terserap'
+203:144 | FRAME | 'Text' | 100x0@1273,1004.375
+203:145 | FRAME | 'Container' | 1350x59@45,1025.375 | s={"paints": [{"type": "SOLID", "hex": "#f2f2f4", "opacity": 1}], "weigh
+203:146 | FRAME | 'Container' | 852x17@67,1045.875
+203:147 | TEXT | 'PROGRAM PENUNJANG URUSAN PEMERINTAHAN D | 392x17@67,1045.875 | T='PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVIN
+203:148 | FRAME | 'Container' | 200x17@937,1045.875
+203:149 | TEXT | 'Rp1.304.175.789.368' | 116x17@1021,1045.875 | T='Rp1.304.175.789.368'
+203:151 | FRAME | 'Container' | 100x17@1155,1045.875
+203:152 | TEXT | '85,40%' | 42x17@1213,1045.875 | T='85,40%'
+203:153 | FRAME | 'Container' | 100x24@1273,1042.375
+203:154 | FRAME | 'Text' | 27.125x24@1345.875,1042.375 | r={"all": 6}
+203:155 | TEXT | '→' | 8x14@1355.875,1047.375 | T='→'
+203:157 | FRAME | 'Container' | 1350x59@45,1084.375 | s={"paints": [{"type": "SOLID", "hex": "#f2f2f4", "opacity": 1}], "weigh
+203:158 | FRAME | 'Container' | 852x17@67,1104.875
+203:159 | TEXT | 'PROGRAM PENGELOLAAN PERSAMPAHAN' | 239x17@67,1104.875 | T='PROGRAM PENGELOLAAN PERSAMPAHAN'
+203:160 | FRAME | 'Container' | 200x17@937,1104.875
+203:161 | TEXT | 'Rp2.319.315.815.354' | 116x17@1021,1104.875 | T='Rp2.319.315.815.354'
+203:162 | FRAME | 'Container' | 100x17@1155,1104.875
+203:163 | TEXT | '93,03%' | 42x17@1213,1104.875 | T='93,03%'
+203:164 | FRAME | 'Container' | 100x24@1273,1101.375
+203:165 | FRAME | 'Text' | 27.125x24@1345.875,1101.375 | r={"all": 6}
+203:166 | TEXT | '→' | 8x14@1355.875,1106.375 | T='→'
+203:167 | FRAME | 'Container' | 1350x59@45,1143.375 | s={"paints": [{"type": "SOLID", "hex": "#f2f2f4", "opacity": 1}], "weigh
+203:168 | FRAME | 'Container' | 852x17@67,1163.875
+203:169 | TEXT | 'PROGRAM PERENCANAAN LINGKUNGAN HIDUP' | 271x17@67,1163.875 | T='PROGRAM PERENCANAAN LINGKUNGAN HIDUP'
+203:170 | FRAME | 'Container' | 200x17@937,1163.875
+203:171 | TEXT | 'Rp3.219.818.500' | 93x17@1044,1163.875 | T='Rp3.219.818.500'
+203:172 | FRAME | 'Container' | 100x17@1155,1163.875
+203:173 | TEXT | '95,52%' | 42x17@1213,1163.875 | T='95,52%'
+203:174 | FRAME | 'Container' | 100x24@1273,1160.375
+203:175 | FRAME | 'Text' | 27.125x24@1345.875,1160.375 | r={"all": 6}
+203:176 | TEXT | '→' | 8x14@1355.875,1165.375 | T='→'
+203:177 | FRAME | 'Container' | 1350x59@45,1202.375 | s={"paints": [{"type": "SOLID", "hex": "#f2f2f4", "opacity": 1}], "weigh
+203:178 | FRAME | 'Container' | 852x17@67,1222.875
+203:179 | TEXT | 'PROGRAM PENGENDALIAN PENCEMARAN DAN/ATA | 494x17@67,1222.875 | T='PROGRAM PENGENDALIAN PENCEMARAN DAN/ATAU KERUSAKAN 
+203:180 | FRAME | 'Container' | 200x17@937,1222.875
+203:181 | TEXT | 'Rp67.876.101.084' | 100x17@1037,1222.875 | T='Rp67.876.101.084'
+203:182 | FRAME | 'Container' | 100x17@1155,1222.875
+203:183 | TEXT | '95,94%' | 42x17@1213,1222.875 | T='95,94%'
+203:184 | FRAME | 'Container' | 100x24@1273,1219.375
+203:185 | FRAME | 'Text' | 27.125x24@1345.875,1219.375 | r={"all": 6}
+203:186 | TEXT | '→' | 8x14@1355.875,1224.375 | T='→'
+203:187 | FRAME | 'Container' | 1350x58@45,1261.375
+203:188 | FRAME | 'Container' | 852x17@67,1281.875
+203:189 | TEXT | 'PROGRAM PENGENDALIAN BAHAN BERBAHAYA DA | 474x17@67,1281.875 | T='PROGRAM PENGENDALIAN BAHAN BERBAHAYA DAN BERACUN (B
+203:190 | FRAME | 'Container' | 200x17@937,1281.875
+203:191 | TEXT | 'Rp3.684.567.176' | 93x17@1044,1281.875 | T='Rp3.684.567.176'
+203:192 | FRAME | 'Container' | 100x17@1155,1281.875
+203:193 | TEXT | '77,43%' | 42x17@1213,1281.875 | T='77,43%'
+203:194 | FRAME | 'Container' | 100x24@1273,1278.375
+203:195 | FRAME | 'Text' | 27.125x24@1345.875,1278.375 | r={"all": 6}
+203:196 | TEXT | '→' | 8x14@1355.875,1283.375 | T='→'
+203:238 | FRAME | 'Container:margin' | 1440x350.703@0,1320.375
+203:202 | FRAME | 'Container' | 1440x306.703@0,1364.375
+203:203 | FRAME | 'Container' | 1352x73@44,1408.375
+203:204 | TEXT | 'JejakPublik' | 357x73@44,1408.375 | T='JejakPublik'
+203:236 | FRAME | 'Container:margin' | 1352x116.703@44,1481.375
+203:206 | FRAME | 'Container' | 1352x84.703@44,1513.375
+203:207 | FRAME | 'Container' | 321.5x84.703@44,1513.375
+203:208 | FRAME | 'Bold Text' | 321.5x26@44,1513.375
+203:209 | TEXT | 'Data' | 27x18@44,1513.375 | T='Data'
+203:214 | FRAME | 'Container' | 321.5x59.391@44,1539.375
+203:211 | TEXT | '43 instansi daerah DLH: 8 program, 15 k | 179x60@44,1539.375 | T='43 instansi daerah\nDLH: 8 program, 15 kegiatan, 33
+203:215 | FRAME | 'Container' | 321.5x84.703@387.5,1513.375
+203:216 | FRAME | 'Bold Text' | 321.5x26@387.5,1513.375
+203:217 | TEXT | 'Rujukan' | 52x18@387.5,1513.375 | T='Rujukan'
+203:220 | FRAME | 'Container' | 321.5x59.391@387.5,1539.375
+203:218 | TEXT | 'Glosarium istilah Panduan membaca Tenta | 104x60@387.5,1539.375 | T='Glosarium istilah\nPanduan membaca\nTentang dan met
+203:221 | FRAME | 'Container' | 321.5x84.703@731,1513.375
+203:222 | FRAME | 'Bold Text' | 321.5x26@731,1513.375
+203:223 | TEXT | 'Batas' | 34x18@731,1513.375 | T='Batas'
+203:226 | FRAME | 'Container' | 321.5x59.391@731,1539.375
+203:224 | TEXT | 'Bukan data real-time Bukan kanal pengad | 122x60@731,1539.375 | T='Bukan data real-time\nBukan kanal pengaduan\nBukan 
+203:227 | FRAME | 'Container' | 321.5x84.703@1074.5,1513.375
+203:228 | FRAME | 'Bold Text' | 321.5x26@1074.5,1513.375
+203:229 | TEXT | 'Sumber' | 45x18@1074.5,1513.375 | T='Sumber'
+203:232 | FRAME | 'Container' | 321.5x59.391@1074.5,1539.375
+203:230 | TEXT | 'Dashboard Keuangan BPKD LKIP Dinas Ling | 174x60@1074.5,1539.375 | T='Dashboard Keuangan BPKD\nLKIP Dinas Lingkungan Hidu
+203:233 | FRAME | 'Container' | 1352x43@44,1598.078

@@ -1,0 +1,33 @@
+{
+  "_readme": "Penyimpangan yang disetujui pemilik produk. Setiap entri disetujui 10 November 2026.",
+  "waivers": [
+    {
+      "node": "203:32",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph. Glyph di render Figma 366,7 px; kode 371,5 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:35",
+      "property": "w",
+      "reason": "Sama: kotak teks tetap 414 px, glyph 408,9 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:204",
+      "property": "w",
+      "reason": "Beda metrik font 3,4 px; glyph di render Figma 351,6 px, kode 353,6 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:116",
+      "property": "teks",
+      "reason": "Frame mencetak Rp79.310.965.037.779; penjumlahan 23 SKPD = Rp79.310.965.937.778. Angka hasil hitung dipakai, teks frame adalah salah ketik.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    }
+  ]
+}
