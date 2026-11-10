@@ -116,3 +116,26 @@ export const FOOT_247: FootIds = {
   wrap: '247:366', foot: '247:356', brandWrap: '247:357', brand: '247:358',
   colsWrap: '', cols: '', col: [], legal: '247:360', compact: true,
 };
+
+export const NAV_219: NavIds = {
+  head: '219:3', brand: '219:4', brandText: '219:5', links: '219:7',
+  items: [
+    { wrap: '219:8', text: '219:9', w: 51 },
+    { wrap: '219:11', text: '219:12', w: 79 },
+    { outer: '219:18', wrap: '219:13', text: '219:14', w: 56 },
+    { wrap: '219:16', text: '219:17', w: 50 },
+  ],
+  gap: '219:19', icon: '219:20', cta: '219:23', ctaText: '219:24', iconGlyph: '219:21',
+};
+
+export const FOOT_219: FootIds = {
+  wrap: '219:158', foot: '219:122', brandWrap: '219:123', brand: '219:124',
+  colsWrap: '219:156', cols: '219:126',
+  col: [
+    { box: '219:127', headWrap: '219:128', head: '219:129', bodyWrap: '219:134', body: '219:131' },
+    { box: '219:135', headWrap: '219:136', head: '219:137', bodyWrap: '219:140', body: '219:138' },
+    { box: '219:141', headWrap: '219:142', head: '219:143', bodyWrap: '219:146', body: '219:144' },
+    { box: '219:147', headWrap: '219:148', head: '219:149', bodyWrap: '219:152', body: '219:150' },
+  ],
+  legal: '219:153',
+};
