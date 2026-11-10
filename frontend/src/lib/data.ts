@@ -87,7 +87,7 @@ interface RawProg { program: string; apbdp: number | null; realisasi: number | n
 export interface SubKeg { nama: string; apbdp: number | null; realisasi: number | null; pct: string | null }
 export interface Keg { nama: string; apbdp: number | null; realisasi: number | null; pct: string | null; subs: SubKeg[] }
 export interface Program {
-  slug: string; nama: string; apbdp: number | null; realisasi: number | null; pct: string | null; kegs: Keg[];
+  slug: string; nama: string; judul: string; apbdp: number | null; realisasi: number | null; pct: string | null; kegs: Keg[];
 }
 
 const realisasi = realisasiRaw as { sumber: string; catatan_konflik: string[]; program: RawProg[] };
@@ -95,9 +95,22 @@ const realisasi = realisasiRaw as { sumber: string; catatan_konflik: string[]; p
 export const dlhSource = realisasi.sumber;
 export const dlhConflicts = realisasi.catatan_konflik;
 
+const PROGRAM_TITLE: Record<string, string> = {
+  'PROGRAM PENGENDALIAN BAHAN BERBAHAYA DAN BERACUN (B3) DAN LIMBAH BAHAN BERBAHAYA DAN BERACUN (LIMBAH B3)': 'Program Pengendalian B3',
+};
+
+/** Judul tampilan: nama resmi terlalu panjang untuk H1 dan remah roti. */
+export const judulProgram = (nama: string): string => {
+  const fixed = PROGRAM_TITLE[nama];
+  if (fixed) return fixed;
+  const short = nama.replace(/^PROGRAM\s+/i, '');
+  return 'Program ' + judulInstansi(short);
+};
+
 export const programList: Program[] = realisasi.program.map((p) => ({
   slug: slugify(p.program),
   nama: p.program,
+  judul: judulProgram(p.program),
   apbdp: p.apbdp,
   realisasi: p.realisasi,
   pct: p.pct,

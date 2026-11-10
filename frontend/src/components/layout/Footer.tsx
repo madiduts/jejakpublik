@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { FootIds, FOOT_203 } from '../../lib/frameIds';
 
 export const Footer: React.FC<{ ids?: FootIds }> = ({ ids = FOOT_203 }) => (
-  <div className="lp-footwrap" data-node-id={ids.wrap}>
+  <div className={`lp-footwrap${ids.compact ? ' compact' : ''}`} data-node-id={ids.wrap}>
     <footer className="lp-foot" data-node-id={ids.foot}>
       <div className="lp-foot-brandwrap" data-node-id={ids.brandWrap}>
         <Link to="/" className="lp-foot-brand" data-node-id={ids.brand}>JejakPublik</Link>
       </div>
 
+      {!ids.compact && (
       <div className="lp-foot-colswrap" data-node-id={ids.colsWrap}>
         <div className="lp-foot-cols" data-node-id={ids.cols}>
           <div data-node-id={ids.col[0].box}>
@@ -52,6 +53,7 @@ export const Footer: React.FC<{ ids?: FootIds }> = ({ ids = FOOT_203 }) => (
           </div>
         </div>
       </div>
+      )}
 
       <div className="lp-foot-legal" data-node-id={ids.legal} />
     </footer>

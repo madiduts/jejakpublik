@@ -7,6 +7,7 @@ export interface NavItemIds {
 }
 
 export interface NavIds {
+  iconGlyph?: string;
   head: string;
   brand: string;
   brandText: string;
@@ -27,6 +28,7 @@ export interface FootColIds {
 }
 
 export interface FootIds {
+  compact?: boolean;
   wrap: string;
   foot: string;
   brandWrap: string;
@@ -81,4 +83,36 @@ export const FOOT_204: FootIds = {
     { box: '204:254', headWrap: '204:255', head: '204:256', bodyWrap: '204:259', body: '204:257' },
   ],
   legal: '204:260',
+};
+
+export const NAV_235: NavIds = {
+  head: '235:3', brand: '235:4', brandText: '235:5', links: '235:7',
+  items: [
+    { wrap: '235:8', text: '235:9', w: 51 },
+    { outer: '235:18', wrap: '235:11', text: '235:12', w: 81 },
+    { wrap: '235:14', text: '235:15', w: 54 },
+    { wrap: '235:16', text: '235:17', w: 50 },
+  ],
+  gap: '235:19', icon: '235:20', cta: '235:23', ctaText: '235:24', iconGlyph: '235:21',
+};
+
+export const NAV_247: NavIds = {
+  head: '247:3', brand: '247:4', brandText: '247:5', links: '247:7',
+  items: [
+    { wrap: '247:8', text: '247:9', w: 51 },
+    { outer: '247:18', wrap: '247:11', text: '247:12', w: 81 },
+    { wrap: '247:14', text: '247:15', w: 54 },
+    { wrap: '247:16', text: '247:17', w: 50 },
+  ],
+  gap: '247:19', icon: '247:20', cta: '247:23', ctaText: '247:24', iconGlyph: '247:21',
+};
+
+export const FOOT_235: FootIds = {
+  wrap: '235:352', foot: '235:342', brandWrap: '235:343', brand: '235:344',
+  colsWrap: '', cols: '', col: [], legal: '235:346', compact: true,
+};
+
+export const FOOT_247: FootIds = {
+  wrap: '247:366', foot: '247:356', brandWrap: '247:357', brand: '247:358',
+  colsWrap: '', cols: '', col: [], legal: '247:360', compact: true,
 };

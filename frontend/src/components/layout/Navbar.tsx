@@ -33,6 +33,11 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => (
 
     <div className="lp-gap" data-node-id={ids.gap} style={{ height: 1 }} />
 
+    {ids.iconGlyph ? (
+      <Link to="/jelajahi" className="lp-searchic" data-node-id={ids.icon} aria-label="Cari instansi">
+        <span className="lp-searchglyph" data-node-id={ids.iconGlyph}>⚲</span>
+      </Link>
+    ) : (
     <Link to="/jelajahi" aria-label="Cari instansi" style={{ display: 'flex' }}>
       <svg
         data-node-id={ids.icon}
@@ -50,6 +55,7 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => (
         </g>
       </svg>
     </Link>
+    )}
 
     <Link to="/lapor" className="lp-cta" data-node-id={ids.cta}>
       <span data-node-id={ids.ctaText}>Lapor Anggaran</span>
