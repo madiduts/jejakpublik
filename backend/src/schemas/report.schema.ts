@@ -1,14 +1,31 @@
 import { z } from 'zod';
 
-export const reportTypeSchema = z.enum(['anomali_angka', 'observasi_lapangan', 'salah_ketik']);
+export const reportTypeSchema = z.enum([
+  'anomali_angka',
+  'observasi_lapangan',
+  'salah_ketik',
+  'koreksi',
+  'sanggahan',
+  'sumber'
+]);
 export type ReportType = z.infer<typeof reportTypeSchema>;
 
-export const reportStatusSchema = z.enum(['draft', 'pending', 'verified', 'rejected', 'forwarded']);
+export const reportStatusSchema = z.enum([
+  'draft',
+  'pending',
+  'verified',
+  'rejected',
+  'forwarded',
+  'baru',
+  'diperiksa',
+  'diterima',
+  'ditolak'
+]);
 export type ReportStatus = z.infer<typeof reportStatusSchema>;
 
 export const createReportSchema = z.object({
-  title: z.string().trim().min(5, 'Judul laporan minimal 5 karakter.').max(200),
-  description: z.string().trim().min(15, 'Deskripsi temuan minimal 15 karakter.').max(5000),
+  title: z.string().trim().min(3, 'Judul laporan minimal 3 karakter.').max(200),
+  description: z.string().trim().min(10, 'Deskripsi temuan minimal 10 karakter.').max(5000),
   skpd_id: z.string().trim().min(1, 'Instansi SKPD terkait wajib dipilih.'),
   program_id: z.string().trim().optional(),
   report_type: reportTypeSchema,
@@ -30,8 +47,8 @@ export const updateReportSchema = z.object({
 export type UpdateReportInput = z.infer<typeof updateReportSchema>;
 
 export const moderationDecisionSchema = z.object({
-  status: z.enum(['verified', 'rejected', 'forwarded']),
-  audit_notes: z.string().trim().min(5, 'Catatan audit wajib diisi minimal 5 karakter.'),
+  status: z.enum(['verified', 'rejected', 'forwarded', 'diterima', 'ditolak', 'diperiksa']),
+  audit_notes: z.string().trim().min(3, 'Catatan audit wajib diisi.'),
   is_public: z.boolean().optional()
 });
 export type ModerationDecisionInput = z.infer<typeof moderationDecisionSchema>;

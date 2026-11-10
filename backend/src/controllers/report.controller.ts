@@ -132,7 +132,22 @@ export class ReportController {
   static async createReport(c: Context) {
     const body = await c.req.json();
     const currentUser = c.get('user');
-    const validated = createReportSchema.parse(body);
+
+    // Normalisasi fleksibel mendukung payload frontend (kind, target, message, instansi)
+    const normalized = {
+      title: body.title || body.target,
+      description: body.description || body.message,
+      skpd_id: body.skpd_id || body.instansi || 'dinas-lingkungan-hidup',
+      program_id: body.program_id,
+      report_type: body.report_type || (body.kind === 'koreksi' ? 'salah_ketik' : body.kind === 'sumber' ? 'observasi_lapangan' : 'anomali_angka'),
+      reporter_name: body.reporter_name || (currentUser ? currentUser.name : 'Warga Anonim'),
+      reporter_email: body.reporter_email || body.contact || '',
+      reporter_phone: body.reporter_phone || '',
+      evidence_urls: body.evidence_urls || [],
+      is_draft: Boolean(body.is_draft)
+    };
+
+    const validated = createReportSchema.parse(normalized);
 
     const report = await ReportModel.create({
       user_id: currentUser ? currentUser.id : null,
