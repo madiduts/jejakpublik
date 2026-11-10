@@ -595,3 +595,51 @@ td.r,th.r{text-align:right}
 .pg-alert-t{white-space:nowrap}
 .pg .dt-main > * + *{margin-top:0}
 .pg .dt-side > * + *{margin-top:0}
+
+/* ── Di bawah kanvas 1440: layout cair, tanpa geser mendatar ───────────── */
+@media (max-width:1439px){
+  /* beranda */
+  .lp-sec{padding-left:24px;padding-right:24px}
+  .lp-kpis{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;height:auto}
+  .lp-kpi{height:auto;min-height:118px}
+  .lp-kpi-l,.lp-kpi-f{white-space:normal}
+  .lp-kpi-v{white-space:nowrap}
+  .lp-tablecard{overflow-x:auto}
+  .lp-tr{grid-template-columns:minmax(320px,1fr) 200px 100px 100px;min-width:900px}
+
+  /* jelajahi */
+  .ex-sec{padding-left:24px;padding-right:24px}
+  .ex-search{width:100%}
+  .ex-input-wrap{width:auto;flex:1 1 auto;min-width:0}
+  .ex-chips{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;height:auto}
+  .ex-chips-wrap{height:auto}
+  .ex-chip{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .ex-body{grid-template-columns:260px minmax(0,1fr);height:auto}
+  .ex-filters{width:260px}
+  .ex-list{width:auto;min-width:0;margin-left:18px}
+  .ex-card{height:auto;overflow-x:auto}
+  .ex-thead,.ex-row{grid-template-columns:minmax(260px,1fr) 150px 120px;min-width:760px}
+  .ex-thead > div:nth-child(2),.ex-row > div:nth-child(2){margin-left:0;display:none}
+  .ex-row .ex-depth{display:none}
+  .ex-thead,.ex-row{grid-template-columns:minmax(240px,1fr) 170px 110px}
+  .lp-foot-cols{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .lp-foot-brand{font-size:56px;line-height:58px}
+
+  /* halaman detail */
+  .dt-hero{padding-left:24px;padding-right:24px;height:auto}
+  .dt-herocard{grid-template-columns:280px minmax(0,600px) minmax(0,400px)}
+  .dt-hero-in,.dt-herotext,.dt-summary,.dt-illus{width:auto}
+  .dt-illus{width:280px}
+  .dt-h1{white-space:normal}
+  .dt-ledewrap{width:auto;max-width:349px}
+  .dt-body{padding-left:24px;padding-right:24px}
+  .dt-grid{grid-template-columns:minmax(0,934px) minmax(0,400px);height:auto}
+  .dt-main{width:auto}
+  .dt-row{grid-template-columns:1fr 1fr;height:auto}
+  .dt-card{height:auto}
+  .dt-table{overflow-x:auto}
+  .dt-thead,.dt-trow{min-width:820px}
+  .dt-side{width:auto}
+  .pg .dt-grid{height:auto}
+  .pg-illus{width:280px}
+}
