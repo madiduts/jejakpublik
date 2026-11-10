@@ -49,6 +49,118 @@
       "reason": "Beda metrik font 3,4 px pada merk footer; glyph render Figma 351,6 px, kode 353,6 px. Kelas yang sama dengan 203:204.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "235:62",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:145",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:217",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:261",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:275",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:62",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:137",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:181",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:232",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:267",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:302",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:351",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:344",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:358",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma 2 px lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma 2 px lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
