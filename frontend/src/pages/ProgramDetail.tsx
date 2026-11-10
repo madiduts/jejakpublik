@@ -4,7 +4,7 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Ico } from '../components/detail/icons';
 import { NAV_247, FOOT_247 } from '../lib/frameIds';
-import { getProgram, unitTotal } from '../lib/data';
+import { corrections, getProgram, unitTotal } from '../lib/data';
 import { formatRupiah, formatRupiahShort } from '../utils/format';
 
 const BARS = [
@@ -48,6 +48,7 @@ export const ProgramDetail: React.FC = () => {
   const program = getProgram(slug);
   const [, setTab] = useState('ringkasan');
   const [q, setQ] = useState('');
+  const correction = corrections.find((c) => c.programSlug === slug);
 
   const kegRows = useMemo(() => {
     if (!program) return [];
@@ -68,6 +69,12 @@ export const ProgramDetail: React.FC = () => {
   const realisasi = program.realisasi ?? 0;
   const penetapan = 4530968830;
   const pct = (realisasi / perubahan) * 100;
+  const lede = correction
+    ? 'Penanganan bahan berbahaya dan beracun serta limbahnya pada Dinas Lingkungan Hidup Provinsi DKI Jakarta, tahun anggaran 2025.'
+    : `${program.judul} pada Dinas Lingkungan Hidup Provinsi DKI Jakarta, tahun anggaran 2025.`;
+  const profilProgram = correction
+    ? 'Program ini mengumpulkan dan mengelola limbah bahan berbahaya dan beracun lintas daerah. Nilai pada dokumen sumber ditandai dikoreksi karena Tabel 2.4 mencetak angka berbeda dari Tabel 3.34.'
+    : `${program.judul} dijalankan oleh Dinas Lingkungan Hidup Provinsi DKI Jakarta. Nilainya diambil langsung dari LKIP 2025 tanpa koreksi.`;
 
   return (
     <div className="lp pg" data-figma-root data-node-id="247:2">
@@ -95,16 +102,16 @@ export const ProgramDetail: React.FC = () => {
             </div>
 
             <div className="dt-herotext" data-node-id="247:54">
+              {correction && (
               <div data-node-id="247:76">
                 <span className="pg-badge" data-node-id="247:55"><span data-node-id="247:56">Program · angka dikoreksi</span></span>
               </div>
+              )}
               <div className="dt-h1wrap" data-node-id="247:58">
                 <h1 className="dt-h1" data-node-id="247:59">{program.judul}</h1>
               </div>
               <div className="dt-ledewrap" data-node-id="247:74">
-                <p className="dt-lede" data-node-id="247:62">
-                  Penanganan bahan berbahaya dan beracun serta limbahnya pada Dinas Lingkungan Hidup Provinsi DKI Jakarta, tahun anggaran 2025.
-                </p>
+                <p className="dt-lede" data-node-id="247:62">{lede}</p>
               </div>
               <div className="pg-chips" data-node-id="247:64">
                 {CHIPS.map((c, i) => (
@@ -167,10 +174,7 @@ export const ProgramDetail: React.FC = () => {
               <div className="dt-card" data-node-id="247:132">
                 <h2 className="dt-h2" data-node-id="247:134">Informasi Program</h2>
                 <div className="dt-pwrap" data-node-id="247:136">
-                  <p className="dt-prose" data-node-id="247:137">
-                    Program ini mengumpulkan dan mengelola limbah bahan berbahaya dan beracun lintas daerah.
-                    Nilai pada dokumen sumber ditandai dikoreksi karena Tabel 2.4 mencetak angka berbeda dari Tabel 3.34.
-                  </p>
+                  <p className="dt-prose" data-node-id="247:137">{profilProgram}</p>
                 </div>
                 <div data-node-id="247:144" style={{ paddingTop: 16 }}>
                   <div data-node-id="247:139">
@@ -213,6 +217,7 @@ export const ProgramDetail: React.FC = () => {
               </div>
             </div>
 
+            {correction && (
             <div className="pg-alertwrap" data-node-id="247:287">
               <div className="pg-alert" data-node-id="247:178">
                 <Ico g="alert" slot={18} id="248:11" color="#B45309" />
@@ -224,6 +229,8 @@ export const ProgramDetail: React.FC = () => {
               </div>
             </div>
 
+            )}
+            {correction && (
             <div className="pg-evdwrap" data-node-id="247:288">
               <div className="pg-evd" data-node-id="247:184">
                 <div className="pg-evh" data-node-id="247:185">
@@ -264,6 +271,7 @@ export const ProgramDetail: React.FC = () => {
               </div>
             </div>
 
+            )}
             <div className="pg-listwrap" data-node-id="247:289">
               <div className="dt-card" data-node-id="247:236" style={{ height: 238 }}>
                 <div className="dt-tchead" data-node-id="247:237">
@@ -322,6 +330,7 @@ export const ProgramDetail: React.FC = () => {
           </div>
 
           <div className="dt-side" data-node-id="247:290">
+            {correction && (
             <div className="dt-card" data-node-id="247:291" style={{ height: 327 }}>
               <h2 className="dt-h2" data-node-id="247:293">Riwayat Koreksi</h2>
               <div data-node-id="247:326" style={{ paddingTop: 12 }}>
@@ -338,6 +347,7 @@ export const ProgramDetail: React.FC = () => {
               </div>
             </div>
 
+            )}
             <div data-node-id="247:354" style={{ paddingTop: 18 }}>
               <div className="dt-sidecard" data-node-id="247:327">
                 <h2 className="dt-h2" data-node-id="247:329">Data Terkait</h2>

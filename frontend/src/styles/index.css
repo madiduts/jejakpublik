@@ -413,25 +413,25 @@ td.r,th.r{text-align:right}
 }
 
 /* ── Halaman detail (frame 235:2 dan 247:2) ────────────────────────────── */
-.dt-hero{max-width:1440px;margin:0 auto;padding:18px 44px 0;height:258px}
-.dt-crumbs{display:flex;align-items:center;gap:8px;height:16px}
+.dt-hero{max-width:1440px;margin:0 auto;padding:18px 44px 0;min-height:258px}
+.dt-crumbs{display:flex;align-items:center;gap:8px;min-height:16px;flex-wrap:wrap}
 .dt-ico{display:flex;align-items:center;justify-content:center;flex:none}
 .dt-crumb{font-size:12.5px;line-height:16px;color:#71717A;white-space:nowrap;display:inline-block}
 .dt-crumb.now{font-weight:600;color:#18181B}
 .dt-crumbwrap{display:inline-block;height:16px;line-height:16px}
 .dt-herocardwrap{padding-top:16px}
-.dt-herocard{display:grid;grid-template-columns:300px 626px 426px;gap:0;height:208px;align-items:start}
+.dt-herocard{display:grid;grid-template-columns:300px 626px 426px;gap:0;min-height:208px;align-items:start}
 .dt-herocard > * + *{margin-left:26px}
 
 .dt-illus{position:relative;width:300px;height:200px;background:#EFEFF1;border-radius:16px;overflow:hidden}
 .dt-illus i{position:absolute;display:block;background:#D6D6DA}
 .dt-illus i.win{background:#EFEFF1;border-radius:2px}
 
-.dt-herotext{width:600px}
+.dt-herotext{width:600px;min-width:0}
 .dt-badge{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:999px;background:#F4F4F5;font-size:11.5px;line-height:14px;color:#3F3F46;white-space:nowrap}
-.dt-h1wrap{padding-top:10px;height:50px}
-.dt-h1{margin:0;font-size:32px;line-height:40px;font-weight:700;letter-spacing:-.9px;color:#18181B;white-space:nowrap}
-.dt-ledewrap{padding-top:10px;width:349px;height:75px}
+.dt-h1wrap{padding-top:10px;min-height:50px}
+.dt-h1{margin:0;font-size:32px;line-height:40px;font-weight:700;letter-spacing:-.9px;color:#18181B;overflow-wrap:anywhere}
+.dt-ledewrap{padding-top:10px;width:349px}
 .dt-lede{margin:0;font-size:13.5px;line-height:21.6px;color:#52525B}
 .dt-contacts{display:flex;align-items:flex-start;gap:26px;padding-top:16px;height:34px}
 .dt-contact{display:flex;align-items:center;gap:8px;height:18px;font-size:12px;line-height:18px;color:#52525B;white-space:nowrap}
@@ -745,3 +745,7 @@ td.r,th.r{text-align:right}
 .ex-yearrow:hover{border-color:var(--ink)}
 .ex-yearrow > span{font-size:12.5px;line-height:16px;color:#52525B}
 .ex-menu-left{left:0;right:auto;top:38px;width:100%}
+
+.dt-sum-empty{margin:18px 0 0;font-size:12.5px;line-height:19px;color:var(--muted);max-width:320px}
+
+.dt-card.tall.short{height:auto;min-height:0;padding-bottom:22px}
