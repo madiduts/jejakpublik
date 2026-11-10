@@ -24,6 +24,7 @@ export interface Instansi {
   pendapatan: number; pendapatanRealisasi: number;
   belanja: number; belanjaRealisasi: number;
   pembiayaan: number | null; pembiayaanRealisasi: number | null;
+  punyaPendapatan: boolean;
   detailed: boolean;
 }
 
@@ -41,6 +42,7 @@ export const instansiList: Instansi[] = (skpdRaw as { data: SkpdRow[] }).data.ma
   belanjaRealisasi: num(r.BELANJA_REALISASI),
   pembiayaan: r.PEMBIAYAAN_ANGGARAN === null ? null : num(r.PEMBIAYAAN_ANGGARAN),
   pembiayaanRealisasi: r.PEMBIAYAAN_REALISASI === null ? null : num(r.PEMBIAYAAN_REALISASI),
+  punyaPendapatan: r.PENDAPATAN_ANGGARAN !== null && r.PENDAPATAN_ANGGARAN !== '',
   detailed: r.NAMA_SKPD.replace(/\s+/g, ' ').trim().toUpperCase() === DETAILED,
 }));
 
@@ -50,6 +52,10 @@ export const totals = {
   belanjaRealisasi: instansiList.reduce((a, b) => a + b.belanjaRealisasi, 0),
   pendapatan: instansiList.reduce((a, b) => a + b.pendapatan, 0),
   pendapatanRealisasi: instansiList.reduce((a, b) => a + b.pendapatanRealisasi, 0),
+  pembiayaan: instansiList.reduce((a, b) => a + (b.pembiayaan ?? 0), 0),
+  instansiPendapatan: instansiList.filter((i) => i.punyaPendapatan).length,
+  instansiPembiayaan: instansiList.filter((i) => i.pembiayaan !== null).length,
+  instansiMelapor: instansiList.filter((i) => i.belanjaRealisasi > 0).length,
 };
 
 export const getInstansi = (slug: string): Instansi | undefined =>
