@@ -47,6 +47,9 @@ const LINKS_B = [
 
 const serapan = (unitTotal.realisasi / unitTotal.perubahan) * 100;
 
+/** Frame membulatkan ke bawah: 3,7198 T ditulis Rp3,71 Triliun. */
+const formatTriliun = (v: number) => `Rp${(Math.floor(v / 1e10) / 100).toFixed(2).replace('.', ',')} Triliun`;
+
 export const InstansiDetail: React.FC = () => {
   const { slug = '' } = useParams();
   const instansi = getInstansi(slug);
@@ -67,6 +70,15 @@ export const InstansiDetail: React.FC = () => {
       </div>
     );
   }
+
+  const serapanInstansi = instansi.belanja ? (instansi.belanjaRealisasi / instansi.belanja) * 100 : 0;
+  const realisasiPct = instansi.detailed ? serapan : serapanInstansi;
+  const profil = instansi.detailed
+    ? 'Dinas Lingkungan Hidup berperan dalam pengelolaan sampah, pengendalian pencemaran, pengendalian bahan berbahaya dan beracun, serta pengembangan ruang terbuka hijau bagi seluruh warga Jakarta.'
+    : `${instansi.judul} adalah perangkat daerah Provinsi DKI Jakarta pada komisi ${instansi.komisi}. Profil lengkap dan rincian programnya belum kami kumpulkan.`;
+  const lede = instansi.detailed
+    ? 'Dinas Lingkungan Hidup Provinsi DKI Jakarta bertanggung jawab dalam penyelenggaraan urusan pemerintahan di bidang lingkungan hidup.'
+    : `${instansi.judul} Provinsi DKI Jakarta adalah perangkat daerah dengan anggaran belanja ${formatRupiahShort(instansi.belanja)} dan serapan ${serapanInstansi.toFixed(2).replace('.', ',')}%. Rincian program sampai sub kegiatan belum kami kumpulkan untuk instansi ini.`;
 
   return (
     <div className="lp" data-figma-root data-node-id="235:2">
@@ -103,10 +115,9 @@ export const InstansiDetail: React.FC = () => {
                 <h1 className="dt-h1" data-node-id="235:59">{instansi.judul}</h1>
               </div>
               <div className="dt-ledewrap" data-node-id="235:79">
-                <p className="dt-lede" data-node-id="235:62">
-                  Dinas Lingkungan Hidup Provinsi DKI Jakarta bertanggung jawab dalam penyelenggaraan urusan pemerintahan di bidang lingkungan hidup.
-                </p>
+                <p className="dt-lede" data-node-id="235:62">{lede}</p>
               </div>
+              {instansi.detailed && (
               <div className="dt-contacts" data-node-id="235:64">
                 <span className="dt-contact c1" data-node-id="235:65">
                   <Ico g="pin" slot={18} id="236:9" color="#52525C" />
@@ -121,18 +132,22 @@ export const InstansiDetail: React.FC = () => {
                   <span data-node-id="235:76"><span data-node-id="235:77">(021) 1234 5678</span></span>
                 </span>
               </div>
+              )}
             </div>
 
             <div className="dt-summary" data-node-id="235:82">
               <div data-node-id="235:83"><p className="dt-sum-label" data-node-id="235:84">Ringkasan Anggaran 2025</p></div>
               <div className="dt-sum-valuewrap" data-node-id="235:86">
-                <p className="dt-sum-value" data-node-id="235:87">Rp3,71 Triliun</p>
+                <p className="dt-sum-value" data-node-id="235:87">{formatTriliun(instansi.belanja)}</p>
               </div>
               <div className="dt-sum-notewrap" data-node-id="235:89">
                 <p className="dt-sum-note" data-node-id="235:90">
-                  Anggaran perubahan, turun dari penetapan Rp{(unitTotal.penetapan / 1e12).toFixed(2).replace('.', ',')} T
+                  {instansi.detailed
+                    ? `Anggaran perubahan, turun dari penetapan Rp${(unitTotal.penetapan / 1e12).toFixed(2).replace('.', ',')} T`
+                    : `Komisi ${instansi.komisi} · Asisten ${instansi.asisten}`}
                 </p>
               </div>
+              {instansi.detailed ? (
               <div data-node-id="235:114" style={{ paddingTop: 18 }}>
                 <div className="dt-counters" data-node-id="235:92">
                   <div className="dt-counter" data-node-id="235:93">
@@ -149,6 +164,9 @@ export const InstansiDetail: React.FC = () => {
                   </div>
                 </div>
               </div>
+              ) : (
+                <p className="dt-sum-empty">Rincian program belum tersedia untuk instansi ini.</p>
+              )}
             </div>
           </div>
         </div>
@@ -163,7 +181,7 @@ export const InstansiDetail: React.FC = () => {
             { id: '235:133', inner: '235:124', text: '235:125', label: 'Subkegiatan', w: 71 },
             { id: '235:134', inner: '235:126', text: '235:127', label: 'Dokumen', w: 55 },
             { id: '235:135', inner: '235:128', text: '235:129', label: 'Laporan', w: 47 },
-          ].map((t, i) => (
+          ].filter((t) => instansi.detailed || t.label === 'Ringkasan' || t.label === 'Dokumen').map((t, i) => (
             <span key={t.label} data-node-id={t.id} style={{ display: 'inline-block', width: t.w }}>
               <button
                 className={`dt-tab${i === 0 ? ' on' : ''}`}
@@ -184,12 +202,9 @@ export const InstansiDetail: React.FC = () => {
               <div className="dt-card" data-node-id="235:140">
                 <h2 className="dt-h2" data-node-id="235:142">Profil Instansi</h2>
                 <div className="dt-pwrap" data-node-id="235:144">
-                  <p className="dt-prose" data-node-id="235:145">
-                    Dinas Lingkungan Hidup berperan dalam pengelolaan sampah, pengendalian pencemaran,
-                    pengendalian bahan berbahaya dan beracun, serta pengembangan ruang terbuka hijau
-                    bagi seluruh warga Jakarta.
-                  </p>
+                  <p className="dt-prose" data-node-id="235:145">{profil}</p>
                 </div>
+                {instansi.detailed && (
                 <div data-node-id="235:152" style={{ paddingTop: 16 }}>
                   <div data-node-id="235:147">
                     <button className="dt-btn" data-node-id="235:148">
@@ -198,6 +213,7 @@ export const InstansiDetail: React.FC = () => {
                     </button>
                   </div>
                 </div>
+                )}
               </div>
 
               <div className="dt-card" data-node-id="235:153">
@@ -205,7 +221,7 @@ export const InstansiDetail: React.FC = () => {
                 <div data-node-id="235:185" style={{ paddingTop: 12 }}>
                   <div className="dt-donutrow" data-node-id="235:156">
                     <div className="dt-donut" data-node-id="235:157">
-                      <div className="dt-donut-val" data-node-id="235:159">{serapan.toFixed(2).replace('.', ',')}%</div>
+                      <div className="dt-donut-val" data-node-id="235:159">{realisasiPct.toFixed(2).replace('.', ',')}%</div>
                       <div className="dt-donut-lbl" data-node-id="235:162">Terserap</div>
                     </div>
                     <div className="dt-legend" data-node-id="235:165">
@@ -213,14 +229,14 @@ export const InstansiDetail: React.FC = () => {
                         <span className="dt-legend-dotwrap" data-node-id="235:175"><i className="dt-legend-dot" data-node-id="235:167" style={{ background: '#3F3F46', marginTop: 0 }} /></span>
                         <span data-node-id="235:168">
                           <span data-node-id="235:169"><p className="dt-legend-l" data-node-id="235:170">Realisasi</p></span>
-                          <span data-node-id="235:171"><p className="dt-legend-v" data-node-id="235:172">{formatRupiahShort(unitTotal.realisasi)}</p></span>
+                          <span data-node-id="235:171"><p className="dt-legend-v" data-node-id="235:172">{formatRupiahShort(instansi.belanjaRealisasi)}</p></span>
                         </span>
                       </div>
                       <div className="dt-legend-row" data-node-id="235:176">
                         <span className="dt-legend-dotwrap" data-node-id="235:184"><i className="dt-legend-dot" data-node-id="235:177" style={{ background: '#C9C9CE', marginTop: 0 }} /></span>
                         <span data-node-id="235:178">
                           <span data-node-id="235:179"><p className="dt-legend-l" data-node-id="235:180">Anggaran perubahan</p></span>
-                          <span data-node-id="235:181"><p className="dt-legend-v" data-node-id="235:182">{formatRupiahShort(unitTotal.perubahan)}</p></span>
+                          <span data-node-id="235:181"><p className="dt-legend-v" data-node-id="235:182">{formatRupiahShort(instansi.belanja)}</p></span>
                         </span>
                       </div>
                     </div>
@@ -229,9 +245,10 @@ export const InstansiDetail: React.FC = () => {
             </div>
 
             </div>
-            <div className="dt-card tall" data-node-id="235:186">
+            <div className={`dt-card tall${instansi.detailed ? '' : ' short'}`} data-node-id="235:186">
               <div className="dt-tchead" data-node-id="235:187">
                 <h2 className="dt-h2" data-node-id="235:189">Daftar Program</h2>
+                {instansi.detailed && (
                 <div className="dt-tchead" data-node-id="235:190" style={{ gap: 10 }}>
                   <label className="dt-search" data-node-id="235:191">
                     <Ico g="search" slot={16} id="236:20" />
@@ -250,8 +267,16 @@ export const InstansiDetail: React.FC = () => {
                     <Ico g="chevdown" slot={14} id="236:23" />
                   </button>
                 </div>
+                )}
               </div>
 
+              {!instansi.detailed && (
+                <p className="dt-sum-empty" style={{ marginTop: 18 }}>
+                  Rincian program sampai sub kegiatan belum kami kumpulkan untuk instansi ini.
+                  Angka ringkasannya tersedia di kartu Realisasi Anggaran.
+                </p>
+              )}
+              {instansi.detailed && (
               <div className="dt-tablewrap" data-node-id="235:297">
                 <div className="dt-table" data-node-id="235:197">
                   <div className="dt-thead" data-node-id="235:198">
@@ -280,6 +305,8 @@ export const InstansiDetail: React.FC = () => {
                 </div>
               </div>
 
+              )}
+              {instansi.detailed && (
               <div className="dt-tfoot" data-node-id="235:285">
                 <span data-node-id="235:286"><span data-node-id="235:287">Menampilkan 1–{rows.length} dari {programList.length} program</span></span>
                 <div className="dt-pager" data-node-id="235:288">
@@ -289,6 +316,7 @@ export const InstansiDetail: React.FC = () => {
                   <button className="dt-page" data-node-id="235:295"><span data-node-id="235:296">›</span></button>
                 </div>
               </div>
+              )}
             </div>
           </div>
 
