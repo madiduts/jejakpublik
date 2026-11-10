@@ -652,6 +652,7 @@ td.r,th.r{text-align:right}
 }
 
 /* ── Panduan indeks (frame 219:2) ──────────────────────────────────────── */
+.gd-hero-img{position:absolute;inset:0;background:url(/img/hero-panduan-900.webp) center/cover no-repeat}
 .gd-hero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:190px;padding:30px 44px;overflow:hidden;background:#10151A}
 .gd-hero-canvas{width:100%;max-width:1352px;display:flex;flex-direction:column;justify-content:flex-end;height:130px}
 .gd-sec{max-width:1440px;margin:0 auto;padding:34px 44px 0}
@@ -784,3 +785,7 @@ td.r,th.r{text-align:right}
 .ab-mname{font-size:14.5px;line-height:18px;font-weight:600;color:#18181B;white-space:nowrap}
 .ab-mrolewrap{height:23px;padding-top:3px;line-height:18px}
 .ab-mrole{font-size:12px;line-height:18px;color:#8A8A94;white-space:nowrap}
+
+@media (min-width:1000px){
+  .gd-hero-img{background-image:url(/img/hero-panduan-1600.webp)}
+}
