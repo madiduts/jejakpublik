@@ -1,113 +1,62 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { LayoutShell } from '../components/layout/LayoutShell';
-import { Breadcrumbs } from '../components/layout/Breadcrumbs';
-import { AlertTriangle, Users, Award } from 'lucide-react';
+import { Card, CardHead, PageHead, Notice } from '../components/ui';
+import { CREDITS } from '../data/site';
+import { totals } from '../lib/data';
 
-export const About: React.FC = () => {
-  return (
-    <LayoutShell>
-      <div className="wrap">
-        <Breadcrumbs items={[{ label: 'Tentang & Keterbatasan' }]} />
+export const About: React.FC = () => (
+  <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Tentang' }]}>
+    <div className="wrap page">
+      <PageHead eyebrow="Tentang" title="Siapa kami dan dari mana angkanya" desc="JejakPublik adalah proyek independen untuk lomba WIA MIA 2026. Kami tidak berafiliasi dengan Pemerintah Provinsi DKI Jakarta." />
 
-        <div className="pagehead">
-          <div>
-            <h1>Tentang JejakPublik & Batas Keterbatasan</h1>
-            <div className="meta">
-              Komitmen transparansi data publik, metodologi penelusuran audit, dan batasan tanggung jawab platform.
+      <div className="grid g2" style={{ alignItems: 'start' }}>
+        <div style={{ display: 'grid', gap: 14 }}>
+          <Card>
+            <CardHead title="Metode" sub="Empat aturan yang kami pegang" />
+            <div className="card-pad prose" style={{ fontSize: 13.5 }}>
+              <p><b>1. Setiap angka punya rujukan.</b> Nama dokumen, nomor tabel, dan tanggal pengambilan tercatat.</p>
+              <p><b>2. Konflik dibuka.</b> Bila dua tabel memuat nilai berbeda, keduanya ditampilkan dengan hitungan penyelesaiannya.</p>
+              <p><b>3. Nilai ditahan tidak dihitung.</b> Angka yang tidak dapat dipastikan tampil kosong dan tidak masuk total maupun penyebut persentase.</p>
+              <p><b>4. Tidak ada data waktu nyata.</b> Seluruh angka berasal dari dokumen TA 2025 yang sudah selesai.</p>
             </div>
-          </div>
-          <span className="badge badge-accent">
-            <Award size={14} /> Multimedia In Action 2026 &middot; Web In Action
-          </span>
+          </Card>
+          <Card>
+            <CardHead title="Batas kemampuan" sub="Yang belum kami kerjakan" />
+            <div className="card-pad prose" style={{ fontSize: 13.5 }}>
+              <p>Rincian program sampai sub kegiatan baru tersedia untuk satu dinas percontohan. {totals.instansi - 1} instansi lain masih pada lapisan ringkasan.</p>
+              <p>Laporan warga pada versi ini disimpan di peramban masing-masing, belum tersimpan di server. Antrean moderator karena itu memperlihatkan laporan dari peramban yang sama.</p>
+            </div>
+          </Card>
         </div>
 
-        {/* Section 1: Visi & Nilai Inti */}
-        <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '12px', padding: '28px', marginBottom: '24px' }}>
-          <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--ink)', marginBottom: '12px' }}>
-            Visi Kami: Dari Anggaran, Terlihat Hasilnya
-          </h2>
-          <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'var(--ink-soft)', marginBottom: '16px' }}>
-            JejakPublik lahir dari keresahan bahwa informasi anggaran pemerintah sering disajikan dalam bentuk dashboard pasif 
-            atau dokumen PDF ratusan halaman yang sulit ditelusuri warga. Warga yang ingin memeriksa aliran dana publik 
-            dihadapkan pada istilah rumit, angka yang terputus dari hasil pekerjaan, dan portal resmi yang cenderung 
-            meratakan anomali cetak tanpa penjelasan.
-          </p>
-          <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'var(--ink-soft)' }}>
-            Nilai utama yang kami bawa bukan sekadar memvisualisasikan angka, melainkan <strong>menguji dan memverifikasi integritas data</strong>: 
-            menandai salah ketik resmi secara terbuka, menahan data yang hierarkinya bermasalah, dan menyajikan audit trail yang bisa diverifikasi hingga nomor tabel dokumen aslinya.
-          </p>
-        </div>
-
-        {/* Section 2: Keterbatasan & Anti-Goals (Honesty) */}
-        <div style={{ background: '#FFFDF5', border: '1px solid var(--warn-line)', borderRadius: '12px', padding: '28px', marginBottom: '24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <AlertTriangle size={22} color="var(--warn)" />
-            <h2 style={{ fontSize: '19px', fontWeight: 800, color: '#78350F' }}>
-              Batasan Tanggung Jawab & Hal yang Tidak Kami Klaim
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gap: '14px', fontSize: '14px', color: '#78350F', lineHeight: 1.6 }}>
-            <div>
-              <strong>1. Bukan Data Real-Time:</strong> Seluruh dataset adalah laporan tahunan periode selesai (Tahun Anggaran 2025) yang sudah melalui pembukuan resmi BPKD dan dokumen LKIP. Kami tidak mengklaim integrasi API real-time pemerintah.
+        <div style={{ display: 'grid', gap: 14 }}>
+          <Card>
+            <CardHead title="Sumber data" />
+            <div className="card-pad" style={{ display: 'grid', gap: 10, fontSize: 13 }}>
+              {['LKIP Dinas Lingkungan Hidup Jakarta 2025', 'Dashboard Keuangan BPKD Jakarta', 'APBD-P DKI Jakarta 2025', 'Indikator Kinerja Utama 2025'].map((s) => (
+                <div key={s} style={{ paddingBottom: 8, borderBottom: '1px solid var(--line)' }}>{s}</div>
+              ))}
             </div>
-            <div>
-              <strong>2. Bukan Vonis Hukum atau Dakwaan Korupsi:</strong> Selisih angka, sisa anggaran, atau kesalahan salin pada dokumen resmi disajikan sebagai fakta audit data administratif, bukan bukti tindak pidana korupsi. Keputusan hukum berada di tangan penegak hukum dan BPK.
-            </div>
-            <div>
-              <strong>3. Bukan Kanal Aduan Fisik Lapangan Pengganti JAKI/SP4N-LAPOR:</strong> Platform ini berfokus pada audit keterbukaan informasi anggaran dan kinerja administratif, bukan menjanjikan tindak lanjut fisik perbaikan infrastruktur di jalan oleh pemda.
-            </div>
-            <div>
-              <strong>4. Asimetri Kedalaman Data:</strong> Saat ini baru Dinas Lingkungan Hidup yang datanya berhasil ditelusuri sampai tingkat subkegiatan dan indikator kinerja karena format pelaporan LKIP antar-dinas di DKI Jakarta belum seragam.
-            </div>
-            <div>
-              <strong>5. Tanpa Pengumpulan Identitas Asli:</strong> Platform tidak pernah mengumpulkan data pribadi warga seperti NIK, foto KTP asli, atau biometrik.
-            </div>
-          </div>
-        </div>
-
-        {/* Section 3: Tim Pengembang */}
-        <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '12px', padding: '28px', marginBottom: '40px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
-            <Users size={22} color="var(--accent)" />
-            <h2 style={{ fontSize: '19px', fontWeight: 800, color: 'var(--ink)' }}>
-              Tim Pengembang — Tim miamiu
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
-            <div style={{ background: 'var(--bg)', borderRadius: '8px', padding: '16px' }}>
-              <strong style={{ fontSize: '15px', color: 'var(--ink)' }}>Muhammad Zayyan Rizka</strong>
-              <div style={{ fontSize: '12.5px', color: 'var(--accent)', fontWeight: 600, marginTop: '2px' }}>
-                Ketua Tim &middot; Data & Knowledge Lead
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Memimpin riset sumber primer BPKD/LKIP, verifikasi rekonsiliasi angka, arsitektur indikator kinerja, dan narasi presentasi.
+          </Card>
+          <Card>
+            <CardHead title="Kredit dan lisensi" sub="Wajib disebut saat karya dipublikasikan" />
+            <div className="card-pad" style={{ display: 'grid', gap: 8, fontSize: 12.5 }}>
+              {CREDITS.map((c) => (
+                <div key={c.name} style={{ display: 'flex', justifyContent: 'space-between', gap: 10 }}>
+                  <span>{c.name}</span><span style={{ color: 'var(--muted)' }}>{c.license}</span>
+                </div>
+              ))}
+              <p style={{ color: 'var(--muted)', marginTop: 6 }}>
+                Lisensi CC BY-SA 3.0 dan CC BY 3.0 mewajibkan atribusi. Kredit ini dipindahkan dari kaki halaman mockup ke halaman ini; saat situs dirilis, kredit tetap wajib ada.
               </p>
             </div>
-
-            <div style={{ background: 'var(--bg)', borderRadius: '8px', padding: '16px' }}>
-              <strong style={{ fontSize: '15px', color: 'var(--ink)' }}>Mahdi Imantaka Sutejo</strong>
-              <div style={{ fontSize: '12.5px', color: 'var(--accent)', fontWeight: 600, marginTop: '2px' }}>
-                Lead Frontend & Data Engine
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Membangun arsitektur React, komponen engine status angka (normal, dikoreksi, ditahan), hierarki interaktif DLH, dan pipeline data.
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--bg)', borderRadius: '8px', padding: '16px' }}>
-              <strong style={{ fontSize: '15px', color: 'var(--ink)' }}>Liaurentino</strong>
-              <div style={{ fontSize: '12.5px', color: 'var(--accent)', fontWeight: 600, marginTop: '2px' }}>
-                UI/UX & Frontend Developer
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', marginTop: '8px', lineHeight: 1.5 }}>
-                Merancang sitemap, sistem tata letak halaman Beranda, responsivitas multi-perangkat, dan katalog interaktif 43 SKPD.
-              </p>
-            </div>
-          </div>
+          </Card>
+          <Notice tone="info" title="Menemukan kesalahan?">
+            <Link to="/lapor">Kirim laporan</Link> — setiap koreksi yang diterima dicatat pada riwayat angka.
+          </Notice>
         </div>
       </div>
-    </LayoutShell>
-  );
-};
+    </div>
+  </LayoutShell>
+);

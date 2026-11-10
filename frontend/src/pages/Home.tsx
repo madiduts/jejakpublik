@@ -1,150 +1,118 @@
 import React from 'react';
-import { LayoutShell } from '../components/layout/LayoutShell';
-import { SummaryCards } from '../components/home/SummaryCards';
-import { SkpdTable } from '../components/home/SkpdTable';
-import rawSkpdData from '../data/bpkd-skpd-2025.json';
-import { SkpdItem } from '../types';
-import { Search, FileText, CheckCircle2, AlertOctagon, Info, ArrowRight, ShieldCheck, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, Database, Search, ShieldCheck, GitCompareArrows, AlertTriangle } from 'lucide-react';
+import { LayoutShell } from '../components/layout/LayoutShell';
+import { Card, CardHead, Kpi, Donut, Bars, Badge, Notice } from '../components/ui';
+import { instansiList, totals, programBars, corrections, programTotals } from '../lib/data';
+import { formatRupiahShort, formatPersen } from '../utils/format';
+
+const serapan = (totals.belanjaRealisasi / totals.belanja) * 100;
 
 export const Home: React.FC = () => {
-  const skpdList = (rawSkpdData as { data: SkpdItem[] }).data;
-
+  const top = [...instansiList].sort((a, b) => b.belanja - a.belanja).slice(0, 6);
   return (
     <LayoutShell>
-      <div className="wrap" style={{ paddingTop: '24px' }}>
-        {/* Notice Banner */}
-        <div className="notice-banner" role="status">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Info size={16} color="var(--accent)" aria-hidden="true" />
-            <span>
-              <strong>Transparansi Periode:</strong> Seluruh data bersumber dari dokumen resmi APBD & LKIP TA 2025 (periode selesai), penarikan data resmi <strong>21 Oktober 2026</strong>. Bukan data real-time.
-            </span>
-          </div>
-          <Link to="/tentang" style={{ fontWeight: 600, textDecoration: 'underline', whiteSpace: 'nowrap' }}>
-            Baca Metodologi &rarr;
-          </Link>
+      <div className="wrap page">
+        <div className="eyebrow"><ShieldCheck size={12} aria-hidden="true" />Platform independen · DKI Jakarta 2025</div>
+        <h1 style={{ fontSize: 34, fontWeight: 750, maxWidth: 820 }}>Uang publik Jakarta, sampai ke rincian terkecilnya</h1>
+        <p style={{ color: 'var(--muted)', marginTop: 10, maxWidth: 720, fontSize: 15 }}>
+          43 perangkat daerah, 8 program, dan 55 baris anggaran Dinas Lingkungan Hidup. Setiap angka membawa rujukan tabelnya,
+          dan angka yang tidak bisa dipastikan kami nyatakan ditahan - bukan dianggap nol.
+        </p>
+
+        <div className="kpis">
+          <Kpi label="Total belanja 2025" value={formatRupiahShort(totals.belanja)} foot="43 SKPD · APBD-P" icon={<Database size={13} aria-hidden="true" />} />
+          <Kpi label="Realisasi" value={formatRupiahShort(totals.belanjaRealisasi)} foot={`${formatPersen(serapan)} terserap`} large />
+          <Kpi label="Pendapatan" value={formatRupiahShort(totals.pendapatan)} foot={`realisasi ${formatRupiahShort(totals.pendapatanRealisasi)}`} />
+          <Kpi label="Angka dikoreksi" value={String(corrections.length)} foot="dibuka beserta buktinya" icon={<AlertTriangle size={13} aria-hidden="true" />} />
         </div>
 
-        {/* Hero Section */}
-        <section aria-labelledby="hero-title" style={{ marginBottom: '32px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 10px', background: 'var(--accent-soft)', color: 'var(--accent)', borderRadius: '20px', fontSize: '12px', fontWeight: 700, marginBottom: '12px' }}>
-            <ShieldCheck size={14} aria-hidden="true" />
-            Platform Transparansi Anggaran Independen &middot; Provinsi DKI Jakarta 2025
+        <div className="grid g2">
+          <Card>
+            <CardHead title="Belanja per program · Dinas Lingkungan Hidup" sub={`${programTotals.kegiatan} kegiatan · ${programTotals.subKegiatan} sub kegiatan`} right={<Badge tone="info">rincian</Badge>} />
+            <div className="card-pad"><Bars rows={programBars.slice(0, 6)} /></div>
+          </Card>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <Card>
+              <CardHead title="Serapan anggaran" sub="Realisasi terhadap anggaran" />
+              <div className="card-pad donut" style={{ justifyContent: 'center' }}>
+                <Donut pct={serapan} />
+                <div className="legend">
+                  <div><i style={{ background: 'var(--accent)' }} />Realisasi<div className="val num">{formatRupiahShort(totals.belanjaRealisasi)}</div></div>
+                  <div><i style={{ background: 'var(--line)' }} />Anggaran<div className="val num">{formatRupiahShort(totals.belanja)}</div></div>
+                </div>
+              </div>
+            </Card>
+            <Card>
+              <CardHead title="Riwayat koreksi" sub="Angka resmi yang tidak konsisten" right={<Link to="/perbandingan" className="btn btn-sm">Bandingkan</Link>} />
+              <div className="card-pad" style={{ display: 'grid', gap: 12 }}>
+                {corrections.map((c) => (
+                  <Link key={c.id} to={`/perbandingan#${c.id}`} style={{ color: 'inherit', display: 'block' }}>
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 3 }}>
+                      <Badge tone={c.state === 'dikoreksi' ? 'warn' : 'hold'}>{c.state === 'dikoreksi' ? 'Dikoreksi' : 'Ditahan'}</Badge>
+                    </div>
+                    <div style={{ fontSize: 13, fontWeight: 650 }}>{c.title}</div>
+                    <div style={{ fontSize: 12, color: 'var(--muted)' }}>{c.printed.label} vs {c.verified.label}</div>
+                  </Link>
+                ))}
+              </div>
+            </Card>
           </div>
-
-          <h1 id="hero-title" style={{ fontSize: '32px', fontWeight: 800, color: 'var(--ink)', letterSpacing: '-0.5px', lineHeight: 1.25 }}>
-            Uang Publik Provinsi DKI Jakarta
-          </h1>
-          <p style={{ fontSize: '16px', color: 'var(--muted)', marginTop: '8px', maxWidth: '780px', lineHeight: 1.6 }}>
-            Website independen yang membantu warga menelusuri anggaran, realisasi belanja, dan indikator hasil
-            pemerintah provinsi. Kami menyajikan angka apa adanya, menandai anomali salah ketik resmi secara terbuka,
-            dan tidak meratakan data anomali menjadi nol.
-          </p>
-
-          {/* 4 Feature Highlights / Nilai Pembeda (Sesuai PRD Modul 1 & 2) */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '14px',
-              marginTop: '24px',
-            }}
-          >
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <Search size={18} color="var(--accent)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Arsitektur Dua Lapis</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Akses ringkasan 43 perangkat daerah, tembus hingga 33 subkegiatan dan 10 unit kerja pada dinas percontohan (DLH).
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <FileText size={18} color="var(--accent)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Jejak Sumber Terbuka</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Tiap angka mencantumkan rujukan tabel (Tabel 2.4, 3.33, 3.34, 3.35 LKIP), dokumen sumber, dan tanggal ekstraksi.
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <AlertOctagon size={18} color="var(--warn)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Data State Engine</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Menangani 3 status data (Normal, Dikoreksi kasus B3, dan Ditahan kasus Gaji ASN) dengan modal audit transparan.
-              </p>
-            </div>
-
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '10px', padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <CheckCircle2 size={18} color="var(--accent)" aria-hidden="true" />
-                <strong style={{ fontSize: '14px', color: 'var(--ink)' }}>Pelurus Istilah Nyata</strong>
-              </div>
-              <p style={{ fontSize: '12.5px', color: 'var(--muted)', lineHeight: 1.5 }}>
-                Membedakan pagu penetapan vs perubahan akibat Inpres 1/2025, serta meluruskan arti "efisiensi" anggaran.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Pilot Callout Card */}
-        <div
-          style={{
-            background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
-            border: '1px solid #99F6E4',
-            borderRadius: '12px',
-            padding: '18px 22px',
-            marginBottom: '32px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '16px',
-          }}
-        >
-          <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 700, color: '#0F766E', marginBottom: '4px' }}>
-              <Database size={14} aria-hidden="true" />
-              Pilot Penelusuran Mendalam (Lapis Dalam)
-            </div>
-            <h3 style={{ fontSize: '17px', fontWeight: 800, color: '#0F172A' }}>
-              Dinas Lingkungan Hidup Provinsi DKI Jakarta (TA 2025)
-            </h3>
-            <p style={{ fontSize: '13px', color: '#334155', marginTop: '2px', maxWidth: '640px' }}>
-              Menembus 8 Program, 15 Kegiatan, 33 Subkegiatan, 12 Indikator Kinerja LKIP (Tabel 3.35), serta 10 Unit Kerja Pelaksana.
-            </p>
-          </div>
-          <Link
-            to="/instansi/lingkungan-hidup"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              background: '#0F766E',
-              color: '#FFFFFF',
-              padding: '10px 18px',
-              borderRadius: '8px',
-              fontSize: '13.5px',
-              fontWeight: 700,
-              textDecoration: 'none',
-              boxShadow: '0 2px 4px rgba(15, 118, 110, 0.2)',
-            }}
-          >
-            Buka Rincian DLH <ArrowRight size={16} aria-hidden="true" />
-          </Link>
         </div>
 
-        {/* Tiga Pilar Anggaran Provinsi (F-01) */}
-        <SummaryCards data={skpdList} />
+        <div className="section-title">
+          <h2>Enam perangkat daerah terbesar</h2>
+          <Link to="/jelajahi" className="btn btn-sm">Lihat 43 instansi <ArrowRight size={14} aria-hidden="true" /></Link>
+        </div>
+        <Card>
+          <div className="tbl-wrap">
+            <table>
+              <thead><tr><th>Perangkat daerah</th><th>Komisi</th><th className="r">Anggaran</th><th className="r">Realisasi</th><th className="r">Serapan</th><th /></tr></thead>
+              <tbody>
+                {top.map((i) => (
+                  <tr key={i.id}>
+                    <td><Link to={`/instansi/${i.slug}`} className="tbl-title">{i.nama}</Link></td>
+                    <td><span className="num">{i.komisi}</span></td>
+                    <td className="r num">{formatRupiahShort(i.belanja)}</td>
+                    <td className="r num">{formatRupiahShort(i.belanjaRealisasi)}</td>
+                    <td className="r num">{i.belanja ? formatPersen((i.belanjaRealisasi / i.belanja) * 100) : '-'}</td>
+                    <td className="r"><Link to={`/instansi/${i.slug}`} className="btn btn-sm btn-quiet"><ArrowRight size={14} aria-hidden="true" /></Link></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
 
-        {/* Katalog 43 SKPD (F-02) */}
-        <SkpdTable data={skpdList} />
+        <div className="section-title"><h2>Cara kami menjaga angka</h2><span className="sub">Tiga aturan yang tidak kami langgar</span></div>
+        <div className="grid g3">
+          {[
+            { icon: <Search size={17} aria-hidden="true" />, t: 'Setiap angka punya rujukan', d: 'Tabel, halaman, dan dokumen sumber tercatat pada tiap nilai rincian.' },
+            { icon: <AlertTriangle size={17} aria-hidden="true" />, t: 'Konflik dibuka, bukan disembunyikan', d: 'Dua nilai untuk satu baris ditampilkan keduanya beserta cara memeriksanya.' },
+            { icon: <GitCompareArrows size={17} aria-hidden="true" />, t: 'Nilai ditahan tidak dihitung', d: 'Angka yang tidak dapat dipastikan tampil kosong dan tidak masuk penyebut persentase.' },
+          ].map((c) => (
+            <Card key={c.t} pad>
+              <div style={{ color: 'var(--accent)', marginBottom: 8 }}>{c.icon}</div>
+              <h3 style={{ fontSize: 14.5, marginBottom: 5 }}>{c.t}</h3>
+              <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6 }}>{c.d}</p>
+            </Card>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 26 }}>
+          <Notice tone="info" title="Periode data:">Seluruh angka berasal dari dokumen TA 2025 yang sudah selesai, diambil 21 Oktober 2026. Ini bukan data waktu nyata.</Notice>
+        </div>
+        <div style={{ marginTop: 12 }}>
+          <Card pad>
+            <div className="rowgap" style={{ justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ fontWeight: 700 }}>Menemukan angka yang janggal?</div>
+                <div style={{ fontSize: 13, color: 'var(--muted)' }}>Kirim laporan. Moderator memeriksanya terhadap dokumen sumber.</div>
+              </div>
+              <Link to="/lapor" className="btn btn-primary">Lapor Anggaran</Link>
+            </div>
+          </Card>
+        </div>
       </div>
     </LayoutShell>
   );

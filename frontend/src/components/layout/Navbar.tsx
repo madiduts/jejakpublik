@@ -1,69 +1,47 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { ShieldCheck, Menu, X } from 'lucide-react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Search } from 'lucide-react';
+import { NAV } from '../../data/site';
 
 export const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const closeMenu = () => setIsOpen(false);
+  const [q, setQ] = useState('');
+  const navigate = useNavigate();
 
   return (
-    <header className="topbar" role="banner">
-      <div className="wrap">
-        <Link to="/" className="brand" onClick={closeMenu} aria-label="JejakPublik Beranda">
-          <ShieldCheck size={28} color="#2DD4BF" aria-hidden="true" />
-          <div>
-            JejakPublik
-            <small>Menelusuri Penggunaan Uang Publik</small>
-          </div>
-        </Link>
-
-        {/* Mobile Hamburger Button */}
-        <button
-          type="button"
-          className="nav-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-label={isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-        >
-          {isOpen ? <X size={22} color="#FFFFFF" /> : <Menu size={22} color="#FFFFFF" />}
-        </button>
-
-        <nav
-          className={`topnav ${isOpen ? 'open' : ''}`}
-          aria-label="Navigasi Utama"
-        >
-          <NavLink
-            to="/"
-            end
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            Beranda
-          </NavLink>
-          <NavLink
-            to="/instansi/lingkungan-hidup"
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            Dinas LH (Detail)
-          </NavLink>
-          <NavLink
-            to="/istilah"
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            Penjelasan Istilah
-          </NavLink>
-          <NavLink
-            to="/tentang"
-            onClick={closeMenu}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            Tentang & Keterbatasan
-          </NavLink>
-        </nav>
+    <>
+      <div className="topbar">
+        <div className="wrap">
+          <span>Sumber data resmi: <b>APBD &amp; LKIP TA 2025</b> · diambil 21 Oktober 2026</span>
+          <span><Link to="/tentang">Metodologi</Link> · <Link to="/masuk">Masuk</Link></span>
+        </div>
       </div>
-    </header>
+      <header className="nav">
+        <div className="wrap">
+          <Link to="/" className="brand">
+            <span className="brand-mark" aria-hidden="true">J</span>JejakPublik
+          </Link>
+          <nav className="navlinks" aria-label="Navigasi utama">
+            {NAV.map((n) => (
+              <NavLink key={n.to} to={n.to} end={n.to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}>
+                {n.label}
+              </NavLink>
+            ))}
+          </nav>
+          <div className="nav-actions">
+            <form
+              onSubmit={(e) => { e.preventDefault(); navigate(`/jelajahi?q=${encodeURIComponent(q)}`); }}
+              style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+            >
+              <label className="search" style={{ flex: '1 1 150px', maxWidth: 220 }}>
+                <span className="sr" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden' }}>Cari instansi</span>
+                <Search size={16} aria-hidden="true" />
+                <input className="input" style={{ height: 36, fontSize: 13 }} placeholder="Cari instansi…" value={q} onChange={(e) => setQ(e.target.value)} />
+              </label>
+            </form>
+            <Link className="btn btn-primary" to="/lapor">Lapor Anggaran</Link>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
