@@ -100,11 +100,13 @@ export const Explore: React.FC = () => {
       <section className="ex-hero" data-node-id="204:26">
         <div className="ex-hero-img" aria-hidden="true" />
         <div className="ex-hero-shade" aria-hidden="true" />
-        <div data-node-id="204:30">
-          <p className="ex-crumb" data-node-id="204:31">Beranda / Jelajahi Data</p>
-        </div>
-        <div className="ex-h1wrap" data-node-id="204:33">
-          <h1 className="ex-h1" data-node-id="204:34">Jelajahi Data</h1>
+        <div className="ex-hero-canvas">
+          <div data-node-id="204:30">
+            <p className="ex-crumb" data-node-id="204:31">Beranda / Jelajahi Data</p>
+          </div>
+          <div className="ex-h1wrap" data-node-id="204:33">
+            <h1 className="ex-h1" data-node-id="204:34">Jelajahi Data</h1>
+          </div>
         </div>
       </section>
 

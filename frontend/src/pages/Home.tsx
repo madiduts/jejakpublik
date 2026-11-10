@@ -54,6 +54,7 @@ export const Home: React.FC = () => {
       <section className="lp-hero" data-node-id="203:24">
         <div className="lp-hero-img" aria-hidden="true" />
         <div className="lp-hero-shade" aria-hidden="true" />
+        <div className="lp-hero-canvas">
         <div className="lp-hero-in" data-node-id="203:27">
           <div data-node-id="203:28">
             <p className="lp-eyebrow" data-node-id="203:29">Transparansi anggaran DKI Jakarta</p>
@@ -87,6 +88,7 @@ export const Home: React.FC = () => {
               <span data-node-id="203:41">Cari</span>
             </button>
           </form>
+        </div>
         </div>
       </section>
 
