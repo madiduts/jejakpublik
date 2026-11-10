@@ -1,31 +1,14 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-
-const LINKS = [
-  { label: 'Jelajahi Data', to: '/jelajahi' },
-  { label: 'Panduan', to: '/panduan' },
-  { label: 'Glosarium', to: '/istilah' },
-  { label: 'Tentang', to: '/tentang' },
-];
+import { Navbar } from './Navbar';
 
 /**
- * Kerangka tiga layar akun (masuk, daftar, lupa kata sandi) mengikuti frame
- * 14 Masuk (163:2): kepala 94 px, panel foto 520 px, panel formulir, kaki ringkas.
+ * Kerangka tiga layar akun (masuk, daftar, lupa kata sandi).
+ * Kepalanya memakai Navbar bersama supaya sama dengan halaman lain; isi panel
+ * mengikuti frame 14 Masuk (163:2): foto 520 px, kolom formulir 560 px, kaki ringkas.
  */
 export const AuthShell: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="au">
-    <header className="au-head">
-      <Link to="/" className="au-brand">JejakPublik</Link>
-      <nav className="au-links" aria-label="Navigasi utama">
-        {LINKS.map((l) => (
-          <NavLink key={l.to} to={l.to}>{l.label}</NavLink>
-        ))}
-      </nav>
-      <Link to="/lapor" className="au-cta">
-        Lapor
-        <span className="au-cta-dot" aria-hidden="true">→</span>
-      </Link>
-    </header>
+    <Navbar />
 
     <div className="au-body">
       <aside className="au-photo">
