@@ -1,41 +1,45 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { Ico } from '../detail/icons';
+import { NavIds, NAV_203 } from '../../lib/frameIds';
 
-export const Navbar: React.FC = () => {
-  return (
-    <header className="figma-navbar" role="banner">
-      <div className="figma-navbar-inner">
-        {/* Brand: "J E J A K" di atas "Publik" */}
-        <Link to="/" className="figma-brand" aria-label="JejakPublik Beranda">
-          <span className="figma-brand-jejak">J E J A K</span>
-          <span className="figma-brand-publik">Publik</span>
-        </Link>
+const LINKS = [
+  { label: 'Beranda', to: '/' },
+  { label: 'Jelajahi Data', to: '/jelajahi' },
+  { label: 'Panduan', to: '/panduan' },
+  { label: 'Tentang', to: '/tentang' },
+];
 
-        {/* Navigation Items sesuai Frame Figma */}
-        <nav className="figma-nav-links" aria-label="Navigasi Utama">
-          <NavLink
-            to="/jelajahi"
-            className={({ isActive }) => `figma-nav-item ${isActive ? 'active' : ''}`}
-          >
-            Jelajahi Data
-          </NavLink>
-          <NavLink
-            to="/panduan"
-            className={({ isActive }) => `figma-nav-item ${isActive ? 'active' : ''}`}
-          >
-            Panduan
-          </NavLink>
-          <NavLink
-            to="/istilah"
-            className={({ isActive }) => `figma-nav-item ${isActive ? 'active' : ''}`}
-          >
-            Glosarium
-          </NavLink>
-          <NavLink to="/tentang" className="figma-nav-pill">
-            Tentang <span>&rarr;</span>
-          </NavLink>
-        </nav>
-      </div>
-    </header>
-  );
-};
+export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => (
+  <header className="lp-head" data-node-id={ids.head}>
+    <Link to="/" className="lp-brand" data-node-id={ids.brand}>
+      <span data-node-id={ids.brandText}>JejakPublik</span>
+    </Link>
+
+    <nav className="lp-links" data-node-id={ids.links} aria-label="Navigasi utama">
+      {LINKS.map((l, i) => {
+        const it = ids.items[i];
+        const link = (
+          <NavLink to={l.to} end={l.to === '/'} data-node-id={it.text}>{l.label}</NavLink>
+        );
+        return it.outer ? (
+          <span key={l.to} className="lp-link-outer" data-node-id={it.outer}>
+            <span className="lp-link-active" data-node-id={it.wrap} style={{ width: it.w }}>{link}</span>
+          </span>
+        ) : (
+          <span key={l.to} data-node-id={it.wrap} style={{ width: it.w }}>{link}</span>
+        );
+      })}
+    </nav>
+
+    <div className="lp-gap" data-node-id={ids.gap} style={{ height: 1 }} />
+
+    <Link to="/jelajahi" className="lp-searchic" data-node-id={ids.icon} aria-label="Cari instansi">
+      <Ico g="search" slot={16} />
+    </Link>
+
+    <Link to="/lapor" className="lp-cta" data-node-id={ids.cta}>
+      <span data-node-id={ids.ctaText}>Lapor Anggaran</span>
+    </Link>
+  </header>
+);

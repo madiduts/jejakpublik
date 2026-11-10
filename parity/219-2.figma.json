@@ -1,0 +1,4366 @@
+{
+ "frame": {
+  "id": "219:2",
+  "name": "06 Panduan indeks",
+  "w": 1440,
+  "h": 1203.563,
+  "page": "Gabungan · Foto + Dashboard"
+ },
+ "dumpedAt": "2026-11-10T06:42:33.700Z",
+ "config": {
+  "ROOT_ID": "219:2",
+  "PAGE": 0,
+  "PAGE_BYTES": 40000,
+  "INCLUDE_INVISIBLE": false,
+  "STOP_AT_ICONS": true,
+  "SKIP_NAMES": [],
+  "MAX_TEXT": 200
+ },
+ "total": 123,
+ "page": 0,
+ "pages": 2,
+ "nodes": [
+  {
+   "id": "219:2",
+   "name": "06 Panduan indeks",
+   "type": "FRAME",
+   "parentId": null,
+   "path": "06 Panduan indeks",
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 1203.563,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "fills": [
+    {
+     "type": "SOLID",
+     "hex": "#f7f7f8",
+     "opacity": 1
+    }
+   ]
+  },
+  {
+   "id": "219:3",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:2",
+   "path": "06 Panduan indeks/Container[0]",
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 76,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 40,
+    "pad": [
+     18,
+     44,
+     18,
+     44
+    ],
+    "primary": "MIN",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "fills": [
+    {
+     "type": "SOLID",
+     "hex": "#ffffff",
+     "opacity": 1
+    }
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e7e7ea",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:4",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:3",
+   "path": "06 Panduan indeks/Container[0]/Container[0]",
+   "x": 44,
+   "y": 23.5,
+   "w": 113,
+   "h": 28,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:5",
+   "name": "JejakPublik",
+   "type": "TEXT",
+   "parentId": "219:4",
+   "path": "06 Panduan indeks/Container[0]/Container[0]/JejakPublik[0]",
+   "x": 44,
+   "y": 23.5,
+   "w": 113,
+   "h": 28,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "JejakPublik",
+    "family": "Source Sans Pro",
+    "style": "Bold",
+    "weight": 700,
+    "size": 22,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": -0.3
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:7",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:3",
+   "path": "06 Panduan indeks/Container[0]/Container[1]",
+   "x": 197,
+   "y": 28.5,
+   "w": 320,
+   "h": 18,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 28,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:8",
+   "name": "Text",
+   "type": "FRAME",
+   "parentId": "219:7",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text[0]",
+   "x": 197,
+   "y": 28.5,
+   "w": 51,
+   "h": 18,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:9",
+   "name": "Beranda",
+   "type": "TEXT",
+   "parentId": "219:8",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text[0]/Beranda[0]",
+   "x": 197,
+   "y": 28.5,
+   "w": 51,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Beranda",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 14.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:11",
+   "name": "Text",
+   "type": "FRAME",
+   "parentId": "219:7",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text[1]",
+   "x": 276,
+   "y": 28.5,
+   "w": 79,
+   "h": 18,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:12",
+   "name": "Jelajahi Data",
+   "type": "TEXT",
+   "parentId": "219:11",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text[1]/Jelajahi Data[0]",
+   "x": 276,
+   "y": 28.5,
+   "w": 79,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Jelajahi Data",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 14.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:18",
+   "name": "Text:margin",
+   "type": "FRAME",
+   "parentId": "219:7",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text:margin[0]",
+   "x": 383,
+   "y": 28.5,
+   "w": 56,
+   "h": 18,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:13",
+   "name": "Text",
+   "type": "FRAME",
+   "parentId": "219:18",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text:margin[0]/Text[0]",
+   "x": 383,
+   "y": 28.5,
+   "w": 56,
+   "h": 36,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     16,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 2,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:14",
+   "name": "Panduan",
+   "type": "TEXT",
+   "parentId": "219:13",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text:margin[0]/Text[0]/Panduan[0]",
+   "x": 383,
+   "y": 28.5,
+   "w": 56,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Panduan",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 14.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:16",
+   "name": "Text",
+   "type": "FRAME",
+   "parentId": "219:7",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text[2]",
+   "x": 467,
+   "y": 28.5,
+   "w": 50,
+   "h": 18,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:17",
+   "name": "Tentang",
+   "type": "TEXT",
+   "parentId": "219:16",
+   "path": "06 Panduan indeks/Container[0]/Container[1]/Text[2]/Tentang[0]",
+   "x": 467,
+   "y": 28.5,
+   "w": 50,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Tentang",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 14.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:19",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:3",
+   "path": "06 Panduan indeks/Container[0]/Container[2]",
+   "x": 557,
+   "y": 37.5,
+   "w": 597,
+   "h": 0,
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:20",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:3",
+   "path": "06 Panduan indeks/Container[0]/Container[3]",
+   "x": 1194,
+   "y": 20.5,
+   "w": 34,
+   "h": 34,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "radius": {
+    "all": 17
+   },
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e7e7ea",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:21",
+   "name": "⚲",
+   "type": "TEXT",
+   "parentId": "219:20",
+   "path": "06 Panduan indeks/Container[0]/Container[3]/⚲[0]",
+   "x": 1207.5,
+   "y": 29.5,
+   "w": 7,
+   "h": 16,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "⚲",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 13,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:23",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:3",
+   "path": "06 Panduan indeks/Container[0]/Container[4]",
+   "x": 1268,
+   "y": 18,
+   "w": 128,
+   "h": 39,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     11,
+     18,
+     11,
+     18
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "radius": {
+    "all": 8
+   },
+   "fills": [
+    {
+     "type": "SOLID",
+     "hex": "#3f3f46",
+     "opacity": 1
+    }
+   ]
+  },
+  {
+   "id": "219:24",
+   "name": "Lapor Anggaran",
+   "type": "TEXT",
+   "parentId": "219:23",
+   "path": "06 Panduan indeks/Container[0]/Container[4]/Lapor Anggaran[0]",
+   "x": 1286,
+   "y": 29,
+   "w": 92,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Lapor Anggaran",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:26",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:2",
+   "path": "06 Panduan indeks/Container[1]",
+   "x": 0,
+   "y": 76,
+   "w": 1440,
+   "h": 190,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     30,
+     44,
+     30,
+     44
+    ],
+    "primary": "MAX",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": true
+   },
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ],
+   "fills": [
+    {
+     "type": "IMAGE",
+     "opacity": 1
+    },
+    {
+     "type": "SOLID",
+     "hex": "#10151a",
+     "opacity": 0.58
+    }
+   ]
+  },
+  {
+   "id": "219:30",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:26",
+   "path": "06 Panduan indeks/Container[1]/Container[0]",
+   "x": 44,
+   "y": 167,
+   "w": 1352,
+   "h": 16,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:31",
+   "name": "Beranda / Panduan",
+   "type": "TEXT",
+   "parentId": "219:30",
+   "path": "06 Panduan indeks/Container[1]/Container[0]/Beranda / Panduan[0]",
+   "x": 44,
+   "y": 167,
+   "w": 100,
+   "h": 16,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Beranda / Panduan",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 0.8
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:33",
+   "name": "Heading 1",
+   "type": "FRAME",
+   "parentId": "219:26",
+   "path": "06 Panduan indeks/Container[1]/Heading 1[0]",
+   "x": 44,
+   "y": 183,
+   "w": 1352,
+   "h": 53,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     8,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:34",
+   "name": "Panduan",
+   "type": "TEXT",
+   "parentId": "219:33",
+   "path": "06 Panduan indeks/Container[1]/Heading 1[0]/Panduan[0]",
+   "x": 44,
+   "y": 191,
+   "w": 132,
+   "h": 45,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Panduan",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 36,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": -1
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:37",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:2",
+   "path": "06 Panduan indeks/Container[2]",
+   "x": 0,
+   "y": 266,
+   "w": 1440,
+   "h": 588.5,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     34,
+     44,
+     0,
+     44
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:120",
+   "name": "Container:margin",
+   "type": "FRAME",
+   "parentId": "219:37",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[0]",
+   "x": 44,
+   "y": 300,
+   "w": 505,
+   "h": 57,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     10,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "HUG",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:39",
+   "name": "Penjelasan singkat untuk istilah dan cara baca yan",
+   "type": "TEXT",
+   "parentId": "219:120",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[0]/Penjelasan singkat untuk istilah dan cara baca yan[0]",
+   "x": 44,
+   "y": 310,
+   "w": 505,
+   "h": 47,
+   "sizing": [
+    "FIXED",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Penjelasan singkat untuk istilah dan cara baca yang muncul di JejakPublik. Ditulis untuk warga, bukan untuk ahli akuntansi.",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 14.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 23.2
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:121",
+   "name": "Container:margin",
+   "type": "FRAME",
+   "parentId": "219:37",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]",
+   "x": 44,
+   "y": 357,
+   "w": 1352,
+   "h": 497.5,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     24,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:41",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:121",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]",
+   "x": 44,
+   "y": 381,
+   "w": 1352,
+   "h": 473.5,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:42",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:41",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 381,
+   "w": 800.391,
+   "h": 473.5,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:43",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:42",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 381,
+   "w": 800.391,
+   "h": 473.5,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#10151a",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 1,
+     "r": 0,
+     "b": 0,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:44",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:43",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 382,
+   "w": 800.391,
+   "h": 78.75,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     18,
+     0,
+     18,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:45",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:44",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 400,
+   "w": 750.391,
+   "h": 41.75,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:46",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:45",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 400,
+   "w": 750.391,
+   "h": 19,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:47",
+   "name": "Mengenal JejakPublik",
+   "type": "TEXT",
+   "parentId": "219:46",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]/Container[0]/Container[0]/Mengenal JejakPublik[0]",
+   "x": 44,
+   "y": 400,
+   "w": 142,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Mengenal JejakPublik",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 15,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:49",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:45",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 419,
+   "w": 750.391,
+   "h": 23,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     4,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:50",
+   "name": "Apa yang bisa dan tidak bisa dilakukan portal ini",
+   "type": "TEXT",
+   "parentId": "219:49",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]/Container[0]/Container[1]/Apa yang bisa dan tidak bisa dilakukan portal ini[0]",
+   "x": 44,
+   "y": 423,
+   "w": 251,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Apa yang bisa dan tidak bisa dilakukan portal ini",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 18.75
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#8a8a94",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:53",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:44",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]/Container[1]",
+   "x": 810.391,
+   "y": 404.875,
+   "w": 32,
+   "h": 32,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "radius": {
+    "all": 16
+   },
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e0e0e4",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:54",
+   "name": "→",
+   "type": "TEXT",
+   "parentId": "219:53",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[0]/Container[1]/→[0]",
+   "x": 822.391,
+   "y": 413.375,
+   "w": 8,
+   "h": 15,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "→",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:56",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:43",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 460.75,
+   "w": 800.391,
+   "h": 78.75,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     18,
+     0,
+     18,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:57",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:56",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]/Container[0]",
+   "x": 44,
+   "y": 478.75,
+   "w": 750.391,
+   "h": 41.75,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:58",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:57",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 478.75,
+   "w": 750.391,
+   "h": 19,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:59",
+   "name": "Cara mencari data",
+   "type": "TEXT",
+   "parentId": "219:58",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]/Container[0]/Container[0]/Cara mencari data[0]",
+   "x": 44,
+   "y": 478.75,
+   "w": 117,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Cara mencari data",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 15,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:60",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:57",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 497.75,
+   "w": 750.391,
+   "h": 23,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     4,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:61",
+   "name": "Dari total provinsi sampai satu sub kegiatan",
+   "type": "TEXT",
+   "parentId": "219:60",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]/Container[0]/Container[1]/Dari total provinsi sampai satu sub kegiatan[0]",
+   "x": 44,
+   "y": 501.75,
+   "w": 227,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Dari total provinsi sampai satu sub kegiatan",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 18.75
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#8a8a94",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:63",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:56",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]/Container[1]",
+   "x": 810.391,
+   "y": 483.625,
+   "w": 32,
+   "h": 32,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "radius": {
+    "all": 16
+   },
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e0e0e4",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:64",
+   "name": "→",
+   "type": "TEXT",
+   "parentId": "219:63",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[1]/Container[1]/→[0]",
+   "x": 822.391,
+   "y": 492.125,
+   "w": 8,
+   "h": 15,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "→",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:65",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:43",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]",
+   "x": 44,
+   "y": 539.5,
+   "w": 800.391,
+   "h": 78.75,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     18,
+     0,
+     18,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:66",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:65",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]/Container[0]",
+   "x": 44,
+   "y": 557.5,
+   "w": 750.391,
+   "h": 41.75,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:67",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:66",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 557.5,
+   "w": 750.391,
+   "h": 19,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:68",
+   "name": "Memahami APBD dan realisasi",
+   "type": "TEXT",
+   "parentId": "219:67",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]/Container[0]/Container[0]/Memahami APBD dan realisasi[0]",
+   "x": 44,
+   "y": 557.5,
+   "w": 195,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Memahami APBD dan realisasi",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 15,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:69",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:66",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 576.5,
+   "w": 750.391,
+   "h": 23,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     4,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:70",
+   "name": "Penetapan, perubahan, realisasi, dan serapan",
+   "type": "TEXT",
+   "parentId": "219:69",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]/Container[0]/Container[1]/Penetapan, perubahan, realisasi, dan serapan[0]",
+   "x": 44,
+   "y": 580.5,
+   "w": 238,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Penetapan, perubahan, realisasi, dan serapan",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 18.75
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#8a8a94",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:72",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:65",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]/Container[1]",
+   "x": 810.391,
+   "y": 562.375,
+   "w": 32,
+   "h": 32,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "radius": {
+    "all": 16
+   },
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e0e0e4",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:73",
+   "name": "→",
+   "type": "TEXT",
+   "parentId": "219:72",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[2]/Container[1]/→[0]",
+   "x": 822.391,
+   "y": 570.875,
+   "w": 8,
+   "h": 15,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "→",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:74",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:43",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]",
+   "x": 44,
+   "y": 618.25,
+   "w": 800.391,
+   "h": 78.75,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     18,
+     0,
+     18,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:75",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:74",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]/Container[0]",
+   "x": 44,
+   "y": 636.25,
+   "w": 750.391,
+   "h": 41.75,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:76",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:75",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 636.25,
+   "w": 750.391,
+   "h": 19,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:77",
+   "name": "Memahami status data",
+   "type": "TEXT",
+   "parentId": "219:76",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]/Container[0]/Container[0]/Memahami status data[0]",
+   "x": 44,
+   "y": 636.25,
+   "w": 146,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Memahami status data",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 15,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:78",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:75",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 655.25,
+   "w": 750.391,
+   "h": 23,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     4,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:79",
+   "name": "Normal, dikoreksi, ditahan, tidak dilaporkan",
+   "type": "TEXT",
+   "parentId": "219:78",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]/Container[0]/Container[1]/Normal, dikoreksi, ditahan, tidak dilaporkan[0]",
+   "x": 44,
+   "y": 659.25,
+   "w": 230,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Normal, dikoreksi, ditahan, tidak dilaporkan",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 18.75
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#8a8a94",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:81",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:74",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]/Container[1]",
+   "x": 810.391,
+   "y": 641.125,
+   "w": 32,
+   "h": 32,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "radius": {
+    "all": 16
+   },
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e0e0e4",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:82",
+   "name": "→",
+   "type": "TEXT",
+   "parentId": "219:81",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[3]/Container[1]/→[0]",
+   "x": 822.391,
+   "y": 649.625,
+   "w": 8,
+   "h": 15,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "→",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:83",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:43",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]",
+   "x": 44,
+   "y": 697,
+   "w": 800.391,
+   "h": 78.75,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     18,
+     0,
+     18,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:84",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:83",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]/Container[0]",
+   "x": 44,
+   "y": 715,
+   "w": 750.391,
+   "h": 41.75,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:85",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:84",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 715,
+   "w": 750.391,
+   "h": 19,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:86",
+   "name": "Menelusuri program dan kegiatan",
+   "type": "TEXT",
+   "parentId": "219:85",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]/Container[0]/Container[0]/Menelusuri program dan kegiatan[0]",
+   "x": 44,
+   "y": 715,
+   "w": 217,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Menelusuri program dan kegiatan",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 15,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:87",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:84",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 734,
+   "w": 750.391,
+   "h": 23,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     4,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:88",
+   "name": "Hubungan program, kegiatan, subkegiatan, unit kerj",
+   "type": "TEXT",
+   "parentId": "219:87",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]/Container[0]/Container[1]/Hubungan program, kegiatan, subkegiatan, unit kerj[0]",
+   "x": 44,
+   "y": 738,
+   "w": 277,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Hubungan program, kegiatan, subkegiatan, unit kerja",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 18.75
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#8a8a94",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:90",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:83",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]/Container[1]",
+   "x": 810.391,
+   "y": 719.875,
+   "w": 32,
+   "h": 32,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "radius": {
+    "all": 16
+   },
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e0e0e4",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:91",
+   "name": "→",
+   "type": "TEXT",
+   "parentId": "219:90",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[4]/Container[1]/→[0]",
+   "x": 822.391,
+   "y": 728.375,
+   "w": 8,
+   "h": 15,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "→",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:92",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:43",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]",
+   "x": 44,
+   "y": 775.75,
+   "w": 800.391,
+   "h": 78.75,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     18,
+     0,
+     18,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:93",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:92",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]/Container[0]",
+   "x": 44,
+   "y": 793.75,
+   "w": 750.391,
+   "h": 41.75,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:94",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:93",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 793.75,
+   "w": 750.391,
+   "h": 19,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:95",
+   "name": "Membaca indikator kinerja",
+   "type": "TEXT",
+   "parentId": "219:94",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]/Container[0]/Container[0]/Membaca indikator kinerja[0]",
+   "x": 44,
+   "y": 793.75,
+   "w": 172,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Membaca indikator kinerja",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 15,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:96",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:93",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 812.75,
+   "w": 750.391,
+   "h": 23,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     4,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:97",
+   "name": "Target, capaian, dan arti efisiensi dalam LKIP",
+   "type": "TEXT",
+   "parentId": "219:96",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]/Container[0]/Container[1]/Target, capaian, dan arti efisiensi dalam LKIP[0]",
+   "x": 44,
+   "y": 816.75,
+   "w": 233,
+   "h": 19,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Target, capaian, dan arti efisiensi dalam LKIP",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 18.75
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#8a8a94",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:99",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:92",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]/Container[1]",
+   "x": 810.391,
+   "y": 798.625,
+   "w": 32,
+   "h": 32,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "CENTER",
+    "counter": "CENTER",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "radius": {
+    "all": 16
+   },
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e0e0e4",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:100",
+   "name": "→",
+   "type": "TEXT",
+   "parentId": "219:99",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[0]/Container[0]/Container[5]/Container[1]/→[0]",
+   "x": 822.391,
+   "y": 807.125,
+   "w": 8,
+   "h": 15,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "→",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#52525b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:101",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:41",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]",
+   "x": 862.391,
+   "y": 381,
+   "w": 533.594,
+   "h": 473.5,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     20,
+     20,
+     20,
+     20
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ],
+   "radius": {
+    "all": 14
+   },
+   "fills": [
+    {
+     "type": "SOLID",
+     "hex": "#ffffff",
+     "opacity": 1
+    }
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#e7e7ea",
+      "opacity": 1
+     }
+    ],
+    "weight": 1,
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:102",
+   "name": "Heading 3",
+   "type": "FRAME",
+   "parentId": "219:101",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Heading 3[0]",
+   "x": 883.391,
+   "y": 402,
+   "w": 491.594,
+   "h": 17,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "SPACE_BETWEEN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:103",
+   "name": "Kategori",
+   "type": "TEXT",
+   "parentId": "219:102",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Heading 3[0]/Kategori[0]",
+   "x": 883.391,
+   "y": 402,
+   "w": 51,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Kategori",
+    "family": "Source Sans Pro",
+    "style": "Bold",
+    "weight": 700,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:119",
+   "name": "Container:margin",
+   "type": "FRAME",
+   "parentId": "219:101",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]",
+   "x": 883.391,
+   "y": 419,
+   "w": 491.594,
+   "h": 260,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     10,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:105",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:119",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]",
+   "x": 883.391,
+   "y": 429,
+   "w": 491.594,
+   "h": 250,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:106",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:105",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[0]",
+   "x": 883.391,
+   "y": 429,
+   "w": 491.594,
+   "h": 40,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     11,
+     0,
+     11,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:107",
+   "name": "Mulai di sini",
+   "type": "TEXT",
+   "parentId": "219:106",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[0]/Mulai di sini[0]",
+   "x": 883.391,
+   "y": 440,
+   "w": 69,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Mulai di sini",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#18181b",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:108",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:105",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[1]",
+   "x": 883.391,
+   "y": 471,
+   "w": 491.594,
+   "h": 40,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     11,
+     0,
+     11,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:109",
+   "name": "Memahami anggaran",
+   "type": "TEXT",
+   "parentId": "219:108",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[1]/Memahami anggaran[0]",
+   "x": 883.391,
+   "y": 482,
+   "w": 119,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Memahami anggaran",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:111",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:105",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[2]",
+   "x": 883.391,
+   "y": 513,
+   "w": 491.594,
+   "h": 40,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     11,
+     0,
+     11,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:112",
+   "name": "Membaca angka",
+   "type": "TEXT",
+   "parentId": "219:111",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[2]/Membaca angka[0]",
+   "x": 883.391,
+   "y": 524,
+   "w": 92,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Membaca angka",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:113",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:105",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[3]",
+   "x": 883.391,
+   "y": 555,
+   "w": 491.594,
+   "h": 40,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     11,
+     0,
+     11,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:114",
+   "name": "Memahami integritas data",
+   "type": "TEXT",
+   "parentId": "219:113",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[3]/Memahami integritas data[0]",
+   "x": 883.391,
+   "y": 566,
+   "w": 147,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Memahami integritas data",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:115",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:105",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[4]",
+   "x": 883.391,
+   "y": 597,
+   "w": 491.594,
+   "h": 40,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     11,
+     0,
+     11,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:116",
+   "name": "Memahami kinerja",
+   "type": "TEXT",
+   "parentId": "219:115",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[4]/Memahami kinerja[0]",
+   "x": 883.391,
+   "y": 608,
+   "w": 105,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Memahami kinerja",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:117",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:105",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[5]",
+   "x": 883.391,
+   "y": 639,
+   "w": 491.594,
+   "h": 40,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     11,
+     0,
+     11,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ],
+   "stroke": {
+    "paints": [
+     {
+      "type": "SOLID",
+      "hex": "#ededef",
+      "opacity": 1
+     }
+    ],
+    "weight": {
+     "t": 0,
+     "r": 0,
+     "b": 1,
+     "l": 0
+    },
+    "align": "INSIDE"
+   }
+  },
+  {
+   "id": "219:118",
+   "name": "Bantuan",
+   "type": "TEXT",
+   "parentId": "219:117",
+   "path": "06 Panduan indeks/Container[2]/Container:margin[1]/Container[0]/Container[1]/Container:margin[0]/Container[0]/Container[5]/Bantuan[0]",
+   "x": 883.391,
+   "y": 650,
+   "w": 49,
+   "h": 17,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Bantuan",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 13.5,
+    "lineHeight": "AUTO",
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#3f3f46",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:158",
+   "name": "Container:margin",
+   "type": "FRAME",
+   "parentId": "219:2",
+   "path": "06 Panduan indeks/Container:margin[0]",
+   "x": 0,
+   "y": 854.5,
+   "w": 1440,
+   "h": 350.703,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     44,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:122",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:158",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]",
+   "x": 0,
+   "y": 898.5,
+   "w": 1440,
+   "h": 306.703,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     44,
+     44,
+     30,
+     44
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ],
+   "fills": [
+    {
+     "type": "SOLID",
+     "hex": "#10151a",
+     "opacity": 1
+    }
+   ]
+  },
+  {
+   "id": "219:123",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:122",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 942.5,
+   "w": 1352,
+   "h": 73,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:124",
+   "name": "JejakPublik",
+   "type": "TEXT",
+   "parentId": "219:123",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container[0]/JejakPublik[0]",
+   "x": 44,
+   "y": 942.5,
+   "w": 357,
+   "h": 73,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "JejakPublik",
+    "family": "Source Sans Pro",
+    "style": "SemiBold",
+    "weight": 600,
+    "size": 76,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 72.2
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": -2.8
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:156",
+   "name": "Container:margin",
+   "type": "FRAME",
+   "parentId": "219:122",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]",
+   "x": 44,
+   "y": 1015.5,
+   "w": 1352,
+   "h": 116.703,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     32,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:126",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:156",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]",
+   "x": 44,
+   "y": 1047.5,
+   "w": 1352,
+   "h": 84.703,
+   "layout": {
+    "mode": "GRID",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "HUG"
+   ]
+  },
+  {
+   "id": "219:127",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:126",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 84.703,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:128",
+   "name": "Bold Text",
+   "type": "FRAME",
+   "parentId": "219:127",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[0]/Bold Text[0]",
+   "x": 44,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 26,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     8,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:129",
+   "name": "Data",
+   "type": "TEXT",
+   "parentId": "219:128",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[0]/Bold Text[0]/Data[0]",
+   "x": 44,
+   "y": 1047.5,
+   "w": 27,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Data",
+    "family": "Source Sans Pro",
+    "style": "Bold",
+    "weight": 700,
+    "size": 10.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 17.325
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 1.1
+    },
+    "align": "LEFT",
+    "textCase": "UPPER",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:134",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:127",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[0]/Container[0]",
+   "x": 44,
+   "y": 1073.5,
+   "w": 321.5,
+   "h": 59.391,
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:131",
+   "name": "43 instansi daerah DLH: 8 program, 15 kegiatan, 33",
+   "type": "TEXT",
+   "parentId": "219:134",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[0]/Container[0]/43 instansi daerah DLH: 8 program, 15 kegiatan, 33[0]",
+   "x": 44,
+   "y": 1073.5,
+   "w": 179,
+   "h": 60,
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "text": {
+    "chars": "43 instansi daerah\nDLH: 8 program, 15 kegiatan, 33 sub\nTA 2025",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 19.8
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#b7c2c7",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:135",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:126",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[1]",
+   "x": 387.5,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 84.703,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:136",
+   "name": "Bold Text",
+   "type": "FRAME",
+   "parentId": "219:135",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[1]/Bold Text[0]",
+   "x": 387.5,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 26,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     8,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:137",
+   "name": "Rujukan",
+   "type": "TEXT",
+   "parentId": "219:136",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[1]/Bold Text[0]/Rujukan[0]",
+   "x": 387.5,
+   "y": 1047.5,
+   "w": 52,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Rujukan",
+    "family": "Source Sans Pro",
+    "style": "Bold",
+    "weight": 700,
+    "size": 10.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 17.325
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 1.1
+    },
+    "align": "LEFT",
+    "textCase": "UPPER",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:140",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:135",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[1]/Container[0]",
+   "x": 387.5,
+   "y": 1073.5,
+   "w": 321.5,
+   "h": 59.391,
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:138",
+   "name": "Glosarium istilah Panduan membaca Tentang dan meto",
+   "type": "TEXT",
+   "parentId": "219:140",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[1]/Container[0]/Glosarium istilah Panduan membaca Tentang dan meto[0]",
+   "x": 387.5,
+   "y": 1073.5,
+   "w": 104,
+   "h": 60,
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "text": {
+    "chars": "Glosarium istilah\nPanduan membaca\nTentang dan metode",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 19.8
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#b7c2c7",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:141",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:126",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[2]",
+   "x": 731,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 84.703,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:142",
+   "name": "Bold Text",
+   "type": "FRAME",
+   "parentId": "219:141",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[2]/Bold Text[0]",
+   "x": 731,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 26,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     8,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:143",
+   "name": "Batas",
+   "type": "TEXT",
+   "parentId": "219:142",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[2]/Bold Text[0]/Batas[0]",
+   "x": 731,
+   "y": 1047.5,
+   "w": 34,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Batas",
+    "family": "Source Sans Pro",
+    "style": "Bold",
+    "weight": 700,
+    "size": 10.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 17.325
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 1.1
+    },
+    "align": "LEFT",
+    "textCase": "UPPER",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:146",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:141",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[2]/Container[0]",
+   "x": 731,
+   "y": 1073.5,
+   "w": 321.5,
+   "h": 59.391,
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:144",
+   "name": "Bukan data real-time Bukan kanal pengaduan Bukan v",
+   "type": "TEXT",
+   "parentId": "219:146",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[2]/Container[0]/Bukan data real-time Bukan kanal pengaduan Bukan v[0]",
+   "x": 731,
+   "y": 1073.5,
+   "w": 122,
+   "h": 60,
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "text": {
+    "chars": "Bukan data real-time\nBukan kanal pengaduan\nBukan vonis korupsi",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 19.8
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#b7c2c7",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:147",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:126",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[3]",
+   "x": 1074.5,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 84.703,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FILL",
+    "FILL"
+   ]
+  },
+  {
+   "id": "219:148",
+   "name": "Bold Text",
+   "type": "FRAME",
+   "parentId": "219:147",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[3]/Bold Text[0]",
+   "x": 1074.5,
+   "y": 1047.5,
+   "w": 321.5,
+   "h": 26,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     0,
+     0,
+     8,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:149",
+   "name": "Sumber",
+   "type": "TEXT",
+   "parentId": "219:148",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[3]/Bold Text[0]/Sumber[0]",
+   "x": 1074.5,
+   "y": 1047.5,
+   "w": 45,
+   "h": 18,
+   "sizing": [
+    "HUG",
+    "HUG"
+   ],
+   "text": {
+    "chars": "Sumber",
+    "family": "Source Sans Pro",
+    "style": "Bold",
+    "weight": 700,
+    "size": 10.5,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 17.325
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 1.1
+    },
+    "align": "LEFT",
+    "textCase": "UPPER",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#ffffff",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:152",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:147",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[3]/Container[0]",
+   "x": 1074.5,
+   "y": 1073.5,
+   "w": 321.5,
+   "h": 59.391,
+   "sizing": [
+    "FILL",
+    "FIXED"
+   ]
+  },
+  {
+   "id": "219:150",
+   "name": "Dashboard Keuangan BPKD LKIP Dinas Lingkungan Hidu",
+   "type": "TEXT",
+   "parentId": "219:152",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container:margin[0]/Container[0]/Container[3]/Container[0]/Dashboard Keuangan BPKD LKIP Dinas Lingkungan Hidu[0]",
+   "x": 1074.5,
+   "y": 1073.5,
+   "w": 174,
+   "h": 60,
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ],
+   "text": {
+    "chars": "Dashboard Keuangan BPKD\nLKIP Dinas Lingkungan Hidup 2025\nDiambil 21 Oktober 2026",
+    "family": "Source Sans Pro",
+    "style": "Regular",
+    "weight": 400,
+    "size": 12,
+    "lineHeight": {
+     "unit": "PIXELS",
+     "value": 19.8
+    },
+    "letterSpacing": {
+     "unit": "PIXELS",
+     "value": 0
+    },
+    "align": "LEFT",
+    "textCase": "ORIGINAL",
+    "color": [
+     {
+      "type": "SOLID",
+      "hex": "#b7c2c7",
+      "opacity": 1
+     }
+    ],
+    "autoResize": "WIDTH_AND_HEIGHT",
+    "truncation": "DISABLED"
+   }
+  },
+  {
+   "id": "219:153",
+   "name": "Container",
+   "type": "FRAME",
+   "parentId": "219:122",
+   "path": "06 Panduan indeks/Container:margin[0]/Container[0]/Container[1]",
+   "x": 44,
+   "y": 1132.203,
+   "w": 1352,
+   "h": 43,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": 0,
+    "pad": [
+     26,
+     0,
+     0,
+     0
+    ],
+    "primary": "MIN",
+    "counter": "MIN",
+    "wrap": "NO_WRAP",
+    "clips": false
+   },
+   "sizing": [
+    "FIXED",
+    "FIXED"
+   ]
+  }
+ ]
+}

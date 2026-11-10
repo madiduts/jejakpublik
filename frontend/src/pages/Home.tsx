@@ -1,180 +1,308 @@
-import React from 'react';
-import { LayoutShell } from '../components/layout/LayoutShell';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Navbar } from '../components/layout/Navbar';
+import { Ico } from '../components/detail/icons';
+import { NAV_203, FOOT_203 } from '../lib/frameIds';
+import { Footer } from '../components/layout/Footer';
+import { instansiList, totals, programList } from '../lib/data';
+import { formatRupiah, formatRupiahShort, formatPersen } from '../utils/format';
+
+const serapan = (totals.belanjaRealisasi / totals.belanja) * 100;
+
+/** Label panjang dipendekkan hanya untuk kolom 852 px; angkanya tidak diubah. */
+const displayName = (n: string) => n.replace('LIMBAH BAHAN BERBAHAYA DAN BERACUN (LIMBAH B3)', 'LIMBAH B3');
+
+const KPIS = [
+  { box: '203:50', lblwrap: '203:51', label: '203:52', valwrap: '203:54', value: '203:55', footwrap: '203:57', foot: '203:58',
+    l: 'Instansi', v: String(totals.instansi), f: 'Seluruh perangkat daerah' },
+  { box: '203:62', lblwrap: '203:63', label: '203:64', valwrap: '203:65', value: '203:66', footwrap: '203:67', foot: '203:68',
+    l: 'Anggaran belanja', v: formatRupiahShort(totals.belanja), f: formatRupiah(totals.belanja) },
+  { box: '203:71', lblwrap: '203:72', label: '203:73', valwrap: '203:74', value: '203:75', footwrap: '203:76', foot: '203:77',
+    l: 'Realisasi', v: formatRupiahShort(totals.belanjaRealisasi), f: `Dilaporkan ${totals.instansiMelapor} instansi` },
+  { box: '203:80', lblwrap: '203:81', label: '203:82', valwrap: '203:83', value: '203:84', footwrap: '203:85', foot: '203:86',
+    l: 'Terserap', v: formatPersen(serapan), f: 'Terhadap anggaran perubahan' },
+];
+
+const GROUPS = [
+  { box: '203:92', numwrap: '203:93', num: '203:94', headwrap: '203:96', head: '203:97', valwrap: '203:99', val: '203:100', notewrap: '203:102', note: '203:103',
+    no: '01', t: 'Belanja', v: formatRupiah(totals.belanja),
+    n: `${totals.instansiMelapor} dari ${totals.instansi} instansi melaporkan. Realisasi ${formatRupiah(totals.belanjaRealisasi)}.` },
+  { box: '203:108', numwrap: '203:109', num: '203:110', headwrap: '203:111', head: '203:112', valwrap: '203:113', val: '203:114', notewrap: '203:115', note: '203:116',
+    no: '02', t: 'Pendapatan', v: formatRupiah(totals.pendapatan),
+    n: `${totals.instansiPendapatan} dari ${totals.instansi} instansi. Realisasi ${formatRupiah(totals.pendapatanRealisasi)}.` },
+  { box: '203:120', numwrap: '203:121', num: '203:122', headwrap: '203:123', head: '203:124', valwrap: '203:125', val: '203:126', notewrap: '203:127', note: '203:128',
+    no: '03', t: 'Pembiayaan', v: formatRupiah(totals.pembiayaan),
+    n: `${totals.instansiPembiayaan} dari ${totals.instansi} instansi. Sebagian tidak dilaporkan, dan itu bukan nol.` },
+];
+
+const ROWS = [
+  { row: '203:145', namewrap: '203:146', name: '203:147', valwrap: '203:148', val: '203:149', pctwrap: '203:151', pct: '203:152', cell: '203:153', chip: '203:154', arrow: '203:155' },
+  { row: '203:157', namewrap: '203:158', name: '203:159', valwrap: '203:160', val: '203:161', pctwrap: '203:162', pct: '203:163', cell: '203:164', chip: '203:165', arrow: '203:166' },
+  { row: '203:167', namewrap: '203:168', name: '203:169', valwrap: '203:170', val: '203:171', pctwrap: '203:172', pct: '203:173', cell: '203:174', chip: '203:175', arrow: '203:176' },
+  { row: '203:177', namewrap: '203:178', name: '203:179', valwrap: '203:180', val: '203:181', pctwrap: '203:182', pct: '203:183', cell: '203:184', chip: '203:185', arrow: '203:186' },
+  { row: '203:187', namewrap: '203:188', name: '203:189', valwrap: '203:190', val: '203:191', pctwrap: '203:192', pct: '203:193', cell: '203:194', chip: '203:195', arrow: '203:196' },
+];
+
+const POPULER = ['sampah', 'pendidikan', 'APBD', 'lingkungan hidup'];
 
 export const Home: React.FC = () => {
-  // Daftar 8 Program DLH (Sesuai Figma Frame 01 node-id 90:247)
-  const figmaPrograms = [
-    {
-      nama: 'PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI',
-      apbdp: 'Rp1.304.175.789.368',
-      serapan: '85,40%',
-    },
-    {
-      nama: 'PROGRAM PENGELOLAAN PERSAMPAHAN',
-      apbdp: 'Rp2.319.315.815.354',
-      serapan: '93,03%',
-    },
-    {
-      nama: 'PROGRAM PERENCANAAN LINGKUNGAN HIDUP',
-      apbdp: 'Rp3.219.818.500',
-      serapan: '95,52%',
-    },
-    {
-      nama: 'PROGRAM PENGENDALIAN PENCEMARAN DAN/ATAU KERUSAKAN LINGKUNGAN HIDUP',
-      apbdp: 'Rp67.876.101.084',
-      serapan: '95,94%',
-    },
-    {
-      nama: 'PROGRAM PENGENDALIAN BAHAN BERBAHAYA DAN BERACUN (B3) DAN LIMBAH B3',
-      apbdp: 'Rp3.684.567.176',
-      serapan: '77,43%',
-      isCorrected: true,
-    },
-    {
-      nama: 'PROGRAM PEMBINAAN DAN PENGAWASAN TERHADAP IZIN LINGKUNGAN DAN IZIN PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP (PPLH)',
-      apbdp: 'Rp6.059.800.956',
-      serapan: '93,48%',
-    },
-    {
-      nama: 'PROGRAM PENINGKATAN PENDIDIKAN, PELATIHAN DAN PENYULUHAN LINGKUNGAN HIDUP UNTUK MASYARAKAT',
-      apbdp: 'Rp15.075.311.576',
-      serapan: '95,65%',
-    },
-    {
-      nama: 'PROGRAM PENANGANAN PENGADUAN LINGKUNGAN HIDUP',
-      apbdp: 'Rp439.530.756',
-      serapan: '82,88%',
-    },
-  ];
+  const [q, setQ] = useState('');
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const rows = programList.slice(0, 5);
+
+  const term = q.trim().toLowerCase();
+  const sugInstansi = useMemo(
+    () => (term ? instansiList.filter((i) => i.nama.toLowerCase().includes(term)).slice(0, 3) : []),
+    [term]
+  );
+  const sugProgram = useMemo(
+    () => (term ? programList.filter((p) => p.nama.toLowerCase().includes(term)).slice(0, 3) : []),
+    [term]
+  );
+  const totalSug = sugInstansi.length + sugProgram.length;
+
+  /** Saran ditutup oleh klik di luar kotak pencarian. */
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (!boxRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    return () => document.removeEventListener('mousedown', onDown);
+  }, [open]);
+
+  const go = (path: string) => {
+    setOpen(false);
+    setActive(-1);
+    navigate(path);
+  };
 
   return (
-    <LayoutShell>
-      {/* 1. Hero Container Figma (node-id 90:244) */}
-      <section className="figma-hero-wrapper">
-        <div className="figma-hero-box">
-          <img
-            src="/assets/hero-bg-raw.jpg"
-            alt="Jakarta City Panorama"
-            className="figma-hero-bg"
-          />
-          <div className="figma-hero-overlay" />
-          <div className="figma-hero-content">
-            <div className="figma-hero-kicker">
-              TAHUN ANGGARAN 2025 &middot; DKI JAKARTA
-            </div>
-            <h1 className="figma-hero-h1">
-              Uang publik Jakarta, sampai ke sub kegiatan
-            </h1>
-            <p className="figma-hero-p">
-              Pagu, realisasi, dan hasil yang dilaporkan pemerintah daerah, lengkap dengan dokumen asalnya. Warga membaca, memeriksa, lalu menilai sendiri.
+    <div className="lp" data-figma-root data-node-id="203:2">
+      <Navbar ids={NAV_203} />
+
+      <section className="lp-hero" data-node-id="203:24">
+        <div className="lp-hero-img" aria-hidden="true" />
+        <div className="lp-hero-shade" aria-hidden="true" />
+        <div className="lp-hero-canvas">
+        <div className="lp-hero-in" data-node-id="203:27">
+          <div data-node-id="203:28">
+            <p className="lp-eyebrow" data-node-id="203:29">Transparansi anggaran DKI Jakarta</p>
+          </div>
+
+          <div className="lp-h1wrap" data-node-id="203:31">
+            <h1 className="lp-h1" data-node-id="203:32">Telusuri anggaran publik Jakarta</h1>
+          </div>
+
+          <div className="lp-pwrap" data-node-id="203:43">
+            <p className="lp-lede" data-node-id="203:35">
+              Pagu, realisasi, dan hasil yang dilaporkan pemerintah daerah, lengkap dengan dokumen asalnya.
             </p>
-            <div>
-              <Link to="/jelajahi" className="figma-hero-btn">
-                Jelajahi data <span>&rarr;</span>
-              </Link>
-            </div>
           </div>
+
+          <form
+            className="lp-hero-search"
+            data-node-id="203:37"
+            onSubmit={(e) => { e.preventDefault(); navigate(`/jelajahi?q=${encodeURIComponent(q)}`); }}
+          >
+            <div className="lp-input-wrap" data-node-id="203:38" ref={boxRef}>
+              {q === '' && <span className="lp-ph" data-node-id="203:39">Cari instansi, program, atau kata kunci...</span>}
+              <input
+                className="lp-input-real"
+                value={q}
+                onChange={(e) => { setQ(e.target.value); setOpen(true); setActive(-1); }}
+                onFocus={() => setOpen(true)}
+                onKeyDown={(e) => {
+                  const n = term ? totalSug : POPULER.length;
+                  if (e.key === 'ArrowDown') { e.preventDefault(); setActive((a) => (a + 1) % Math.max(n, 1)); }
+                  else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((a) => (a - 1 + n) % Math.max(n, 1)); }
+                  else if (e.key === 'Escape') { setOpen(false); setActive(-1); }
+                  else if (e.key === 'Enter' && active >= 0) {
+                    e.preventDefault();
+                    if (!term) { setQ(POPULER[active]); setOpen(true); setActive(-1); return; }
+                    if (active < sugInstansi.length) go(`/instansi/${sugInstansi[active].slug}`);
+                    else {
+                      const prog = sugProgram[active - sugInstansi.length];
+                      if (prog) go(`/program/${prog.slug}`);
+                    }
+                  }
+                }}
+                aria-label="Cari instansi, program, atau kata kunci"
+                aria-expanded={open}
+                aria-controls="lp-suggest"
+                role="combobox"
+                autoComplete="off"
+              />
+
+              {open && (
+                <div className="lp-suggest" id="lp-suggest" role="listbox">
+                  {!term && (
+                    <div className="lp-sug-sec">
+                      <h3>Pencarian populer</h3>
+                      <div className="lp-pop">
+                        {POPULER.map((k, i) => (
+                          <button
+                            key={k}
+                            type="button"
+                            className={active === i ? 'on' : ''}
+                            onMouseEnter={() => setActive(i)}
+                            onClick={() => { setQ(k); setOpen(true); setActive(-1); }}
+                          >
+                            {k}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {term && sugInstansi.length > 0 && (
+                    <div className="lp-sug-sec">
+                      <h3>Instansi</h3>
+                      {sugInstansi.map((i, idx) => (
+                        <button
+                          key={i.id}
+                          type="button"
+                          className={`lp-sug-opt${active === idx ? ' on' : ''}`}
+                          role="option"
+                          aria-selected={active === idx}
+                          onMouseEnter={() => setActive(idx)}
+                          onClick={() => go(`/instansi/${i.slug}`)}
+                        >
+                          <Ico g="building" slot={16} />
+                          <span className="lp-sug-txt">
+                            <span className="lp-sug-t">{i.judul}</span>
+                            <span className="lp-sug-s">Pemerintah Provinsi DKI Jakarta</span>
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {term && sugProgram.length > 0 && (
+                    <div className="lp-sug-sec">
+                      <h3>Program</h3>
+                      {sugProgram.map((p, idx) => {
+                        const pos = sugInstansi.length + idx;
+                        return (
+                          <button
+                            key={p.slug}
+                            type="button"
+                            className={`lp-sug-opt${active === pos ? ' on' : ''}`}
+                            role="option"
+                            aria-selected={active === pos}
+                            onMouseEnter={() => setActive(pos)}
+                            onClick={() => go(`/program/${p.slug}`)}
+                          >
+                            <Ico g="file" slot={16} />
+                            <span className="lp-sug-txt">
+                              <span className="lp-sug-t">{p.judul}</span>
+                              <span className="lp-sug-s">{formatRupiahShort(p.apbdp)} · {p.pct ?? '-'}</span>
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {term && totalSug === 0 && (
+                    <div className="lp-sug-empty">Tidak ada yang cocok dengan “{q}”.</div>
+                  )}
+
+                  {term && totalSug > 0 && (
+                    <button type="button" className="lp-sug-foot" onClick={() => go(`/jelajahi?q=${encodeURIComponent(q)}`)}>
+                      Lihat semua hasil untuk “{q}”
+                      <Ico g="diag" slot={14} />
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+            <button className="lp-go" data-node-id="203:40" type="submit">
+              <span data-node-id="203:41">Cari</span>
+            </button>
+          </form>
+        </div>
         </div>
       </section>
 
-      {/* 2. Stat Metrics Banner (4 Kolom Sesuai Figma node-id 90:43) */}
-      <section aria-label="Ringkasan 4 Pilar APBD" className="figma-stat-banner">
-        <div className="figma-stat-banner-inner">
-          <div className="figma-stat-item">
-            <span className="figma-stat-label">Instansi</span>
-            <div className="figma-stat-number">43</div>
-            <span className="figma-stat-sub">Seluruh perangkat daerah</span>
-          </div>
-
-          <div className="figma-stat-item">
-            <span className="figma-stat-label">Anggaran belanja</span>
-            <div className="figma-stat-number">Rp86,0 T</div>
-            <span className="figma-stat-sub">Rp85.979.175.838.982</span>
-          </div>
-
-          <div className="figma-stat-item">
-            <span className="figma-stat-label">Realisasi</span>
-            <div className="figma-stat-number">Rp74,2 T</div>
-            <span className="figma-stat-sub">Dilaporkan 43 instansi</span>
-          </div>
-
-          <div className="figma-stat-item">
-            <span className="figma-stat-label">Terserap</span>
-            <div className="figma-stat-number">86,30%</div>
-            <span className="figma-stat-sub">Terhadap anggaran perubahan</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Feature Banner (Foto Street + 3 Kartu Glass Sesuai Figma node-id 90:246) */}
-      <section aria-label="Prinsip Integritas Data" className="figma-features-wrapper">
-        <div className="figma-features-box">
-          <img
-            src="/assets/features-bg-raw.jpg"
-            alt="Jakarta Pedestrian Street"
-            className="figma-features-bg"
-          />
-          <div className="figma-features-overlay" />
-          <div className="figma-features-grid">
-            <div className="figma-glass-card">
-              <div className="figma-glass-num">01</div>
-              <h3 className="figma-glass-title">Angka dikoreksi</h3>
-              <p className="figma-glass-desc">
-                Dokumen sumber memuat dua nilai berbeda. Yang dipakai adalah nilai yang cocok dengan total dokumen dan BPKD, disertai riwayat.
-              </p>
-            </div>
-
-            <div className="figma-glass-card">
-              <div className="figma-glass-num">02</div>
-              <h3 className="figma-glass-title">Nilai ditahan</h3>
-              <p className="figma-glass-desc">
-                Bila tidak ada pembanding, angka tidak diubah menjadi nol. Ditulis apa adanya dan tidak dipakai dalam persentase.
-              </p>
-            </div>
-
-            <div className="figma-glass-card">
-              <div className="figma-glass-num">03</div>
-              <h3 className="figma-glass-title">Sumber terbuka</h3>
-              <p className="figma-glass-desc">
-                Setiap angka membawa dokumen, nomor tabel, periode, dan tanggal pengambilan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Daftar 8 Program Pilot DLH (Figma node-id 90:247) */}
-      <section aria-label="Program Pilot DLH" className="figma-program-section">
-        <div className="figma-program-header">
-          <div className="figma-program-tag">01 &middot; Program</div>
-          <h2 className="figma-program-title">Delapan program yang bisa ditelusuri</h2>
+      <section className="lp-sec" data-node-id="203:45">
+        <div data-node-id="203:46">
+          <p className="lp-label" data-node-id="203:47">Ringkasan tahun anggaran 2025</p>
         </div>
 
-        <div className="figma-program-list">
-          {figmaPrograms.map((prog, idx) => (
-            <Link
-              key={idx}
-              to="/instansi/lingkungan-hidup"
-              className="figma-program-row"
-            >
-              <div className="figma-program-left">
-                <span className="figma-program-name">{prog.nama}</span>
-                {prog.isCorrected && (
-                  <span className="figma-badge-corrected">
-                    angka dikoreksi
-                  </span>
-                )}
+        <div className="lp-kpis-wrap" data-node-id="203:197">
+          <div className="lp-kpis" data-node-id="203:49">
+            {KPIS.map((k) => (
+              <div className="lp-kpi" key={k.box} data-node-id={k.box}>
+                <div className="lp-kpi-lblwrap" data-node-id={k.lblwrap}>
+                  <p className="lp-kpi-l" data-node-id={k.label}>{k.l}</p>
+                </div>
+                <div className="lp-kpi-valwrap" data-node-id={k.valwrap}>
+                  <p className="lp-kpi-v" data-node-id={k.value}>{k.v}</p>
+                </div>
+                <div className="lp-kpi-footwrap" data-node-id={k.footwrap}>
+                  <p className="lp-kpi-f" data-node-id={k.foot}>{k.f}</p>
+                </div>
               </div>
-              <div className="figma-program-right">
-                <span className="figma-program-nominal">{prog.apbdp}</span>
-                <span className="figma-program-pct">{prog.serapan}</span>
-                <div className="figma-program-arrow">&rarr;</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="lp-h2wrap" data-node-id="203:89">
+          <p className="lp-label" data-node-id="203:90">Tiga kelompok anggaran</p>
+        </div>
+
+        <div className="lp-groups-wrap" data-node-id="203:199">
+          <div className="lp-groups" data-node-id="203:91">
+            {GROUPS.map((g) => (
+              <div className="lp-group" key={g.no} data-node-id={g.box}>
+                <div className="lp-group-numwrap" data-node-id={g.numwrap}><p className="lp-group-n" data-node-id={g.num}>{g.no}</p></div>
+                <div className="lp-group-headwrap" data-node-id={g.headwrap}><p className="lp-group-h" data-node-id={g.head}>{g.t}</p></div>
+                <div className="lp-group-valwrap" data-node-id={g.valwrap}><p className="lp-group-v" data-node-id={g.val}>{g.v}</p></div>
               </div>
-            </Link>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        <div className="lp-h2wrap" data-node-id="203:132">
+          <p className="lp-label" data-node-id="203:133">Program yang bisa ditelusuri</p>
+        </div>
+
+        <div className="lp-tablewrap" data-node-id="203:201">
+          <div className="lp-tablecard" data-node-id="203:134">
+            <div className="lp-tr lp-th" data-node-id="203:135">
+              <div data-node-id="203:136"><span data-node-id="203:137">Program</span></div>
+              <div className="lp-num" data-node-id="203:139" style={{ width: 200 }}><span data-node-id="203:140">Anggaran perubahan</span></div>
+              <div className="lp-num" data-node-id="203:142" style={{ width: 100 }}><span data-node-id="203:143">Terserap</span></div>
+              <div data-node-id="203:144" style={{ height: 1, width: 100 }} />
+            </div>
+
+            {rows.map((p, i) => (
+              <div className="lp-tr lp-td" key={p.slug} data-node-id={ROWS[i].row}>
+                <div data-node-id={ROWS[i].namewrap}>
+                  <Link to={`/program/${p.slug}`} className="lp-td-n" data-node-id={ROWS[i].name}>{displayName(p.nama)}</Link>
+                </div>
+                <div className="lp-num" data-node-id={ROWS[i].valwrap} style={{ width: 200 }}>
+                  <span data-node-id={ROWS[i].val}>{formatRupiah(p.apbdp)}</span>
+                </div>
+                <div className="lp-num" data-node-id={ROWS[i].pctwrap} style={{ width: 100 }}>
+                  <span data-node-id={ROWS[i].pct}>{p.pct ?? '-'}</span>
+                </div>
+                <div className="lp-arrowcol" data-node-id={ROWS[i].cell} style={{ width: 100 }}>
+                  <Link to={`/program/${p.slug}`} className="lp-arrow" data-node-id={ROWS[i].chip} aria-label={`Buka ${p.nama}`}>
+                    <Ico g="diag" slot={14} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-    </LayoutShell>
+
+      <Footer ids={FOOT_203} />
+    </div>
   );
 };

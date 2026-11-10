@@ -1,91 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FootIds, FOOT_203 } from '../../lib/frameIds';
 
-export const Footer: React.FC = () => {
-  return (
-    <footer className="figma-footer" role="contentinfo">
-      <div className="figma-footer-inner">
-        {/* New Branding Header (Figma node-id 148:214: Jejak Kaki + PUBLIK) */}
-        <div className="figma-footer-branding-new">
-          <img
-            src="/assets/jejak-kaki.svg"
-            alt=""
-            className="figma-footer-footprints"
-            aria-hidden="true"
-          />
-          <div className="figma-footer-publik-title">
-            PUBLIK
-          </div>
-        </div>
+export const Footer: React.FC<{ ids?: FootIds }> = ({ ids = FOOT_203 }) => (
+  <div className={`lp-footwrap${ids.compact ? ' compact' : ''}`} data-node-id={ids.wrap}>
+    <footer className="lp-foot" data-node-id={ids.foot}>
+      <div className="lp-foot-brandwrap" data-node-id={ids.brandWrap}>
+        <Link to="/" className="lp-foot-brand" data-node-id={ids.brand}>JejakPublik</Link>
+      </div>
 
-        {/* 4 Kolom Navigasi & Informasi */}
-        <div className="figma-footer-grid">
-          {/* Kolom 1: DATA */}
-          <div>
-            <h4 className="figma-footer-col-title">DATA</h4>
-            <ul className="figma-footer-list">
-              <li>
-                <Link to="/#skpd-section">43 instansi daerah</Link>
-              </li>
-              <li>
-                <Link to="/instansi/lingkungan-hidup">Dinas Lingkungan Hidup</Link>
-              </li>
-              <li>
-                <Link to="/instansi/lingkungan-hidup">8 program, 15 kegiatan, 33 sub</Link>
-              </li>
-            </ul>
+      {!ids.compact && (
+      <div className="lp-foot-colswrap" data-node-id={ids.colsWrap}>
+        <div className="lp-foot-cols" data-node-id={ids.cols}>
+          <div data-node-id={ids.col[0].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[0].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[0].head}>Data</h4>
+            </div>
+            <div data-node-id={ids.col[0].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[0].body}>{'43 instansi daerah\nDLH: 8 program, 15 kegiatan, 33 sub\nTA 2025'}</p>
+            </div>
           </div>
 
-          {/* Kolom 2: RUJUKAN */}
-          <div>
-            <h4 className="figma-footer-col-title">RUJUKAN</h4>
-            <ul className="figma-footer-list">
-              <li>
-                <Link to="/istilah">Glosarium istilah</Link>
-              </li>
-              <li>
+          <div data-node-id={ids.col[1].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[1].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[1].head}>Rujukan</h4>
+            </div>
+            <div data-node-id={ids.col[1].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[1].body}>
+                <Link to="/istilah">Glosarium istilah</Link>{'\n'}
+                <Link to="/panduan">Panduan membaca</Link>{'\n'}
                 <Link to="/tentang">Tentang dan metode</Link>
-              </li>
-              <li>
-                <Link to="/tentang#sumber">Sumber data</Link>
-              </li>
-            </ul>
+              </p>
+            </div>
           </div>
 
-          {/* Kolom 3: BATAS */}
-          <div>
-            <h4 className="figma-footer-col-title">BATAS</h4>
-            <ul className="figma-footer-list">
-              <li>Bukan data real-time</li>
-              <li>Bukan kanal pengaduan</li>
-              <li>Bukan vonis korupsi</li>
-            </ul>
+          <div data-node-id={ids.col[2].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[2].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[2].head}>Batas</h4>
+            </div>
+            <div data-node-id={ids.col[2].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[2].body}>{'Bukan data real-time\nBukan kanal pengaduan\nBukan vonis korupsi'}</p>
+            </div>
           </div>
 
-          {/* Kolom 4: SUMBER ANGKA */}
-          <div>
-            <h4 className="figma-footer-col-title">SUMBER ANGKA</h4>
-            <ul className="figma-footer-list">
-              <li>
-                <a
-                  href="https://dashboard-bpkd.jakarta.go.id"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Dashboard Keuangan BPKD
-                </a>
-              </li>
-              <li>LKIP Dinas Lingkungan Hidup 2025</li>
-              <li>Diambil 21 Oktober 2026</li>
-            </ul>
+          <div data-node-id={ids.col[3].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[3].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[3].head}>Sumber</h4>
+            </div>
+            <div data-node-id={ids.col[3].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[3].body}>{'Dashboard Keuangan BPKD\nLKIP Dinas Lingkungan Hidup 2025\nDiambil 21 Oktober 2026'}</p>
+            </div>
           </div>
-        </div>
-
-        {/* Attribution Baris Bawah */}
-        <div className="figma-footer-attribution">
-          Foto: Gunawan Kartapranata (CC BY-SA 3.0), Pemerintah Indonesia (domain publik), Lima_Em_Railfans (CC BY-SA 3.0), Akhmad Fauzi (CC BY 3.0). Sumber: Wikimedia Commons.
         </div>
       </div>
+      )}
+
+      <div className="lp-foot-legal" data-node-id={ids.legal} />
     </footer>
-  );
-};
+  </div>
+);

@@ -1,0 +1,1085 @@
+{
+  "_readme": "Penyimpangan yang disetujui pemilik produk. Setiap entri disetujui 10 November 2026.",
+  "waivers": [
+    {
+      "node": "203:32",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph. Glyph di render Figma 366,7 px; kode 371,5 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:35",
+      "property": "w",
+      "reason": "Sama: kotak teks tetap 414 px, glyph 408,9 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:204",
+      "property": "w",
+      "reason": "Beda metrik font 3,4 px; glyph di render Figma 351,6 px, kode 353,6 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:116",
+      "property": "teks",
+      "reason": "Frame mencetak Rp79.310.965.037.779; penjumlahan 23 SKPD = Rp79.310.965.937.778. Angka hasil hitung dipakai, teks frame adalah salah ketik.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:74",
+      "property": "teks",
+      "reason": "Frame memuat empat nama contoh; aplikasi memakai empat instansi dengan anggaran terbesar (Pendidikan, Kesehatan, Perhubungan, Sumber Daya Air) karena daftar filter harus berasal dari data.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:74",
+      "property": "w",
+      "reason": "Lebar glyph mengikuti nama instansi yang tampil (118,016 px vs 128 px pada frame).",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:231",
+      "property": "w",
+      "reason": "Beda metrik font 3,4 px pada merk footer; glyph render Figma 351,6 px, kode 353,6 px. Kelas yang sama dengan 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:62",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:145",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:217",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:261",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:275",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:62",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:137",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:181",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:232",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:267",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:302",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:351",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:344",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:358",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "235:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma 2 px lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "247:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma 2 px lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:18",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:20",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:123",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:145",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:162",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:179",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:196",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma 2 px lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:39",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (505 px), bukan lebar glyph (492,2 px).",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:124",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:2",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:45",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:199",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:91",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:92",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:108",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:120",
+      "property": "h",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:132",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:201",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "203:238",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tiga catatan per kartu dan baris catatan pengganti dihapus seluruhnya. Tinggi pita turun 27 px sehingga section di bawahnya bergeser 27 px dan tinggi frame berkurang 26 px.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "w",
+      "figma": "27.125",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "x (lokal)",
+      "figma": "72.875",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "radius",
+      "figma": "6/6/6/6",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "fill",
+      "figma": "#f4f4f5",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "w",
+      "figma": "57.297",
+      "reason": "Keputusan pemilik: tombol aksi tabel memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan radius, sama seperti beranda. Chip 57,297 px menyusut jadi 24 px sehingga rata kanan bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "x (lokal)",
+      "figma": "52.703",
+      "reason": "Keputusan pemilik: tombol aksi tabel memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan radius, sama seperti beranda. Chip 57,297 px menyusut jadi 24 px sehingga rata kanan bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "w",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "h",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "radius",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:52",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:53",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:100",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:59",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:101",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:101",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:79",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "radius",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "fill",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "border-width",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "padding",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:84",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:84",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:85",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:102",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:60",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:63",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:66",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:69",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:72",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:75",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:2",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:37",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:228",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:103",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:105",
+      "property": "w",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:106",
+      "property": "w",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:106",
+      "property": "teks",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:225",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:109",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:194",
+      "property": "border-width",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:211",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:265",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:39",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:107",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:110",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:112",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:114",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:164",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:37",
+      "property": "h",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:136",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:161",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:198",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:158",
+      "property": "w",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:158",
+      "property": "h",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:158",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:39",
+      "property": "h",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:37",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:101",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:106",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:107",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:108",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:109",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:111",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:112",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:113",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:114",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:115",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:116",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:117",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:118",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:41",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:42",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:43",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:44",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:45",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:46",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:49",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:50",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:53",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:56",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:57",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:58",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:60",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:61",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:63",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:65",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:66",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:67",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:69",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:70",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:72",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:74",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:75",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:76",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:78",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:79",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:81",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:83",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:84",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:85",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:87",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:88",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:90",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:92",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:93",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:94",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:96",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:97",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:99",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:158",
+      "reason": "Keputusan pemilik: tata letak isi halaman Panduan diganti ke varian B (kartu dua kolom + saring kategori + nomor dan waktu baca). Frame 219 tetap berlaku untuk banner, remah, H1, dan footer; simpul ini milik bagian isi yang diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:33",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:41",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:69",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:41",
+      "property": "y (lokal)",
+      "reason": "Figma menaruh kapital di awal kotak baris; Chrome membagi leading 37,4 px di atas dan bawah sehingga glif 3 px lebih tinggi. Tinggi baris dan kotak sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "223:79",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    }
+  ]
+}

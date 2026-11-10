@@ -1,0 +1,123 @@
+219:2 | FRAME | '06 Panduan indeks' | 1440x1203.563@0,0 | f=#f7f7f8
+219:3 | FRAME | 'Container' | 1440x76@0,0 | f=#ffffff | s={"paints": [{"type": "SOLID", "hex": "#e7e7e
+219:4 | FRAME | 'Container' | 113x28@44,23.5
+219:5 | TEXT | 'JejakPublik' | 113x28@44,23.5 | T='JejakPublik'
+219:7 | FRAME | 'Container' | 320x18@197,28.5
+219:8 | FRAME | 'Text' | 51x18@197,28.5
+219:9 | TEXT | 'Beranda' | 51x18@197,28.5 | T='Beranda'
+219:11 | FRAME | 'Text' | 79x18@276,28.5
+219:12 | TEXT | 'Jelajahi Data' | 79x18@276,28.5 | T='Jelajahi Data'
+219:18 | FRAME | 'Text:margin' | 56x18@383,28.5
+219:13 | FRAME | 'Text' | 56x36@383,28.5 | s={"paints": [{"type": "SOLID", "hex": "#18181
+219:14 | TEXT | 'Panduan' | 56x18@383,28.5 | T='Panduan'
+219:16 | FRAME | 'Text' | 50x18@467,28.5
+219:17 | TEXT | 'Tentang' | 50x18@467,28.5 | T='Tentang'
+219:19 | FRAME | 'Container' | 597x0@557,37.5
+219:20 | FRAME | 'Container' | 34x34@1194,20.5 | s={"paints": [{"type": "SOLID", "hex": "#e7e7e | r={"all": 17}
+219:21 | TEXT | '⚲' | 7x16@1207.5,29.5 | T='⚲'
+219:23 | FRAME | 'Container' | 128x39@1268,18 | f=#3f3f46 | r={"all": 8}
+219:24 | TEXT | 'Lapor Anggaran' | 92x17@1286,29 | T='Lapor Anggaran'
+219:26 | FRAME | 'Container' | 1440x190@0,76 | f=?,#10151a
+219:30 | FRAME | 'Container' | 1352x16@44,167
+219:31 | TEXT | 'Beranda / Panduan' | 100x16@44,167 | T='Beranda / Panduan'
+219:33 | FRAME | 'Heading 1' | 1352x53@44,183
+219:34 | TEXT | 'Panduan' | 132x45@44,191 | T='Panduan'
+219:37 | FRAME | 'Container' | 1440x588.5@0,266
+219:120 | FRAME | 'Container:margin' | 505x57@44,300
+219:39 | TEXT | 'Penjelasan singkat untuk istila | 505x47@44,310 | T='Penjelasan singkat untuk istilah dan cara b
+219:121 | FRAME | 'Container:margin' | 1352x497.5@44,357
+219:41 | FRAME | 'Container' | 1352x473.5@44,381
+219:42 | FRAME | 'Container' | 800.391x473.5@44,381
+219:43 | FRAME | 'Container' | 800.391x473.5@44,381 | s={"paints": [{"type": "SOLID", "hex": "#10151
+219:44 | FRAME | 'Container' | 800.391x78.75@44,382 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:45 | FRAME | 'Container' | 750.391x41.75@44,400
+219:46 | FRAME | 'Container' | 750.391x19@44,400
+219:47 | TEXT | 'Mengenal JejakPublik' | 142x19@44,400 | T='Mengenal JejakPublik'
+219:49 | FRAME | 'Container' | 750.391x23@44,419
+219:50 | TEXT | 'Apa yang bisa dan tidak bisa di | 251x19@44,423 | T='Apa yang bisa dan tidak bisa dilakukan port
+219:53 | FRAME | 'Container' | 32x32@810.391,404.875 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e | r={"all": 16}
+219:54 | TEXT | '→' | 8x15@822.391,413.375 | T='→'
+219:56 | FRAME | 'Container' | 800.391x78.75@44,460.75 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:57 | FRAME | 'Container' | 750.391x41.75@44,478.75
+219:58 | FRAME | 'Container' | 750.391x19@44,478.75
+219:59 | TEXT | 'Cara mencari data' | 117x19@44,478.75 | T='Cara mencari data'
+219:60 | FRAME | 'Container' | 750.391x23@44,497.75
+219:61 | TEXT | 'Dari total provinsi sampai satu | 227x19@44,501.75 | T='Dari total provinsi sampai satu sub kegiata
+219:63 | FRAME | 'Container' | 32x32@810.391,483.625 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e | r={"all": 16}
+219:64 | TEXT | '→' | 8x15@822.391,492.125 | T='→'
+219:65 | FRAME | 'Container' | 800.391x78.75@44,539.5 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:66 | FRAME | 'Container' | 750.391x41.75@44,557.5
+219:67 | FRAME | 'Container' | 750.391x19@44,557.5
+219:68 | TEXT | 'Memahami APBD dan realisasi' | 195x19@44,557.5 | T='Memahami APBD dan realisasi'
+219:69 | FRAME | 'Container' | 750.391x23@44,576.5
+219:70 | TEXT | 'Penetapan, perubahan, realisasi | 238x19@44,580.5 | T='Penetapan, perubahan, realisasi, dan serapa
+219:72 | FRAME | 'Container' | 32x32@810.391,562.375 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e | r={"all": 16}
+219:73 | TEXT | '→' | 8x15@822.391,570.875 | T='→'
+219:74 | FRAME | 'Container' | 800.391x78.75@44,618.25 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:75 | FRAME | 'Container' | 750.391x41.75@44,636.25
+219:76 | FRAME | 'Container' | 750.391x19@44,636.25
+219:77 | TEXT | 'Memahami status data' | 146x19@44,636.25 | T='Memahami status data'
+219:78 | FRAME | 'Container' | 750.391x23@44,655.25
+219:79 | TEXT | 'Normal, dikoreksi, ditahan, tid | 230x19@44,659.25 | T='Normal, dikoreksi, ditahan, tidak dilaporka
+219:81 | FRAME | 'Container' | 32x32@810.391,641.125 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e | r={"all": 16}
+219:82 | TEXT | '→' | 8x15@822.391,649.625 | T='→'
+219:83 | FRAME | 'Container' | 800.391x78.75@44,697 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:84 | FRAME | 'Container' | 750.391x41.75@44,715
+219:85 | FRAME | 'Container' | 750.391x19@44,715
+219:86 | TEXT | 'Menelusuri program dan kegiatan | 217x19@44,715 | T='Menelusuri program dan kegiatan'
+219:87 | FRAME | 'Container' | 750.391x23@44,734
+219:88 | TEXT | 'Hubungan program, kegiatan, sub | 277x19@44,738 | T='Hubungan program, kegiatan, subkegiatan, un
+219:90 | FRAME | 'Container' | 32x32@810.391,719.875 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e | r={"all": 16}
+219:91 | TEXT | '→' | 8x15@822.391,728.375 | T='→'
+219:92 | FRAME | 'Container' | 800.391x78.75@44,775.75 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:93 | FRAME | 'Container' | 750.391x41.75@44,793.75
+219:94 | FRAME | 'Container' | 750.391x19@44,793.75
+219:95 | TEXT | 'Membaca indikator kinerja' | 172x19@44,793.75 | T='Membaca indikator kinerja'
+219:96 | FRAME | 'Container' | 750.391x23@44,812.75
+219:97 | TEXT | 'Target, capaian, dan arti efisi | 233x19@44,816.75 | T='Target, capaian, dan arti efisiensi dalam L
+219:99 | FRAME | 'Container' | 32x32@810.391,798.625 | s={"paints": [{"type": "SOLID", "hex": "#e0e0e | r={"all": 16}
+219:100 | TEXT | '→' | 8x15@822.391,807.125 | T='→'
+219:101 | FRAME | 'Container' | 533.594x473.5@862.391,381 | f=#ffffff | s={"paints": [{"type": "SOLID", "hex": "#e7e7e | r={"all": 14}
+219:102 | FRAME | 'Heading 3' | 491.594x17@883.391,402
+219:103 | TEXT | 'Kategori' | 51x17@883.391,402 | T='Kategori'
+219:119 | FRAME | 'Container:margin' | 491.594x260@883.391,419
+219:105 | FRAME | 'Container' | 491.594x250@883.391,429
+219:106 | FRAME | 'Container' | 491.594x40@883.391,429 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:107 | TEXT | 'Mulai di sini' | 69x17@883.391,440 | T='Mulai di sini'
+219:108 | FRAME | 'Container' | 491.594x40@883.391,471 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:109 | TEXT | 'Memahami anggaran' | 119x17@883.391,482 | T='Memahami anggaran'
+219:111 | FRAME | 'Container' | 491.594x40@883.391,513 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:112 | TEXT | 'Membaca angka' | 92x17@883.391,524 | T='Membaca angka'
+219:113 | FRAME | 'Container' | 491.594x40@883.391,555 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:114 | TEXT | 'Memahami integritas data' | 147x17@883.391,566 | T='Memahami integritas data'
+219:115 | FRAME | 'Container' | 491.594x40@883.391,597 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:116 | TEXT | 'Memahami kinerja' | 105x17@883.391,608 | T='Memahami kinerja'
+219:117 | FRAME | 'Container' | 491.594x40@883.391,639 | s={"paints": [{"type": "SOLID", "hex": "#edede
+219:118 | TEXT | 'Bantuan' | 49x17@883.391,650 | T='Bantuan'
+219:158 | FRAME | 'Container:margin' | 1440x350.703@0,854.5
+219:122 | FRAME | 'Container' | 1440x306.703@0,898.5 | f=#10151a
+219:123 | FRAME | 'Container' | 1352x73@44,942.5
+219:124 | TEXT | 'JejakPublik' | 357x73@44,942.5 | T='JejakPublik'
+219:156 | FRAME | 'Container:margin' | 1352x116.703@44,1015.5
+219:126 | FRAME | 'Container' | 1352x84.703@44,1047.5
+219:127 | FRAME | 'Container' | 321.5x84.703@44,1047.5
+219:128 | FRAME | 'Bold Text' | 321.5x26@44,1047.5
+219:129 | TEXT | 'Data' | 27x18@44,1047.5 | T='Data'
+219:134 | FRAME | 'Container' | 321.5x59.391@44,1073.5
+219:131 | TEXT | '43 instansi daerah DLH: 8 progr | 179x60@44,1073.5 | T='43 instansi daerah\nDLH: 8 program, 15 kegi
+219:135 | FRAME | 'Container' | 321.5x84.703@387.5,1047.5
+219:136 | FRAME | 'Bold Text' | 321.5x26@387.5,1047.5
+219:137 | TEXT | 'Rujukan' | 52x18@387.5,1047.5 | T='Rujukan'
+219:140 | FRAME | 'Container' | 321.5x59.391@387.5,1073.5
+219:138 | TEXT | 'Glosarium istilah Panduan memba | 104x60@387.5,1073.5 | T='Glosarium istilah\nPanduan membaca\nTentang
+219:141 | FRAME | 'Container' | 321.5x84.703@731,1047.5
+219:142 | FRAME | 'Bold Text' | 321.5x26@731,1047.5
+219:143 | TEXT | 'Batas' | 34x18@731,1047.5 | T='Batas'
+219:146 | FRAME | 'Container' | 321.5x59.391@731,1073.5
+219:144 | TEXT | 'Bukan data real-time Bukan kana | 122x60@731,1073.5 | T='Bukan data real-time\nBukan kanal pengaduan
+219:147 | FRAME | 'Container' | 321.5x84.703@1074.5,1047.5
+219:148 | FRAME | 'Bold Text' | 321.5x26@1074.5,1047.5
+219:149 | TEXT | 'Sumber' | 45x18@1074.5,1047.5 | T='Sumber'
+219:152 | FRAME | 'Container' | 321.5x59.391@1074.5,1073.5
+219:150 | TEXT | 'Dashboard Keuangan BPKD LKIP Di | 174x60@1074.5,1073.5 | T='Dashboard Keuangan BPKD\nLKIP Dinas Lingkun
+219:153 | FRAME | 'Container' | 1352x43@44,1132.203
