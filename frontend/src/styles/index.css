@@ -651,46 +651,55 @@ td.r,th.r{text-align:right}
   .pg-illus{width:280px}
 }
 
-/* ── Panduan indeks (frame 219:2) ──────────────────────────────────────── */
+/* ── Panduan indeks (frame 219:2) — kartu dua kolom + saring kategori ─── */
 .gd-hero-img{position:absolute;inset:0;background:url(/img/hero-panduan-900.webp) center/cover no-repeat}
 .gd-hero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:190px;padding:30px 44px;overflow:hidden;background:#10151A}
 .gd-hero-canvas{width:100%;max-width:1352px;display:flex;flex-direction:column;justify-content:flex-end;height:130px}
-.gd-sec{max-width:1440px;margin:0 auto;padding:34px 44px 0}
-.gd-introwrap{padding-top:10px;width:505px;height:57px}
+.gd-sec{max-width:1440px;margin:0 auto;padding:34px 44px 56px}
+.gd-introwrap{padding-top:10px;max-width:505px}
 .gd-intro{margin:0;font-size:14.5px;line-height:23.2px;color:#52525B}
-.gd-gridwrap{padding-top:24px;height:497.5px}
-.gd-grid{display:grid;grid-template-columns:800.391px 551.609px;gap:0;height:473.5px}
-.gd-list{width:800.391px}
-.gd-listinner{border:0 solid #10151A;border-top-width:1px}
-.gd-card{display:grid;grid-template-columns:750.391px 1fr;gap:0;align-items:center;height:78.75px;padding:18px 0;border:0 solid #EDEDEF;border-bottom-width:1px}
-.gd-cardbody{width:750.391px}
-.gd-titlewrap{height:19px;line-height:19px}
-.gd-title{font-size:15px;line-height:19px;font-weight:600;color:#18181B;white-space:nowrap}
-.gd-title:hover{text-decoration:none;color:#005EA2}
-.gd-descwrap{height:23px;padding-top:4px;line-height:18.75px}
-.gd-desc{font-size:12.5px;line-height:18.75px;color:#8A8A94;white-space:nowrap}
-.gd-arrow{display:flex;align-items:center;justify-content:center;width:32px;height:32px;margin-right:2px;justify-self:end;border:1px solid #E0E0E4;border-radius:16px;font-size:12px;line-height:15px;color:#52525B}
-.gd-arrow:hover{background:#FAFAFB;text-decoration:none}
+.gd-cats{padding-top:24px}
+.gd-chips{display:flex;flex-wrap:wrap;gap:8px}
+.gd-chip{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 12px;border:1px solid var(--line);
+  border-radius:999px;background:#fff;font-family:inherit;font-size:12.5px;line-height:16px;color:#3F3F46;cursor:pointer;
+  transition:background .15s ease,border-color .15s ease}
+.gd-chip:hover{border-color:#D4D4D8;background:#FAFAFB}
+.gd-chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.gd-chip.on:hover{background:#27272A}
+.gd-chipn{font-size:11px;line-height:14px;color:#A1A1AA;font-variant-numeric:tabular-nums}
+.gd-chip.on .gd-chipn{color:rgba(255,255,255,.7)}
+.gd-gridwrap{padding-top:18px}
+.gd-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.gd-list{min-width:0}
+.gd-listinner{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.gd-card{display:flex;flex-direction:column;gap:6px;min-height:126px;padding:18px 20px;background:#fff;
+  border:1px solid var(--line);border-radius:14px;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
+.gd-card:hover{border-color:#D4D4D8;transform:translateY(-1px);text-decoration:none;
+  box-shadow:0 12px 26px -22px rgba(24,24,27,.5)}
+.gd-cardbody{min-width:0}
+.gd-meta{display:flex;align-items:center;gap:8px;font-size:11.5px;line-height:16px;color:#8A8A94}
+.gd-no{font-weight:700;color:#3F3F46;font-variant-numeric:tabular-nums}
+.gd-badge{font-size:10.5px;line-height:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:#0F766E;background:#CCFBF1;border-radius:6px;padding:2px 7px}
+.gd-titlewrap{padding-top:2px}
+.gd-title{display:block;font-size:15px;line-height:20px;font-weight:600;color:#18181B}
+.gd-card:hover .gd-title{color:#005EA2}
+.gd-descwrap{padding-top:2px}
+.gd-desc{display:block;font-size:12.5px;line-height:18px;color:#8A8A94}
+.gd-arrow{display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin-top:auto;
+  align-self:flex-end;border:1px solid #E0E0E4;border-radius:16px;font-size:12px;line-height:15px;color:#52525B}
 .gd-arrowicon{display:flex;align-items:center;justify-content:center;width:8px;height:15px}
-.gd-cats{width:533.594px;margin-left:18px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}
-.gd-cats-h{margin:0;font-size:13.5px;line-height:17px;font-weight:700;letter-spacing:0;color:#18181B}
-.gd-catswrap{padding-top:10px}
-.gd-catlist{display:grid;grid-template-rows:repeat(6,42px);gap:0;height:250px;align-items:start}
-.gd-cat{display:flex;align-items:center;height:40px;padding:11px 0;border:0 solid #EDEDEF;border-bottom-width:1px;background:transparent;font-family:inherit;font-size:13.5px;line-height:17px;color:#3F3F46;text-align:left;cursor:pointer}
-.gd-cat.on{font-weight:600;color:#18181B}
-.gd-cat:hover{background:#FAFAFB}
+.gd-empty{grid-column:1/-1;margin:0;padding:26px 2px;font-size:13px;line-height:20px;color:#71717A}
 
 @media (max-width:1439px){
   .gd-sec{padding-left:24px;padding-right:24px}
   .gd-hero{padding-left:24px;padding-right:24px}
-  .gd-introwrap{width:auto;max-width:505px;height:auto}
-  .gd-gridwrap{height:auto}
-  .gd-grid{grid-template-columns:minmax(0,800.391px) minmax(0,533.594px);height:auto}
-  .gd-list{width:auto;min-width:0}
-  .gd-card{grid-template-columns:minmax(0,1fr) 48px}
-  .gd-cardbody{width:auto;min-width:0}
-  .gd-title,.gd-desc{white-space:normal}
-  .gd-cats{width:auto;min-width:0}
+  .gd-introwrap{max-width:none}
+}
+
+@media (max-width:860px){
+  .gd-listinner{grid-template-columns:minmax(0,1fr)}
+  .gd-card{min-height:0}
 }
 
 /* chip filter jelajahi: keadaan aktif dan menu */
