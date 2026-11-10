@@ -1,4 +1,4 @@
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, PutObjectCommand, DeleteObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -108,5 +108,114 @@ export class StorageService {
       mimeType,
       provider: 'local-fallback'
     };
+  }
+
+  /**
+   * Sanitasi nama berkas untuk mencegah directory traversal
+   */
+  static sanitizeFilename(raw: string): string {
+    return path.basename(raw).replace(/[^a-zA-Z0-9._-]/g, '_');
+  }
+
+  /**
+   * 2. READ: Periksa keberadaan berkas bukti dan ambil metadata
+   */
+  static async getEvidenceInfo(filename: string): Promise<UploadResult | null> {
+    const safeName = this.sanitizeFilename(filename);
+
+    // Cek Cloudflare R2 jika terkonfigurasi
+    if (this.isR2Configured()) {
+      try {
+        const client = this.getR2Client();
+        const bucket = process.env.CLOUDFLARE_R2_BUCKET_NAME!;
+        const publicBaseUrl = (process.env.CLOUDFLARE_R2_PUBLIC_URL || '').replace(/\/$/, '');
+
+        const meta = await client.send(
+          new HeadObjectCommand({
+            Bucket: bucket,
+            Key: safeName
+          })
+        );
+
+        return {
+          url: publicBaseUrl ? `${publicBaseUrl}/${safeName}` : `https://${bucket}.r2.dev/${safeName}`,
+          filename: safeName,
+          size: meta.ContentLength || 0,
+          mimeType: meta.ContentType || 'image/jpeg',
+          provider: 'cloudflare-r2'
+        };
+      } catch {
+        // Lanjut ke pengecekan penyimpanan lokal
+      }
+    }
+
+    // Cek penyimpanan lokal
+    const localPath = path.join(LOCAL_UPLOAD_DIR, safeName);
+    if (fs.existsSync(localPath)) {
+      const stat = await fs.promises.stat(localPath);
+      const ext = path.extname(safeName).toLowerCase();
+      let mimeType = 'image/jpeg';
+      if (ext === '.png') mimeType = 'image/png';
+      else if (ext === '.webp') mimeType = 'image/webp';
+      else if (ext === '.pdf') mimeType = 'application/pdf';
+
+      return {
+        url: `/uploads/${safeName}`,
+        filename: safeName,
+        size: stat.size,
+        mimeType,
+        provider: 'local-fallback'
+      };
+    }
+
+    return null;
+  }
+
+  /**
+   * 3. DELETE: Hapus berkas bukti dari Cloudflare R2 dan/atau disk lokal
+   */
+  static async deleteEvidence(filename: string): Promise<boolean> {
+    const safeName = this.sanitizeFilename(filename);
+    let deleted = false;
+
+    // Hapus dari Cloudflare R2
+    if (this.isR2Configured()) {
+      try {
+        const client = this.getR2Client();
+        const bucket = process.env.CLOUDFLARE_R2_BUCKET_NAME!;
+        await client.send(
+          new DeleteObjectCommand({
+            Bucket: bucket,
+            Key: safeName
+          })
+        );
+        deleted = true;
+      } catch (err: any) {
+        console.warn('Gagal menghapus objek di Cloudflare R2:', err.message);
+      }
+    }
+
+    // Hapus dari disk lokal jika berkas ada
+    const localPath = path.join(LOCAL_UPLOAD_DIR, safeName);
+    if (fs.existsSync(localPath)) {
+      try {
+        await fs.promises.unlink(localPath);
+        deleted = true;
+      } catch (err: any) {
+        console.warn('Gagal menghapus berkas lokal:', err.message);
+      }
+    }
+
+    return deleted;
+  }
+
+  /**
+   * Helper DELETE dari URL berkas lengkap (misal: /uploads/evidence-xxx.jpg)
+   */
+  static async deleteEvidenceByUrl(urlOrPath: string): Promise<boolean> {
+    if (!urlOrPath) return false;
+    const clean = urlOrPath.split('?')[0];
+    const filename = path.basename(clean);
+    return this.deleteEvidence(filename);
   }
 }

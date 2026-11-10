@@ -83,6 +83,50 @@ export class ReportController {
   }
 
   /**
+   * Periksa metadata & keberadaan berkas bukti (READ)
+   */
+  static async getEvidence(c: Context) {
+    try {
+      const filename = c.req.param('filename');
+      if (!filename) {
+        return c.json({ success: false, error: 'Nama berkas wajib disertakan.' }, 400);
+      }
+
+      const info = await StorageService.getEvidenceInfo(filename);
+      if (!info) {
+        return c.json({ success: false, error: 'Berkas bukti tidak ditemukan.' }, 404);
+      }
+
+      return c.json({
+        success: true,
+        data: info
+      });
+    } catch (err: any) {
+      return c.json({ success: false, error: err.message || 'Gagal memproses pemeriksaan berkas.' }, 500);
+    }
+  }
+
+  /**
+   * Hapus berkas bukti dari cloud storage / lokal (DELETE)
+   */
+  static async deleteEvidence(c: Context) {
+    try {
+      const filename = c.req.param('filename');
+      if (!filename) {
+        return c.json({ success: false, error: 'Nama berkas wajib disertakan.' }, 400);
+      }
+
+      const deleted = await StorageService.deleteEvidence(filename);
+      return c.json({
+        success: true,
+        message: deleted ? 'Berkas bukti berhasil dihapus.' : 'Berkas tidak ditemukan atau telah dihapus.'
+      });
+    } catch (err: any) {
+      return c.json({ success: false, error: err.message || 'Gagal memproses penghapusan berkas.' }, 500);
+    }
+  }
+
+  /**
    * Buat laporan warga partisipatif
    */
   static async createReport(c: Context) {
@@ -181,6 +225,14 @@ export class ReportController {
       }
       const user = c.get('user');
       const isModerator = user.role === 'moderator';
+
+      // Bersihkan berkas bukti terkait di storage
+      const existing = await ReportModel.findById(id);
+      if (existing && existing.evidence_urls && existing.evidence_urls.length > 0) {
+        for (const url of existing.evidence_urls) {
+          await StorageService.deleteEvidenceByUrl(url).catch(() => {});
+        }
+      }
 
       await ReportModel.deleteReport(id, user.id, isModerator);
       return c.json({ success: true, message: 'Laporan berhasil dihapus.' });

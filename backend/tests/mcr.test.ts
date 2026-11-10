@@ -66,12 +66,37 @@ async function runTests() {
   console.assert(edited.title.includes('(Diperbarui)'), 'Title should be updated');
   console.log('✓ Citizen report update works:', edited.title);
 
-  // Test Cloudflare Storage Service
+  // Test Cloudflare Storage Service CRUD (Create, Read, Delete)
   const { StorageService } = await import('../src/services/storage.service.js');
   const dummyBuffer = Buffer.from('FAKE-IMAGE-CONTENT-FOR-TESTING');
+  // 1. Create (Upload)
   const uploadResult = await StorageService.uploadEvidence(dummyBuffer, 'evidence.jpg', 'image/jpeg');
   console.assert(uploadResult.url.length > 0, 'Storage upload should return URL');
-  console.log('✓ Storage service upload verified:', uploadResult.provider, uploadResult.url);
+  console.assert(uploadResult.filename.startsWith('evidence-'), 'Filename should have evidence- prefix');
+  console.log('✓ Storage service upload (CREATE) verified:', uploadResult.provider, uploadResult.url);
+
+  // 2. Read (Get metadata / Check existence)
+  const fileInfo = await StorageService.getEvidenceInfo(uploadResult.filename);
+  console.assert(fileInfo !== null, 'Uploaded file info should be retrievable');
+  console.assert(fileInfo?.filename === uploadResult.filename, 'Retrieved filename must match');
+  console.log('✓ Storage service info (READ) verified:', fileInfo?.filename, 'size:', fileInfo?.size);
+
+  // 3. Delete (Remove file from cloud/local)
+  const deleted = await StorageService.deleteEvidence(uploadResult.filename);
+  console.assert(deleted === true, 'Delete evidence should return true');
+  console.log('✓ Storage service delete (DELETE) verified for:', uploadResult.filename);
+
+  // 4. Test HTTP Endpoints via Hono app
+  const { app } = await import('../src/app.js');
+  // Test GET non-existent file -> 404
+  const resNotFound = await app.request('/api/v1/storage/non-existent-file.jpg');
+  console.assert(resNotFound.status === 404, 'Non-existent evidence info should return 404');
+  console.log('✓ Storage endpoint GET 404 handler verified');
+
+  // Test DELETE endpoint
+  const resDel = await app.request('/api/v1/storage/dummy-del.jpg', { method: 'DELETE' });
+  console.assert(resDel.status === 200, 'DELETE endpoint should respond with 200');
+  console.log('✓ Storage endpoint DELETE handler verified');
 
   // Track by ticket
   const tracked = await ReportModel.findByTicket(report.ticket_number);

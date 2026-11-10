@@ -4,10 +4,12 @@ import { requireAuth, requireModerator, optionalAuth } from '../middlewares/auth
 
 const reportRoutes = new Hono();
 
-// 1. Publik / Terbuka
+// 1. Publik / Terbuka & Berkas Bukti (Storage CRUD)
 reportRoutes.get('/public', ReportController.getPublicReports);
 reportRoutes.get('/track/:ticket', ReportController.trackByTicket);
 reportRoutes.post('/upload', optionalAuth, ReportController.uploadEvidence);
+reportRoutes.get('/upload/:filename', ReportController.getEvidence);
+reportRoutes.delete('/upload/:filename', optionalAuth, ReportController.deleteEvidence);
 reportRoutes.post('/', optionalAuth, ReportController.createReport);
 
 // 2. Terproteksi Pengguna (Warga Terdaftar) — CRUD Pelaporan

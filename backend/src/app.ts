@@ -10,6 +10,7 @@ import reportRoutes from './routes/report.routes.js';
 import contentRoutes from './routes/content.routes.js';
 import moderationRoutes from './routes/moderation.routes.js';
 import ingestionRoutes from './routes/ingestion.routes.js';
+import storageRoutes from './routes/storage.routes.js';
 
 export const app = new Hono();
 
@@ -42,6 +43,7 @@ app.route('/api/v1/instansi', skpdRoutes); // Alias resmi sesuai sitemap
 // Jalur B: Layanan Pelaporan (Perlu Akun & RBAC)
 app.route('/api/v1/auth', authRoutes);
 app.route('/api/v1/reports', reportRoutes);
+app.route('/api/v1/storage', storageRoutes);
 app.route('/api/v1/moderation', moderationRoutes);
 
 // Jalur C: Ingestion & Automated Webhook/Sync Pipeline
