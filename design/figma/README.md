@@ -1,32 +1,28 @@
-# Layar akun untuk Figma
+# Layar akun di Figma
 
-Dua layar yang belum ada di berkas Figma, diekspor sebagai SVG siap impor.
+Dua layar akun sudah dibuat langsung di berkas Figma (bukan impor SVG lagi).
 
-| Berkas | Ukuran frame | Isi |
-|---|---|---|
-| `daftar.svg` | 1440 × 1188 | Daftar: email, kata sandi, ulangi kata sandi, Buat akun, Daftar dengan Google |
-| `lupa-kata-sandi.svg` | 1440 × 1159 | Lupa kata sandi: email, Kirim tautan, tautan kembali |
+| Frame | Node | Ukuran | Isi |
+|---|---|---|---|
+| **22 Daftar** | `319:2` | 1440 × 1146 | Email, kata sandi, ulangi kata sandi, tombol Buat akun, catatan |
+| **23 Lupa kata sandi** | `320:2` | 1440 × 1127 | Email, tombol Kirim tautan, tautan kembali, catatan |
 
-Keduanya memakai kerangka frame **163:2 — 14 Masuk** (halaman `Eksplorasi · Semua layar foto`):
-kepala 94 px dengan tautan Jelajahi Data / Panduan / Glosarium / Tentang dan pil "Lapor",
-panel foto 520 px, kolom formulir 561 px di x 584, kaki gelap ringkas, plus 55 px ruang putih
-di bawah seperti frame aslinya.
+Keduanya berada di halaman **Eksplorasi · Semua layar foto**, di kanan frame
+`14 Masuk` (`163:2`), dan memakai token yang sama dengan frame itu:
 
-## Cara memasukkan ke Figma
+| Unsur | Nilai |
+|---|---|
+| Kepala | tinggi 94, padding 26/48, merk 23 SemiBold, tautan 15 Regular, pil Lapor radius 999 |
+| Panel foto | 520 × 760, padding 40, gambar + lapis `#10151A` 0,58, paragraf 16/24,8 selebar 271 |
+| Kolom formulir | mulai x 584, lebar 560, padding panel 56/64 |
+| Judul | 34 SemiBold, line-height 36,04, letter-spacing −0,9, lebar 314 |
+| Label | 12 SemiBold, huruf besar, letter-spacing 0,9 |
+| Input | tinggi 48, radius 6, garis `#C5D3D9`, teks 16 |
+| Tombol utama | radius 999, padding 15/26, isi `#005EA2`, teks 15 SemiBold |
+| Kaki | margin 72, isi `#10151A`, padding 44/48/32/48, merk 72 SemiBold |
 
-1. Buka berkas JejakPublik, pilih halaman **Eksplorasi · Semua layar foto**.
-2. Tarik `daftar.svg` dan `lupa-kata-sandi.svg` ke kanvas, di sebelah kanan frame `14 Masuk`.
-3. Figma membuat satu bingkai per berkas berisi lapisan teks dan bentuk yang bisa disunting.
-   Ganti nama bingkainya menjadi **22 Daftar** dan **23 Lupa kata sandi**.
-4. Periksa font: teks memakai **Source Sans Pro** (600 untuk judul, 400 untuk isi). Bila belum
-   aktif di akunmu, aktifkan dari daftar Google Fonts Figma.
+Struktur memakai auto-layout, jadi teks mengalir ulang bila lebarnya diubah.
+Foto panel memakai `imageHash` yang sama dengan frame 163:2.
 
-## Yang perlu diketahui
-
-- Impor SVG menghasilkan lapisan biasa, **bukan auto-layout**. Untuk menjadikannya komponen
-  dengan auto-layout, susun ulang setelah impor.
-- Teks dipecah per baris sesuai lebar kolom di aplikasi. Jika kamu mengubah ukuran bingkai,
-  baris tidak akan mengalir ulang dengan sendirinya.
-- Foto panel adalah gambar tertanam (JPEG 520 × 720) dari `frontend/public/img/login-520.webp`.
-- Berkas ini hasil ekspor dari halaman aplikasi yang sedang berjalan, jadi posisinya sama dengan
-  yang terlihat di `http://localhost:4173/daftar` dan `/lupa-kata-sandi`.
+Berkas SVG ekspor yang sempat dipakai sebelum MCP tersambung sudah dihapus agar
+tidak ada dua sumber kebenaran.

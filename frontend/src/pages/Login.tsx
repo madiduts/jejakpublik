@@ -24,13 +24,17 @@ export const Login: React.FC = () => {
 
   return (
     <AuthShell>
-      <p className="au-crumb">Laporan · Masuk</p>
+      <p className="au-crumb"><span>Laporan</span><span>·</span><b>Masuk</b></p>
 
-      <h1 className="au-h1">Masuk untuk mengirim laporan</h1>
+      <div className="au-h1wrap">
+        <h1 className="au-h1">Masuk untuk mengirim laporan</h1>
+      </div>
 
-      <p className="au-desc">
-        Gunakan email dan kata sandi yang kamu daftarkan. Setelah masuk, kamu kembali ke halaman laporan yang tadi kamu buka.
-      </p>
+      <div className="au-descwrap">
+        <p className="au-desc">
+          Gunakan email dan kata sandi yang kamu daftarkan. Setelah masuk, kamu kembali ke halaman laporan yang tadi kamu buka.
+        </p>
+      </div>
 
       <form
         className="au-form"
@@ -57,7 +61,7 @@ export const Login: React.FC = () => {
         </div>
 
         <div className="au-field">
-          <label className="au-label" htmlFor="kunci">Kata sandi</label>
+          <label className="au-label au-label-pad" htmlFor="kunci">Kata sandi</label>
           <input
             id="kunci"
             className="au-input"
@@ -96,9 +100,11 @@ export const Login: React.FC = () => {
       />
       {googleMsg && <p className="au-msg" role="status">{googleMsg}</p>}
 
-      <p className="au-note">
-        JejakPublik tidak meminta NIK, foto KTP, atau swafoto. Identitas pelapor tidak ditampilkan ke publik.
-      </p>
+      <div className="au-notewrap">
+        <p className="au-note">
+          JejakPublik tidak meminta NIK, foto KTP, atau swafoto. Identitas pelapor tidak ditampilkan ke publik.
+        </p>
+      </div>
     </AuthShell>
   );
 };

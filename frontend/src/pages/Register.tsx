@@ -26,13 +26,17 @@ export const Register: React.FC = () => {
 
   return (
     <AuthShell>
-      <p className="au-crumb">Akun · Daftar</p>
+      <p className="au-crumb"><span>Akun</span><span>·</span><b>Daftar</b></p>
 
-      <h1 className="au-h1">Buat akun untuk mengirim laporan</h1>
+      <div className="au-h1wrap">
+        <h1 className="au-h1">Buat akun untuk mengirim laporan</h1>
+      </div>
 
-      <p className="au-desc">
-        Cukup alamat email dan kata sandi. Setelah akun dibuat, kamu langsung kembali ke halaman laporan yang tadi kamu buka.
-      </p>
+      <div className="au-descwrap">
+        <p className="au-desc">
+          Cukup alamat email dan kata sandi. Setelah akun dibuat, kamu langsung kembali ke halaman laporan yang tadi kamu buka.
+        </p>
+      </div>
 
       <form
         className="au-form"
@@ -64,7 +68,7 @@ export const Register: React.FC = () => {
         </div>
 
         <div className="au-field">
-          <label className="au-label" htmlFor="kunci">Kata sandi</label>
+          <label className="au-label au-label-pad" htmlFor="kunci">Kata sandi</label>
           <p className="au-hint" id="kunci-hint">Minimal 8 karakter.</p>
           <input
             id="kunci"
@@ -122,9 +126,11 @@ export const Register: React.FC = () => {
       />
       {googleMsg && <p className="au-msg" role="status">{googleMsg}</p>}
 
-      <p className="au-note">
-        Akun hanya dipakai untuk mengirim dan memantau laporan. JejakPublik tidak meminta NIK, foto KTP, atau swafoto.
-      </p>
+      <div className="au-notewrap">
+        <p className="au-note">
+          Akun hanya dipakai untuk mengirim dan memantau laporan. JejakPublik tidak meminta NIK, foto KTP, atau swafoto.
+        </p>
+      </div>
     </AuthShell>
   );
 };

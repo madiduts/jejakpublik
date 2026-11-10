@@ -8,13 +8,17 @@ export const ForgotPassword: React.FC = () => {
 
   return (
     <AuthShell>
-      <p className="au-crumb">Akun · Lupa kata sandi</p>
+      <p className="au-crumb"><span>Akun</span><span>·</span><b>Lupa kata sandi</b></p>
 
-      <h1 className="au-h1">Setel ulang kata sandi</h1>
+      <div className="au-h1wrap">
+        <h1 className="au-h1">Setel ulang kata sandi</h1>
+      </div>
 
-      <p className="au-desc">
-        Masukkan alamat email yang kamu pakai mendaftar. Kami akan mengirim tautan untuk menyetel ulang kata sandi ke alamat itu.
-      </p>
+      <div className="au-descwrap">
+        <p className="au-desc">
+          Masukkan alamat email yang kamu pakai mendaftar. Kami akan mengirim tautan untuk menyetel ulang kata sandi ke alamat itu.
+        </p>
+      </div>
 
       {sent ? (
         <div className="au-done">
@@ -63,9 +67,11 @@ export const ForgotPassword: React.FC = () => {
         </div>
       )}
 
-      <p className="au-note">
-        Demi keamanan, halaman ini tidak memberi tahu apakah sebuah alamat email terdaftar atau tidak.
-      </p>
+      <div className="au-notewrap">
+        <p className="au-note">
+          Demi keamanan, halaman ini tidak memberi tahu apakah sebuah alamat email terdaftar atau tidak.
+        </p>
+      </div>
     </AuthShell>
   );
 };

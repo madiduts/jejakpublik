@@ -2,27 +2,26 @@
 
 ## 223:2 — 10 Masuk
 
-Halaman `/masuk` semula dibangun dari frame **223:2** (commit `4897643`). Pada
-2026-11-10 pemilik meminta halaman itu mengikuti frame **163:2 — 14 Masuk** dan
-menambahkan opsi masuk dengan Google, sehingga seluruh anotasi `data-node-id`
-223:* hilang dari kode.
+Halaman `/masuk` semula dibangun dari frame **223:2** (commit `4897643`), lalu
+diganti mengikuti frame **163:2 — 14 Masuk** pada commit `bf5ec83` karena pemilik
+meminta desain yang lebih baru dan menambahkan opsi masuk dengan Google.
 
-Berkas di folder ini adalah bukti pengukuran terakhir untuk 223:2 dan **tidak
-lagi menggambarkan kode**. Jangan dipakai untuk menyatakan status parity.
+Berkas 223-2.* di folder ini adalah bukti pengukuran terakhir untuk frame itu dan
+**tidak lagi menggambarkan kode**.
 
-### Status parity 163:2
+## Status 163:2
 
-Belum terukur oleh `parity_diff.py`: sesi ini tidak punya akses Figma MCP
-(`dump-frame.js` butuh `use_figma`), jadi `parity/163-2.figma.json` belum ada.
+Aplikasi sudah disamakan dengan token frame 163:2 (kepala 94, badan 760, kolom
+561, input 48 radius 6, tombol radius 999, kaki 178). Bukti yang dipakai:
 
-Verifikasi sementara memakai selisih piksel terhadap PNG ekspor frame
-(`parity/ref-163-2.png`, 1440x1159):
+- kotak unsur utama (kepala, panel foto, judul, deskripsi, kedua input, baris
+  tautan, tombol, kaki, merk) berada dalam **±1,8 px** dari posisi di frame;
+- selisih piksel terhadap PNG ekspor frame (`ref-163-2.png`): **1,8%** piksel
+  berbeda >40 (sebelumnya 6,01% saat angkanya masih ditebak dari PNG);
+- sisa selisih terkonsentrasi pada blok Google yang tidak ada di frame dan pada
+  rasterisasi teks.
 
-- geometri kotak (kepala, panel foto, kolom formulir, input, tombol, kaki)
-  berada dalam ±2 px dari posisi yang dibaca dari PNG;
-- 6,01% piksel berbeda >40 pada seluruh halaman; 4,24% pada area di atas blok
-  Google. Selisih yang tersisa terkonsentrasi pada rasterisasi teks, bukan
-  posisi.
-
-Untuk mengukuhkan: sambungkan ulang Figma MCP, jalankan `dump-frame.js` dengan
-`ROOT_ID = "163:2"`, lalu `parity_diff.py` seperti frame lain.
+Dump mesin (`parity_diff.py`) belum tersimpan sebagai berkas karena sesi ini
+tidak menuliskan keluaran `use_figma` ke disk; bila diperlukan, jalankan
+`dump-frame.js` dengan `ROOT_ID = "163:2"` lalu simpan hasilnya sebagai
+`parity/163-2.figma.json`.

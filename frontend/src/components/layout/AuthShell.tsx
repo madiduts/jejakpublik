@@ -22,8 +22,8 @@ export const AuthShell: React.FC<{ children: React.ReactNode }> = ({ children })
         ))}
       </nav>
       <Link to="/lapor" className="au-cta">
-        <span className="au-cta-dot" aria-hidden="true" />
         Lapor
+        <span className="au-cta-dot" aria-hidden="true">→</span>
       </Link>
     </header>
 
@@ -33,17 +33,22 @@ export const AuthShell: React.FC<{ children: React.ReactNode }> = ({ children })
         <div className="au-photo-shade" aria-hidden="true" />
         <div className="au-photo-text">
           <p className="au-eyebrow">Akun JejakPublik</p>
-          <p className="au-lede">
-            Akun hanya diperlukan untuk mengirim laporan. Membaca seluruh data anggaran tidak memerlukan akun.
-          </p>
+          <div className="au-ledewrap">
+            <p className="au-lede">
+              Akun hanya diperlukan untuk mengirim laporan. Membaca seluruh data anggaran tidak memerlukan akun.
+            </p>
+          </div>
         </div>
       </aside>
 
       <main className="au-panel">{children}</main>
     </div>
 
-    <footer className="au-foot">
-      <span className="au-foot-brand">JejakPublik</span>
-    </footer>
+    <div className="au-footwrap">
+      <footer className="au-foot">
+        <span className="au-foot-brand">JejakPublik</span>
+        <div className="au-foot-legal" />
+      </footer>
+    </div>
   </div>
 );
