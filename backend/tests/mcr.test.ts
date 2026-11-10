@@ -39,6 +39,27 @@ async function runTests() {
   console.assert(payload.id === newUser.id, 'JWT payload ID must match');
   console.log('✓ JWT token generation and verification passed');
 
+  // Test Forgot & Reset Password
+  const resetToken = await sign(
+    { sub: newUser.id, email: newUser.email, type: 'password_reset', exp: Math.floor(Date.now() / 1000) + 3600 },
+    JWT_SECRET,
+    'HS256'
+  );
+  const resetPayload = await verify(resetToken, JWT_SECRET, 'HS256');
+  console.assert(resetPayload.type === 'password_reset', 'Reset token type must match');
+  await UserModel.updatePassword(newUser.id, 'brandnewpassword123');
+  const updatedUser = await UserModel.findById(newUser.id);
+  console.assert(verifyPassword('brandnewpassword123', updatedUser!.password_hash), 'New password must verify');
+  console.log('✓ Forgot & Reset Password flow verified cleanly');
+
+  // Test Google Auth User Auto-Creation
+  const googleUser = await UserModel.findOrCreateFromGoogle({
+    name: 'Budi Google Account',
+    email: `google.${Date.now()}@gmail.com`
+  });
+  console.assert(googleUser.email.includes('@gmail.com'), 'Google user email should match');
+  console.log('✓ Google Auth findOrCreate verified:', googleUser.name, googleUser.email);
+
   console.log('\n--- 2. Testing ReportModel & Citizen Reporting ---');
   // Create citizen report
   const report = await ReportModel.create({

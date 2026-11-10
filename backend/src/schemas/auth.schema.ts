@@ -17,6 +17,24 @@ export const loginSchema = z.object({
 });
 export type LoginInput = z.infer<typeof loginSchema>;
 
+export const forgotPasswordSchema = z.object({
+  email: z.string().trim().email('Format email tidak valid.')
+});
+export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
+
+export const resetPasswordSchema = z.object({
+  token: z.string().min(1, 'Token reset kata sandi wajib disertakan.'),
+  new_password: z.string().min(6, 'Kata sandi baru minimal 6 karakter.')
+});
+export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
+
+export const googleAuthCallbackSchema = z.object({
+  code: z.string().optional(),
+  id_token: z.string().optional(),
+  redirect_uri: z.string().optional()
+});
+export type GoogleAuthCallbackInput = z.infer<typeof googleAuthCallbackSchema>;
+
 export interface UserPublic {
   id: string;
   name: string;

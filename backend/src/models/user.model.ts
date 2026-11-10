@@ -116,4 +116,69 @@ export class UserModel {
 
     return this.toPublic(newUser);
   }
+
+  static async updatePassword(id: string, newPassword: string): Promise<boolean> {
+    const user = await this.findById(id);
+    if (!user) {
+      throw new Error('Pengguna tidak ditemukan.');
+    }
+
+    const passwordHash = hashPassword(newPassword);
+    const now = new Date().toISOString();
+
+    try {
+      await query(
+        'UPDATE users SET password_hash = $1, updated_at = $2 WHERE id = $3',
+        [passwordHash, now, id]
+      );
+    } catch {
+      // Fallback
+    }
+
+    user.password_hash = passwordHash;
+    user.updated_at = now;
+    inMemoryUsers.set(user.email.toLowerCase(), user);
+
+    return true;
+  }
+
+  static async findOrCreateFromGoogle(params: {
+    name: string;
+    email: string;
+  }): Promise<UserPublic> {
+    const cleanEmail = params.email.trim().toLowerCase();
+    const existing = await this.findByEmail(cleanEmail);
+    if (existing) {
+      return this.toPublic(existing);
+    }
+
+    const id = crypto.randomUUID();
+    const randomPassword = crypto.randomBytes(24).toString('hex');
+    const passwordHash = hashPassword(randomPassword);
+    const role: UserRole = 'warga';
+    const now = new Date().toISOString();
+
+    const newUser: User = {
+      id,
+      name: params.name.trim() || 'Pengguna Google',
+      email: cleanEmail,
+      password_hash: passwordHash,
+      role,
+      created_at: now,
+      updated_at: now
+    };
+
+    try {
+      await query(
+        `INSERT INTO users (id, name, email, password_hash, role, created_at, updated_at)
+         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        [id, newUser.name, newUser.email, passwordHash, role, now, now]
+      );
+    } catch {
+      // Fallback
+    }
+
+    inMemoryUsers.set(cleanEmail, newUser);
+    return this.toPublic(newUser);
+  }
 }
