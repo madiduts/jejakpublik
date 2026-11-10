@@ -693,6 +693,69 @@
       "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "222:158",
+      "property": "w",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:158",
+      "property": "h",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:158",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:39",
+      "property": "h",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:136",
+      "property": "w",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:136",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:161",
+      "property": "w",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:161",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:138",
+      "property": "w",
+      "reason": "Keputusan pemilik: kolom isi Tentang dipersempit ke 960 px dan dipusatkan; pita angka dihapus. Intro, Tim, dan pita Tim ikut kolom itu sehingga lebar dan posisinya berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
