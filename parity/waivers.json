@@ -378,6 +378,160 @@
       "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "204:52",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:53",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:100",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:59",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:101",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:101",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:79",
+      "property": "h",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "radius",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "fill",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "border-width",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:82",
+      "property": "padding",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:84",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:84",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:85",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:102",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: panel filter memakai kotak cari + daftar 43 instansi bergulir dan tahun sebagai baris pilihan tunggal. Panel tumbuh dari 443,5 ke 542 px dan baris lama diganti.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:60",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:63",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:66",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:69",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:72",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:75",
+      "property": "section",
+      "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
