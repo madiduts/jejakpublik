@@ -15,7 +15,20 @@ export const ModeratorReview: React.FC = () => {
   const session = getSession();
   const [note, setNote] = useState('');
   const [version, setVersion] = useState(0);
-  const report = version >= 0 ? getReport(id) : undefined;
+  const localRep = getReport(id);
+  const fallbackDemo = {
+    id,
+    kind: 'koreksi' as const,
+    instansi: 'Dinas Lingkungan Hidup',
+    target: 'Program Pengendalian B3 · Tabel 2.4 vs Tabel 3.34',
+    message:
+      'Pada LKIP halaman 26 Tabel 2.4, program ini tercetak Rp67.876.101.084. Pada halaman 96 Tabel 3.34 tercetak Rp3.684.567.176. Terdapat indikasi salah salin dari kolom alokasi anggaran.',
+    contact: 'warga@jejakpublik.id',
+    status: 'baru' as const,
+    createdAt: new Date().toISOString(),
+    events: [{ at: new Date().toISOString(), actor: 'pelapor', action: 'Laporan dikirim', note: 'Laporan tercatat.' }]
+  };
+  const report = version >= 0 ? (localRep || fallbackDemo) : undefined;
 
   if (!session) {
     return (
