@@ -20,7 +20,7 @@ interface SkpdRow {
 }
 
 export interface Instansi {
-  id: string; nama: string; slug: string; komisi: string; asisten: string;
+  id: string; nama: string; judul: string; slug: string; komisi: string; asisten: string;
   pendapatan: number; pendapatanRealisasi: number;
   belanja: number; belanjaRealisasi: number;
   pembiayaan: number | null; pembiayaanRealisasi: number | null;
@@ -30,10 +30,29 @@ export interface Instansi {
 
 const DETAILED = 'DINAS LINGKUNGAN HIDUP';
 
+const ACRONYMS = new Set(['BPKD', 'PPKD', 'DKI', 'B3', 'ASN', 'DPRD', 'DPR', 'UPT', 'RSUD', 'BUMD', 'PDAM', 'BPS', 'KUA', 'SKPD', 'PKK', 'BAPENDA', 'BPBD']);
+const SMALL = new Set(['dan', 'di', 'ke', 'dari', 'pada', 'untuk']);
+
+/** Nama sumber tercetak kapital; tampilan memakai huruf judul. */
+export const judulInstansi = (nama: string): string => {
+  const words = nama.replace(/\s+/g, ' ').trim().split(' ');
+  return words
+    .map((w, i) => {
+      const upper = w.toUpperCase();
+      if (ACRONYMS.has(upper)) return upper;
+      if (/^\d/.test(w)) return w;
+      const lower = w.toLowerCase();
+      if (i > 0 && SMALL.has(lower)) return lower;
+      return lower.replace(/(^|[-/])([a-z])/g, (_m, sep: string, ch: string) => sep + ch.toUpperCase());
+    })
+    .join(' ');
+};
+
 export const instansiList: Instansi[] = (skpdRaw as { data: SkpdRow[] }).data.map((r) => ({
   id: r.I_IDINDUK,
   nama: r.NAMA_SKPD.replace(/\s+/g, ' ').trim(),
   slug: slugify(r.NAMA_SKPD),
+  judul: judulInstansi(r.NAMA_SKPD),
   komisi: r.C_KOMISI,
   asisten: r.C_ASISTEN,
   pendapatan: num(r.PENDAPATAN_ANGGARAN),

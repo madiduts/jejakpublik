@@ -28,6 +28,27 @@
       "reason": "Frame mencetak Rp79.310.965.037.779; penjumlahan 23 SKPD = Rp79.310.965.937.778. Angka hasil hitung dipakai, teks frame adalah salah ketik.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "204:74",
+      "property": "teks",
+      "reason": "Frame memuat empat nama contoh; aplikasi memakai empat instansi dengan anggaran terbesar (Pendidikan, Kesehatan, Perhubungan, Sumber Daya Air) karena daftar filter harus berasal dari data.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:74",
+      "property": "w",
+      "reason": "Lebar glyph mengikuti nama instansi yang tampil (118,016 px vs 128 px pada frame).",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:231",
+      "property": "w",
+      "reason": "Beda metrik font 3,4 px pada merk footer; glyph render Figma 351,6 px, kode 353,6 px. Kelas yang sama dengan 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }

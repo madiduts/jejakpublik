@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
+import { NAV_203, FOOT_203 } from '../lib/frameIds';
 import { Footer } from '../components/layout/Footer';
 import { totals, programList } from '../lib/data';
 import { formatRupiah, formatRupiahShort, formatPersen } from '../utils/format';
@@ -48,7 +49,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className="lp" data-figma-root data-node-id="203:2">
-      <Navbar />
+      <Navbar ids={NAV_203} />
 
       <section className="lp-hero" data-node-id="203:24">
         <div className="lp-hero-img" aria-hidden="true" />
@@ -164,7 +165,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      <Footer />
+      <Footer ids={FOOT_203} />
     </div>
   );
 };

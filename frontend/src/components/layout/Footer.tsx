@@ -1,30 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FootIds, FOOT_203 } from '../../lib/frameIds';
 
-export const Footer: React.FC = () => (
-  <div className="lp-footwrap" data-node-id="203:238">
-    <footer className="lp-foot" data-node-id="203:202">
-      <div className="lp-foot-brandwrap" data-node-id="203:203">
-        <Link to="/" className="lp-foot-brand" data-node-id="203:204">JejakPublik</Link>
+export const Footer: React.FC<{ ids?: FootIds }> = ({ ids = FOOT_203 }) => (
+  <div className="lp-footwrap" data-node-id={ids.wrap}>
+    <footer className="lp-foot" data-node-id={ids.foot}>
+      <div className="lp-foot-brandwrap" data-node-id={ids.brandWrap}>
+        <Link to="/" className="lp-foot-brand" data-node-id={ids.brand}>JejakPublik</Link>
       </div>
 
-      <div className="lp-foot-colswrap" data-node-id="203:236">
-        <div className="lp-foot-cols" data-node-id="203:206">
-          <div data-node-id="203:207">
-            <div className="lp-foot-headwrap" data-node-id="203:208">
-              <h4 className="lp-foot-h" data-node-id="203:209">Data</h4>
+      <div className="lp-foot-colswrap" data-node-id={ids.colsWrap}>
+        <div className="lp-foot-cols" data-node-id={ids.cols}>
+          <div data-node-id={ids.col[0].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[0].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[0].head}>Data</h4>
             </div>
-            <div data-node-id="203:214">
-              <p className="lp-foot-t" data-node-id="203:211">{'43 instansi daerah\nDLH: 8 program, 15 kegiatan, 33 sub\nTA 2025'}</p>
+            <div data-node-id={ids.col[0].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[0].body}>{'43 instansi daerah\nDLH: 8 program, 15 kegiatan, 33 sub\nTA 2025'}</p>
             </div>
           </div>
 
-          <div data-node-id="203:215">
-            <div className="lp-foot-headwrap" data-node-id="203:216">
-              <h4 className="lp-foot-h" data-node-id="203:217">Rujukan</h4>
+          <div data-node-id={ids.col[1].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[1].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[1].head}>Rujukan</h4>
             </div>
-            <div data-node-id="203:220">
-              <p className="lp-foot-t" data-node-id="203:218">
+            <div data-node-id={ids.col[1].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[1].body}>
                 <Link to="/istilah">Glosarium istilah</Link>{'\n'}
                 <Link to="/panduan">Panduan membaca</Link>{'\n'}
                 <Link to="/tentang">Tentang dan metode</Link>
@@ -32,27 +33,27 @@ export const Footer: React.FC = () => (
             </div>
           </div>
 
-          <div data-node-id="203:221">
-            <div className="lp-foot-headwrap" data-node-id="203:222">
-              <h4 className="lp-foot-h" data-node-id="203:223">Batas</h4>
+          <div data-node-id={ids.col[2].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[2].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[2].head}>Batas</h4>
             </div>
-            <div data-node-id="203:226">
-              <p className="lp-foot-t" data-node-id="203:224">{'Bukan data real-time\nBukan kanal pengaduan\nBukan vonis korupsi'}</p>
+            <div data-node-id={ids.col[2].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[2].body}>{'Bukan data real-time\nBukan kanal pengaduan\nBukan vonis korupsi'}</p>
             </div>
           </div>
 
-          <div data-node-id="203:227">
-            <div className="lp-foot-headwrap" data-node-id="203:228">
-              <h4 className="lp-foot-h" data-node-id="203:229">Sumber</h4>
+          <div data-node-id={ids.col[3].box}>
+            <div className="lp-foot-headwrap" data-node-id={ids.col[3].headWrap}>
+              <h4 className="lp-foot-h" data-node-id={ids.col[3].head}>Sumber</h4>
             </div>
-            <div data-node-id="203:232">
-              <p className="lp-foot-t" data-node-id="203:230">{'Dashboard Keuangan BPKD\nLKIP Dinas Lingkungan Hidup 2025\nDiambil 21 Oktober 2026'}</p>
+            <div data-node-id={ids.col[3].bodyWrap}>
+              <p className="lp-foot-t" data-node-id={ids.col[3].body}>{'Dashboard Keuangan BPKD\nLKIP Dinas Lingkungan Hidup 2025\nDiambil 21 Oktober 2026'}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="lp-foot-legal" data-node-id="203:233" />
+      <div className="lp-foot-legal" data-node-id={ids.legal} />
     </footer>
   </div>
 );

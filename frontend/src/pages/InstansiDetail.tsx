@@ -32,12 +32,12 @@ export const InstansiDetail: React.FC = () => {
   const allSubs = programList.flatMap((p) => p.kegs.flatMap((k) => k.subs.map((s) => ({ ...s, program: p.nama, kegiatan: k.nama }))));
 
   return (
-    <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Jelajahi data', to: '/jelajahi' }, { label: instansi.nama }]}>
+    <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Jelajahi data', to: '/jelajahi' }, { label: instansi.judul }]}>
       <div className="wrap page">
         <div className="grid g2" style={{ alignItems: 'start' }}>
           <div>
             <div className="eyebrow">{dlh ? 'Rincian penuh' : 'Ringkasan instansi'}</div>
-            <h1 style={{ fontSize: 30, fontWeight: 750 }}>{instansi.nama}</h1>
+            <h1 style={{ fontSize: 30, fontWeight: 750 }}>{instansi.judul}</h1>
             <p style={{ color: 'var(--muted)', marginTop: 8, fontSize: 14.5, maxWidth: 640 }}>
               {dlh
                 ? 'Dinas percontohan: anggaran ditelusuri sampai sub kegiatan, dilengkapi indikator kinerja dan unit kerja pelaksana.'
