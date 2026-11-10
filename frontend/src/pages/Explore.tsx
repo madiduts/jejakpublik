@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
+import { Ico } from '../components/detail/icons';
 import { NAV_204, FOOT_204 } from '../lib/frameIds';
 import { instansiList, totals } from '../lib/data';
 import { formatRupiah } from '../utils/format';
@@ -41,23 +42,6 @@ const PAGE_IDS = [
 ];
 
 const byBudget = [...instansiList].sort((a, b) => b.belanja - a.belanja);
-
-/** Glyph 215:8 (18×18) disalin apa adanya dari frame; tidak ada di Lucide. */
-const AvatarGlyph: React.FC<{ id?: string }> = ({ id }) => (
-  <svg data-node-id={id} width="40" height="40" viewBox="0 0 40 40" fill="none"
-       stroke="#52525C" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true"
-       style={{ background: '#EDEDEF', borderRadius: 10, display: 'block' }}>
-    <g transform="translate(11 11)">
-    <path transform="translate(4.5 1.5)" d="M0 15 L0 1.5 C0 1.102 0.158 0.721 0.439 0.439 C0.721 0.158 1.102 0 1.5 0 L7.5 0 C7.898 0 8.279 0.158 8.561 0.439 C8.842 0.721 9 1.102 9 1.5 L9 15 L0 15 Z" fill="#52525C" fillOpacity="0" />
-    <path transform="translate(1.5 9)" d="M3 0 L1.5 0 C1.102 0 0.721 0.158 0.439 0.439 C0.158 0.721 0 1.102 0 1.5 L0 6 C0 6.398 0.158 6.779 0.439 7.061 C0.721 7.342 1.102 7.5 1.5 7.5 L3 7.5" />
-    <path transform="translate(13.5 6.75)" d="M0 0 L1.5 0 C1.898 0 2.279 0.158 2.561 0.439 C2.842 0.721 3 1.102 3 1.5 L3 8.25 C3 8.648 2.842 9.029 2.561 9.311 C2.279 9.592 1.898 9.75 1.5 9.75 L0 9.75" />
-    <path transform="translate(7.5 4.5)" d="M0 0 L3 0" />
-    <path transform="translate(7.5 7.5)" d="M0 0 L3 0" />
-    <path transform="translate(7.5 10.5)" d="M0 0 L3 0" />
-    <path transform="translate(7.5 13.5)" d="M0 0 L3 0" />
-    </g>
-  </svg>
-);
 
 const SORT_LABEL: Record<string, string> = {
   anggaran: 'Urutkan: anggaran terbesar',
@@ -244,8 +228,8 @@ export const Explore: React.FC = () => {
                   {rows.map((inst, i) => (
                     <div className={`ex-row${i === 4 ? ' last' : ''}`} key={inst.id} data-node-id={ROW_IDS[i].row}>
                       <div className="ex-name" data-node-id={ROW_IDS[i].name}>
-                        <span className="ex-avatar" aria-hidden="true">
-                          <AvatarGlyph id={ROW_IDS[i].avatar} />
+                        <span className="ex-avatar" data-node-id={ROW_IDS[i].avatar} aria-hidden="true">
+                          <Ico g="building" slot={18} />
                         </span>
                         <span className="ex-nameblock" data-node-id={ROW_IDS[i].block}>
                           <span className="ex-namewrap" data-node-id={ROW_IDS[i].nameWrap}>
