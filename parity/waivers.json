@@ -343,6 +343,41 @@
       "reason": "Keputusan pemilik: tombol aksi tabel memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan radius, sama seperti beranda. Chip 57,297 px menyusut jadi 24 px sehingga rata kanan bergeser.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "w",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "h",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "x (lokal)",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:107",
+      "property": "radius",
+      "reason": "Keputusan pemilik: kontrol urutkan memakai ikon ghost tanpa kotak (varian G). Teks 151x18 diganti tombol ikon 32x32 tanpa latar, radius 8 hanya untuk latar hover.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }

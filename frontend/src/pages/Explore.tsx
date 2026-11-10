@@ -59,6 +59,7 @@ export const Explore: React.FC = () => {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('anggaran');
   const [menu, setMenu] = useState<{ i: number; x: number } | null>(null);
+  const [sortMenu, setSortMenu] = useState(false);
 
   const topFilters = byBudget.slice(0, 4).map((i) => i.judul);
 
@@ -75,9 +76,19 @@ export const Explore: React.FC = () => {
     });
   }, [q, selInstansi, lainnya, kedalaman, komisi, topFilters]);
 
-  const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const ordered = useMemo(() => {
+    const list = [...filtered];
+    if (sort === 'nama') list.sort((a, b) => a.judul.localeCompare(b.judul, 'id'));
+    if (sort === 'serapan') {
+      const pct = (i: typeof list[number]) => (i.belanja ? i.belanjaRealisasi / i.belanja : 0);
+      list.sort((a, b) => pct(b) - pct(a));
+    }
+    return list;
+  }, [filtered, sort]);
+
+  const pages = Math.max(1, Math.ceil(ordered.length / PAGE_SIZE));
   const current = Math.min(page, pages);
-  const rows = filtered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
+  const rows = ordered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
 
   /** Jendela empat nomor halaman seperti frame; bergeser bila halaman aktif melewatinya. */
   const windowStart = Math.min(Math.max(1, current - 3), Math.max(1, pages - 3));
@@ -95,19 +106,20 @@ export const Explore: React.FC = () => {
 
   /** Menu chip ditutup oleh klik di luar, Escape, atau pilihan. */
   useEffect(() => {
-    if (!menu) return;
+    if (!menu && !sortMenu) return;
     const onDown = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
       if (!t.closest('.ex-menu') && !t.closest('.ex-chip')) setMenu(null);
+      if (!t.closest('.ex-menu') && !t.closest('.ex-sortbtn')) setSortMenu(false);
     };
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(null); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(null); setSortMenu(false); } };
     document.addEventListener('mousedown', onDown);
     document.addEventListener('keydown', onKey);
     return () => {
       document.removeEventListener('mousedown', onDown);
       document.removeEventListener('keydown', onKey);
     };
-  }, [menu]);
+  }, [menu, sortMenu]);
 
   const chipLabels = [
     selInstansi.length === 0 ? 'Semua instansi'
@@ -331,20 +343,32 @@ export const Explore: React.FC = () => {
             <div className="ex-list" data-node-id="204:103">
               <div className="ex-list-head" data-node-id="204:104">
                 <span className="ex-th18" data-node-id="204:105"><span className="ex-t16" data-node-id="204:106">{rows.length} dari {totals.instansi} instansi</span></span>
-                <span className="ex-th18" data-node-id="204:107">
-                  <span className="ex-sort-txt" data-node-id="204:108">
-                    {SORT_LABEL[sort]} <span className="ex-caret">▾</span>
-                    <select
-                      className="ex-sort-select"
-                      value={sort}
-                      onChange={(e) => setSort(e.target.value)}
-                      aria-label="Urutkan"
-                    >
-                      <option value="anggaran">Anggaran terbesar</option>
-                      <option value="nama">Nama A–Z</option>
-                      <option value="serapan">Serapan</option>
-                    </select>
-                  </span>
+                <span className="ex-sortwrap">
+                  <button
+                    className={`ex-sortbtn${sort !== 'anggaran' ? ' on' : ''}`}
+                    data-node-id="204:107"
+                    aria-label={`Urutkan: ${SORT_LABEL[sort].replace('Urutkan: ', '')}`}
+                    aria-haspopup="menu"
+                    aria-expanded={sortMenu}
+                    onClick={() => setSortMenu((v) => !v)}
+                  >
+                    <Ico g="sort" slot={17} />
+                  </button>
+                  {sortMenu && (
+                    <div className="ex-menu ex-menu-right" role="menu" onMouseDown={(ev) => ev.stopPropagation()}>
+                      {(['anggaran', 'nama', 'serapan'] as const).map((v) => (
+                        <button
+                          key={v}
+                          role="menuitemradio"
+                          aria-checked={sort === v}
+                          onClick={() => { setSort(v); setSortMenu(false); }}
+                        >
+                          {SORT_LABEL[v].replace('Urutkan: ', '')}
+                          <span className="ex-tick">{sort === v ? '✓' : ''}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </span>
               </div>
 

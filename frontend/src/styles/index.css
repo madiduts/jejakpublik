@@ -358,9 +358,12 @@ td.r,th.r{text-align:right}
 .ex-th18{display:inline-block;height:18px;line-height:16px}
 .ex-t16{display:inline-block;line-height:16px}
 .ex-list-head > span{font-size:12.5px;line-height:16px;color:var(--muted)}
-.ex-sort-txt{position:relative;display:inline-block;line-height:16px;color:var(--muted);font-size:12.5px}
-.ex-sort-select{position:absolute;inset:0;width:100%;opacity:0;border:0;background:transparent;cursor:pointer;font:inherit;appearance:none}
-.ex-caret{font-size:6.2px}
+.ex-sortwrap{position:relative;display:inline-flex}
+.ex-sortbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;border:0;border-radius:8px;background:transparent;color:#52525B;cursor:pointer;transition:background .15s ease,color .15s ease}
+.ex-sortbtn:hover{background:var(--chip);color:var(--ink)}
+.ex-sortbtn.on{background:var(--chip);color:var(--ink)}
+.ex-sortbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ex-menu-right{right:0;left:auto;top:36px}
 .ex-cardwrap{padding-top:10px;height:427px}
 .ex-card{height:417px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .ex-thead{display:grid;grid-template-columns:434px 248px 198px 128px;gap:0;align-items:center;height:41px;line-height:14px;padding:13px 22px;background:#FAFAFB;border:0 solid var(--line-2);border-bottom-width:1px;font-size:11.5px;line-height:14px;font-weight:600;letter-spacing:.2px;color:#52525B}
