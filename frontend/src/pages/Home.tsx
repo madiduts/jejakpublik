@@ -126,11 +126,14 @@ export const Home: React.FC = () => {
                 <div className="lp-group-numwrap" data-node-id={g.numwrap}><p className="lp-group-n" data-node-id={g.num}>{g.no}</p></div>
                 <div className="lp-group-headwrap" data-node-id={g.headwrap}><p className="lp-group-h" data-node-id={g.head}>{g.t}</p></div>
                 <div className="lp-group-valwrap" data-node-id={g.valwrap}><p className="lp-group-v" data-node-id={g.val}>{g.v}</p></div>
-                <div className="lp-group-notewrap" data-node-id={g.notewrap}><p className="lp-group-note" data-node-id={g.note}>{g.n}</p></div>
               </div>
             ))}
           </div>
         </div>
+
+        <p className="lp-footnote">
+          Angka yang tidak dilaporkan tidak dihitung sebagai nol. <Link to="/tentang">Rinciannya di Metodologi</Link>.
+        </p>
 
         <div className="lp-h2wrap" data-node-id="203:132">
           <p className="lp-label" data-node-id="203:133">Program yang bisa ditelusuri</p>

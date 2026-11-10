@@ -255,8 +255,8 @@ td.r,th.r{text-align:right}
 .lp-kpi-f{margin:0;font-size:12px;line-height:15px;color:var(--faint);white-space:nowrap}
 
 .lp-h2wrap{height:48px;padding-top:34px;display:flex;align-items:flex-start}
-.lp-groups-wrap{padding-top:18px;height:149.375px}
-.lp-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #10151A;height:131.375px}
+.lp-groups-wrap{padding-top:18px;height:122.375px}
+.lp-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #10151A;height:104.375px}
 .lp-group{padding:20px 28px 0 0}
 .lp-group + .lp-group{border:0 solid #E0E0E4;border-left-width:1px;padding-left:28px}
 .lp-group-numwrap{height:14px}
@@ -265,8 +265,8 @@ td.r,th.r{text-align:right}
 .lp-group-h{margin:0;font-size:17px;line-height:21px;font-weight:600;color:var(--ink)}
 .lp-group-valwrap{height:40px;padding-top:12px}
 .lp-group-v{margin:0;font-size:22px;line-height:28px;font-weight:600;letter-spacing:-.5px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-.lp-group-notewrap{height:27px;padding-top:7px}
-.lp-group-note{margin:0;font-size:12.5px;line-height:19.375px;color:var(--faint)}
+.lp-footnote{margin:12px 0 0;font-size:12px;line-height:18px;color:var(--faint)}
+.lp-footnote a{color:var(--muted);text-decoration:underline}
 
 .lp-tablewrap{padding-top:12px;height:349px}
 .lp-tablecard{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;height:337px}
