@@ -226,7 +226,7 @@ td.r,th.r{text-align:right}
 /* hero 203:24 */
 .lp-hero{position:relative;height:470px;overflow:hidden;background:#10151A}
 .lp-hero-canvas{position:relative;max-width:1440px;height:412px;margin:0 auto}
-.lp-hero-img{position:absolute;inset:0;background:url(/img/hero.png) center/cover no-repeat}
+.lp-hero-img{position:absolute;inset:0;background:url(/img/hero-900.webp) center/cover no-repeat}
 .lp-hero-shade{position:absolute;inset:0;background:#10151A;opacity:.58}
 .lp-hero-in{position:relative;width:760px;height:412px;padding:64px 44px;display:flex;flex-direction:column}
 .lp-eyebrow{margin:0;font-size:11.5px;line-height:14px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.85)}
@@ -315,7 +315,7 @@ td.r,th.r{text-align:right}
 /* ── Jelajahi "02 Jelajahi gabungan" (frame 204:2) ─────────────────────── */
 .ex-hero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:200px;padding:30px 44px;overflow:hidden;background:#10151A}
 .ex-hero-canvas{width:100%;max-width:1352px;height:140px;display:flex;flex-direction:column;justify-content:flex-end}
-.ex-hero-img{position:absolute;inset:0;background:url(/img/hero-jelajahi.png) center/cover no-repeat}
+.ex-hero-img{position:absolute;inset:0;background:url(/img/hero-jelajahi-800.webp) center/cover no-repeat}
 .ex-hero-shade{position:absolute;inset:0;background:#10151A;opacity:.58}
 .ex-crumb{position:relative;margin:0;font-size:12.5px;line-height:16px;color:rgba(255,255,255,.8)}
 .ex-h1wrap{position:relative;padding-top:8px;height:53px}
@@ -395,4 +395,10 @@ td.r,th.r{text-align:right}
   .ex-row{grid-template-columns:1fr auto;gap:8px;height:auto;min-height:75px}
   .ex-name,.ex-nameblock{width:auto}
   .ex-depth{display:none}
+}
+
+/* Foto hero: versi 2x hanya di muat pada layar lebar. */
+@media (min-width:1000px){
+  .lp-hero-img{background-image:url(/img/hero-1800.webp)}
+  .ex-hero-img{background-image:url(/img/hero-jelajahi-1600.webp)}
 }
