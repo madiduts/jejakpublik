@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Ico } from '../components/detail/icons';
 import { NAV_203, FOOT_203 } from '../lib/frameIds';
 import { Footer } from '../components/layout/Footer';
-import { totals, programList } from '../lib/data';
+import { instansiList, totals, programList } from '../lib/data';
 import { formatRupiah, formatRupiahShort, formatPersen } from '../utils/format';
 
 const serapan = (totals.belanjaRealisasi / totals.belanja) * 100;
@@ -43,10 +43,42 @@ const ROWS = [
   { row: '203:187', namewrap: '203:188', name: '203:189', valwrap: '203:190', val: '203:191', pctwrap: '203:192', pct: '203:193', cell: '203:194', chip: '203:195', arrow: '203:196' },
 ];
 
+const POPULER = ['sampah', 'pendidikan', 'APBD', 'lingkungan hidup'];
+
 export const Home: React.FC = () => {
   const [q, setQ] = useState('');
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);
+  const boxRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const rows = programList.slice(0, 5);
+
+  const term = q.trim().toLowerCase();
+  const sugInstansi = useMemo(
+    () => (term ? instansiList.filter((i) => i.nama.toLowerCase().includes(term)).slice(0, 3) : []),
+    [term]
+  );
+  const sugProgram = useMemo(
+    () => (term ? programList.filter((p) => p.nama.toLowerCase().includes(term)).slice(0, 3) : []),
+    [term]
+  );
+  const totalSug = sugInstansi.length + sugProgram.length;
+
+  /** Saran ditutup oleh klik di luar kotak pencarian. */
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (!boxRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    return () => document.removeEventListener('mousedown', onDown);
+  }, [open]);
+
+  const go = (path: string) => {
+    setOpen(false);
+    setActive(-1);
+    navigate(path);
+  };
 
   return (
     <div className="lp" data-figma-root data-node-id="203:2">
@@ -76,14 +108,117 @@ export const Home: React.FC = () => {
             data-node-id="203:37"
             onSubmit={(e) => { e.preventDefault(); navigate(`/jelajahi?q=${encodeURIComponent(q)}`); }}
           >
-            <div className="lp-input-wrap" data-node-id="203:38">
+            <div className="lp-input-wrap" data-node-id="203:38" ref={boxRef}>
               {q === '' && <span className="lp-ph" data-node-id="203:39">Cari instansi, program, atau kata kunci...</span>}
               <input
                 className="lp-input-real"
                 value={q}
-                onChange={(e) => setQ(e.target.value)}
+                onChange={(e) => { setQ(e.target.value); setOpen(true); setActive(-1); }}
+                onFocus={() => setOpen(true)}
+                onKeyDown={(e) => {
+                  const n = term ? totalSug : POPULER.length;
+                  if (e.key === 'ArrowDown') { e.preventDefault(); setActive((a) => (a + 1) % Math.max(n, 1)); }
+                  else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((a) => (a - 1 + n) % Math.max(n, 1)); }
+                  else if (e.key === 'Escape') { setOpen(false); setActive(-1); }
+                  else if (e.key === 'Enter' && active >= 0) {
+                    e.preventDefault();
+                    if (!term) { setQ(POPULER[active]); setOpen(true); setActive(-1); return; }
+                    if (active < sugInstansi.length) go(`/instansi/${sugInstansi[active].slug}`);
+                    else {
+                      const prog = sugProgram[active - sugInstansi.length];
+                      if (prog) go(`/program/${prog.slug}`);
+                    }
+                  }
+                }}
                 aria-label="Cari instansi, program, atau kata kunci"
+                aria-expanded={open}
+                aria-controls="lp-suggest"
+                role="combobox"
+                autoComplete="off"
               />
+
+              {open && (
+                <div className="lp-suggest" id="lp-suggest" role="listbox">
+                  {!term && (
+                    <div className="lp-sug-sec">
+                      <h3>Pencarian populer</h3>
+                      <div className="lp-pop">
+                        {POPULER.map((k, i) => (
+                          <button
+                            key={k}
+                            type="button"
+                            className={active === i ? 'on' : ''}
+                            onMouseEnter={() => setActive(i)}
+                            onClick={() => { setQ(k); setOpen(true); setActive(-1); }}
+                          >
+                            {k}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {term && sugInstansi.length > 0 && (
+                    <div className="lp-sug-sec">
+                      <h3>Instansi</h3>
+                      {sugInstansi.map((i, idx) => (
+                        <button
+                          key={i.id}
+                          type="button"
+                          className={`lp-sug-opt${active === idx ? ' on' : ''}`}
+                          role="option"
+                          aria-selected={active === idx}
+                          onMouseEnter={() => setActive(idx)}
+                          onClick={() => go(`/instansi/${i.slug}`)}
+                        >
+                          <Ico g="building" slot={16} />
+                          <span className="lp-sug-txt">
+                            <span className="lp-sug-t">{i.judul}</span>
+                            <span className="lp-sug-s">Pemerintah Provinsi DKI Jakarta</span>
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {term && sugProgram.length > 0 && (
+                    <div className="lp-sug-sec">
+                      <h3>Program</h3>
+                      {sugProgram.map((p, idx) => {
+                        const pos = sugInstansi.length + idx;
+                        return (
+                          <button
+                            key={p.slug}
+                            type="button"
+                            className={`lp-sug-opt${active === pos ? ' on' : ''}`}
+                            role="option"
+                            aria-selected={active === pos}
+                            onMouseEnter={() => setActive(pos)}
+                            onClick={() => go(`/program/${p.slug}`)}
+                          >
+                            <Ico g="file" slot={16} />
+                            <span className="lp-sug-txt">
+                              <span className="lp-sug-t">{p.judul}</span>
+                              <span className="lp-sug-s">{formatRupiahShort(p.apbdp)} · {p.pct ?? '-'}</span>
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {term && totalSug === 0 && (
+                    <div className="lp-sug-empty">Tidak ada yang cocok dengan “{q}”.</div>
+                  )}
+
+                  {term && totalSug > 0 && (
+                    <button type="button" className="lp-sug-foot" onClick={() => go(`/jelajahi?q=${encodeURIComponent(q)}`)}>
+                      Lihat semua hasil untuk “{q}”
+                      <Ico g="diag" slot={14} />
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
             <button className="lp-go" data-node-id="203:40" type="submit">
               <span data-node-id="203:41">Cari</span>
