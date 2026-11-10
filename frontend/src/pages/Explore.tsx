@@ -396,9 +396,9 @@ export const Explore: React.FC = () => {
                 <div className="ex-card" data-node-id="204:109">
                   <div className="ex-thead" data-node-id="204:110">
                     <div data-node-id="204:111"><span data-node-id="204:112">Nama instansi</span></div>
-                    <div data-node-id="204:114" style={{ width: 230 }}><span data-node-id="204:115">Kedalaman data</span></div>
-                    <div className="ex-r" data-node-id="204:116" style={{ width: 180 }}><span data-node-id="204:117">Total anggaran</span></div>
-                    <div className="ex-r" data-node-id="204:119" style={{ width: 110 }}><span data-node-id="204:120">Aksi</span></div>
+                    <div className="ex-c-depth" data-node-id="204:114"><span data-node-id="204:115">Kedalaman data</span></div>
+                    <div className="ex-r ex-c-total" data-node-id="204:116"><span data-node-id="204:117">Total anggaran</span></div>
+                    <div className="ex-r ex-c-aksi" data-node-id="204:119"><span data-node-id="204:120">Aksi</span></div>
                   </div>
 
                   {rows.map((inst, i) => (
@@ -416,13 +416,13 @@ export const Explore: React.FC = () => {
                           </span>
                         </span>
                       </div>
-                      <div className="ex-depth" data-node-id={ROW_IDS[i]?.depth} style={{ width: 230 }}>
+                      <div className="ex-depth ex-c-depth" data-node-id={ROW_IDS[i]?.depth}>
                         <span data-node-id={ROW_IDS[i]?.depthText}>{inst.detailed ? 'Sampai sub kegiatan' : 'Tingkat SKPD'}</span>
                       </div>
-                      <div className="ex-amount" data-node-id={ROW_IDS[i]?.amount} style={{ width: 180 }}>
+                      <div className="ex-amount ex-c-total" data-node-id={ROW_IDS[i]?.amount}>
                         <span data-node-id={ROW_IDS[i]?.amountText}>{formatRupiah(inst.belanja)}</span>
                       </div>
-                      <div className="ex-action" data-node-id={ROW_IDS[i]?.action} style={{ width: 110 }}>
+                      <div className="ex-action ex-c-aksi" data-node-id={ROW_IDS[i]?.action}>
                         <Link
                           to={`/instansi/${inst.slug}`}
                           className="ex-detail"
