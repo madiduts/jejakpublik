@@ -88,15 +88,51 @@ async function runTests() {
 
   // 4. Test HTTP Endpoints via Hono app
   const { app } = await import('../src/app.js');
-  // Test GET non-existent file -> 404
+
+  // 4a. Test POST upload via HTTP endpoint (multipart/form-data)
+  const uploadForm = new FormData();
+  const testFile = new File(['TEST-IMAGE-BYTES-HTTP-UPLOAD'], 'tinjauan-lapangan.png', { type: 'image/png' });
+  uploadForm.append('file', testFile);
+
+  const resUpload = await app.request('/api/v1/reports/upload', {
+    method: 'POST',
+    body: uploadForm
+  });
+  console.assert(resUpload.status === 201, 'Upload endpoint should return 201');
+  const uploadJson = await resUpload.json();
+  console.assert(uploadJson.success === true, 'Upload response should be success');
+  console.assert(uploadJson.data.filename.startsWith('evidence-'), 'Filename must start with evidence-');
+  console.assert(uploadJson.data.mimeType === 'image/png', 'Mime type should be image/png');
+  console.log('✓ Storage endpoint POST /reports/upload verified:', uploadJson.data.filename, uploadJson.data.fileUrl);
+
+  // 4b. Test GET metadata of uploaded file
+  const resGetMeta = await app.request(`/api/v1/reports/upload/${uploadJson.data.filename}`);
+  console.assert(resGetMeta.status === 200, 'GET uploaded file info should return 200');
+  const getMetaJson = await resGetMeta.json();
+  console.assert(getMetaJson.data.filename === uploadJson.data.filename, 'Metadata filename must match');
+  console.log('✓ Storage endpoint GET /reports/upload/:filename verified');
+
+  // 4c. Test DELETE uploaded file via HTTP endpoint
+  const resDeleteHttp = await app.request(`/api/v1/reports/upload/${uploadJson.data.filename}`, {
+    method: 'DELETE'
+  });
+  console.assert(resDeleteHttp.status === 200, 'DELETE uploaded file should return 200');
+  console.log('✓ Storage endpoint DELETE /reports/upload/:filename verified');
+
+  // 4d. Test invalid MIME type validation (e.g. application/x-msdownload)
+  const invalidForm = new FormData();
+  invalidForm.append('file', new File(['malicious-binary'], 'exploit.exe', { type: 'application/x-msdownload' }));
+  const resInvalid = await app.request('/api/v1/reports/upload', {
+    method: 'POST',
+    body: invalidForm
+  });
+  console.assert(resInvalid.status === 400, 'Invalid mime type should be rejected with 400');
+  console.log('✓ Storage endpoint invalid MIME rejection (400) verified');
+
+  // 4e. Test GET non-existent file -> 404
   const resNotFound = await app.request('/api/v1/storage/non-existent-file.jpg');
   console.assert(resNotFound.status === 404, 'Non-existent evidence info should return 404');
   console.log('✓ Storage endpoint GET 404 handler verified');
-
-  // Test DELETE endpoint
-  const resDel = await app.request('/api/v1/storage/dummy-del.jpg', { method: 'DELETE' });
-  console.assert(resDel.status === 200, 'DELETE endpoint should respond with 200');
-  console.log('✓ Storage endpoint DELETE handler verified');
 
   // Track by ticket
   const tracked = await ReportModel.findByTicket(report.ticket_number);
