@@ -298,25 +298,6 @@ td.r,th.r{text-align:right}
 .lp-foot-t a:hover{color:#fff}
 .lp-foot-legal{padding-top:26px;height:43px}
 
-@media(max-width:1100px){
-  .lp-head{gap:20px;padding:0 20px;height:auto;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
-  .lp-hero{height:auto}
-  .lp-hero-in{width:100%;height:auto;padding:40px 20px}
-  .lp-h1wrap,.lp-pwrap,.lp-h1,.lp-lede,.lp-hero-search{width:100%;height:auto}
-  .lp-hero-search{flex-wrap:nowrap}
-  .lp-input-wrap{flex:1 1 auto;width:auto;min-width:0}
-  .lp-go{flex:0 0 68px}
-  .lp-sec{padding:24px 20px 0}
-  .lp-kpis{grid-template-columns:repeat(2,1fr);height:auto}
-  .lp-groups{grid-template-columns:1fr;height:auto}
-  .lp-group+.lp-group{border-left:0;border-top:1px solid #E0E0E4;padding-left:0}
-  .lp-tr{grid-template-columns:1fr auto auto auto;padding:0 12px;height:auto;min-height:59px}
-  .lp-tablecard{height:auto}
-  .lp-foot{padding:28px 20px}
-  .lp-foot-cols{grid-template-columns:1fr 1fr;height:auto}
-  .lp-foot-brand{font-size:44px;line-height:46px}
-}
-
 /* ── Jelajahi "02 Jelajahi gabungan" (frame 204:2) ─────────────────────── */
 .ex-hero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:200px;padding:30px 44px;overflow:hidden;background:#10151A}
 .ex-hero-canvas{width:100%;max-width:1352px;height:140px;display:flex;flex-direction:column;justify-content:flex-end}
@@ -647,8 +628,30 @@ td.r,th.r{text-align:right}
   .pg .dt-grid{height:auto}
   .pg-illus{width:280px}
 }
-/* Jelajahi: sidebar lebih sempit di laptop kecil, tetap dua kolom. */
+/* Beranda & Jelajahi: penyesuaian layar sedang (laptop kecil / tablet lebar). */
 @media(max-width:1100px){
+  /* Beranda */
+  .lp-hero{height:auto}
+  .lp-hero-canvas{height:auto}
+  .lp-hero-in{width:100%;height:auto;padding:52px 24px}
+  .lp-h1wrap,.lp-pwrap,.lp-h1,.lp-lede{width:100%;height:auto}
+  .lp-h1{font-size:42px;line-height:46px;letter-spacing:-1.2px;top:0}
+  .lp-hero-search{width:100%;max-width:620px;height:auto;padding-top:22px}
+  .lp-input-wrap{flex:1 1 auto;width:auto;min-width:0}
+  .lp-go{flex:0 0 68px}
+  .lp-sec{padding:28px 24px 0}
+  .lp-kpis-wrap{height:auto}
+  .lp-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;height:auto}
+  .lp-groups-wrap{height:auto}
+  .lp-groups{grid-template-columns:1fr;height:auto}
+  .lp-group{padding:18px 0}
+  .lp-group+.lp-group{border-left:0;border-top:1px solid #E0E0E4;padding-left:0;padding-top:18px}
+  .lp-foot{padding:32px 24px}
+  .lp-foot-colswrap{height:auto}
+  .lp-foot-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;height:auto}
+  .lp-foot-brand{font-size:52px;line-height:54px}
+
+  /* Jelajahi */
   .ex-body{grid-template-columns:220px minmax(0,1fr);gap:18px}
   .ex-filters-col{width:220px}
   .ex-filters{width:100%}
@@ -684,6 +687,58 @@ td.r,th.r{text-align:right}
   .ex-amount{grid-area:amount;text-align:left}
   .ex-action{grid-area:action;align-self:center}
   .ex-card{border-radius:12px}
+}
+
+/* Beranda: tata letak tablet dan ponsel */
+@media(max-width:768px){
+  .lp-hero-in{padding:40px 20px}
+  .lp-h1{font-size:32px;line-height:36px;letter-spacing:-1px}
+  .lp-lede{font-size:14.5px;line-height:22px}
+  .lp-hero-search{padding-top:18px;gap:8px}
+  .lp-input-wrap{height:46px;padding:0 12px}
+  .lp-go{height:46px;padding:0 18px}
+  .lp-sec{padding:20px 20px 0}
+  .lp-kpis{gap:10px}
+  .lp-kpi{padding:14px 16px;min-height:96px}
+  .lp-kpi-v{font-size:22px;line-height:28px}
+  .lp-kpi-footwrap{height:auto;padding-top:4px}
+  .lp-kpi-f{white-space:normal;font-size:11.5px;line-height:15px}
+
+  /* Tabel program beranda: dual-mode stacked card tanpa horizontal scroll */
+  .lp-tablewrap{height:auto}
+  .lp-tablecard{height:auto;overflow:hidden}
+  .lp-th{display:none}
+  .lp-tr{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"name action" "val action" "pct action";
+    gap:4px 10px;
+    height:auto;
+    min-height:0;
+    min-width:0 !important;
+    padding:14px 16px;
+  }
+  .lp-tr > div:nth-child(n+2){margin-left:0}
+  .lp-tr > div:nth-child(1){grid-area:name;min-width:0}
+  .lp-td-n{display:block;white-space:normal;line-height:19px;font-size:13.5px}
+  .lp-tr > div:nth-child(2){grid-area:val;text-align:left;width:auto !important;font-size:13px;color:var(--ink-2);padding-top:2px}
+  .lp-tr > div:nth-child(3){grid-area:pct;text-align:left;width:auto !important;font-size:12px;color:var(--muted)}
+  .lp-arrowcol{grid-area:action;align-self:center;width:auto !important}
+
+  .lp-foot{padding:28px 20px}
+  .lp-foot-brand{font-size:38px;line-height:40px}
+  .lp-foot-cols{grid-template-columns:1fr;gap:20px}
+}
+
+@media(max-width:480px){
+  .lp-hero-in{padding:32px 16px}
+  .lp-h1{font-size:26px;line-height:30px;letter-spacing:-0.7px}
+  .lp-lede{font-size:13.5px;line-height:20px}
+  .lp-sec{padding:16px 16px 0}
+  .lp-kpis{grid-template-columns:1fr;gap:10px}
+  .lp-kpi{padding:14px 16px;height:auto}
+  .lp-group-v{font-size:18px;line-height:24px}
+  .lp-foot-brand{font-size:32px;line-height:34px}
 }
 
 
