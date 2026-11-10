@@ -329,6 +329,20 @@
       "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "property": "w",
+      "figma": "57.297",
+      "reason": "Keputusan pemilik: tombol aksi tabel memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan radius, sama seperti beranda. Chip 57,297 px menyusut jadi 24 px sehingga rata kanan bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "x (lokal)",
+      "figma": "52.703",
+      "reason": "Keputusan pemilik: tombol aksi tabel memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan radius, sama seperti beranda. Chip 57,297 px menyusut jadi 24 px sehingga rata kanan bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
