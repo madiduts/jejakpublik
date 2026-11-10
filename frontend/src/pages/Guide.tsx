@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
@@ -24,8 +24,21 @@ const CATS = [
   { box: '219:117', text: '219:118' },
 ];
 
+const SEMUA = 'Semua';
+
 export const Guide: React.FC = () => {
-  const [active, setActive] = useState('Mulai di sini');
+  const [active, setActive] = useState(SEMUA);
+
+  const counts = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const c of CATEGORIES) map[c] = ARTICLES.filter((a) => a.category === c).length;
+    return map;
+  }, []);
+
+  const shown = useMemo(
+    () => (active === SEMUA ? ARTICLES : ARTICLES.filter((a) => a.category === active)),
+    [active],
+  );
 
   return (
     <div className="lp" data-figma-root data-node-id="219:2">
@@ -51,49 +64,69 @@ export const Guide: React.FC = () => {
           </p>
         </div>
 
-        <div className="gd-gridwrap" data-node-id="219:121">
+        <div className="gd-cats" data-node-id="219:101">
+          <div className="gd-chips" role="group" aria-label="Saring panduan menurut kategori">
+            <button
+              className={`gd-chip${active === SEMUA ? ' on' : ''}`}
+              aria-pressed={active === SEMUA}
+              onClick={() => setActive(SEMUA)}
+            >
+              Semua
+              <span className="gd-chipn">{ARTICLES.length}</span>
+            </button>
+            {CATEGORIES.map((c, i) => (
+              <button
+                className={`gd-chip${active === c ? ' on' : ''}`}
+                key={c}
+                data-node-id={CATS[i].box}
+                aria-pressed={active === c}
+                onClick={() => setActive(c)}
+              >
+                <span data-node-id={CATS[i].text}>{c}</span>
+                <span className="gd-chipn">{counts[c]}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="gd-gridwrap">
           <div className="gd-grid" data-node-id="219:41">
             <div className="gd-list" data-node-id="219:42">
               <div className="gd-listinner" data-node-id="219:43">
-                {ARTICLES.map((a, i) => (
-                  <div className="gd-card" key={a.slug} data-node-id={CARDS[i].box}>
-                    <div className="gd-cardbody" data-node-id={CARDS[i].body}>
-                      <div className="gd-titlewrap" data-node-id={CARDS[i].tw}>
-                        <Link className="gd-title" data-node-id={CARDS[i].title} to={`/panduan/${a.slug}`}>{a.title}</Link>
+                {shown.map((a) => {
+                  const i = ARTICLES.indexOf(a);
+                  const ids = CARDS[i];
+                  return (
+                    <Link className="gd-card" key={a.slug} to={`/panduan/${a.slug}`} data-node-id={ids.box}>
+                      <div className="gd-cardbody" data-node-id={ids.body}>
+                        <div className="gd-meta">
+                          <span className="gd-no">{String(i + 1).padStart(2, '0')}</span>
+                          <span aria-hidden="true">·</span>
+                          <span>{a.reading}</span>
+                          {i === 0 && <span className="gd-badge">Mulai di sini</span>}
+                        </div>
+                        <div className="gd-titlewrap" data-node-id={ids.tw}>
+                          <span className="gd-title" data-node-id={ids.title}>{a.title}</span>
+                        </div>
+                        <div className="gd-descwrap" data-node-id={ids.dw}>
+                          <span className="gd-desc" data-node-id={ids.desc}>{a.desc}</span>
+                        </div>
                       </div>
-                      <div className="gd-descwrap" data-node-id={CARDS[i].dw}>
-                        <span className="gd-desc" data-node-id={CARDS[i].desc}>{a.desc}</span>
-                      </div>
-                    </div>
-                    <Link className="gd-arrow" data-node-id={CARDS[i].btn} to={`/panduan/${a.slug}`} aria-label={a.title}>
-                      <span className="gd-arrowicon" data-node-id={CARDS[i].arrow}>
-                        <Ico g="arrow" slot={8} />
+                      <span className="gd-arrow" data-node-id={ids.btn} aria-hidden="true">
+                        <span className="gd-arrowicon" data-node-id={ids.arrow}>
+                          <Ico g="arrow" slot={13} />
+                        </span>
                       </span>
                     </Link>
-                  </div>
-                ))}
+                  );
+                })}
+                {shown.length === 0 && (
+                  <p className="gd-empty">
+                    Belum ada panduan di kategori ini. Pilih <strong>Semua</strong> untuk melihat keenam panduan.
+                  </p>
+                )}
               </div>
             </div>
-
-            <aside className="gd-cats" data-node-id="219:101">
-              <div data-node-id="219:102">
-                <h2 className="gd-cats-h" data-node-id="219:103">Kategori</h2>
-              </div>
-              <div className="gd-catswrap" data-node-id="219:119">
-                <div className="gd-catlist" data-node-id="219:105">
-                  {CATEGORIES.map((c, i) => (
-                    <button
-                      className={`gd-cat${c === active ? ' on' : ''}`}
-                      key={c}
-                      data-node-id={CATS[i].box}
-                      onClick={() => setActive(c)}
-                    >
-                      <span data-node-id={CATS[i].text}>{c}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </aside>
           </div>
         </div>
       </section>
