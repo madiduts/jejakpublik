@@ -665,6 +665,34 @@
       "reason": "Tinggi frame di Figma lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "222:37",
+      "property": "h",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:136",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:161",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:198",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: isi halaman Tentang diganti format tanya-jawab + pita angka (banner tetap). Section bertambah dari 784 ke 927,656 px sehingga Tim dan footer bergeser.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
