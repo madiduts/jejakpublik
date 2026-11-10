@@ -532,6 +532,90 @@
       "reason": "Keputusan pemilik: empat baris centang instansi dan baris Lainnya... diganti kotak cari + daftar 43 instansi, sehingga node ini tidak lagi ada di kode.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "204:2",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:37",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:228",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:103",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:105",
+      "property": "w",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:106",
+      "property": "w",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:106",
+      "property": "teks",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:225",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:109",
+      "property": "h",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:194",
+      "property": "border-width",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:211",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:265",
+      "property": "y (lokal)",
+      "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
