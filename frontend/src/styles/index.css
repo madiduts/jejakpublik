@@ -334,7 +334,7 @@ td.r,th.r{text-align:right}
 .ex-chips{display:grid;grid-template-columns:repeat(4,329px);justify-content:space-between;gap:0;height:44px}
 .ex-chip{display:flex;align-items:center;height:44px;padding:0 16px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit;font-size:13px;line-height:16px;color:var(--ink-2);cursor:pointer;text-align:left}
 .ex-chip:hover{background:#FAFAFB}
-.ex-body-wrap{padding-top:22px;height:517px}
+.ex-body-wrap{padding-top:22px}
 .ex-body{display:grid;grid-template-columns:280px 1072px;gap:0;align-items:start}
 .ex-filters{width:280px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}
 .ex-filters-head{display:flex;justify-content:space-between;align-items:flex-start;height:17px}
@@ -362,12 +362,12 @@ td.r,th.r{text-align:right}
 .ex-sortbtn.on{background:var(--chip);color:var(--ink)}
 .ex-sortbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ex-menu-right{right:0;left:auto;top:36px}
-.ex-cardwrap{padding-top:10px;height:427px}
-.ex-card{height:417px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ex-cardwrap{padding-top:10px}
+.ex-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .ex-thead{display:grid;grid-template-columns:434px 248px 198px 128px;gap:0;align-items:center;height:41px;line-height:14px;padding:13px 22px;background:#FAFAFB;border:0 solid var(--line-2);border-bottom-width:1px;font-size:11.5px;line-height:14px;font-weight:600;letter-spacing:.2px;color:#52525B}
 .ex-thead > div:nth-child(n+2),.ex-row > div:nth-child(n+2){margin-left:18px}
 .ex-row{display:grid;grid-template-columns:434px 248px 198px 128px;gap:0;align-items:center;height:75px;padding:17px 22px;border:0 solid var(--line-3);border-bottom-width:1px}
-.ex-row.last{height:74px;border-bottom-width:0}
+.ex-row.last{border-bottom-width:0}
 .ex-name{display:flex;align-items:center;gap:12px;width:434px}
 .ex-avatar{display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border-radius:10px;background:#EDEDEF}
 .ex-nameblock{display:flex;flex-direction:column;width:154.469px;height:34px}

@@ -7,7 +7,7 @@ import { NAV_204, FOOT_204 } from '../lib/frameIds';
 import { instansiList, totals } from '../lib/data';
 import { formatRupiah } from '../utils/format';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 
 /** 204:121 … 204:210 — lima baris tabel pada frame. */
 const ROW_IDS = [
@@ -89,7 +89,7 @@ export const Explore: React.FC = () => {
   const rows = ordered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
 
   /** Jendela empat nomor halaman seperti frame; bergeser bila halaman aktif melewatinya. */
-  const windowStart = Math.min(Math.max(1, current - 3), Math.max(1, pages - 3));
+  const windowStart = Math.min(Math.max(1, current - 2), Math.max(1, pages - 3));
   const windowPages = [0, 1, 2, 3].map((i) => windowStart + i).filter((p) => p <= pages);
 
   const toggleInstansi = (nama: string) => {
@@ -402,31 +402,31 @@ export const Explore: React.FC = () => {
                   </div>
 
                   {rows.map((inst, i) => (
-                    <div className={`ex-row${i === 4 ? ' last' : ''}`} key={inst.id} data-node-id={ROW_IDS[i].row}>
-                      <div className="ex-name" data-node-id={ROW_IDS[i].name}>
-                        <span className="ex-avatar" data-node-id={ROW_IDS[i].avatar} aria-hidden="true">
+                    <div className={`ex-row${i === rows.length - 1 ? ' last' : ''}`} key={inst.id} data-node-id={ROW_IDS[i]?.row}>
+                      <div className="ex-name" data-node-id={ROW_IDS[i]?.name}>
+                        <span className="ex-avatar" data-node-id={ROW_IDS[i]?.avatar} aria-hidden="true">
                           <Ico g="building" slot={18} />
                         </span>
-                        <span className="ex-nameblock" data-node-id={ROW_IDS[i].block}>
-                          <span className="ex-namewrap" data-node-id={ROW_IDS[i].nameWrap}>
-                            <Link to={`/instansi/${inst.slug}`} className="ex-name-t" data-node-id={ROW_IDS[i].nameText}>{inst.judul}</Link>
+                        <span className="ex-nameblock" data-node-id={ROW_IDS[i]?.block}>
+                          <span className="ex-namewrap" data-node-id={ROW_IDS[i]?.nameWrap}>
+                            <Link to={`/instansi/${inst.slug}`} className="ex-name-t" data-node-id={ROW_IDS[i]?.nameText}>{inst.judul}</Link>
                           </span>
-                          <span className="ex-subwrap" data-node-id={ROW_IDS[i].subWrap}>
-                            <span className="ex-sub" data-node-id={ROW_IDS[i].subText}>Pemerintah Provinsi DKI Jakarta</span>
+                          <span className="ex-subwrap" data-node-id={ROW_IDS[i]?.subWrap}>
+                            <span className="ex-sub" data-node-id={ROW_IDS[i]?.subText}>Pemerintah Provinsi DKI Jakarta</span>
                           </span>
                         </span>
                       </div>
-                      <div className="ex-depth" data-node-id={ROW_IDS[i].depth} style={{ width: 230 }}>
-                        <span data-node-id={ROW_IDS[i].depthText}>{inst.detailed ? 'Sampai sub kegiatan' : 'Tingkat SKPD'}</span>
+                      <div className="ex-depth" data-node-id={ROW_IDS[i]?.depth} style={{ width: 230 }}>
+                        <span data-node-id={ROW_IDS[i]?.depthText}>{inst.detailed ? 'Sampai sub kegiatan' : 'Tingkat SKPD'}</span>
                       </div>
-                      <div className="ex-amount" data-node-id={ROW_IDS[i].amount} style={{ width: 180 }}>
-                        <span data-node-id={ROW_IDS[i].amountText}>{formatRupiah(inst.belanja)}</span>
+                      <div className="ex-amount" data-node-id={ROW_IDS[i]?.amount} style={{ width: 180 }}>
+                        <span data-node-id={ROW_IDS[i]?.amountText}>{formatRupiah(inst.belanja)}</span>
                       </div>
-                      <div className="ex-action" data-node-id={ROW_IDS[i].action} style={{ width: 110 }}>
+                      <div className="ex-action" data-node-id={ROW_IDS[i]?.action} style={{ width: 110 }}>
                         <Link
                           to={`/instansi/${inst.slug}`}
                           className="ex-detail"
-                          data-node-id={ROW_IDS[i].chip}
+                          data-node-id={ROW_IDS[i]?.chip}
                           aria-label={`Buka ${inst.judul}`}
                         >
                           <Ico g="diag" slot={14} />
