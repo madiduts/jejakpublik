@@ -10,6 +10,7 @@ import { GuideArticle } from './pages/GuideArticle';
 import { Glossary } from './pages/Glossary';
 import { About } from './pages/About';
 import { Login } from './pages/Login';
+import { RequireSession } from './components/auth/RequireSession';
 import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Report } from './pages/Report';
@@ -35,8 +36,9 @@ export const App: React.FC = () => (
       <Route path="/daftar" element={<Register />} />
       <Route path="/register" element={<Navigate to="/daftar" replace />} />
       <Route path="/lupa-password" element={<ForgotPassword />} />
+      <Route path="/lupa-kata-sandi" element={<Navigate to="/lupa-password" replace />} />
       <Route path="/lupa-sandi" element={<Navigate to="/lupa-password" replace />} />
-      <Route path="/lapor" element={<Report />} />
+      <Route path="/lapor" element={<RequireSession><Report /></RequireSession>} />
       <Route path="/koreksi/:id" element={<CorrectionForm />} />
       <Route path="/laporan-saya" element={<MyReports />} />
       <Route path="/moderator" element={<ModeratorQueue />} />

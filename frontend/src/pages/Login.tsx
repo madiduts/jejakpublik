@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { Navbar } from '../components/layout/Navbar';
-import { Footer } from '../components/layout/Footer';
-import { NAV_223, FOOT_223 } from '../lib/frameIds';
+import { AuthShell } from '../components/layout/AuthShell';
+import { GoogleButton } from '../components/auth/GoogleButton';
 import { getSession, signIn } from '../lib/session';
+import { redirectTarget } from '../lib/redirect';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: string } | null)?.from ?? '/lapor';
+  const from = redirectTarget(location.state);
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [googleMsg, setGoogleMsg] = useState('');
+  const [googleBusy, setGoogleBusy] = useState(false);
 
   if (getSession()) return <Navigate to={from} replace />;
+
+  const enter = (who: string | { name: string; email?: string; role?: 'warga' | 'moderator'; token?: string }) => {
+    signIn(who);
+    navigate(from, { replace: true });
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,25 +41,19 @@ export const Login: React.FC = () => {
       const json = await res.json();
 
       if (res.ok && json.success) {
-        signIn({
+        enter({
           name: json.user?.name || cleanEmail.split('@')[0],
           email: cleanEmail,
           role: json.user?.role || 'warga',
           token: json.token
         });
-        navigate(from, { replace: true });
         return;
       } else {
         setErrorMsg(json.error || 'Email atau kata sandi tidak sesuai.');
       }
     } catch {
       // Fallback lokal jika backend tidak terjangkau
-      signIn({
-        name: cleanEmail.split('@')[0],
-        email: cleanEmail,
-        role: cleanEmail.includes('mod') ? 'moderator' : 'warga'
-      });
-      navigate(from, { replace: true });
+      enter(cleanEmail);
     } finally {
       setLoading(false);
     }
@@ -70,129 +71,110 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="lp" data-figma-root data-node-id="223:2">
-      <Navbar ids={NAV_223} />
+    <AuthShell>
+      <p className="au-crumb"><span>Laporan</span><span>·</span><b>Masuk</b></p>
 
-      <section className="lg-split" data-node-id="223:24">
-        <aside className="lg-photo" data-node-id="223:25">
-          <div className="lg-photo-img" aria-hidden="true" />
-          <div className="lg-photo-shade" aria-hidden="true" />
-          <div className="lg-eyebrowwrap" data-node-id="223:29">
-            <p className="lg-eyebrow" data-node-id="223:30">Akun JejakPublik</p>
-          </div>
-          <div className="lg-ledewrap" data-node-id="223:35">
-            <p className="lg-lede" data-node-id="223:33">
-              Akun hanya diperlukan untuk mengirim laporan. Membaca seluruh data anggaran tidak memerlukan akun.
-            </p>
-          </div>
-        </aside>
+      <div className="au-h1wrap">
+        <h1 className="au-h1">Masuk untuk mengirim laporan</h1>
+      </div>
 
-        <div className="lg-panel" data-node-id="223:36">
-          <div className="lg-crumbwrap" data-node-id="223:37">
-            <p className="lg-crumb" data-node-id="223:38">Laporan · Masuk</p>
-          </div>
+      <div className="au-descwrap">
+        <p className="au-desc">
+          Gunakan email dan kata sandi yang kamu daftarkan. Setelah masuk, kamu kembali ke halaman laporan yang tadi kamu buka.
+        </p>
+      </div>
 
-          <div className="lg-h1wrap" data-node-id="223:40">
-            <h1 className="lg-h1" data-node-id="223:41">Masuk untuk mengirim laporan</h1>
-          </div>
-
-          <div className="lg-descwrap" data-node-id="223:43">
-            <p className="lg-desc" data-node-id="223:44">
-              Setelah masuk, kamu kembali ke halaman laporan yang tadi kamu buka.
-            </p>
-          </div>
-
-          <form className="lg-form" onSubmit={handleLogin}>
-            <div className="lg-group" data-node-id="223:46">
-              <div className="lg-labelwrap" data-node-id="223:47">
-                <label className="lg-label" data-node-id="223:48" htmlFor="email">ALAMAT EMAIL</label>
-              </div>
-              <div className="lg-hintwrap" data-node-id="223:50">
-                <span className="lg-hint" data-node-id="223:51">Email dipakai untuk memberi kabar status laporan.</span>
-              </div>
-              <input
-                id="email"
-                className="lg-input"
-                data-node-id="223:53"
-                type="email"
-                name="email"
-                autoComplete="email"
-                placeholder="nama@contoh.id"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div className="lg-group2" data-node-id="223:57">
-              <div className="lg-labelwrap2" data-node-id="223:58">
-                <label className="lg-label2" data-node-id="223:59" htmlFor="kunci">KATA SANDI</label>
-              </div>
-              <input
-                id="kunci"
-                className="lg-input2"
-                data-node-id="223:60"
-                type="password"
-                name="kunci"
-                autoComplete="current-password"
-                required
-                placeholder="kata sandi"
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
-              />
-            </div>
-
-            {/* Baris Link: Belum punya akun? Daftar & Lupa kata sandi? */}
-            <div className="lg-links-row">
-              <span>
-                Belum punya akun? <Link to="/daftar">Daftar</Link>
-              </span>
-              <Link to="/lupa-password">Lupa kata sandi?</Link>
-            </div>
-
-            {errorMsg && (
-              <p className="lg-alert" style={{ color: '#DC2626', borderColor: '#FECACA', background: '#FEF2F2' }} role="alert">
-                {errorMsg}
-              </p>
-            )}
-
-            <div className="lg-actions" style={{ paddingTop: 20 }}>
-              <button className="lg-btn-blue" type="submit" disabled={loading}>
-                {loading ? 'Memproses...' : 'Masuk →'}
-              </button>
-            </div>
-          </form>
-
-          {/* Kotak Akun Testing untuk Tim Penilai / Evaluator */}
-          <div className="lg-testing-box">
-            <p className="lg-testing-title">Akun Testing (Mode Evaluasi):</p>
-            <div className="lg-testing-chips">
-              <button
-                type="button"
-                className="lg-testing-chip"
-                onClick={() => fillDemoAccount('warga')}
-              >
-                👤 Warga: warga@jejakpublik.id (pw: warga123)
-              </button>
-              <button
-                type="button"
-                className="lg-testing-chip"
-                onClick={() => fillDemoAccount('moderator')}
-              >
-                🛡️ Moderator: moderator@jejakpublik.id (pw: admin123)
-              </button>
-            </div>
-          </div>
-
-          <div className="lg-notewrap" data-node-id="223:76">
-            <p className="lg-note" data-node-id="223:69">
-              JejakPublik tidak meminta NIK, foto KTP, atau swafoto. Identitas pelapor tidak ditampilkan ke publik.
-            </p>
-          </div>
+      <form className="au-form" onSubmit={handleLogin}>
+        <div className="au-field">
+          <label className="au-label" htmlFor="email">Alamat email</label>
+          <p className="au-hint" id="email-hint">Email dipakai untuk memberi kabar status laporan.</p>
+          <input
+            id="email"
+            className="au-input"
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder="nama@contoh.id"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-describedby="email-hint"
+          />
         </div>
-      </section>
 
-      <Footer ids={FOOT_223} />
-    </div>
+        <div className="au-field">
+          <label className="au-label au-label-pad" htmlFor="kunci">Kata sandi</label>
+          <input
+            id="kunci"
+            className="au-input"
+            type="password"
+            name="kunci"
+            autoComplete="current-password"
+            required
+            minLength={6}
+            placeholder="kata sandi"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+          />
+        </div>
+
+        <div className="au-linksrow">
+          <span>
+            Belum punya akun? <Link className="au-link-strong" to="/daftar">Daftar</Link>
+          </span>
+          <Link to="/lupa-kata-sandi">Lupa kata sandi</Link>
+        </div>
+
+        {errorMsg && (
+          <p className="au-msg" style={{ color: '#DC2626', borderColor: '#FECACA', background: '#FEF2F2' }} role="alert">
+            {errorMsg}
+          </p>
+        )}
+
+        <button className="au-btn" type="submit" disabled={loading}>
+          {loading ? 'Memproses...' : 'Masuk'}
+          <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <div className="au-or" role="separator" aria-hidden="true"><span>atau</span></div>
+
+      <GoogleButton
+        label="Masuk dengan Google"
+        busy={googleBusy}
+        onStart={() => { setGoogleMsg(''); setGoogleBusy(true); }}
+        onDone={(who) => enter(who)}
+        onError={(msg) => setGoogleMsg(msg)}
+        onSettled={() => setGoogleBusy(false)}
+      />
+      {googleMsg && <p className="au-msg" role="status">{googleMsg}</p>}
+
+      {/* Kotak Akun Testing untuk Tim Penilai / Evaluator */}
+      <div className="lg-testing-box" style={{ marginTop: 24, maxWidth: 560 }}>
+        <p className="lg-testing-title">Akun Testing (Mode Evaluasi):</p>
+        <div className="lg-testing-chips">
+          <button
+            type="button"
+            className="lg-testing-chip"
+            onClick={() => fillDemoAccount('warga')}
+          >
+            👤 Warga: warga@jejakpublik.id (pw: warga123)
+          </button>
+          <button
+            type="button"
+            className="lg-testing-chip"
+            onClick={() => fillDemoAccount('moderator')}
+          >
+            🛡️ Moderator: moderator@jejakpublik.id (pw: admin123)
+          </button>
+        </div>
+      </div>
+
+      <div className="au-notewrap">
+        <p className="au-note">
+          JejakPublik tidak meminta NIK, foto KTP, atau swafoto. Identitas pelapor tidak ditampilkan ke publik.
+        </p>
+      </div>
+    </AuthShell>
   );
 };

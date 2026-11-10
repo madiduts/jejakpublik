@@ -1,200 +1,136 @@
 import React, { useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { Navbar } from '../components/layout/Navbar';
-import { Footer } from '../components/layout/Footer';
-import { NAV_223, FOOT_223 } from '../lib/frameIds';
+import { AuthShell } from '../components/layout/AuthShell';
+import { GoogleButton } from '../components/auth/GoogleButton';
 import { getSession, signIn } from '../lib/session';
+import { redirectTarget } from '../lib/redirect';
 
 export const Register: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: string } | null)?.from ?? '/lapor';
+  const from = redirectTarget(location.state);
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [repeatPass, setRepeatPass] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [ulang, setUlang] = useState('');
+  const [beda, setBeda] = useState(false);
+  const [googleMsg, setGoogleMsg] = useState('');
+  const [googleBusy, setGoogleBusy] = useState(false);
 
   if (getSession()) return <Navigate to={from} replace />;
 
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMsg(null);
-
-    const cleanEmail = email.trim();
-    if (pass !== repeatPass) {
-      setErrorMsg('Kata sandi dan konfirmasi kata sandi tidak cocok.');
-      return;
-    }
-
-    if (pass.length < 8) {
-      setErrorMsg('Kata sandi minimal 8 karakter.');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const res = await fetch('http://localhost:3000/api/v1/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: cleanEmail, password: pass })
-      });
-      const json = await res.json();
-
-      if (res.ok && json.success) {
-        signIn({
-          name: json.user?.name || cleanEmail.split('@')[0],
-          email: cleanEmail,
-          role: json.user?.role || 'warga',
-          token: json.token
-        });
-        navigate(from, { replace: true });
-        return;
-      } else {
-        setErrorMsg(json.error || 'Gagal mendaftarkan akun. Email mungkin sudah digunakan.');
-      }
-    } catch {
-      // Fallback lokal jika backend tidak terjangkau
-      signIn({
-        name: cleanEmail.split('@')[0],
-        email: cleanEmail,
-        role: 'warga'
-      });
-      navigate(from, { replace: true });
-    } finally {
-      setLoading(false);
-    }
+  const enter = (who: string) => {
+    signIn(who);
+    navigate(from, { replace: true });
   };
 
   return (
-    <div className="lp" data-figma-root data-node-id="22:2">
-      <Navbar ids={NAV_223} />
+    <AuthShell>
+      <p className="au-crumb"><span>Akun</span><span>·</span><b>Daftar</b></p>
 
-      <section className="lg-split" data-node-id="22:24">
-        <aside className="lg-photo" data-node-id="22:25">
-          <div className="lg-photo-img" aria-hidden="true" />
-          <div className="lg-photo-shade" aria-hidden="true" />
-          <div className="lg-eyebrowwrap" data-node-id="22:29">
-            <p className="lg-eyebrow" data-node-id="22:30">AKUN JEJAKPUBLIK</p>
-          </div>
-          <div className="lg-ledewrap" data-node-id="22:35">
-            <p className="lg-lede" data-node-id="22:33">
-              Akun hanya diperlukan untuk mengirim laporan. Membaca seluruh data anggaran tidak memerlukan akun.
-            </p>
-          </div>
-        </aside>
+      <div className="au-h1wrap">
+        <h1 className="au-h1">Buat akun untuk mengirim laporan</h1>
+      </div>
 
-        <div className="lg-panel" data-node-id="22:36">
-          <div className="lg-crumbwrap" data-node-id="22:37">
-            <p className="lg-crumb" data-node-id="22:38">AKUN › DAFTAR</p>
-          </div>
+      <div className="au-descwrap">
+        <p className="au-desc">
+          Cukup alamat email dan kata sandi. Setelah akun dibuat, kamu langsung kembali ke halaman laporan yang tadi kamu buka.
+        </p>
+      </div>
 
-          <div className="lg-h1wrap" data-node-id="22:40">
-            <h1 className="lg-h1" data-node-id="22:41">Buat akun untuk mengirim laporan</h1>
-          </div>
-
-          <div className="lg-descwrap" data-node-id="22:43">
-            <p className="lg-desc" data-node-id="22:44">
-              Setelah membuat akun, kamu kembali ke halaman laporan yang tadi kamu buka.
-            </p>
-          </div>
-
-          <form className="lg-form" onSubmit={handleRegister}>
-            {/* Field 1: Alamat Email */}
-            <div className="lg-group">
-              <div className="lg-labelwrap">
-                <label className="lg-label" htmlFor="email">ALAMAT EMAIL</label>
-              </div>
-              <div className="lg-hintwrap">
-                <span className="lg-hint">Email dipakai untuk memberi kabar status laporan.</span>
-              </div>
-              <input
-                id="email"
-                className="lg-input"
-                type="email"
-                name="email"
-                autoComplete="email"
-                placeholder="nama@contoh.id"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            {/* Field 2: Kata Sandi */}
-            <div className="lg-group" style={{ paddingTop: 16 }}>
-              <div className="lg-labelwrap">
-                <label className="lg-label" htmlFor="kunci">KATA SANDI</label>
-              </div>
-              <div className="lg-hintwrap">
-                <span className="lg-hint">Minimal 8 karakter.</span>
-              </div>
-              <input
-                id="kunci"
-                className="lg-input"
-                type="password"
-                name="kunci"
-                autoComplete="new-password"
-                required
-                minLength={8}
-                placeholder="kata sandi"
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
-              />
-            </div>
-
-            {/* Field 3: Ulangi Kata Sandi */}
-            <div className="lg-group2" style={{ paddingTop: 16 }}>
-              <div className="lg-labelwrap2">
-                <label className="lg-label2" htmlFor="kunci-ulang">ULANGI KATA SANDI</label>
-              </div>
-              <input
-                id="kunci-ulang"
-                className="lg-input2"
-                type="password"
-                name="kunci-ulang"
-                autoComplete="new-password"
-                required
-                minLength={8}
-                placeholder="ulangi kata sandi"
-                value={repeatPass}
-                onChange={(e) => setRepeatPass(e.target.value)}
-              />
-            </div>
-
-            {/* Tautan: Sudah punya akun? Masuk */}
-            <div className="lg-links-row">
-              <span>
-                Sudah punya akun? <Link to="/masuk">Masuk</Link>
-              </span>
-            </div>
-
-            {errorMsg && (
-              <p className="lg-alert" style={{ color: '#DC2626', borderColor: '#FECACA', background: '#FEF2F2' }} role="alert">
-                {errorMsg}
-              </p>
-            )}
-
-            <div className="lg-actions" style={{ paddingTop: 20 }}>
-              <button className="lg-btn-blue" type="submit" disabled={loading}>
-                {loading ? 'Mendaftarkan...' : 'Buat akun →'}
-              </button>
-            </div>
-          </form>
-
-          <div className="lg-notewrap" style={{ width: '100%', maxWidth: 560 }}>
-            <p className="lg-note">
-              JejakPublik tidak meminta NIK, foto KTP, atau swafoto. Identitas pelapor tidak ditampilkan ke publik.
-            </p>
-          </div>
+      <form
+        className="au-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (pass !== ulang) {
+            setBeda(true);
+            return;
+          }
+          setBeda(false);
+          enter(email.trim());
+        }}
+      >
+        <div className="au-field">
+          <label className="au-label" htmlFor="email">Alamat email</label>
+          <p className="au-hint" id="email-hint">Email dipakai untuk memberi kabar status laporan.</p>
+          <input
+            id="email"
+            className="au-input"
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder="nama@contoh.id"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-describedby="email-hint"
+          />
         </div>
-      </section>
 
-      <Footer ids={FOOT_223} />
-    </div>
+        <div className="au-field">
+          <label className="au-label au-label-pad" htmlFor="kunci">Kata sandi</label>
+          <p className="au-hint" id="kunci-hint">Minimal 8 karakter.</p>
+          <input
+            id="kunci"
+            className="au-input"
+            type="password"
+            name="kunci"
+            autoComplete="new-password"
+            required
+            minLength={8}
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            aria-describedby="kunci-hint"
+          />
+        </div>
+
+        <div className="au-field">
+          <label className="au-label" htmlFor="ulang">Ulangi kata sandi</label>
+          <input
+            id="ulang"
+            className="au-input"
+            type="password"
+            name="ulang"
+            autoComplete="new-password"
+            required
+            minLength={8}
+            value={ulang}
+            onChange={(e) => { setUlang(e.target.value); setBeda(false); }}
+            aria-invalid={beda}
+            aria-describedby={beda ? 'ulang-salah' : undefined}
+          />
+          {beda && <p className="au-msg" id="ulang-salah" role="alert">Kata sandi dan ulangannya belum sama.</p>}
+        </div>
+
+        <div className="au-linksrow">
+          <span>
+            Sudah punya akun? <Link className="au-link-strong" to="/masuk">Masuk</Link>
+          </span>
+        </div>
+
+        <button className="au-btn" type="submit">
+          Buat akun
+          <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <div className="au-or" role="separator" aria-hidden="true"><span>atau</span></div>
+
+      <GoogleButton
+        label="Daftar dengan Google"
+        busy={googleBusy}
+        onStart={() => { setGoogleMsg(''); setGoogleBusy(true); }}
+        onDone={(who) => enter(who)}
+        onError={(msg) => setGoogleMsg(msg)}
+        onSettled={() => setGoogleBusy(false)}
+      />
+      {googleMsg && <p className="au-msg" role="status">{googleMsg}</p>}
+
+      <div className="au-notewrap">
+        <p className="au-note">
+          Akun hanya dipakai untuk mengirim dan memantau laporan. JejakPublik tidak meminta NIK, foto KTP, atau swafoto.
+        </p>
+      </div>
+    </AuthShell>
   );
 };
-
-export default Register;
