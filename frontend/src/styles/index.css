@@ -302,8 +302,10 @@ td.r,th.r{text-align:right}
   .lp-head{gap:20px;padding:0 20px;height:auto;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
   .lp-hero{height:auto}
   .lp-hero-in{width:100%;height:auto;padding:40px 20px}
-  .lp-h1wrap,.lp-pwrap,.lp-h1,.lp-lede,.lp-hero-search,.lp-input-wrap{width:100%;height:auto}
-  .lp-hero-search{flex-wrap:wrap}
+  .lp-h1wrap,.lp-pwrap,.lp-h1,.lp-lede,.lp-hero-search{width:100%;height:auto}
+  .lp-hero-search{flex-wrap:nowrap}
+  .lp-input-wrap{flex:1 1 auto;width:auto;min-width:0}
+  .lp-go{flex:0 0 68px}
   .lp-sec{padding:24px 20px 0}
   .lp-kpis{grid-template-columns:repeat(2,1fr);height:auto}
   .lp-groups{grid-template-columns:1fr;height:auto}
@@ -783,7 +785,7 @@ td.r,th.r{text-align:right}
 .ex-tick{color:#0F766E;font-size:11px;flex:none}
 
 /* saran pencarian beranda (varian V3) */
-.lp-suggest{position:absolute;left:0;top:58px;width:542px;max-height:320px;overflow-y:auto;z-index:60;
+.lp-suggest{position:absolute;left:0;right:0;top:58px;max-height:320px;overflow-y:auto;z-index:60;
   background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 22px 44px -26px rgba(16,21,26,.55)}
 .lp-sug-sec{padding:8px 8px 2px}
 .lp-sug-sec h3{margin:6px 8px 4px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A8A94}
@@ -879,3 +881,10 @@ td.r,th.r{text-align:right}
 .ab-faq-inner p{margin:0;padding:0 20px 14px;font-size:13.5px;line-height:22px;color:var(--ink-2);max-width:760px}
 .ab-faq-inner p:first-child{padding-top:2px}
 .ab-faq-inner p:last-child{padding-bottom:18px}
+
+/* layar sangat sempit: kolom cari dan tombol bertumpuk penuh */
+@media(max-width:560px){
+  .lp-hero-search{flex-wrap:wrap}
+  .lp-input-wrap{flex:1 1 100%}
+  .lp-go{flex:1 1 100%}
+}
