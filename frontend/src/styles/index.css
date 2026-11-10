@@ -336,12 +336,14 @@ td.r,th.r{text-align:right}
 .ex-chips{display:grid;grid-template-columns:repeat(4,329px);justify-content:space-between;gap:0;height:44px}
 .ex-chip{display:flex;align-items:center;height:44px;padding:0 16px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit;font-size:13px;line-height:16px;color:var(--ink-2);cursor:pointer;text-align:left}
 .ex-chip:hover{background:#FAFAFB}
-.ex-body-wrap{padding-top:22px}
-.ex-body{display:grid;grid-template-columns:280px 1072px;gap:0;align-items:start}
-.ex-filters{width:280px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}
-.ex-filters-head{display:flex;justify-content:space-between;align-items:flex-start;height:17px}
-.ex-filters-title{font-size:13.5px;line-height:17px;font-weight:700;color:var(--ink)}
-.ex-filters-caret{font-size:13.5px;line-height:17px;font-weight:700;color:#A1A1AA}
+.ex-body-wrap{padding-top:24px}
+.ex-body{display:grid;grid-template-columns:280px 1054px;gap:18px;align-items:start}
+.ex-filters-col{width:280px}
+.ex-filters-head{display:flex;align-items:center;height:18px;line-height:16px}
+.ex-filters-title{font-size:12.5px;line-height:16px;font-weight:700;color:var(--ink)}
+.ex-filters{width:100%;box-sizing:border-box;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.ex-group-wrap:first-child{padding-top:0}
+.ex-group.ex-group-first{padding-top:0;border-top-width:0}
 .ex-group-wrap{padding-top:16px}
 .ex-group{padding-top:14px;background:transparent;border:0 solid #F0F0F2;border-top-width:1px}
 .ex-group-hwrap{height:15px;line-height:15px}
@@ -353,7 +355,7 @@ td.r,th.r{text-align:right}
 .ex-item-l{font-size:12.5px;line-height:16px;color:#52525B}
 .ex-note-wrap{padding-top:6px;height:23px}
 .ex-note{margin:0;font-size:11px;line-height:16.5px;color:#A1A1AA}
-.ex-list{width:1054px;margin-left:18px}
+.ex-list{width:1054px;margin-left:0}
 .ex-list-head{display:flex;justify-content:space-between;align-items:center;height:18px;line-height:16px}
 .ex-th18{display:inline-block;height:18px;line-height:16px}
 .ex-t16{display:inline-block;line-height:16px}
@@ -610,9 +612,10 @@ td.r,th.r{text-align:right}
   .ex-chips{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;height:auto}
   .ex-chips-wrap{height:auto}
   .ex-chip{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-  .ex-body{grid-template-columns:260px minmax(0,1fr);height:auto}
-  .ex-filters{width:260px}
-  .ex-list{width:auto;min-width:0;margin-left:18px}
+  .ex-body{grid-template-columns:260px minmax(0,1fr);gap:18px;height:auto}
+  .ex-filters-col{width:260px}
+  .ex-filters{width:100%}
+  .ex-list{width:auto;min-width:0;margin-left:0}
   .ex-card{height:auto}
   .ex-thead,.ex-row{grid-template-columns:minmax(0,1fr) minmax(150px,180px) 110px;min-width:0}
   .ex-thead > div:nth-child(n+2),.ex-row > div:nth-child(n+2){margin-left:18px}
@@ -646,8 +649,9 @@ td.r,th.r{text-align:right}
 }
 /* Jelajahi: sidebar lebih sempit di laptop kecil, tetap dua kolom. */
 @media(max-width:1100px){
-  .ex-body{grid-template-columns:220px minmax(0,1fr)}
-  .ex-filters{width:220px}
+  .ex-body{grid-template-columns:220px minmax(0,1fr);gap:18px}
+  .ex-filters-col{width:220px}
+  .ex-filters{width:100%}
 }
 
 /* Jelajahi: saringan menumpuk di atas daftar. Blok ini harus berada sesudah
@@ -658,9 +662,10 @@ td.r,th.r{text-align:right}
   .ex-input-wrap{width:100%}
   .ex-chips{grid-template-columns:1fr 1fr;height:auto;gap:10px}
   .ex-chips-wrap{height:auto}
-  .ex-body{grid-template-columns:minmax(0,1fr);height:auto}
+  .ex-body{grid-template-columns:minmax(0,1fr);gap:16px;height:auto}
+  .ex-filters-col{width:100%}
   .ex-filters{width:100%;height:auto}
-  .ex-list{width:100%;margin-left:0;margin-top:16px}
+  .ex-list{width:100%;margin-left:0;margin-top:0}
   .ex-cardwrap,.ex-card{height:auto}
   .ex-thead,.ex-row{grid-template-columns:minmax(0,1fr) auto auto;min-width:0}
   .ex-row{height:auto;min-height:75px}

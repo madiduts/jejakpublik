@@ -18,13 +18,6 @@ const ROW_IDS = [
   { row: '204:194', name: '204:195', avatar: '204:196', block: '204:198', nameWrap: '204:199', nameText: '204:200', subWrap: '204:201', subText: '204:202', depth: '204:204', depthText: '204:205', amount: '204:206', amountText: '204:207', action: '204:208', chip: '204:209', chipText: '204:210' },
 ];
 
-const CHIP_IDS = [
-  { box: '204:44', text: '204:45' },
-  { box: '204:46', text: '204:47' },
-  { box: '204:48', text: '204:49' },
-  { box: '204:50', text: '204:51' },
-];
-
 const PAGE_IDS = [
   { box: '204:214', text: '204:215' },
   { box: '204:217', text: '204:218' },
@@ -45,11 +38,9 @@ export const Explore: React.FC = () => {
   const [q, setQ] = useState(params.get('q') ?? '');
   const [selInstansi, setSelInstansi] = useState<string[]>([]);
   const [kedalaman, setKedalaman] = useState<'semua' | 'rinci' | 'skpd'>('semua');
-  const [komisi, setKomisi] = useState<string[]>([]);
   const [instQuery, setInstQuery] = useState('');
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('anggaran');
-  const [menu, setMenu] = useState<{ i: number; x: number } | null>(null);
   const [sortMenu, setSortMenu] = useState(false);
   const [yearMenu, setYearMenu] = useState(false);
 
@@ -69,10 +60,9 @@ export const Explore: React.FC = () => {
       if (selInstansi.length > 0 && !selInstansi.includes(i.judul)) return false;
       if (kedalaman === 'rinci' && !i.detailed) return false;
       if (kedalaman === 'skpd' && i.detailed) return false;
-      if (komisi.length > 0 && !komisi.includes(i.komisi)) return false;
       return true;
     });
-  }, [q, selInstansi, kedalaman, komisi]);
+  }, [q, selInstansi, kedalaman]);
 
   const ordered = useMemo(() => {
     const list = [...filtered];
@@ -97,38 +87,22 @@ export const Explore: React.FC = () => {
     setPage(1);
   };
 
-  const toggleKomisi = (k: string) => {
-    setKomisi((c) => (c.includes(k) ? c.filter((x) => x !== k) : [...c, k]));
-    setPage(1);
-  };
-
-  /** Menu chip ditutup oleh klik di luar, Escape, atau pilihan. */
+  /** Dropdown menu ditutup oleh klik di luar, Escape, atau pilihan. */
   useEffect(() => {
-    if (!menu && !sortMenu && !yearMenu) return;
+    if (!sortMenu && !yearMenu) return;
     const onDown = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (!t.closest('.ex-menu') && !t.closest('.ex-chip')) setMenu(null);
       if (!t.closest('.ex-menu') && !t.closest('.ex-sortbtn')) setSortMenu(false);
       if (!t.closest('.ex-menu') && !t.closest('.ex-yearrow')) setYearMenu(false);
     };
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(null); setSortMenu(false); setYearMenu(false); } };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setSortMenu(false); setYearMenu(false); } };
     document.addEventListener('mousedown', onDown);
     document.addEventListener('keydown', onKey);
     return () => {
       document.removeEventListener('mousedown', onDown);
       document.removeEventListener('keydown', onKey);
     };
-  }, [menu, sortMenu, yearMenu]);
-
-  const chipLabels = [
-    selInstansi.length === 0 ? 'Semua instansi'
-      : selInstansi.length === 1 ? selInstansi[0] : `${selInstansi.length} instansi`,
-    'Tahun 2025',
-    kedalaman === 'semua' ? 'Kedalaman data'
-      : kedalaman === 'rinci' ? 'Sampai sub kegiatan' : 'Tingkat SKPD',
-    komisi.length === 0 ? 'Filter lainnya' : `Komisi ${komisi.join(', ')}`,
-  ];
-  const chipActive = [selInstansi.length > 0, false, kedalaman !== 'semua', komisi.length > 0];
+  }, [sortMenu, yearMenu]);
 
   return (
     <div className="lp" data-figma-root data-node-id="204:2">
@@ -167,103 +141,18 @@ export const Explore: React.FC = () => {
           </button>
         </form>
 
-        <div className="ex-chips-wrap" data-node-id="204:227">
-          <div className="ex-chips" data-node-id="204:43">
-            {CHIP_IDS.map((c, i) => (
-              <button
-                key={c.box}
-                className={`ex-chip${chipActive[i] ? ' on' : ''}`}
-                data-node-id={c.box}
-                aria-expanded={menu?.i === i}
-                aria-haspopup="menu"
-                onClick={(e) => {
-                  const x = (e.currentTarget as HTMLElement).offsetLeft;
-                  setMenu((m) => (m?.i === i ? null : { i, x }));
-                }}
-              >
-                <span data-node-id={c.text}>{chipLabels[i]}</span>
-              </button>
-            ))}
-
-            {menu && (
-              <div className="ex-menu" role="menu" style={{ left: menu.x }} onMouseDown={(e) => e.stopPropagation()}>
-                {menu.i === 0 && (
-                  <>
-                    <button role="menuitemradio" aria-checked={selInstansi.length === 0} onClick={() => { setSelInstansi([]); setPage(1); setMenu(null); }}>
-                      Semua instansi <span className="ex-tick">{selInstansi.length === 0 ? '✓' : ''}</span>
-                    </button>
-                    {byBudget.map((inst) => (
-                      <button
-                        key={inst.id}
-                        role="menuitemcheckbox"
-                        aria-checked={selInstansi.includes(inst.judul)}
-                        onClick={() => { toggleInstansi(inst.judul); setMenu(null); }}
-                      >
-                        {inst.judul} <span className="ex-tick">{selInstansi.includes(inst.judul) ? '✓' : ''}</span>
-                      </button>
-                    ))}
-                  </>
-                )}
-
-                {menu.i === 1 && (
-                  <>
-                    <button role="menuitemradio" aria-checked onClick={() => setMenu(null)}>
-                      2025 <span className="ex-tick">✓</span>
-                    </button>
-                    <button role="menuitemradio" aria-checked={false} disabled className="ex-menu-off">
-                      2024 · belum ada data
-                    </button>
-                  </>
-                )}
-
-                {menu.i === 2 && (
-                  <>
-                    {([['semua', 'Semua kedalaman'], ['rinci', 'Sampai sub kegiatan'], ['skpd', 'Tingkat SKPD']] as const).map(([v, label]) => (
-                      <button
-                        key={v}
-                        role="menuitemradio"
-                        aria-checked={kedalaman === v}
-                        onClick={() => { setKedalaman(v); setPage(1); setMenu(null); }}
-                      >
-                        {label} <span className="ex-tick">{kedalaman === v ? '✓' : ''}</span>
-                      </button>
-                    ))}
-                  </>
-                )}
-
-                {menu.i === 3 && (
-                  <>
-                    {['3', 'B', 'C', 'D', 'E'].map((k) => (
-                      <button
-                        key={k}
-                        role="menuitemcheckbox"
-                        aria-checked={komisi.includes(k)}
-                        onClick={() => { toggleKomisi(k); setMenu(null); }}
-                      >
-                        Komisi {k} <span className="ex-tick">{komisi.includes(k) ? '✓' : ''}</span>
-                      </button>
-                    ))}
-                    <button role="menuitem" onClick={() => { setKomisi([]); setPage(1); setMenu(null); }}>
-                      Hapus semua komisi
-                    </button>
-                  </>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-
         <div className="ex-body-wrap" data-node-id="204:228">
           <div className="ex-body" data-node-id="204:52">
-            <aside className="ex-filters" data-node-id="204:53">
-              <div className="ex-filters-head" data-node-id="204:54">
+            <aside className="ex-filters-col">
+              <div className="ex-filters-head">
                 <span className="ex-filters-title" data-node-id="204:55">Filter</span>
-                <span className="ex-filters-caret" data-node-id="204:58">▲</span>
               </div>
 
-              <div className="ex-group-wrap" data-node-id="204:100">
-                <div className="ex-group" data-node-id="204:59">
-                  <label className="ex-psearch">
+              <div className="ex-cardwrap">
+                <div className="ex-filters" data-node-id="204:53">
+                  <div className="ex-group-wrap" data-node-id="204:100">
+                    <div className="ex-group ex-group-first" data-node-id="204:59">
+                      <label className="ex-psearch">
                     <Ico g="search" slot={14} />
                     <input
                       value={instQuery}
@@ -358,7 +247,9 @@ export const Explore: React.FC = () => {
                   </label>
                 </div>
               </div>
-            </aside>
+            </div>
+          </div>
+        </aside>
 
             <div className="ex-list" data-node-id="204:103">
               <div className="ex-list-head" data-node-id="204:104">
