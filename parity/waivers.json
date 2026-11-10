@@ -301,6 +301,34 @@
       "reason": "Keputusan pemilik: tiga catatan per kartu dihapus dan diganti satu baris catatan di bawah pita. Tinggi pita turun 27 px dan section bertambah 3 px, sehingga posisi section di bawahnya bergeser 3 px.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "property": "w",
+      "figma": "27.125",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "x (lokal)",
+      "figma": "72.875",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "radius",
+      "figma": "6/6/6/6",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "property": "fill",
+      "figma": "#f4f4f5",
+      "reason": "Keputusan pemilik: panah kolom Aksi memakai varian E (tanpa kotak) — ikon Lucide ArrowUpRight 24x24 tanpa latar dan tanpa radius. Nilai ini berlaku untuk lima baris tabel.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }

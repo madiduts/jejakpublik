@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
+import { Ico } from '../components/detail/icons';
 import { NAV_203, FOOT_203 } from '../lib/frameIds';
 import { Footer } from '../components/layout/Footer';
 import { totals, programList } from '../lib/data';
@@ -160,8 +161,8 @@ export const Home: React.FC = () => {
                   <span data-node-id={ROWS[i].pct}>{p.pct ?? '-'}</span>
                 </div>
                 <div className="lp-arrowcol" data-node-id={ROWS[i].cell} style={{ width: 100 }}>
-                  <Link to={`/program/${p.slug}`} className="lp-arrow" data-node-id={ROWS[i].chip}>
-                    <span data-node-id={ROWS[i].arrow}>→</span>
+                  <Link to={`/program/${p.slug}`} className="lp-arrow" data-node-id={ROWS[i].chip} aria-label={`Buka ${p.nama}`}>
+                    <Ico g="diag" slot={14} />
                   </Link>
                 </div>
               </div>

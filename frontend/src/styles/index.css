@@ -278,8 +278,11 @@ td.r,th.r{text-align:right}
 .lp-td-n{font-weight:600;color:var(--ink)}
 .lp-num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
 .lp-arrowcol{display:flex;justify-content:flex-end}
-.lp-arrow{display:flex;align-items:center;justify-content:center;width:27.125px;height:24px;border-radius:6px;background:var(--chip);color:var(--ink-2);font-size:11.5px;line-height:14px}
-.lp-arrow:hover{background:#E9E9EC;text-decoration:none}
+.lp-arrow{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:0;background:transparent;color:#52525B;transition:color .15s ease}
+.lp-arrow svg{transition:transform .15s ease}
+.lp-arrow:hover{color:var(--ink);background:transparent;text-decoration:none}
+.lp-arrow:hover svg{transform:translate(2px,-2px)}
+.lp-arrow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 /* footer 203:202 */
 .lp-footwrap{padding-top:44px}
