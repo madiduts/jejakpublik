@@ -247,8 +247,13 @@ export const Explore: React.FC = () => {
                         <span data-node-id={ROW_IDS[i].amountText}>{formatRupiah(inst.belanja)}</span>
                       </div>
                       <div className="ex-action" data-node-id={ROW_IDS[i].action} style={{ width: 110 }}>
-                        <Link to={`/instansi/${inst.slug}`} className="ex-detail" data-node-id={ROW_IDS[i].chip}>
-                          <span data-node-id={ROW_IDS[i].chipText}>Detail <span className="ex-arrow">→</span></span>
+                        <Link
+                          to={`/instansi/${inst.slug}`}
+                          className="ex-detail"
+                          data-node-id={ROW_IDS[i].chip}
+                          aria-label={`Buka ${inst.judul}`}
+                        >
+                          <Ico g="diag" slot={14} />
                         </Link>
                       </div>
                     </div>
