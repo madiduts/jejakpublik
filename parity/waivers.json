@@ -616,6 +616,55 @@
       "reason": "Keputusan pemilik: tabel menampilkan 10 baris per halaman (sebelumnya 5). Kartu tumbuh 417 -> 793 px, hitungan jadi 10 dari 43, dan baris kelima kini di tengah tabel sehingga bergaris bawah.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "222:39",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:107",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:110",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:112",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:114",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (autoResize HEIGHT), bukan lebar glyph.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:164",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "222:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }

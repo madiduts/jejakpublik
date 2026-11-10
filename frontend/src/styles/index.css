@@ -749,3 +749,38 @@ td.r,th.r{text-align:right}
 .dt-sum-empty{margin:18px 0 0;font-size:12.5px;line-height:19px;color:var(--muted);max-width:320px}
 
 .dt-card.tall.short{height:auto;min-height:0;padding-bottom:22px}
+
+/* ── Tentang (frame 222:2) ─────────────────────────────────────────────── */
+.ab-sec{max-width:1440px;margin:0 auto;padding:34px 44px 0}
+.ab-introwrap{padding-top:10px;width:505px}
+.ab-intro{margin:0;font-size:14.5px;line-height:23.2px;color:#52525B}
+.ab-gridwrap{padding-top:24px}
+.ab-grid{display:grid;grid-template-columns:800.391px 551.609px;gap:0;height:542px;align-items:stretch}
+.ab-left{width:800.391px}
+.ab-right{width:533.594px;margin-left:18px}
+.ab-cardwrap{padding-top:16px}
+.ab-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.ab-h2{margin:0;font-size:20px;line-height:25px;font-weight:700;letter-spacing:-.3px;color:#18181B}
+.ab-rows{padding-top:12px}
+.ab-row{display:flex;align-items:center;justify-content:space-between;gap:16px;height:39px;padding:11px 0;
+  border:0 solid var(--line-3);border-bottom-width:1px}
+.ab-row:last-child{height:38px;border-bottom-width:0}
+.ab-row-l{font-size:13px;line-height:16px;color:#71717A}
+.ab-row-v{font-size:13px;line-height:16px;font-weight:600;color:#18181B;text-align:right}
+.ab-notewrap{padding-top:12px}
+.ab-note{margin:0;font-size:11.5px;line-height:14px;color:#8A8A94}
+.ab-list{padding-top:12px}
+.ab-p{height:23px;margin:0;box-sizing:border-box}
+.ab-p + .ab-p{height:31px;padding-top:8px}
+.ab-p-t{position:relative;top:-1px;margin:0;font-size:13px;line-height:22.1px;color:#3F3F46}
+.ab-p-t.strong{font-weight:700}
+.ab-timhead{padding-top:26px}
+.ab-timwrap{padding-top:16px}
+.ab-team{display:grid;grid-template-columns:450.656px 450.672px 450.656px;gap:0;height:60px;
+  border:0 solid #10151A;border-top-width:1px}
+.ab-member{padding:18px 28px 0 0;height:59px}
+.ab-member + .ab-member{padding-left:28px;border:0 solid #E0E0E4;border-left-width:1px}
+.ab-mnamewrap{height:18px;line-height:18px}
+.ab-mname{font-size:14.5px;line-height:18px;font-weight:600;color:#18181B;white-space:nowrap}
+.ab-mrolewrap{height:23px;padding-top:3px;line-height:18px}
+.ab-mrole{font-size:12px;line-height:18px;color:#8A8A94;white-space:nowrap}

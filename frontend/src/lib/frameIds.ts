@@ -139,3 +139,26 @@ export const FOOT_219: FootIds = {
   ],
   legal: '219:153',
 };
+
+export const NAV_222: NavIds = {
+  head: '222:3', brand: '222:4', brandText: '222:5', links: '222:7',
+  items: [
+    { wrap: '222:8', text: '222:9', w: 51 },
+    { wrap: '222:11', text: '222:12', w: 79 },
+    { wrap: '222:13', text: '222:14', w: 54 },
+    { outer: '222:18', wrap: '222:15', text: '222:16', w: 50.438 },
+  ],
+  gap: '222:19', icon: '222:20', cta: '222:23', ctaText: '222:24', iconGlyph: '222:21',
+};
+
+export const FOOT_222: FootIds = {
+  wrap: '222:198', foot: '222:162', brandWrap: '222:163', brand: '222:164',
+  colsWrap: '222:196', cols: '222:166',
+  col: [
+    { box: '222:167', headWrap: '222:168', head: '222:169', bodyWrap: '222:174', body: '222:171' },
+    { box: '222:175', headWrap: '222:176', head: '222:177', bodyWrap: '222:180', body: '222:178' },
+    { box: '222:181', headWrap: '222:182', head: '222:183', bodyWrap: '222:186', body: '222:184' },
+    { box: '222:187', headWrap: '222:188', head: '222:189', bodyWrap: '222:192', body: '222:190' },
+  ],
+  legal: '222:193',
+};
