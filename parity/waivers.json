@@ -161,6 +161,55 @@
       "reason": "Tinggi frame di Figma 2 px lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "203:18",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:20",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:123",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:145",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:162",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:179",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "204:196",
+      "property": "ikon ukuran",
+      "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
