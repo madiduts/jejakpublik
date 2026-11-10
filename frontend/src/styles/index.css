@@ -643,3 +643,44 @@ td.r,th.r{text-align:right}
   .pg .dt-grid{height:auto}
   .pg-illus{width:280px}
 }
+
+/* ── Panduan indeks (frame 219:2) ──────────────────────────────────────── */
+.gd-hero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:190px;padding:30px 44px;overflow:hidden;background:#10151A}
+.gd-hero-canvas{width:100%;max-width:1352px;display:flex;flex-direction:column;justify-content:flex-end;height:130px}
+.gd-sec{max-width:1440px;margin:0 auto;padding:34px 44px 0}
+.gd-introwrap{padding-top:10px;width:505px;height:57px}
+.gd-intro{margin:0;font-size:14.5px;line-height:23.2px;color:#52525B}
+.gd-gridwrap{padding-top:24px;height:497.5px}
+.gd-grid{display:grid;grid-template-columns:800.391px 551.609px;gap:0;height:473.5px}
+.gd-list{width:800.391px}
+.gd-listinner{border:0 solid #10151A;border-top-width:1px}
+.gd-card{display:grid;grid-template-columns:750.391px 1fr;gap:0;align-items:center;height:78.75px;padding:18px 0;border:0 solid #EDEDEF;border-bottom-width:1px}
+.gd-cardbody{width:750.391px}
+.gd-titlewrap{height:19px;line-height:19px}
+.gd-title{font-size:15px;line-height:19px;font-weight:600;color:#18181B;white-space:nowrap}
+.gd-title:hover{text-decoration:none;color:#005EA2}
+.gd-descwrap{height:23px;padding-top:4px;line-height:18.75px}
+.gd-desc{font-size:12.5px;line-height:18.75px;color:#8A8A94;white-space:nowrap}
+.gd-arrow{display:flex;align-items:center;justify-content:center;width:32px;height:32px;margin-right:2px;justify-self:end;border:1px solid #E0E0E4;border-radius:16px;font-size:12px;line-height:15px;color:#52525B}
+.gd-arrow:hover{background:#FAFAFB;text-decoration:none}
+.gd-arrowicon{display:flex;align-items:center;justify-content:center;width:8px;height:15px}
+.gd-cats{width:533.594px;margin-left:18px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.gd-cats-h{margin:0;font-size:13.5px;line-height:17px;font-weight:700;letter-spacing:0;color:#18181B}
+.gd-catswrap{padding-top:10px}
+.gd-catlist{display:grid;grid-template-rows:repeat(6,42px);gap:0;height:250px;align-items:start}
+.gd-cat{display:flex;align-items:center;height:40px;padding:11px 0;border:0 solid #EDEDEF;border-bottom-width:1px;background:transparent;font-family:inherit;font-size:13.5px;line-height:17px;color:#3F3F46;text-align:left;cursor:pointer}
+.gd-cat.on{font-weight:600;color:#18181B}
+.gd-cat:hover{background:#FAFAFB}
+
+@media (max-width:1439px){
+  .gd-sec{padding-left:24px;padding-right:24px}
+  .gd-hero{padding-left:24px;padding-right:24px}
+  .gd-introwrap{width:auto;max-width:505px;height:auto}
+  .gd-gridwrap{height:auto}
+  .gd-grid{grid-template-columns:minmax(0,800.391px) minmax(0,533.594px);height:auto}
+  .gd-list{width:auto;min-width:0}
+  .gd-card{grid-template-columns:minmax(0,1fr) 48px}
+  .gd-cardbody{width:auto;min-width:0}
+  .gd-title,.gd-desc{white-space:normal}
+  .gd-cats{width:auto;min-width:0}
+}

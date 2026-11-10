@@ -210,6 +210,27 @@
       "reason": "Ikon memakai komponen lucide-react; svg seukuran glyph (16/18 px) di dalam slot frame (34/40 px), sesuai instruksi pemilik memakai Lucide untuk semua ikon.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "219:2",
+      "property": "h",
+      "reason": "Tinggi frame di Figma 2 px lebih pendek dari posisi anak terakhirnya (pembulatan file), bukan layout kode.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:39",
+      "property": "w",
+      "reason": "Figma menyimpan lebar kotak teks (505 px), bukan lebar glyph (492,2 px).",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
+    },
+    {
+      "node": "219:124",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-10"
     }
   ]
 }
