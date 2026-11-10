@@ -9,15 +9,6 @@ import { formatRupiah } from '../utils/format';
 
 const PAGE_SIZE = 5;
 
-/** 204:63 … 204:75 — baris filter instansi pada frame. */
-const FILTER_ITEM_IDS = [
-  { box: '204:63', cb: '204:64', label: '204:65' },
-  { box: '204:66', cb: '204:67', label: '204:68' },
-  { box: '204:69', cb: '204:70', label: '204:71' },
-  { box: '204:72', cb: '204:73', label: '204:74' },
-  { box: '204:75', cb: '204:76', label: '204:77' },
-];
-
 /** 204:121 … 204:210 — lima baris tabel pada frame. */
 const ROW_IDS = [
   { row: '204:121', name: '204:122', avatar: '204:123', block: '204:126', nameWrap: '204:127', nameText: '204:128', subWrap: '204:129', subText: '204:130', depth: '204:133', depthText: '204:134', amount: '204:136', amountText: '204:137', action: '204:139', chip: '204:140', chipText: '204:141' },
@@ -55,26 +46,33 @@ export const Explore: React.FC = () => {
   const [selInstansi, setSelInstansi] = useState<string[]>([]);
   const [kedalaman, setKedalaman] = useState<'semua' | 'rinci' | 'skpd'>('semua');
   const [komisi, setKomisi] = useState<string[]>([]);
-  const [lainnya, setLainnya] = useState(false);
+  const [instQuery, setInstQuery] = useState('');
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('anggaran');
   const [menu, setMenu] = useState<{ i: number; x: number } | null>(null);
   const [sortMenu, setSortMenu] = useState(false);
+  const [yearMenu, setYearMenu] = useState(false);
 
-  const topFilters = byBudget.slice(0, 4).map((i) => i.judul);
+  const panelList = useMemo(
+    () => [...instansiList].sort((a, b) => a.judul.localeCompare(b.judul, 'id')),
+    []
+  );
+  const panelShown = useMemo(() => {
+    const t = instQuery.trim().toLowerCase();
+    return t ? panelList.filter((i) => i.judul.toLowerCase().includes(t)) : panelList;
+  }, [panelList, instQuery]);
 
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase();
     return byBudget.filter((i) => {
       if (term && !i.nama.toLowerCase().includes(term)) return false;
       if (selInstansi.length > 0 && !selInstansi.includes(i.judul)) return false;
-      if (lainnya && topFilters.includes(i.judul)) return false;
       if (kedalaman === 'rinci' && !i.detailed) return false;
       if (kedalaman === 'skpd' && i.detailed) return false;
       if (komisi.length > 0 && !komisi.includes(i.komisi)) return false;
       return true;
     });
-  }, [q, selInstansi, lainnya, kedalaman, komisi, topFilters]);
+  }, [q, selInstansi, kedalaman, komisi]);
 
   const ordered = useMemo(() => {
     const list = [...filtered];
@@ -106,20 +104,21 @@ export const Explore: React.FC = () => {
 
   /** Menu chip ditutup oleh klik di luar, Escape, atau pilihan. */
   useEffect(() => {
-    if (!menu && !sortMenu) return;
+    if (!menu && !sortMenu && !yearMenu) return;
     const onDown = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
       if (!t.closest('.ex-menu') && !t.closest('.ex-chip')) setMenu(null);
       if (!t.closest('.ex-menu') && !t.closest('.ex-sortbtn')) setSortMenu(false);
+      if (!t.closest('.ex-menu') && !t.closest('.ex-yearrow')) setYearMenu(false);
     };
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(null); setSortMenu(false); } };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(null); setSortMenu(false); setYearMenu(false); } };
     document.addEventListener('mousedown', onDown);
     document.addEventListener('keydown', onKey);
     return () => {
       document.removeEventListener('mousedown', onDown);
       document.removeEventListener('keydown', onKey);
     };
-  }, [menu, sortMenu]);
+  }, [menu, sortMenu, yearMenu]);
 
   const chipLabels = [
     selInstansi.length === 0 ? 'Semua instansi'
@@ -264,33 +263,36 @@ export const Explore: React.FC = () => {
 
               <div className="ex-group-wrap" data-node-id="204:100">
                 <div className="ex-group" data-node-id="204:59">
-                  <div className="ex-group-hwrap" data-node-id="204:60">
-                    <span className="ex-group-h" data-node-id="204:61">Instansi</span>
-                  </div>
-                  {topFilters.map((nama, i) => (
-                    <label className={`ex-item${i === 0 ? ' first' : ''}`} key={nama} data-node-id={FILTER_ITEM_IDS[i].box}>
-                      <input
-                        type="checkbox"
-                        className={`ex-cb${selInstansi.includes(nama) ? ' on' : ''}`}
-                        data-node-id={FILTER_ITEM_IDS[i].cb}
-                        checked={selInstansi.includes(nama)}
-                        onChange={() => toggleInstansi(nama)}
-                        aria-label={nama}
-                      />
-                      <span className="ex-item-l" data-node-id={FILTER_ITEM_IDS[i].label}>{nama}</span>
-                    </label>
-                  ))}
-                  <label className="ex-item" data-node-id={FILTER_ITEM_IDS[4].box}>
+                  <label className="ex-psearch">
+                    <Ico g="search" slot={14} />
                     <input
-                      type="checkbox"
-                      className={`ex-cb${lainnya ? ' on' : ''}`}
-                      data-node-id={FILTER_ITEM_IDS[4].cb}
-                      checked={lainnya}
-                      onChange={() => { setLainnya((v) => !v); setPage(1); }}
-                      aria-label="Lainnya"
+                      value={instQuery}
+                      onChange={(e) => setInstQuery(e.target.value)}
+                      placeholder="Cari instansi"
+                      aria-label="Cari instansi di panel filter"
                     />
-                    <span className="ex-item-l" data-node-id={FILTER_ITEM_IDS[4].label}>Lainnya...</span>
                   </label>
+                  <div className="ex-pscroll">
+                    <div className="ex-plist">
+                      {panelShown.map((inst) => (
+                        <label className="ex-item ex-pitem" key={inst.id}>
+                          <input
+                            type="checkbox"
+                            className={`ex-cb${selInstansi.includes(inst.judul) ? ' on' : ''}`}
+                            checked={selInstansi.includes(inst.judul)}
+                            onChange={() => toggleInstansi(inst.judul)}
+                            aria-label={inst.judul}
+                          />
+                          <span className="ex-item-l">{inst.judul}</span>
+                        </label>
+                      ))}
+                      {panelShown.length === 0 && <p className="ex-pempty">Tidak ada instansi yang cocok.</p>}
+                    </div>
+                  </div>
+                  <div className="ex-pmeta">
+                    <span>{panelShown.length} instansi</span>
+                    <button type="button" onClick={() => { setSelInstansi([]); setPage(1); }}>Hapus pilihan</button>
+                  </div>
                 </div>
               </div>
 
@@ -299,10 +301,28 @@ export const Explore: React.FC = () => {
                   <div className="ex-group-hwrap" data-node-id="204:80">
                     <span className="ex-group-h" data-node-id="204:81">Tahun anggaran</span>
                   </div>
-                  <label className="ex-item first" data-node-id="204:82">
-                    <input type="checkbox" className="ex-cb on" data-node-id="204:83" defaultChecked aria-label="2025" />
-                    <span className="ex-item-l" data-node-id="204:84">2025</span>
-                  </label>
+                  <div className="ex-yearwrap">
+                    <button
+                      className="ex-yearrow"
+                      data-node-id="204:82"
+                      aria-haspopup="listbox"
+                      aria-expanded={yearMenu}
+                      onClick={() => setYearMenu((v) => !v)}
+                    >
+                      <span data-node-id="204:84">2025</span>
+                      <Ico g="chevdown" slot={12} />
+                    </button>
+                    {yearMenu && (
+                      <div className="ex-menu ex-menu-left" role="listbox">
+                        <button role="option" aria-selected onClick={() => setYearMenu(false)}>
+                          2025 <span className="ex-tick">✓</span>
+                        </button>
+                        <button role="option" aria-disabled="true" disabled className="ex-menu-off">
+                          2024 · belum ada data
+                        </button>
+                      </div>
+                    )}
+                  </div>
                   <div className="ex-note-wrap" data-node-id="204:85">
                     <p className="ex-note" data-node-id="204:86">Hanya 2025 yang sumbernya lengkap.</p>
                   </div>

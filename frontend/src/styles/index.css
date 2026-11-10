@@ -335,8 +335,8 @@ td.r,th.r{text-align:right}
 .ex-chip{display:flex;align-items:center;height:44px;padding:0 16px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit;font-size:13px;line-height:16px;color:var(--ink-2);cursor:pointer;text-align:left}
 .ex-chip:hover{background:#FAFAFB}
 .ex-body-wrap{padding-top:22px;height:517px}
-.ex-body{display:grid;grid-template-columns:280px 1072px;gap:0;height:495px}
-.ex-filters{width:280px;height:443.5px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.ex-body{display:grid;grid-template-columns:280px 1072px;gap:0;align-items:start}
+.ex-filters{width:280px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}
 .ex-filters-head{display:flex;justify-content:space-between;align-items:flex-start;height:17px}
 .ex-filters-title{font-size:13.5px;line-height:17px;font-weight:700;color:var(--ink)}
 .ex-filters-caret{font-size:13.5px;line-height:17px;font-weight:700;color:#A1A1AA}
@@ -724,3 +724,24 @@ td.r,th.r{text-align:right}
 .lp-sug-empty{padding:16px 14px;font-size:12.5px;color:var(--muted)}
 .lp-sug-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:9px 14px;border:0;border-top:1px solid #EFEFF1;background:#FAFAFB;font:inherit;font-size:12px;color:var(--muted);cursor:pointer;text-align:left}
 .lp-sug-foot:hover{background:#F4F4F5;color:var(--ink)}
+
+/* panel filter: cari + daftar bergulir + tahun pilihan tunggal */
+.ex-psearch{display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;margin-top:10px;
+  border:1px solid #D4D4D8;border-radius:8px;background:#fff}
+.ex-psearch input{border:0;outline:0;background:transparent;font:inherit;font-size:12.5px;line-height:16px;color:var(--ink);width:100%}
+.ex-psearch input::placeholder{color:#8A8A94}
+.ex-pscroll{max-height:160px;overflow-y:auto;margin-top:8px;padding-right:6px;scrollbar-width:thin;scrollbar-color:#D4D4D8 transparent}
+.ex-pscroll::-webkit-scrollbar{width:6px}
+.ex-pscroll::-webkit-scrollbar-thumb{background:#D4D4D8;border-radius:3px}
+.ex-pitem{height:auto;padding:5px 0}
+.ex-pitem .ex-item-l{white-space:normal;line-height:17px}
+.ex-pempty{margin:8px 0;font-size:12px;color:var(--muted)}
+.ex-pmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+.ex-pmeta span{font-size:11px;color:var(--faint)}
+.ex-pmeta button{border:0;background:none;font:inherit;font-size:11px;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
+.ex-yearwrap{position:relative;margin-top:8px}
+.ex-yearrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;height:34px;padding:0 10px;
+  border:1px solid #D4D4D8;border-radius:8px;background:#fff;font:inherit;font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.ex-yearrow:hover{border-color:var(--ink)}
+.ex-yearrow > span{font-size:12.5px;line-height:16px;color:#52525B}
+.ex-menu-left{left:0;right:auto;top:38px;width:100%}
