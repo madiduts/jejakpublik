@@ -16,7 +16,7 @@ export const ModeratorQueue: React.FC = () => {
     return (
       <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator' }]}>
         <div className="wrap page" style={{ maxWidth: 620 }}>
-          <Empty title="Ruang moderator terkunci">Masuk terlebih dahulu untuk membuka antrean laporan. <Link to="/masuk">Masuk di sini</Link>.</Empty>
+          <Empty title="Ruang moderator terkunci">Masuk terlebih dahulu untuk membuka antrean laporan. <Link to="/masuk" state={{ from: '/moderator' }}>Masuk di sini</Link>.</Empty>
         </div>
       </LayoutShell>
     );

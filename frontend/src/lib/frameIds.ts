@@ -162,3 +162,26 @@ export const FOOT_222: FootIds = {
   ],
   legal: '222:193',
 };
+
+export const NAV_223: NavIds = {
+  head: '223:3', brand: '223:4', brandText: '223:5', links: '223:7',
+  items: [
+    { wrap: '223:8', text: '223:9', w: 51 },
+    { wrap: '223:11', text: '223:12', w: 79 },
+    { wrap: '223:13', text: '223:14', w: 54 },
+    { wrap: '223:15', text: '223:16', w: 50 },
+  ],
+  gap: '223:17', icon: '223:18', cta: '223:21', ctaText: '223:22', iconGlyph: '223:19',
+};
+
+export const FOOT_223: FootIds = {
+  wrap: '223:113', foot: '223:77', brandWrap: '223:78', brand: '223:79',
+  colsWrap: '223:111', cols: '223:81',
+  col: [
+    { box: '223:82', headWrap: '223:83', head: '223:84', bodyWrap: '223:89', body: '223:86' },
+    { box: '223:90', headWrap: '223:91', head: '223:92', bodyWrap: '223:95', body: '223:93' },
+    { box: '223:96', headWrap: '223:97', head: '223:98', bodyWrap: '223:101', body: '223:99' },
+    { box: '223:102', headWrap: '223:103', head: '223:104', bodyWrap: '223:107', body: '223:105' },
+  ],
+  legal: '223:108',
+};
