@@ -43,7 +43,7 @@ export const About: React.FC = () => (
     <Navbar ids={NAV_222} />
 
     <section className="gd-hero" data-node-id="222:26">
-      <div className="ex-hero-img" aria-hidden="true" />
+      <div className="lp-hero-img" aria-hidden="true" />
       <div className="ex-hero-shade" aria-hidden="true" />
       <div className="gd-hero-canvas">
         <div data-node-id="222:30">
