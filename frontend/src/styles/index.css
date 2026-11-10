@@ -690,3 +690,19 @@ td.r,th.r{text-align:right}
   .gd-title,.gd-desc{white-space:normal}
   .gd-cats{width:auto;min-width:0}
 }
+
+/* chip filter jelajahi: keadaan aktif dan menu */
+.ex-chips{position:relative}
+.ex-chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.ex-chip.on:hover{background:#27272A}
+.ex-chip[aria-expanded="true"]{border-color:var(--ink)}
+.ex-menu{position:absolute;top:52px;z-index:40;width:264px;max-height:320px;overflow-y:auto;padding:6px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px -20px rgba(24,24,27,.45)}
+.ex-menu button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;
+  border:0;background:transparent;font:inherit;font-size:12.5px;line-height:18px;color:var(--ink);
+  padding:7px 10px;border-radius:6px;cursor:pointer;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-menu button:hover{background:var(--chip)}
+.ex-menu button[aria-checked="true"]{font-weight:600}
+.ex-menu .ex-menu-off{color:#A1A1AA;cursor:not-allowed}
+.ex-menu .ex-menu-off:hover{background:transparent}
+.ex-tick{color:#0F766E;font-size:11px;flex:none}

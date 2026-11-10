@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
@@ -52,17 +52,28 @@ const SORT_LABEL: Record<string, string> = {
 export const Explore: React.FC = () => {
   const [params] = useSearchParams();
   const [q, setQ] = useState(params.get('q') ?? '');
-  const [checked, setChecked] = useState<string[]>([]);
+  const [selInstansi, setSelInstansi] = useState<string[]>([]);
+  const [kedalaman, setKedalaman] = useState<'semua' | 'rinci' | 'skpd'>('semua');
+  const [komisi, setKomisi] = useState<string[]>([]);
+  const [lainnya, setLainnya] = useState(false);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('anggaran');
+  const [menu, setMenu] = useState<{ i: number; x: number } | null>(null);
+
+  const topFilters = byBudget.slice(0, 4).map((i) => i.judul);
 
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase();
-    return byBudget.filter((i) =>
-      (!term || i.nama.toLowerCase().includes(term)) &&
-      (checked.length === 0 || checked.includes(i.nama))
-    );
-  }, [q, checked]);
+    return byBudget.filter((i) => {
+      if (term && !i.nama.toLowerCase().includes(term)) return false;
+      if (selInstansi.length > 0 && !selInstansi.includes(i.judul)) return false;
+      if (lainnya && topFilters.includes(i.judul)) return false;
+      if (kedalaman === 'rinci' && !i.detailed) return false;
+      if (kedalaman === 'skpd' && i.detailed) return false;
+      if (komisi.length > 0 && !komisi.includes(i.komisi)) return false;
+      return true;
+    });
+  }, [q, selInstansi, lainnya, kedalaman, komisi, topFilters]);
 
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const current = Math.min(page, pages);
@@ -72,10 +83,41 @@ export const Explore: React.FC = () => {
   const windowStart = Math.min(Math.max(1, current - 3), Math.max(1, pages - 3));
   const windowPages = [0, 1, 2, 3].map((i) => windowStart + i).filter((p) => p <= pages);
 
-  const toggle = (nama: string) =>
-    setChecked((c) => (c.includes(nama) ? c.filter((x) => x !== nama) : [...c, nama]));
+  const toggleInstansi = (nama: string) => {
+    setSelInstansi((c) => (c.includes(nama) ? c.filter((x) => x !== nama) : [...c, nama]));
+    setPage(1);
+  };
 
-  const topFilters = byBudget.slice(0, 4).map((i) => i.judul);
+  const toggleKomisi = (k: string) => {
+    setKomisi((c) => (c.includes(k) ? c.filter((x) => x !== k) : [...c, k]));
+    setPage(1);
+  };
+
+  /** Menu chip ditutup oleh klik di luar, Escape, atau pilihan. */
+  useEffect(() => {
+    if (!menu) return;
+    const onDown = (e: MouseEvent) => {
+      const t = e.target as HTMLElement;
+      if (!t.closest('.ex-menu') && !t.closest('.ex-chip')) setMenu(null);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(null); };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [menu]);
+
+  const chipLabels = [
+    selInstansi.length === 0 ? 'Semua instansi'
+      : selInstansi.length === 1 ? selInstansi[0] : `${selInstansi.length} instansi`,
+    'Tahun 2025',
+    kedalaman === 'semua' ? 'Kedalaman data'
+      : kedalaman === 'rinci' ? 'Sampai sub kegiatan' : 'Tingkat SKPD',
+    komisi.length === 0 ? 'Filter lainnya' : `Komisi ${komisi.join(', ')}`,
+  ];
+  const chipActive = [selInstansi.length > 0, false, kedalaman !== 'semua', komisi.length > 0];
 
   return (
     <div className="lp" data-figma-root data-node-id="204:2">
@@ -116,18 +158,87 @@ export const Explore: React.FC = () => {
 
         <div className="ex-chips-wrap" data-node-id="204:227">
           <div className="ex-chips" data-node-id="204:43">
-            <button className="ex-chip" data-node-id={CHIP_IDS[0].box} onChange={() => undefined}>
-              <span data-node-id={CHIP_IDS[0].text}>Semua instansi</span>
-            </button>
-            <button className="ex-chip" data-node-id={CHIP_IDS[1].box}>
-              <span data-node-id={CHIP_IDS[1].text}>Tahun 2025</span>
-            </button>
-            <button className="ex-chip" data-node-id={CHIP_IDS[2].box}>
-              <span data-node-id={CHIP_IDS[2].text}>Kedalaman data</span>
-            </button>
-            <button className="ex-chip" data-node-id={CHIP_IDS[3].box}>
-              <span data-node-id={CHIP_IDS[3].text}>Filter lainnya</span>
-            </button>
+            {CHIP_IDS.map((c, i) => (
+              <button
+                key={c.box}
+                className={`ex-chip${chipActive[i] ? ' on' : ''}`}
+                data-node-id={c.box}
+                aria-expanded={menu?.i === i}
+                aria-haspopup="menu"
+                onClick={(e) => {
+                  const x = (e.currentTarget as HTMLElement).offsetLeft;
+                  setMenu((m) => (m?.i === i ? null : { i, x }));
+                }}
+              >
+                <span data-node-id={c.text}>{chipLabels[i]}</span>
+              </button>
+            ))}
+
+            {menu && (
+              <div className="ex-menu" role="menu" style={{ left: menu.x }} onMouseDown={(e) => e.stopPropagation()}>
+                {menu.i === 0 && (
+                  <>
+                    <button role="menuitemradio" aria-checked={selInstansi.length === 0} onClick={() => { setSelInstansi([]); setPage(1); setMenu(null); }}>
+                      Semua instansi <span className="ex-tick">{selInstansi.length === 0 ? '✓' : ''}</span>
+                    </button>
+                    {byBudget.map((inst) => (
+                      <button
+                        key={inst.id}
+                        role="menuitemcheckbox"
+                        aria-checked={selInstansi.includes(inst.judul)}
+                        onClick={() => { toggleInstansi(inst.judul); setMenu(null); }}
+                      >
+                        {inst.judul} <span className="ex-tick">{selInstansi.includes(inst.judul) ? '✓' : ''}</span>
+                      </button>
+                    ))}
+                  </>
+                )}
+
+                {menu.i === 1 && (
+                  <>
+                    <button role="menuitemradio" aria-checked onClick={() => setMenu(null)}>
+                      2025 <span className="ex-tick">✓</span>
+                    </button>
+                    <button role="menuitemradio" aria-checked={false} disabled className="ex-menu-off">
+                      2024 · belum ada data
+                    </button>
+                  </>
+                )}
+
+                {menu.i === 2 && (
+                  <>
+                    {([['semua', 'Semua kedalaman'], ['rinci', 'Sampai sub kegiatan'], ['skpd', 'Tingkat SKPD']] as const).map(([v, label]) => (
+                      <button
+                        key={v}
+                        role="menuitemradio"
+                        aria-checked={kedalaman === v}
+                        onClick={() => { setKedalaman(v); setPage(1); setMenu(null); }}
+                      >
+                        {label} <span className="ex-tick">{kedalaman === v ? '✓' : ''}</span>
+                      </button>
+                    ))}
+                  </>
+                )}
+
+                {menu.i === 3 && (
+                  <>
+                    {['3', 'B', 'C', 'D', 'E'].map((k) => (
+                      <button
+                        key={k}
+                        role="menuitemcheckbox"
+                        aria-checked={komisi.includes(k)}
+                        onClick={() => { toggleKomisi(k); setMenu(null); }}
+                      >
+                        Komisi {k} <span className="ex-tick">{komisi.includes(k) ? '✓' : ''}</span>
+                      </button>
+                    ))}
+                    <button role="menuitem" onClick={() => { setKomisi([]); setPage(1); setMenu(null); }}>
+                      Hapus semua komisi
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
@@ -148,17 +259,24 @@ export const Explore: React.FC = () => {
                     <label className={`ex-item${i === 0 ? ' first' : ''}`} key={nama} data-node-id={FILTER_ITEM_IDS[i].box}>
                       <input
                         type="checkbox"
-                        className={`ex-cb${checked.includes(nama) ? ' on' : ''}`}
+                        className={`ex-cb${selInstansi.includes(nama) ? ' on' : ''}`}
                         data-node-id={FILTER_ITEM_IDS[i].cb}
-                        checked={checked.includes(nama)}
-                        onChange={() => { toggle(nama); setPage(1); }}
+                        checked={selInstansi.includes(nama)}
+                        onChange={() => toggleInstansi(nama)}
                         aria-label={nama}
                       />
                       <span className="ex-item-l" data-node-id={FILTER_ITEM_IDS[i].label}>{nama}</span>
                     </label>
                   ))}
                   <label className="ex-item" data-node-id={FILTER_ITEM_IDS[4].box}>
-                    <input type="checkbox" className="ex-cb" data-node-id={FILTER_ITEM_IDS[4].cb} aria-label="Lainnya" />
+                    <input
+                      type="checkbox"
+                      className={`ex-cb${lainnya ? ' on' : ''}`}
+                      data-node-id={FILTER_ITEM_IDS[4].cb}
+                      checked={lainnya}
+                      onChange={() => { setLainnya((v) => !v); setPage(1); }}
+                      aria-label="Lainnya"
+                    />
                     <span className="ex-item-l" data-node-id={FILTER_ITEM_IDS[4].label}>Lainnya...</span>
                   </label>
                 </div>
@@ -185,11 +303,25 @@ export const Explore: React.FC = () => {
                     <span className="ex-group-h" data-node-id="204:92">Kedalaman data</span>
                   </div>
                   <label className="ex-item first" data-node-id="204:93">
-                    <input type="checkbox" className="ex-cb" data-node-id="204:94" aria-label="Sampai sub kegiatan" />
+                    <input
+                      type="checkbox"
+                      className={`ex-cb${kedalaman === 'rinci' ? ' on' : ''}`}
+                      data-node-id="204:94"
+                      checked={kedalaman === 'rinci'}
+                      onChange={() => { setKedalaman((v) => (v === 'rinci' ? 'semua' : 'rinci')); setPage(1); }}
+                      aria-label="Sampai sub kegiatan"
+                    />
                     <span className="ex-item-l" data-node-id="204:95">Sampai sub kegiatan</span>
                   </label>
                   <label className="ex-item" data-node-id="204:96">
-                    <input type="checkbox" className="ex-cb" data-node-id="204:97" aria-label="Tingkat SKPD" />
+                    <input
+                      type="checkbox"
+                      className={`ex-cb${kedalaman === 'skpd' ? ' on' : ''}`}
+                      data-node-id="204:97"
+                      checked={kedalaman === 'skpd'}
+                      onChange={() => { setKedalaman((v) => (v === 'skpd' ? 'semua' : 'skpd')); setPage(1); }}
+                      aria-label="Tingkat SKPD"
+                    />
                     <span className="ex-item-l" data-node-id="204:98">Tingkat SKPD</span>
                   </label>
                 </div>
