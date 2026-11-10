@@ -2,35 +2,7 @@ import React from 'react';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { NAV_222, FOOT_222 } from '../lib/frameIds';
-import { totals, programTotals, unitKerja, indikator } from '../lib/data';
-
-const CAKUPAN = [
-  { box: '222:48', label: '222:49', labelText: '222:50', value: '222:51', valueText: '222:52', l: 'Lapis luas, Dashboard BPKD', v: `${totals.instansi} instansi` },
-  { box: '222:54', label: '222:55', labelText: '222:56', value: '222:57', valueText: '222:58', l: 'Lapis dalam, LKIP DLH 2025', v: `${programTotals.kegiatan === 15 ? 8 : programTotals.kegiatan} / ${programTotals.kegiatan} / ${programTotals.subKegiatan}` },
-  { box: '222:59', label: '222:60', labelText: '222:61', value: '222:62', valueText: '222:63', l: 'Indikator dan unit kerja', v: `${indikator.length} / ${unitKerja.length}` },
-  { box: '222:64', label: '222:65', labelText: '222:66', value: '222:67', valueText: '222:68', l: 'Periode', v: 'TA 2025 (selesai)' },
-];
-
-const SUMBER = [
-  { box: '222:78', label: '222:79', labelText: '222:80', value: '222:81', valueText: '222:82', l: 'Dashboard Keuangan BPKD DKI', v: '43 instansi, tiga kelompok' },
-  { box: '222:83', label: '222:84', labelText: '222:85', value: '222:86', valueText: '222:87', l: 'LKIP Dinas Lingkungan Hidup 2025', v: 'Rincian sampai sub kegiatan' },
-  { box: '222:88', label: '222:89', labelText: '222:90', value: '222:91', valueText: '222:92', l: 'LKIP Dinas Bina Marga 2025', v: 'Pembanding struktur' },
-  { box: '222:93', label: '222:94', labelText: '222:95', value: '222:96', valueText: '222:97', l: 'UU 17/2025 APBN 2026', v: 'Konteks transfer pusat' },
-];
-
-const KEADAAN = [
-  { box: '222:106', text: '222:107', t: 'Normal — konsisten dengan pembanding.' },
-  { box: '222:109', text: '222:110', t: 'Dikoreksi — ada kesalahan cetak yang bisa direkonsiliasi, disertai riwayat.' },
-  { box: '222:111', text: '222:112', t: 'Ditahan — belum ada pembanding; tidak diubah menjadi nol.' },
-  { box: '222:113', text: '222:114', t: 'Tidak dilaporkan — sumber tidak mencantumkan nilai.' },
-];
-
-const BATAS = [
-  { box: '222:123', text: '222:124', t: 'Bukan vonis korupsi atau penyimpangan.' },
-  { box: '222:125', text: '222:126', t: 'Bukan pengganti dokumen resmi atau kanal pengaduan.' },
-  { box: '222:127', text: '222:128', t: 'Tidak menjanjikan instansi menindaklanjuti laporan.' },
-  { box: '222:129', text: '222:130', t: 'Tidak meminta NIK, KTP, atau biometrik.' },
-];
+import { programTotals, unitKerja, indikator } from '../lib/data';
 
 const TIM = [
   { box: '222:139', nameWrap: '222:140', name: '222:141', roleWrap: '222:142', role: '222:143', n: 'Muhammad Zayyan Rizka', r: 'Ketua tim, data dan knowledge' },
@@ -62,69 +34,42 @@ export const About: React.FC = () => (
         </p>
       </div>
 
-      <div className="ab-gridwrap" data-node-id="222:159">
-        <div className="ab-grid" data-node-id="222:41">
-          <div className="ab-left" data-node-id="222:42">
-            <div className="ab-cardwrap" data-node-id="222:99">
-              <div className="ab-card" data-node-id="222:43">
-                <h2 className="ab-h2" data-node-id="222:45">Cakupan dan periode</h2>
-                <div className="ab-rows" data-node-id="222:47">
-                  {CAKUPAN.map((r) => (
-                    <div className="ab-row" key={r.box} data-node-id={r.box}>
-                      <span className="ab-row-l" data-node-id={r.label}><span data-node-id={r.labelText}>{r.l}</span></span>
-                      <span className="ab-row-v" data-node-id={r.value}><span data-node-id={r.valueText}>{r.v}</span></span>
-                    </div>
-                  ))}
-                </div>
-                <div className="ab-notewrap" data-node-id="222:69">
-                  <p className="ab-note" data-node-id="222:70">
-                    Data historis, bukan pemantauan langsung. 42 instansi lain baru tersedia pada tingkat SKPD.
-                  </p>
-                </div>
-              </div>
-            </div>
+      <div className="ab-band" role="list">
+        <div role="listitem"><b>43</b><span>perangkat daerah</span></div>
+        <div role="listitem"><b>{`8 / ${programTotals.kegiatan} / ${programTotals.subKegiatan}`}</b><span>program / kegiatan / sub</span></div>
+        <div role="listitem"><b>{`${indikator.length} / ${unitKerja.length}`}</b><span>indikator / unit kerja</span></div>
+        <div role="listitem"><b>TA 2025</b><span>periode selesai</span></div>
+      </div>
 
-            <div className="ab-cardwrap" data-node-id="222:100">
-              <div className="ab-card" data-node-id="222:74">
-                <h2 className="ab-h2" data-node-id="222:76">Sumber data</h2>
-                <div className="ab-rows" data-node-id="222:77">
-                  {SUMBER.map((r) => (
-                    <div className="ab-row" key={r.box} data-node-id={r.box}>
-                      <span className="ab-row-l" data-node-id={r.label}><span data-node-id={r.labelText}>{r.l}</span></span>
-                      <span className="ab-row-v" data-node-id={r.value}><span data-node-id={r.valueText}>{r.v}</span></span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="ab-right" data-node-id="222:101">
-            <div className="ab-card" data-node-id="222:102">
-              <h2 className="ab-h2" data-node-id="222:104">Keadaan angka</h2>
-              <div className="ab-list" data-node-id="222:105">
-                {KEADAAN.map((p) => (
-                  <div className="ab-p" key={p.box} data-node-id={p.box}>
-                    <p className="ab-p-t strong" data-node-id={p.text}>{p.t}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="ab-cardwrap" data-node-id="222:135">
-              <div className="ab-card" data-node-id="222:119">
-                <h2 className="ab-h2" data-node-id="222:121">Batas tanggung jawab</h2>
-                <div className="ab-list" data-node-id="222:122">
-                  {BATAS.map((p) => (
-                    <div className="ab-p" key={p.box} data-node-id={p.box}>
-                      <p className="ab-p-t" data-node-id={p.text}>{p.t}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="ab-faq">
+        <details open>
+          <summary>Portal ini apa?<span>01</span></summary>
+          <p>Halaman yang membantu warga membaca anggaran daerah: berapa yang direncanakan, berapa yang dibelanjakan, dan hasil apa yang dilaporkan — lengkap dengan dokumen sumbernya.</p>
+        </details>
+        <details>
+          <summary>Dari mana angkanya?<span>02</span></summary>
+          <p>Dashboard Keuangan BPKD DKI untuk 43 perangkat daerah, LKIP Dinas Lingkungan Hidup 2025 untuk rincian sampai sub kegiatan, dan LKIP Dinas Bina Marga 2025 sebagai pembanding struktur. Semua diambil 21 Oktober 2026.</p>
+        </details>
+        <details>
+          <summary>Kenapa ada angka yang kosong?<span>03</span></summary>
+          <p>Kalau sebuah nilai tidak dapat dipastikan dari dokumen, kami menahannya. Angka itu tidak diubah menjadi nol dan tidak masuk perhitungan total, karena nol berarti “tidak ada uang” — bukan “belum diketahui”.</p>
+        </details>
+        <details>
+          <summary>Kalau dua dokumen berbeda?<span>04</span></summary>
+          <p>Keduanya ditampilkan. Kami menjumlah ulang seluruh baris, membandingkan dengan total yang tercetak, lalu memakai nilai yang membuat total tercapai. Hitungannya bisa diperiksa di <a href="/perbandingan">halaman perbandingan</a>.</p>
+        </details>
+        <details>
+          <summary>Apakah ini data resmi?<span>05</span></summary>
+          <p>Angkanya berasal dari dokumen resmi, tetapi halaman ini bukan produk pemerintah dan bukan pengganti dokumen aslinya. Kami mencantumkan tabel dan halaman supaya kamu bisa memeriksa sendiri.</p>
+        </details>
+        <details>
+          <summary>Apa yang tidak kami lakukan?<span>06</span></summary>
+          <p>Kami tidak memutuskan apakah uang dipakai dengan benar, tidak menjadi kanal pengaduan resmi, tidak menyajikan data waktu nyata, dan tidak meminta NIK, KTP, atau biometrik.</p>
+        </details>
+        <details>
+          <summary>Siapa yang membuat?<span>07</span></summary>
+          <p>Tiga orang: Muhammad Zayyan Rizka (data dan knowledge), Mahdi Imantaka Sutejo (frontend dan mesin data keuangan), Liaurentino (desain dan frontend). Proyek ini dibuat untuk WIA MIA 2026.</p>
+        </details>
       </div>
 
       <div className="ab-timhead" data-node-id="222:136">
@@ -145,6 +90,11 @@ export const About: React.FC = () => (
           ))}
         </div>
       </div>
+
+      <p className="ab-credits">
+        Data diambil 21 Oktober 2026. Foto: Wikimedia Commons (CC BY-SA 3.0, CC BY 3.0). Ikon: Lucide (ISC).
+        Menemukan angka yang janggal? <a href="/lapor">Kirim laporan</a> — setiap koreksi yang diterima dicatat pada riwayat angka.
+      </p>
     </section>
 
     <Footer ids={FOOT_222} />

@@ -789,3 +789,18 @@ td.r,th.r{text-align:right}
 @media (min-width:1000px){
   .gd-hero-img{background-image:url(/img/hero-panduan-1600.webp)}
 }
+
+/* Tentang: pita angka, tanya-jawab, kredit */
+.ab-band{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;background:var(--dark);color:#fff;
+  border-radius:14px;padding:22px 24px;margin-top:24px}
+.ab-band b{display:block;font-size:24px;line-height:30px;letter-spacing:-.4px}
+.ab-band span{font-size:11.5px;line-height:16px;color:#B7C2C7}
+.ab-faq{max-width:820px;margin-top:24px}
+.ab-faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 18px;margin-bottom:10px}
+.ab-faq summary{cursor:pointer;list-style:none;padding:15px 0;font-size:14.5px;line-height:20px;font-weight:600;
+  display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ab-faq summary::-webkit-details-marker{display:none}
+.ab-faq summary span{color:var(--faint);font-size:12px;font-weight:400}
+.ab-faq details[open] summary{border-bottom:1px solid var(--line-3)}
+.ab-faq p{margin:14px 0;font-size:13.5px;line-height:22px;color:var(--ink-2);max-width:680px}
+.ab-credits{margin:22px 0 0;font-size:12px;line-height:18px;color:var(--faint);max-width:820px}
