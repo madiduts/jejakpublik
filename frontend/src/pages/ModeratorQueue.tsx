@@ -1,19 +1,18 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { NAV_223, FOOT_223 } from '../lib/frameIds';
 import { listReports } from '../lib/reports';
-import { DEFAULT_MOD_QUEUE, ModQueueItem, toModQueueItems } from '../lib/modqueue';
+import { buildQueue, ModQueueItem } from '../lib/modqueue';
 import { getSession } from '../lib/session';
 
 export const ModeratorQueue: React.FC = () => {
   const session = getSession();
   const userReports = listReports();
 
-  const allItems = useMemo<ModQueueItem[]>(() => {
-    return [...toModQueueItems(userReports), ...DEFAULT_MOD_QUEUE];
-  }, [userReports]);
+  const allItems = useMemo<ModQueueItem[]>(() => buildQueue(userReports), [userReports]);
 
   const [tab, setTab] = useState<'perlu_periksa' | 'terbit' | 'ditolak' | 'perlu_info'>('perlu_periksa');
 
@@ -101,7 +100,7 @@ export const ModeratorQueue: React.FC = () => {
         {/* Card Tabel Antrean */}
         <section className="myr-card">
           <div className="myr-table-wrap">
-            <div className="myr-thead" style={{ gridTemplateColumns: '140px minmax(280px, 1fr) 140px 140px 100px' }}>
+            <div className="myr-thead" style={{ gridTemplateColumns: '140px minmax(280px, 1fr) 140px 140px 108px' }}>
               <div>Nomor Tiket</div>
               <div>Judul & Konteks Laporan</div>
               <div>Tanggal</div>
@@ -118,7 +117,7 @@ export const ModeratorQueue: React.FC = () => {
                 <div
                   key={item.id}
                   className="myr-row"
-                  style={{ gridTemplateColumns: '140px minmax(280px, 1fr) 140px 140px 100px' }}
+                  style={{ gridTemplateColumns: '140px minmax(280px, 1fr) 140px 140px 108px' }}
                 >
                   <div className="myr-ticket">{item.id}</div>
                   <div className="myr-titleblock">
@@ -144,10 +143,11 @@ export const ModeratorQueue: React.FC = () => {
                   <div style={{ textAlign: 'right' }}>
                     <Link
                       to={`/moderator/${item.id}`}
-                      className="myr-btn-open"
-                      style={{ textDecoration: 'none' }}
+                      className="myr-btn-aksi"
+                      aria-label={`${item.category === 'perlu_periksa' ? 'Periksa' : 'Lihat'} laporan ${item.id}`}
                     >
-                      Periksa →
+                      {item.category === 'perlu_periksa' ? 'Periksa' : 'Lihat'}
+                      <ChevronRight size={14} aria-hidden="true" />
                     </Link>
                   </div>
                 </div>

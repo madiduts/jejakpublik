@@ -62,7 +62,7 @@ export const DEFAULT_MOD_QUEUE: ModQueueItem[] = [
 ];
 
 /** Laporan dari pelapor dipetakan ke bentuk antrean yang sama. */
-export const toModQueueItems = (reports: Report[]): ModQueueItem[] =>
+const toModQueueItems = (reports: Report[]): ModQueueItem[] =>
   reports.map((r) => {
     let status: ModQueueItem['status'] = 'Baru';
     let category: ModQueueItem['category'] = 'perlu_periksa';
@@ -88,6 +88,13 @@ export const toModQueueItems = (reports: Report[]): ModQueueItem[] =>
     };
   });
 
+/** Antrean penuh: laporan pelapor dulu, contoh bawaan hanya bila tiketnya belum ada. */
+export const buildQueue = (reports: Report[]): ModQueueItem[] => {
+  const dariPelapor = toModQueueItems(reports);
+  const sudahAda = new Set(dariPelapor.map((i) => i.id));
+  return [...dariPelapor, ...DEFAULT_MOD_QUEUE.filter((i) => !sudahAda.has(i.id))];
+};
+
 /** Jumlah yang sama dengan tab "Perlu diperiksa" di antrean moderator. */
 export const countPerluPeriksa = (): number =>
-  [...toModQueueItems(listReports()), ...DEFAULT_MOD_QUEUE].filter((i) => i.category === 'perlu_periksa').length;
+  buildQueue(listReports()).filter((i) => i.category === 'perlu_periksa').length;
