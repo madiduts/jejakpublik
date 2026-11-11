@@ -202,7 +202,7 @@ export const About: React.FC = () => {
         </div>
       </div>
 
-      <div className="ab-timhead" style={{ marginTop: 44 }}>
+      <div className="ab-timhead ab-ref-head">
         <h2 className="ab-h2">Landasan Riset & Rujukan Akademik</h2>
       </div>
 
