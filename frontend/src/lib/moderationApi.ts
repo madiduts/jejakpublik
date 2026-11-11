@@ -59,11 +59,17 @@ export const semuaLaporan = (): Promise<LaporanApi[]> =>
 export const detailLaporan = (id: string): Promise<LaporanApi> =>
   minta<LaporanApi>(`/api/v1/moderation/reports/${encodeURIComponent(id)}`, { headers: headers() });
 
+const STATUS_API: Record<KeputusanApi, string> = {
+  diterima: 'verified',
+  ditolak: 'rejected',
+  diperiksa: 'forwarded',
+};
+
 export const putuskanLaporan = (id: string, status: KeputusanApi, catatan: string): Promise<LaporanApi> =>
   minta<LaporanApi>(`/api/v1/moderation/reports/${encodeURIComponent(id)}/decision`, {
     method: 'POST',
     headers: headers(true),
-    body: JSON.stringify({ status, audit_notes: catatan.trim() || 'Tanpa catatan tambahan.' }),
+    body: JSON.stringify({ status: STATUS_API[status], audit_notes: catatan.trim() || 'Tanpa catatan tambahan.' }),
   });
 
 const namaInstansi = (slug: string): string => getInstansi(slug)?.judul ?? slug.replace(/-/g, ' ');

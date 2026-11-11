@@ -11,6 +11,50 @@ function generateTicketNumber(): string {
   return `L-2026-${rand}`;
 }
 
+
+/** Baris tabel citizen_reports menjadi bentuk yang dipakai API. */
+function rowToReport(r: any): CitizenReport {
+  const bukti = Array.isArray(r.evidence_urls)
+    ? r.evidence_urls
+    : JSON.parse(r.evidence_urls || '[]');
+  const jejak: AuditTrailItem[] = [
+    {
+      timestamp: r.created_at,
+      action: 'SUBMITTED',
+      note: 'Laporan baru diterima oleh sistem.',
+      actor: r.reporter_name
+    }
+  ];
+  if (r.audit_notes) {
+    jejak.push({
+      timestamp: r.updated_at ?? r.created_at,
+      action: String(r.status).toUpperCase(),
+      note: r.audit_notes,
+      actor: 'Tim Auditor JejakPublik'
+    });
+  }
+  return {
+    id: r.id,
+    ticket_number: r.ticket_number,
+    user_id: r.user_id,
+    reporter_name: r.reporter_name,
+    reporter_email: r.reporter_email,
+    reporter_phone: r.reporter_phone,
+    skpd_id: r.skpd_id,
+    program_id: r.program_id,
+    report_type: r.report_type,
+    title: r.title,
+    description: r.description,
+    evidence_urls: bukti,
+    status: r.status,
+    is_public: Boolean(r.is_public),
+    audit_notes: r.audit_notes ?? undefined,
+    audit_trail: jejak,
+    created_at: r.created_at,
+    updated_at: r.updated_at
+  };
+}
+
 export class ReportModel {
   static async create(params: {
     user_id?: string | null;
@@ -148,6 +192,12 @@ export class ReportModel {
   }
 
   static async findById(id: string): Promise<CitizenReport | null> {
+    try {
+      const res = await query<any>('SELECT * FROM citizen_reports WHERE id = $1 LIMIT 1', [id]);
+      if (res.rows && res.rows.length > 0) return rowToReport(res.rows[0]);
+    } catch {
+      // jatuh ke cache di bawah
+    }
     for (const r of inMemoryReports.values()) {
       if (r.id === id) return r;
     }
@@ -155,6 +205,16 @@ export class ReportModel {
   }
 
   static async findPublicReports(limit: number = 20): Promise<CitizenReport[]> {
+    try {
+      const res = await query<any>(
+        `SELECT * FROM citizen_reports WHERE is_public = true OR status::text IN ('verified', 'diterima')
+         ORDER BY created_at DESC LIMIT $1`,
+        [limit]
+      );
+      if (res.rows) return res.rows.map(rowToReport);
+    } catch {
+      // jatuh ke cache di bawah
+    }
     const results = Array.from(inMemoryReports.values())
       .filter((r) => r.is_public || r.status === 'verified')
       .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
@@ -164,6 +224,15 @@ export class ReportModel {
   }
 
   static async findByUserId(userId: string): Promise<CitizenReport[]> {
+    try {
+      const res = await query<any>(
+        'SELECT * FROM citizen_reports WHERE user_id = $1 ORDER BY created_at DESC',
+        [userId]
+      );
+      if (res.rows) return res.rows.map(rowToReport);
+    } catch {
+      // jatuh ke cache di bawah
+    }
     const results = Array.from(inMemoryReports.values())
       .filter((r) => r.user_id === userId)
       .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
@@ -172,6 +241,24 @@ export class ReportModel {
   }
 
   static async findAll(filters?: { status?: string; skpd_id?: string }): Promise<CitizenReport[]> {
+    try {
+      const syarat: string[] = [];
+      const nilai: any[] = [];
+      if (filters?.status) {
+        nilai.push(filters.status);
+        syarat.push(`status::text = $${nilai.length}`);
+      }
+      if (filters?.skpd_id) {
+        nilai.push(filters.skpd_id);
+        syarat.push(`skpd_id = $${nilai.length}`);
+      }
+      const where = syarat.length ? ` WHERE ${syarat.join(' AND ')}` : '';
+      const res = await query<any>(`SELECT * FROM citizen_reports${where} ORDER BY created_at DESC`, nilai);
+      if (res.rows) return res.rows.map(rowToReport);
+    } catch {
+      // jatuh ke cache di bawah
+    }
+
     let list = Array.from(inMemoryReports.values());
     if (filters?.status) {
       list = list.filter((r) => r.status === filters.status);
@@ -286,19 +373,24 @@ export class ReportModel {
       actor: params.actor
     });
 
-    // Update di DB jika aktif
+    // Update di DB jika aktif. Kolom status memakai enum report_status_enum,
+    // jadi nilai teks harus di-cast. Saat DB aktif, kegagalan tidak ditelan
+    // supaya keputusan moderator tidak tampak berhasil padahal gagal.
+    const statusEnum = { diterima: 'verified', ditolak: 'rejected', diperiksa: 'forwarded' }[params.status as string]
+      ?? params.status;
     try {
       await query(
-        `UPDATE citizen_reports 
-         SET status = $1, audit_notes = $2, is_public = $3, updated_at = $4
+        `UPDATE citizen_reports
+         SET status = $1::report_status_enum, audit_notes = $2, is_public = $3, updated_at = $4
          WHERE id = $5`,
-        [report.status, report.audit_notes, report.is_public, now, report.id]
+        [statusEnum, report.audit_notes, report.is_public, now, report.id]
       );
-    } catch {
-      // Fallback
+      report.status = statusEnum as ReportStatus;
+    } catch (err) {
+      if (process.env.DATABASE_URL) throw err;
     }
 
     inMemoryReports.set(report.id, report);
-    return report;
+    return (await this.findById(report.id)) ?? report;
   }
 }
