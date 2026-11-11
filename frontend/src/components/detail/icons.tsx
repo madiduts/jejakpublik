@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   AlertTriangle, ArrowRight, ArrowUpDown, ArrowUpRight, BarChart3, Building2, ChevronDown, ChevronRight,
-  Download, FileText, Globe, Home, Link2, MapPin, Phone, Search,
+  CornerDownRight, Download, FileText, Globe, Home, Link2, MapPin, Phone, Search,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export type Glyph =
   | 'home' | 'chev' | 'pin' | 'globe' | 'phone' | 'search' | 'chevdown'
-  | 'file' | 'chart' | 'link' | 'alert' | 'building' | 'arrow' | 'diag' | 'sort' | 'dl';
+  | 'file' | 'chart' | 'link' | 'alert' | 'building' | 'arrow' | 'diag' | 'sort' | 'dl' | 'corner';
 
 const GLYPHS: Record<Glyph, LucideIcon> = {
   home: Home,
@@ -26,6 +26,7 @@ const GLYPHS: Record<Glyph, LucideIcon> = {
   diag: ArrowUpRight,
   sort: ArrowUpDown,
   dl: Download,
+  corner: CornerDownRight,
 };
 
 /**

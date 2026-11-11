@@ -362,21 +362,13 @@ export const ProgramDetail: React.FC = () => {
                               {k.subs && k.subs.length > 0 && (
                                 <button
                                   type="button"
+                                  className="pg-subtoggle"
                                   onClick={() => toggleKeg(k.nama)}
-                                  style={{
-                                    fontSize: 11.5,
-                                    color: '#005EA2',
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
-                                    marginTop: 2,
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    gap: 4,
-                                    cursor: 'pointer'
-                                  }}
+                                  aria-expanded={isExpanded}
+                                  aria-label={`${isExpanded ? 'Tutup' : 'Buka'} rincian ${k.subs.length} subkegiatan ${k.nama}`}
                                 >
-                                  <span>{k.subs.length} subkegiatan {isExpanded ? '▲' : '▼'}</span>
+                                  {k.subs.length} subkegiatan
+                                  <Ico g="chevdown" slot={11} />
                                 </button>
                               )}
                             </span>
@@ -386,22 +378,12 @@ export const ProgramDetail: React.FC = () => {
                             <span className="dt-aksi dt-c6" data-node-id={KEG_ROW.aksi}>
                               <button
                                 type="button"
-                                className="dt-detail"
-                                onClick={() => toggleKeg(k.nama)}
-                                style={{
-                                  cursor: 'pointer',
-                                  background: isExpanded ? '#18181B' : '#fff',
-                                  color: isExpanded ? '#fff' : '#3F3F46',
-                                  borderColor: isExpanded ? '#18181B' : '#D4D4D8',
-                                  transition: 'all 0.15s ease'
-                                }}
-                                aria-expanded={isExpanded}
-                                aria-label={`${isExpanded ? 'Tutup' : 'Buka'} rincian subkegiatan ${k.nama}`}
+                                className="pg-subact"
+                                onClick={() => setSelectedKeg(k)}
+                                aria-label={`Buka rincian lengkap kegiatan ${k.nama}`}
                               >
-                                <span data-node-id={KEG_ROW.chipT}>{isExpanded ? 'Tutup sub' : 'Rincian sub'}</span>
-                                <span style={{ display: 'inline-flex', transform: isExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
-                                  <Ico g="chevdown" slot={12} />
-                                </span>
+                                <span data-node-id={KEG_ROW.chipT}>Rincian</span>
+                                <Ico g="diag" slot={11} />
                               </button>
                             </span>
                           </div>
@@ -428,9 +410,9 @@ export const ProgramDetail: React.FC = () => {
                                       {i + 1}.{sIdx + 1}
                                     </span>
                                     <span className="dt-c2" style={{ paddingLeft: 8 }}>
-                                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                        <span style={{ color: '#005EA2', fontWeight: 600, fontSize: 12 }}>↳</span>
-                                        <span style={{ fontWeight: 500, color: '#18181B', fontSize: 12 }}>{s.nama}</span>
+                                      <div className="pg-submark">
+                                        <Ico g="corner" slot={13} />
+                                        <span className="pg-subname">{s.nama}</span>
                                       </div>
                                       {isDitahan && (
                                         <span style={{ display: 'inline-block', fontSize: 10.5, fontWeight: 600, color: '#B45309', background: '#FEF3C7', padding: '1px 6px', borderRadius: 4, marginTop: 3, marginLeft: 16 }}>
@@ -450,19 +432,13 @@ export const ProgramDetail: React.FC = () => {
                                     <span className="dt-aksi dt-c6" style={{ justifyContent: 'flex-end', paddingRight: 8 }}>
                                       <button
                                         type="button"
+                                        className="pg-subact"
                                         onClick={() => setSelectedKeg({ ...k, focusedSub: s })}
-                                        style={{
-                                          background: 'transparent',
-                                          border: 'none',
-                                          color: '#005EA2',
-                                          fontSize: 11,
-                                          cursor: 'pointer',
-                                          textDecoration: 'underline',
-                                          padding: '2px 4px'
-                                        }}
                                         title="Buka rincian lengkap di jendela modal"
+                                        aria-label={`Buka rincian lengkap subkegiatan ${s.nama}`}
                                       >
-                                        Modal ↗
+                                        Rincian
+                                        <Ico g="diag" slot={11} />
                                       </button>
                                     </span>
                                   </div>
