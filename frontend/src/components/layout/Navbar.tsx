@@ -110,9 +110,6 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
                   <div className="lp-bubble-userinfo">
                     <span className="lp-bubble-name">{session.name}</span>
                     <span className="lp-bubble-email">{session.email || 'Pengguna Terdaftar'}</span>
-                    <span className={`lp-bubble-role${isMod ? ' mod' : ''}`}>
-                      {isMod ? '🛡️ Moderator' : '👤 Warga Terdaftar'}
-                    </span>
                   </div>
                 </div>
 

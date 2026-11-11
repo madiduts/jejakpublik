@@ -29,86 +29,15 @@ const STEPS = [
     h: 'Keputusan', t: 'Nilai dipakai, riwayat terbit', d: 'Nilai Tabel 3.34 ditampilkan beserta alasan pemilihannya.' },
 ];
 
-type BagianAktif = 'ringkasan' | 'kegiatan' | 'sub' | 'koreksi' | 'dokumen';
-
-const NAV_BAGIAN: {
-  id: BagianAktif;
-  label: string;
-  target: string;
-  w: number;
-  frame: string;
-  inner: string;
-  text: string;
-  bukaSemuaSub?: boolean;
-  hanyaBilaKoreksi?: boolean;
-}[] = [
-  { id: 'ringkasan', label: 'Ringkasan', target: 'bagian-ringkasan', w: 61, frame: '247:123', inner: '247:112', text: '247:113' },
-  { id: 'kegiatan', label: 'Kegiatan', target: 'bagian-kegiatan', w: 50, frame: '247:124', inner: '247:114', text: '247:115' },
-  { id: 'sub', label: 'Sub kegiatan', target: 'bagian-kegiatan', w: 73, frame: '247:125', inner: '247:117', text: '247:118', bukaSemuaSub: true },
-  { id: 'koreksi', label: 'Riwayat koreksi', target: 'bagian-koreksi', w: 88, frame: '247:126', inner: '247:119', text: '247:120', hanyaBilaKoreksi: true },
-  { id: 'dokumen', label: 'Dokumen', target: 'bagian-dokumen', w: 55, frame: '247:127', inner: '247:121', text: '247:122' },
-];
-
 const KEG_ROW = { row: '247:263', no: '247:264', noT: '247:265', name: '247:266', nameT: '247:267', ang: '247:268', angT: '247:269', real: '247:271', realT: '247:272', pct: '247:273', pctT: '247:274', aksi: '247:275', chip: '247:276', chipT: '247:277' };
 
 export const ProgramDetail: React.FC = () => {
   const { slug = '' } = useParams();
   const program = useMemo(() => findAnyProgramBySlug(slug, instansiList), [slug]);
-  const [bagian, setBagian] = useState<BagianAktif>('ringkasan');
-  const klikRef = React.useRef<{ bagian: BagianAktif; y: number | null } | null>(null);
-  const sorotTimer = React.useRef<number | undefined>(undefined);
   const [q, setQ] = useState('');
   const [selectedKeg, setSelectedKeg] = useState<any | null>(null);
   const [expandedKegs, setExpandedKegs] = useState<Record<string, boolean>>({});
   const correction = corrections.find((c) => c.programSlug === slug);
-
-  // Tab kini menunjuk bagian halaman, bukan memfilter isi: seluruh isi sudah
-  // ada di satu gulungan, jadi klik = gulir + sorot sasaran.
-  function bukaBagian(item: (typeof NAV_BAGIAN)[number]) {
-    if (item.bukaSemuaSub && !allExpanded) {
-      const semua: Record<string, boolean> = {};
-      (program?.kegs || []).forEach((k) => { semua[k.nama] = true; });
-      setExpandedKegs(semua);
-    }
-    setBagian(item.id);
-    // y = null menandai "animasi gulir belum selesai"; penanda aktif ditahan
-    // sampai posisi akhirnya tercatat.
-    klikRef.current = { bagian: item.id, y: null };
-    // dua bingkai: menunggu sub kegiatan benar-benar terbuka sebelum diukur
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      const target = document.getElementById(item.target);
-      if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.clearTimeout(sorotTimer.current);
-      target.classList.add('dt-anchor-sorot');
-      sorotTimer.current = window.setTimeout(() => target.classList.remove('dt-anchor-sorot'), 1600);
-
-      const catat = () => {
-        if (klikRef.current) klikRef.current = { bagian: klikRef.current.bagian, y: window.scrollY };
-        window.removeEventListener('scrollend', catat);
-      };
-      window.addEventListener('scrollend', catat, { once: true });
-      window.setTimeout(catat, 700);
-    }));
-  }
-
-  // Penanda aktif mengikuti posisi gulir, kecuali sesaat setelah tab diklik.
-  React.useEffect(() => {
-    const periksa = () => {
-      const klik = klikRef.current;
-      if (klik) {
-        if (klik.y === null) return;                        // animasi gulir masih berjalan
-        if (Math.abs(window.scrollY - klik.y) < 120) return; // masih di area yang diklik
-        klikRef.current = null;                              // pengguna sudah pindah bagian
-      }
-      const kegiatan = document.getElementById('bagian-kegiatan');
-      const aktif: BagianAktif = kegiatan && kegiatan.getBoundingClientRect().top <= 150 ? 'kegiatan' : 'ringkasan';
-      setBagian(aktif);
-    };
-    window.addEventListener('scroll', periksa, { passive: true });
-    periksa();
-    return () => window.removeEventListener('scroll', periksa);
-  }, []);
 
   const toggleKeg = (nama: string) => {
     setExpandedKegs((prev) => ({ ...prev, [nama]: !prev[nama] }));
@@ -249,22 +178,11 @@ export const ProgramDetail: React.FC = () => {
 
       <div data-node-id="247:364" style={{ paddingTop: 24 }}>
         <nav className="dt-tabs" data-node-id="247:111" aria-label="Bagian halaman">
-          {NAV_BAGIAN.filter((t) => !t.hanyaBilaKoreksi || Boolean(correction)).map((t) => (
-            <span key={t.id} data-node-id={t.frame} style={{ display: 'inline-block', width: t.w }}>
-              <a
-                href={`#${t.target}`}
-                className={`dt-tab${bagian === t.id ? ' on' : ''}`}
-                data-node-id={t.inner}
-                aria-current={bagian === t.id ? 'true' : undefined}
-                onClick={(e) => {
-                  e.preventDefault();
-                  bukaBagian(t);
-                }}
-              >
-                <span data-node-id={t.text}>{t.label}</span>
-              </a>
-            </span>
-          ))}
+          <span data-node-id="247:123" style={{ display: 'inline-block', width: 61 }}>
+            <a href="#bagian-ringkasan" className="dt-tab on" data-node-id="247:112" aria-current="true">
+              <span data-node-id="247:113">Ringkasan</span>
+            </a>
+          </span>
         </nav>
       </div>
 
@@ -377,7 +295,7 @@ export const ProgramDetail: React.FC = () => {
             </div>
 
             )}
-            <div className="pg-listwrap" id="bagian-kegiatan" data-node-id="247:289">
+            <div className="pg-listwrap" data-node-id="247:289">
               <div className="dt-card pg-card-flexible" data-node-id="247:236" style={{ height: 'auto', minHeight: 'fit-content' }}>
                 <div className="dt-tchead" data-node-id="247:237">
                   <h2 className="dt-h2" data-node-id="247:239">Daftar Kegiatan</h2>
@@ -555,7 +473,7 @@ export const ProgramDetail: React.FC = () => {
 
             )}
             <div data-node-id="247:354" style={{ paddingTop: 18 }}>
-              <div className="dt-sidecard" id="bagian-dokumen" data-node-id="247:327">
+              <div className="dt-sidecard" data-node-id="247:327">
                 <h2 className="dt-h2" data-node-id="247:329">Data Terkait</h2>
                 <div className="dt-side-links" data-node-id="247:330">
                   <a
@@ -599,7 +517,7 @@ export const ProgramDetail: React.FC = () => {
             </div>
 
             <div data-node-id="247:355" style={{ paddingTop: 18 }}>
-              <div className="dt-card" id="bagian-koreksi" data-node-id="247:347" style={{ height: 118 }}>
+              <div className="dt-card" data-node-id="247:347" style={{ height: 118 }}>
                 <h2 className="dt-h2" data-node-id="247:349">Batas tafsir</h2>
                 <div className="dt-pwrap pg-batas" data-node-id="247:350">
                   <p className="dt-prose" data-node-id="247:351">
