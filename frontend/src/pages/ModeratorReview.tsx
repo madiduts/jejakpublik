@@ -158,23 +158,6 @@ export const ModeratorReview: React.FC = () => {
                 )}
               </div>
             </section>
-            <section className="mr-panel">
-              <div className="mr-panel-h">
-                <h2>Jejak pemeriksaan</h2>
-                <span>{report.events.length} catatan</span>
-              </div>
-              <div className="mr-panel-b">
-                <ol className="mr-tl">
-                  {report.events.map((e, i) => (
-                    <li key={i} className="mr-tl-item">
-                      <div className="mr-tl-when">{new Date(e.at).toLocaleString('id-ID')} · {e.actor}</div>
-                      <div className="mr-tl-act">{e.action}</div>
-                      {e.note && <div className="mr-tl-note">{e.note}</div>}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </section>
           </div>
 
           <aside className="mr-rail">
@@ -201,10 +184,27 @@ export const ModeratorReview: React.FC = () => {
                   Tandai sedang diperiksa
                 </button>
                 <p className="mr-note">Menolak wajib beralasan; alasan ditampilkan kepada pelapor.</p>
-                <div className="mr-rail-foot"><Link to="/moderator" className="mr-btn ghost">Kembali ke antrean</Link></div>
               </div>
             </section>
 
+            <section className="mr-panel">
+              <div className="mr-panel-h">
+                <h2>Jejak pemeriksaan</h2>
+                <span>{report.events.length} catatan</span>
+              </div>
+              <div className="mr-panel-b">
+                <ol className="mr-tl">
+                  {report.events.map((e, i) => (
+                    <li key={i} className="mr-tl-item">
+                      <div className="mr-tl-when">{new Date(e.at).toLocaleString('id-ID')} · {e.actor}</div>
+                      <div className="mr-tl-act">{e.action}</div>
+                      {e.note && <div className="mr-tl-note">{e.note}</div>}
+                    </li>
+                  ))}
+                </ol>
+                <div className="mr-rail-foot"><Link to="/moderator" className="mr-btn ghost">Kembali ke antrean</Link></div>
+              </div>
+            </section>
           </aside>
         </div>
       </div>
