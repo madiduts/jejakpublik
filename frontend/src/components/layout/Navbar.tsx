@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { User, LogOut, FileText, Shield, LogIn, PlusCircle } from 'lucide-react';
 import { Ico } from '../detail/icons';
 import { NavIds, NAV_203 } from '../../lib/frameIds';
@@ -11,10 +11,12 @@ const LINKS = [
   { label: 'Jelajahi Data', to: '/jelajahi' },
   { label: 'Panduan', to: '/panduan' },
   { label: 'Tentang', to: '/tentang' },
+  { label: 'Glosarium', to: '/istilah' },
 ];
 
 export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [openProfile, setOpenProfile] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const session = getSession();
@@ -55,16 +57,17 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
 
       <nav className="lp-links" data-node-id={ids.links} aria-label="Navigasi utama">
         {LINKS.map((l, i) => {
-          const it = ids.items[i];
+          const it = ids.items[i] ?? { wrap: undefined, text: undefined, w: undefined };
+          // Penanda aktif dihitung dari rute sekarang, bukan dari data Figma,
+          // supaya semua halaman mendapat garis bawah termasuk Beranda.
+          const aktif = l.to === '/' ? pathname === '/' : pathname === l.to || pathname.startsWith(`${l.to}/`);
           const link = (
             <NavLink to={l.to} end={l.to === '/'} data-node-id={it.text}>{l.label}</NavLink>
           );
-          return it.outer ? (
-            <span key={l.to} className="lp-link-outer" data-node-id={it.outer}>
-              <span className="lp-link-active" data-node-id={it.wrap} style={{ width: it.w }}>{link}</span>
+          return (
+            <span key={l.to} className={it.outer ? 'lp-link-outer' : undefined} data-node-id={it.outer} style={{ width: it.w }}>
+              <span className={aktif ? 'lp-link-active' : undefined} data-node-id={it.wrap}>{link}</span>
             </span>
-          ) : (
-            <span key={l.to} data-node-id={it.wrap} style={{ width: it.w }}>{link}</span>
           );
         })}
       </nav>

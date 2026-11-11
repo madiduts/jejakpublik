@@ -162,8 +162,8 @@ export const ReportForm: React.FC = () => {
     setEvidenceUrls((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (isDraft: boolean) => {
-    if (!isDraft && !target.trim()) {
+  const handleSubmit = () => {
+    if (!target.trim()) {
       setTargetError(true);
       return;
     }
@@ -180,7 +180,7 @@ export const ReportForm: React.FC = () => {
         ? `[Lokasi Temuan: ${locationAddress.trim()}]\n\n${message.trim()}`
         : (message.trim() || 'Penjelasan tidak disertakan.'),
       contact: session.name,
-      isDraft,
+      isDraft: false,
     });
 
     navigate(`/laporan-saya?baru=${r.id}`);
@@ -207,7 +207,7 @@ export const ReportForm: React.FC = () => {
             className="cf-form"
             onSubmit={(e) => {
               e.preventDefault();
-              handleSubmit(false);
+              handleSubmit();
             }}
           >
             <div className="cf-field">
@@ -311,9 +311,6 @@ export const ReportForm: React.FC = () => {
             <div className="cf-actions">
               <button className="cf-btn-primary" type="submit" disabled={!agree}>
                 Kirim laporan
-              </button>
-              <button className="cf-btn-ghost" type="button" onClick={() => handleSubmit(true)}>
-                Simpan draf
               </button>
             </div>
           </form>
