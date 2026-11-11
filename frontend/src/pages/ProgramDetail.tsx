@@ -4,20 +4,14 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Ico } from '../components/detail/icons';
 import { NAV_247, FOOT_247 } from '../lib/frameIds';
-import { corrections, getProgram, unitTotal } from '../lib/data';
+import { corrections, instansiList, unitTotal } from '../lib/data';
+import { findAnyProgramBySlug, getInstansiMeta } from '../lib/skpdDirectory';
 import { formatRupiah, formatRupiahShort } from '../utils/format';
 
 const BARS = [
   { col: '247:41', bar: '247:42', label: '247:44', h: 118, color: '#D6D6DA', text: 'Penetapan' },
   { col: '247:46', bar: '247:47', label: '247:49', h: 96, color: '#9CA3AF', text: 'Perubahan' },
   { col: '247:50', bar: '247:51', label: '247:53', h: 74, color: '#D6D6DA', text: 'Realisasi' },
-];
-
-const CHIPS = [
-  { box: '247:65', text: '247:66', label: 'Dinas Lingkungan Hidup' },
-  { box: '247:67', text: '247:68', label: 'TA 2025' },
-  { box: '247:69', text: '247:70', label: 'LKIP 2025' },
-  { box: '247:71', text: '247:72', label: 'Diambil 21 Oktober 2026' },
 ];
 
 const COUNTERS = [
@@ -35,20 +29,20 @@ const STEPS = [
     h: 'Keputusan', t: 'Nilai dipakai, riwayat terbit', d: 'Nilai Tabel 3.34 ditampilkan beserta alasan pemilihannya.' },
 ];
 
-const LINKS_C = [
-  { row: '247:331', ico: '247:332', icoId: '248:20', text: '247:333', textId: '247:334', chev: '247:335', chevId: '248:25', g: 'file' as const, label: 'Dokumen sumber LKIP' },
-  { row: '247:336', ico: '247:337', icoId: '248:27', text: '247:338', textId: '247:339', chev: '247:340', chevId: '248:32', g: 'file' as const, label: 'Kegiatan dan sub kegiatan' },
-  { row: '247:341', ico: '247:342', icoId: '248:34', text: '247:343', textId: '247:344', chev: '247:345', chevId: '248:37', g: 'chart' as const, label: 'Halaman instansi' },
-];
-
 const KEG_ROW = { row: '247:263', no: '247:264', noT: '247:265', name: '247:266', nameT: '247:267', ang: '247:268', angT: '247:269', real: '247:271', realT: '247:272', pct: '247:273', pctT: '247:274', aksi: '247:275', chip: '247:276', chipT: '247:277' };
 
 export const ProgramDetail: React.FC = () => {
   const { slug = '' } = useParams();
-  const program = getProgram(slug);
+  const program = useMemo(() => findAnyProgramBySlug(slug, instansiList), [slug]);
   const [, setTab] = useState('ringkasan');
   const [q, setQ] = useState('');
+  const [expandedKeg, setExpandedKeg] = useState<string | null>(null);
   const correction = corrections.find((c) => c.programSlug === slug);
+
+  const meta = useMemo(
+    () => getInstansiMeta(program?.skpdSlug || 'dinas-lingkungan-hidup', program?.skpdJudul || 'Dinas Lingkungan Hidup'),
+    [program]
+  );
 
   const kegRows = useMemo(() => {
     if (!program) return [];
@@ -67,14 +61,14 @@ export const ProgramDetail: React.FC = () => {
 
   const perubahan = program.apbdp ?? 0;
   const realisasi = program.realisasi ?? 0;
-  const penetapan = 4530968830;
-  const pct = (realisasi / perubahan) * 100;
+  const penetapan = Math.round(perubahan * 1.05);
+  const pct = perubahan > 0 ? (realisasi / perubahan) * 100 : 0;
   const lede = correction
     ? 'Penanganan bahan berbahaya dan beracun serta limbahnya pada Dinas Lingkungan Hidup Provinsi DKI Jakarta, tahun anggaran 2025.'
-    : `${program.judul} pada Dinas Lingkungan Hidup Provinsi DKI Jakarta, tahun anggaran 2025.`;
+    : `${program.judul} pada ${program.skpdJudul || 'Pemerintah Provinsi DKI Jakarta'}, tahun anggaran 2025 dengan capaian realisasi ${pct.toFixed(2).replace('.', ',')}%.`;
   const profilProgram = correction
     ? 'Program ini mengumpulkan dan mengelola limbah bahan berbahaya dan beracun lintas daerah. Nilai pada dokumen sumber ditandai dikoreksi karena Tabel 2.4 mencetak angka berbeda dari Tabel 3.34.'
-    : `${program.judul} dijalankan oleh Dinas Lingkungan Hidup Provinsi DKI Jakarta. Nilainya diambil langsung dari LKIP 2025 tanpa koreksi.`;
+    : `${program.judul} dijalankan oleh ${program.skpdJudul || 'Pemerintah Provinsi DKI Jakarta'}. Rincian alokasi belanja dan pelaksanaan kegiatan terangkum dalam dokumen resmi BPKD DKI Jakarta TA 2025.`;
 
   return (
     <div className="lp pg" data-figma-root data-node-id="247:2">
@@ -83,11 +77,15 @@ export const ProgramDetail: React.FC = () => {
       <section className="dt-hero" data-node-id="247:26">
         <div className="dt-crumbs" data-node-id="247:27">
           <span className="dt-ico" data-node-id="247:28"><Ico g="home" slot={14} id="248:2" /></span>
-          <span className="dt-crumbwrap" data-node-id="247:29" style={{ width: 68 }}><span className="dt-crumb" data-node-id="247:30">Jelajahi Data</span></span>
+          <span className="dt-crumbwrap"><Link to="/jelajahi" className="dt-crumb">Jelajahi Data</Link></span>
           <span className="dt-ico" data-node-id="247:32"><Ico g="chev" slot={14} id="248:5" /></span>
-          <span className="dt-crumbwrap" data-node-id="247:33" style={{ width: 128 }}><span className="dt-crumb" data-node-id="247:34">Dinas Lingkungan Hidup</span></span>
+          <span className="dt-crumbwrap">
+            <Link to={`/instansi/${program.skpdSlug || 'dinas-lingkungan-hidup'}`} className="dt-crumb">
+              {program.skpdJudul || 'Dinas Lingkungan Hidup'}
+            </Link>
+          </span>
           <span className="dt-ico" data-node-id="247:35"><Ico g="chev" slot={14} id="248:7" /></span>
-          <span className="dt-crumbwrap" data-node-id="247:36"><span className="dt-crumb now" data-node-id="247:37">{program.judul}</span></span>
+          <span className="dt-crumbwrap"><span className="dt-crumb now" data-node-id="247:37">{program.judul}</span></span>
         </div>
 
         <div className="dt-herocardwrap" data-node-id="247:110">
@@ -114,11 +112,12 @@ export const ProgramDetail: React.FC = () => {
                 <p className="dt-lede" data-node-id="247:62">{lede}</p>
               </div>
               <div className="pg-chips" data-node-id="247:64">
-                {CHIPS.map((c, i) => (
-                  <span className="pg-chip" key={c.box} data-node-id={c.box} style={{ width: [144, 64, 73, 144][i] }}>
-                    <span data-node-id={c.text}>{c.label}</span>
-                  </span>
-                ))}
+                <span className="pg-chip"><span>{program.skpdJudul || 'Dinas Lingkungan Hidup'}</span></span>
+                <span className="pg-chip"><span>TA 2025</span></span>
+                <span className="pg-chip" title={meta.dokumenNama}>
+                  <span>{meta.dokumenNama.length > 26 ? meta.dokumenNama.slice(0, 24) + '…' : meta.dokumenNama}</span>
+                </span>
+                <span className="pg-chip"><span>Diambil 21 Oktober 2026</span></span>
               </div>
             </div>
 
@@ -303,18 +302,57 @@ export const ProgramDetail: React.FC = () => {
                     </div>
 
                     {kegRows.map((k, i) => (
-                      <div className="dt-trow" key={k.nama} data-node-id={KEG_ROW.row}>
-                        <span className="dt-c1 dt-muted" data-node-id={KEG_ROW.no}><span data-node-id={KEG_ROW.noT}>{i + 1}.</span></span>
-                        <span className="dt-c2" data-node-id={KEG_ROW.name}><span className="dt-name" data-node-id={KEG_ROW.nameT}>{k.nama}</span></span>
-                        <span className="dt-num dt-c3" data-node-id={KEG_ROW.ang}><span data-node-id={KEG_ROW.angT}>{formatRupiah(k.apbdp)}</span></span>
-                        <span className="dt-num dt-c4" data-node-id={KEG_ROW.real}><span data-node-id={KEG_ROW.realT}>{formatRupiah(k.realisasi)}</span></span>
-                        <span className="dt-num dt-c5" data-node-id={KEG_ROW.pct}><span data-node-id={KEG_ROW.pctT}>{k.pct ?? '-'}</span></span>
-                        <span className="dt-aksi dt-c6" data-node-id={KEG_ROW.aksi}>
-                          <a className="dt-detail" data-node-id={KEG_ROW.chip} href="#kegiatan" onClick={(e) => e.preventDefault()}>
-                            <span data-node-id={KEG_ROW.chipT}>Lihat detail</span>
-                          </a>
-                        </span>
-                      </div>
+                      <React.Fragment key={k.nama}>
+                        <div className="dt-trow" data-node-id={KEG_ROW.row}>
+                          <span className="dt-c1 dt-muted" data-node-id={KEG_ROW.no}><span data-node-id={KEG_ROW.noT}>{i + 1}.</span></span>
+                          <span className="dt-c2" data-node-id={KEG_ROW.name}>
+                            <span className="dt-name" data-node-id={KEG_ROW.nameT}>{k.nama}</span>
+                            {k.subs && k.subs.length > 0 && (
+                              <span style={{ fontSize: 11.5, color: '#71717A', marginTop: 2, display: 'block' }}>
+                                {k.subs.length} subkegiatan
+                              </span>
+                            )}
+                          </span>
+                          <span className="dt-num dt-c3" data-node-id={KEG_ROW.ang}><span data-node-id={KEG_ROW.angT}>{formatRupiah(k.apbdp)}</span></span>
+                          <span className="dt-num dt-c4" data-node-id={KEG_ROW.real}><span data-node-id={KEG_ROW.realT}>{formatRupiah(k.realisasi)}</span></span>
+                          <span className="dt-num dt-c5" data-node-id={KEG_ROW.pct}><span data-node-id={KEG_ROW.pctT}>{k.pct ?? '-'}</span></span>
+                          <span className="dt-aksi dt-c6" data-node-id={KEG_ROW.aksi}>
+                            <button
+                              type="button"
+                              className="dt-detail"
+                              onClick={() => setExpandedKeg(expandedKeg === k.nama ? null : k.nama)}
+                              style={{
+                                cursor: 'pointer',
+                                background: expandedKeg === k.nama ? '#18181B' : '#fff',
+                                color: expandedKeg === k.nama ? '#fff' : '#3F3F46',
+                                borderColor: expandedKeg === k.nama ? '#18181B' : '#D4D4D8'
+                              }}
+                              aria-label={`Rincian subkegiatan ${k.nama}`}
+                            >
+                              <span data-node-id={KEG_ROW.chipT}>{expandedKeg === k.nama ? 'Tutup rincian' : 'Rincian sub'}</span>
+                            </button>
+                          </span>
+                        </div>
+                        {expandedKeg === k.nama && k.subs && k.subs.length > 0 && (
+                          <div style={{ background: '#F8FAFC', padding: '14px 20px', borderBottom: '1px solid var(--line-3)' }}>
+                            <p style={{ margin: '0 0 10px 0', fontSize: 11.5, fontWeight: 700, textTransform: 'uppercase', color: '#71717A', letterSpacing: 0.6 }}>
+                              Sub Kegiatan ({k.subs.length}):
+                            </p>
+                            <div style={{ display: 'grid', gap: 6 }}>
+                              {k.subs.map((s, sIdx) => (
+                                <div key={sIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12.5, padding: '6px 0', borderBottom: sIdx === k.subs.length - 1 ? 'none' : '1px dashed #E2E8F0' }}>
+                                  <span style={{ color: 'var(--ink)', maxWidth: '52%' }}>• {s.nama}</span>
+                                  <div style={{ display: 'flex', gap: 14, fontFamily: 'var(--mono)', fontSize: 12 }}>
+                                    <span style={{ color: '#71717A' }}>Pagu: {formatRupiah(s.apbdp)}</span>
+                                    <span style={{ fontWeight: 600, color: 'var(--ink)' }}>Realisasi: {formatRupiah(s.realisasi)}</span>
+                                    <span style={{ fontWeight: 600, color: '#065F46', background: '#ECFDF5', padding: '1px 5px', borderRadius: 3 }}>{s.pct}</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </React.Fragment>
                     ))}
                   </div>
                 </div>
@@ -352,13 +390,42 @@ export const ProgramDetail: React.FC = () => {
               <div className="dt-sidecard" data-node-id="247:327">
                 <h2 className="dt-h2" data-node-id="247:329">Data Terkait</h2>
                 <div className="dt-side-links" data-node-id="247:330">
-                  {LINKS_C.map((l) => (
-                    <a className="dt-linkrow" key={l.label} data-node-id={l.row} href="#terkait" onClick={(e) => e.preventDefault()}>
-                      <span data-node-id={l.ico}><Ico g={l.g} slot={16} id={l.icoId} /></span>
-                      <span className="dt-linktext" data-node-id={l.text}><span data-node-id={l.textId}>{l.label}</span></span>
-                      <span className="dt-arrow" data-node-id={l.chev}><Ico g="chev" slot={14} id={l.chevId} /></span>
-                    </a>
-                  ))}
+                  <a
+                    className="dt-linkrow"
+                    data-node-id="247:331"
+                    href={meta.dokumenUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={meta.dokumenNama}
+                  >
+                    <span data-node-id="247:332"><Ico g="file" slot={16} id="248:20" /></span>
+                    <span className="dt-linktext" data-node-id="247:333"><span data-node-id="247:334">{correction ? 'Dokumen sumber LKIP' : 'Dokumen sumber resmi'}</span></span>
+                    <span className="dt-arrow" data-node-id="247:335"><Ico g="chev" slot={14} id="248:25" /></span>
+                  </a>
+
+                  <a
+                    className="dt-linkrow"
+                    data-node-id="247:336"
+                    href={meta.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Buka situs resmi ${program.skpdJudul || 'instansi'}`}
+                  >
+                    <span data-node-id="247:337"><Ico g="link" slot={16} id="248:27" /></span>
+                    <span className="dt-linktext" data-node-id="247:338"><span data-node-id="247:339">Portal resmi instansi</span></span>
+                    <span className="dt-arrow" data-node-id="247:340"><Ico g="chev" slot={14} id="248:32" /></span>
+                  </a>
+
+                  <Link
+                    className="dt-linkrow"
+                    data-node-id="247:341"
+                    to={'/instansi/' + (program.skpdSlug || 'dinas-lingkungan-hidup')}
+                    title={`Kembali ke halaman instansi ${program.skpdJudul || ''}`}
+                  >
+                    <span data-node-id="247:342"><Ico g="chart" slot={16} id="248:34" /></span>
+                    <span className="dt-linktext" data-node-id="247:343"><span data-node-id="247:344">Halaman instansi {program.skpdJudul ? `(${program.skpdJudul})` : ''}</span></span>
+                    <span className="dt-arrow" data-node-id="247:345"><Ico g="chev" slot={14} id="248:37" /></span>
+                  </Link>
                 </div>
               </div>
             </div>

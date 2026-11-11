@@ -87,7 +87,20 @@ interface RawProg { program: string; apbdp: number | null; realisasi: number | n
 export interface SubKeg { nama: string; apbdp: number | null; realisasi: number | null; pct: string | null }
 export interface Keg { nama: string; apbdp: number | null; realisasi: number | null; pct: string | null; subs: SubKeg[] }
 export interface Program {
-  slug: string; nama: string; judul: string; apbdp: number | null; realisasi: number | null; pct: string | null; kegs: Keg[];
+  slug: string;
+  nama: string;
+  judul: string;
+  skpdSlug?: string;
+  skpdJudul?: string;
+  kodeRekening?: string;
+  refDoc?: string;
+  refPage?: string;
+  refUrl?: string;
+  refStatus?: 'normal' | 'dikoreksi' | 'ditahan';
+  apbdp: number | null;
+  realisasi: number | null;
+  pct: string | null;
+  kegs: Keg[];
 }
 
 const realisasi = realisasiRaw as { sumber: string; catatan_konflik: string[]; program: RawProg[] };
