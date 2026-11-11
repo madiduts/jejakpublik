@@ -1,4 +1,5 @@
 import React from 'react';
+import { adaBackend, API_BASE } from '../../lib/api';
 import { signInWithGoogle } from '../../lib/google';
 
 /** Tombol Google dengan lambang G resmi (empat warna). */
@@ -34,13 +35,15 @@ export const GoogleButton: React.FC<Props> = ({ label, busy, onStart, onDone, on
           sessionStorage.setItem('jp.auth.redirect', currentPath);
         }
 
-        // 1. Coba OAuth 2.0 Web redirect via backend (langsung membuka pemilih akun Google resmi)
-        const res = await fetch('http://localhost:3000/api/v1/auth/google/url');
-        if (res.ok) {
-          const json = await res.json();
-          if (json?.data?.auth_url) {
-            window.location.href = json.data.auth_url;
-            return;
+        // 1. Bila backend dikonfigurasi, pakai OAuth redirect resminya.
+        if (adaBackend) {
+          const res = await fetch(`${API_BASE}/api/v1/auth/google/url`);
+          if (res.ok) {
+            const json = await res.json();
+            if (json?.data?.auth_url) {
+              window.location.href = json.data.auth_url;
+              return;
+            }
           }
         }
 

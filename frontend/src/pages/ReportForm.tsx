@@ -3,6 +3,7 @@ import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { getSession } from '../lib/session';
+import { adaBackend, API_BASE } from '../lib/api';
 import { createReport } from '../lib/reports';
 import { Dropdown } from '../components/ui/Dropdown';
 import { SearchSelect } from '../components/ui/SearchSelect';
@@ -129,8 +130,16 @@ export const ReportForm: React.FC = () => {
     const formData = new FormData();
     formData.append('file', file);
 
+    // Prototipe statis tanpa backend: berkas tidak diunggah, hanya dicatat.
+    if (!adaBackend) {
+      setEvidenceUrls((prev) => [...prev, `/uploads/${file.name}`]);
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
     try {
-      const res = await fetch('http://localhost:3000/api/v1/reports/upload', {
+      const res = await fetch(`${API_BASE}/api/v1/reports/upload`, {
         method: 'POST',
         body: formData,
       });

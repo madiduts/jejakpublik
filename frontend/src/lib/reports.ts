@@ -36,6 +36,8 @@ export const STATUS_LABEL: Record<ReportStatus, string> = {
   draft: 'Draf laporan',
 };
 
+import { adaBackend, API_BASE } from './api';
+
 function read(): Report[] {
   try {
     const raw = localStorage.getItem(KEY);
@@ -93,9 +95,12 @@ export function createReport(input: ReportInput): Report {
   };
   write([report, ...read()]);
 
-  // Sync secara asinkron ke server backend jika aktif
+  // Sinkronisasi ke backend hanya bila alamatnya dikonfigurasi lewat
+  // VITE_API_BASE. Pada prototipe statis (tanpa backend) blok ini dilewati,
+  // supaya tidak ada permintaan yang gagal ke localhost di konsol peramban.
   try {
-    fetch('http://localhost:3000/api/v1/reports', {
+    if (!adaBackend) throw new Error('backend tidak dikonfigurasi');
+    fetch(`${API_BASE}/api/v1/reports`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

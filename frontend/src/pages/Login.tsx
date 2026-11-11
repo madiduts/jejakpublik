@@ -3,6 +3,7 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthShell } from '../components/layout/AuthShell';
 import { GoogleButton } from '../components/auth/GoogleButton';
 import { getSession, signIn } from '../lib/session';
+import { adaBackend, API_BASE } from '../lib/api';
 import { redirectTarget } from '../lib/redirect';
 
 export const Login: React.FC = () => {
@@ -33,7 +34,13 @@ export const Login: React.FC = () => {
     const cleanPass = pass;
 
     try {
-      const res = await fetch('http://localhost:3000/api/v1/auth/login', {
+      // Prototipe statis tanpa backend: masuk dengan sesi lokal.
+      if (!adaBackend) {
+        enter(cleanEmail);
+        return;
+      }
+
+      const res = await fetch(`${API_BASE}/api/v1/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: cleanEmail, password: cleanPass })
