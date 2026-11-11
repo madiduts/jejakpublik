@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Footer } from '../components/layout/Footer';
 
 export const Report: React.FC = () => {
   const location = useLocation();
@@ -141,17 +142,7 @@ export const Report: React.FC = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <div className="rk-footwrap" data-node-id="164:80">
-        <footer className="rk-foot" data-node-id="164:72">
-          <div className="rk-footbrandwrap" data-node-id="164:73">
-            <span className="rk-footbrand" data-node-id="164:74">
-              JejakPublik
-            </span>
-          </div>
-          <div className="rk-footlegal" data-node-id="164:76" />
-        </footer>
-      </div>
+      <Footer />
     </div>
   );
 };
