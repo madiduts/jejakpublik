@@ -397,20 +397,26 @@ export const InstansiDetail: React.FC = () => {
                 <h2 className="dt-h2" data-node-id="235:155">Realisasi Anggaran</h2>
                 <div data-node-id="235:185" style={{ paddingTop: 12 }}>
                   <div className="dt-donutrow" data-node-id="235:156">
-                    <div className="dt-donut" data-node-id="235:157">
-                      <div className="dt-donut-val" data-node-id="235:159">{realisasiPct.toFixed(2).replace('.', ',')}%</div>
-                      <div className="dt-donut-lbl" data-node-id="235:162">Terserap</div>
+                    <div
+                      className="dt-donut"
+                      data-node-id="235:157"
+                      style={{ '--pct': `${realisasiPct.toFixed(2)}%` } as React.CSSProperties}
+                    >
+                      <div className="dt-donut-inner">
+                        <div className="dt-donut-val" data-node-id="235:159">{realisasiPct.toFixed(2).replace('.', ',')}%</div>
+                        <div className="dt-donut-lbl" data-node-id="235:162">Terserap</div>
+                      </div>
                     </div>
                     <div className="dt-legend" data-node-id="235:165">
                       <div className="dt-legend-row" data-node-id="235:166">
-                        <span className="dt-legend-dotwrap" data-node-id="235:175"><i className="dt-legend-dot" data-node-id="235:167" style={{ background: '#3F3F46', marginTop: 0 }} /></span>
+                        <span className="dt-legend-dotwrap" data-node-id="235:175"><i className="dt-legend-dot" data-node-id="235:167" style={{ background: '#1B4332', marginTop: 0 }} /></span>
                         <span data-node-id="235:168">
                           <span data-node-id="235:169"><p className="dt-legend-l" data-node-id="235:170">Realisasi</p></span>
                           <span data-node-id="235:171"><p className="dt-legend-v" data-node-id="235:172">{formatRupiahShort(instansi.belanjaRealisasi)}</p></span>
                         </span>
                       </div>
                       <div className="dt-legend-row" data-node-id="235:176">
-                        <span className="dt-legend-dotwrap" data-node-id="235:184"><i className="dt-legend-dot" data-node-id="235:177" style={{ background: '#C9C9CE', marginTop: 0 }} /></span>
+                        <span className="dt-legend-dotwrap" data-node-id="235:184"><i className="dt-legend-dot" data-node-id="235:177" style={{ background: '#CBD5E1', marginTop: 0 }} /></span>
                         <span data-node-id="235:178">
                           <span data-node-id="235:179"><p className="dt-legend-l" data-node-id="235:180">Anggaran perubahan</p></span>
                           <span data-node-id="235:181"><p className="dt-legend-v" data-node-id="235:182">{formatRupiahShort(instansi.belanja)}</p></span>

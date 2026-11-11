@@ -297,39 +297,41 @@ export const Explore: React.FC = () => {
                       Tidak ada instansi yang cocok dengan filter pencarian.
                     </div>
                   ) : (
-                    rows.map((inst, i) => (
-                      <div className={`ex-row${i === rows.length - 1 ? ' last' : ''}`} key={inst.id} data-node-id={ROW_IDS[i]?.row}>
-                        <div className="ex-name" data-node-id={ROW_IDS[i]?.name}>
-                          <span className="ex-avatar" data-node-id={ROW_IDS[i]?.avatar} aria-hidden="true">
-                            <Ico g="building" slot={18} />
-                          </span>
-                          <span className="ex-nameblock" data-node-id={ROW_IDS[i]?.block}>
-                            <span className="ex-namewrap" data-node-id={ROW_IDS[i]?.nameWrap}>
-                              <Link to={`/instansi/${inst.slug}`} className="ex-name-t" data-node-id={ROW_IDS[i]?.nameText}>{inst.judul}</Link>
+                    <div key={current} className="ex-rows-anim">
+                      {rows.map((inst, i) => (
+                        <div className={`ex-row${i === rows.length - 1 ? ' last' : ''}`} key={inst.id} data-node-id={ROW_IDS[i]?.row}>
+                          <div className="ex-name" data-node-id={ROW_IDS[i]?.name}>
+                            <span className="ex-avatar" data-node-id={ROW_IDS[i]?.avatar} aria-hidden="true">
+                              <Ico g="building" slot={18} />
                             </span>
-                            <span className="ex-subwrap" data-node-id={ROW_IDS[i]?.subWrap}>
-                              <span className="ex-sub" data-node-id={ROW_IDS[i]?.subText}>Pemerintah Provinsi DKI Jakarta</span>
+                            <span className="ex-nameblock" data-node-id={ROW_IDS[i]?.block}>
+                              <span className="ex-namewrap" data-node-id={ROW_IDS[i]?.nameWrap}>
+                                <Link to={`/instansi/${inst.slug}`} className="ex-name-t" data-node-id={ROW_IDS[i]?.nameText}>{inst.judul}</Link>
+                              </span>
+                              <span className="ex-subwrap" data-node-id={ROW_IDS[i]?.subWrap}>
+                                <span className="ex-sub" data-node-id={ROW_IDS[i]?.subText}>Pemerintah Provinsi DKI Jakarta</span>
+                              </span>
                             </span>
-                          </span>
+                          </div>
+                          <div className="ex-depth ex-c-depth" data-node-id={ROW_IDS[i]?.depth}>
+                            <span data-node-id={ROW_IDS[i]?.depthText}>{inst.detailed ? 'Sampai sub kegiatan' : 'Tingkat SKPD'}</span>
+                          </div>
+                          <div className="ex-amount ex-c-total" data-node-id={ROW_IDS[i]?.amount}>
+                            <span data-node-id={ROW_IDS[i]?.amountText}>{formatRupiah(inst.belanja)}</span>
+                          </div>
+                          <div className="ex-action ex-c-aksi" data-node-id={ROW_IDS[i]?.action}>
+                            <Link
+                              to={`/instansi/${inst.slug}`}
+                              className="ex-detail"
+                              data-node-id={ROW_IDS[i]?.chip}
+                              aria-label={`Buka ${inst.judul}`}
+                            >
+                              <Ico g="diag" slot={14} />
+                            </Link>
+                          </div>
                         </div>
-                        <div className="ex-depth ex-c-depth" data-node-id={ROW_IDS[i]?.depth}>
-                          <span data-node-id={ROW_IDS[i]?.depthText}>{inst.detailed ? 'Sampai sub kegiatan' : 'Tingkat SKPD'}</span>
-                        </div>
-                        <div className="ex-amount ex-c-total" data-node-id={ROW_IDS[i]?.amount}>
-                          <span data-node-id={ROW_IDS[i]?.amountText}>{formatRupiah(inst.belanja)}</span>
-                        </div>
-                        <div className="ex-action ex-c-aksi" data-node-id={ROW_IDS[i]?.action}>
-                          <Link
-                            to={`/instansi/${inst.slug}`}
-                            className="ex-detail"
-                            data-node-id={ROW_IDS[i]?.chip}
-                            aria-label={`Buka ${inst.judul}`}
-                          >
-                            <Ico g="diag" slot={14} />
-                          </Link>
-                        </div>
-                      </div>
-                    ))
+                      ))}
+                    </div>
                   )}
                 </div>
               </div>

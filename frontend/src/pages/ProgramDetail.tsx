@@ -37,7 +37,26 @@ export const ProgramDetail: React.FC = () => {
   const [, setTab] = useState('ringkasan');
   const [q, setQ] = useState('');
   const [selectedKeg, setSelectedKeg] = useState<any | null>(null);
+  const [expandedKegs, setExpandedKegs] = useState<Record<string, boolean>>({});
   const correction = corrections.find((c) => c.programSlug === slug);
+
+  const toggleKeg = (nama: string) => {
+    setExpandedKegs((prev) => ({ ...prev, [nama]: !prev[nama] }));
+  };
+
+  const allExpanded = useMemo(() => {
+    return (program?.kegs || []).length > 0 && (program?.kegs || []).every((k) => expandedKegs[k.nama]);
+  }, [program, expandedKegs]);
+
+  const toggleAllKegs = () => {
+    if (allExpanded) {
+      setExpandedKegs({});
+    } else {
+      const next: Record<string, boolean> = {};
+      (program?.kegs || []).forEach((k) => { next[k.nama] = true; });
+      setExpandedKegs(next);
+    }
+  };
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -199,22 +218,26 @@ export const ProgramDetail: React.FC = () => {
                 <h2 className="dt-h2" data-node-id="247:147">Realisasi Anggaran</h2>
                 <div data-node-id="247:177" style={{ paddingTop: 12 }}>
                   <div className="dt-donutrow" data-node-id="247:148">
-                    <div className="dt-donut" data-node-id="247:149">
-                      <div className="dt-donut-val" data-node-id="247:151">{pct.toFixed(2).replace('.', ',')}%</div>
-                      <div className="dt-donut-lblwrap" data-node-id="247:156">
-                        <div className="dt-donut-lbl" data-node-id="247:154" style={{ position: 'static', top: 'auto' }}>Terserap</div>
+                    <div
+                      className="dt-donut"
+                      data-node-id="247:149"
+                      style={{ '--pct': `${pct.toFixed(2)}%` } as React.CSSProperties}
+                    >
+                      <div className="dt-donut-inner">
+                        <div className="dt-donut-val" data-node-id="247:151">{pct.toFixed(2).replace('.', ',')}%</div>
+                        <div className="dt-donut-lbl" data-node-id="247:154">Terserap</div>
                       </div>
                     </div>
                     <div className="dt-legend" data-node-id="247:157">
                       <div className="dt-legend-row" data-node-id="247:158">
-                        <span className="dt-legend-dotwrap" data-node-id="247:167"><i className="dt-legend-dot" data-node-id="247:159" style={{ background: '#3F3F46', marginTop: 0 }} /></span>
+                        <span className="dt-legend-dotwrap" data-node-id="247:167"><i className="dt-legend-dot" data-node-id="247:159" style={{ background: '#1B4332', marginTop: 0 }} /></span>
                         <span data-node-id="247:160">
                           <span data-node-id="247:161"><p className="dt-legend-l" data-node-id="247:162">Realisasi</p></span>
                           <span data-node-id="247:163"><p className="dt-legend-v" data-node-id="247:164">{formatRupiahShort(realisasi)}</p></span>
                         </span>
                       </div>
                       <div className="dt-legend-row" data-node-id="247:168">
-                        <span className="dt-legend-dotwrap" data-node-id="247:176"><i className="dt-legend-dot" data-node-id="247:169" style={{ background: '#C9C9CE', marginTop: 0 }} /></span>
+                        <span className="dt-legend-dotwrap" data-node-id="247:176"><i className="dt-legend-dot" data-node-id="247:169" style={{ background: '#CBD5E1', marginTop: 0 }} /></span>
                         <span data-node-id="247:170">
                           <span data-node-id="247:171"><p className="dt-legend-l" data-node-id="247:172">Anggaran perubahan</p></span>
                           <span data-node-id="247:173"><p className="dt-legend-v" data-node-id="247:174">{formatRupiahShort(perubahan)}</p></span>
@@ -282,7 +305,7 @@ export const ProgramDetail: React.FC = () => {
 
             )}
             <div className="pg-listwrap" data-node-id="247:289">
-              <div className="dt-card" data-node-id="247:236" style={{ minHeight: 238 }}>
+              <div className="dt-card pg-card-flexible" data-node-id="247:236" style={{ height: 'auto', minHeight: 'fit-content' }}>
                 <div className="dt-tchead" data-node-id="247:237">
                   <h2 className="dt-h2" data-node-id="247:239">Daftar Kegiatan</h2>
                   <div className="dt-tchead" data-node-id="247:240" style={{ gap: 10 }}>
@@ -293,15 +316,23 @@ export const ProgramDetail: React.FC = () => {
                         <input className="dt-searchinput" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Cari kegiatan" />
                       </span>
                     </label>
-                    <button className="dt-select" data-node-id="247:244">
-                      <span data-node-id="247:245">Semua kegiatan</span>
-                      <Ico g="chevdown" slot={14} id="248:18" />
+                    <button
+                      type="button"
+                      className="dt-select"
+                      onClick={toggleAllKegs}
+                      style={{ width: 'auto', minWidth: 124, padding: '0 12px', cursor: 'pointer' }}
+                      title={allExpanded ? 'Tutup semua rincian subkegiatan' : 'Buka semua rincian subkegiatan'}
+                    >
+                      <span>{allExpanded ? 'Tutup semua sub' : 'Buka semua sub'}</span>
+                      <span style={{ display: 'inline-flex', transform: allExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
+                        <Ico g="chevdown" slot={14} id="248:18" />
+                      </span>
                     </button>
                   </div>
                 </div>
 
-                <div className="dt-tablewrap" data-node-id="247:285">
-                  <div className="dt-table pg-table" data-node-id="247:247">
+                <div className="dt-tablewrap" data-node-id="247:285" style={{ width: '100%', overflowX: 'auto' }}>
+                  <div className="dt-table pg-table" data-node-id="247:247" style={{ overflow: 'visible' }}>
                     <div className="dt-thead" data-node-id="247:248">
                       <span className="dt-c1" data-node-id="247:249"><span data-node-id="247:250">No.</span></span>
                       <span className="dt-c2" data-node-id="247:252"><span data-node-id="247:253">Nama kegiatan</span></span>
@@ -311,40 +342,137 @@ export const ProgramDetail: React.FC = () => {
                       <span className="dt-num dt-c6" data-node-id="247:261"><span data-node-id="247:262">Aksi</span></span>
                     </div>
 
-                    {kegRows.map((k, i) => (
-                      <React.Fragment key={k.nama}>
-                        <div className="dt-trow" data-node-id={KEG_ROW.row}>
-                          <span className="dt-c1 dt-muted" data-node-id={KEG_ROW.no}><span data-node-id={KEG_ROW.noT}>{i + 1}.</span></span>
-                          <span className="dt-c2" data-node-id={KEG_ROW.name}>
-                            <span className="dt-name" data-node-id={KEG_ROW.nameT}>{k.nama}</span>
-                            {k.subs && k.subs.length > 0 && (
-                              <span style={{ fontSize: 11.5, color: '#71717A', marginTop: 2, display: 'block' }}>
-                                {k.subs.length} subkegiatan
+                    {kegRows.map((k, i) => {
+                      const isExpanded = !!expandedKegs[k.nama];
+                      const pctStr = k.pct ? (k.pct.includes('%') ? k.pct : `${k.pct}%`) : '-';
+                      return (
+                        <React.Fragment key={k.nama}>
+                          <div className="dt-trow" data-node-id={KEG_ROW.row} style={{ height: 'auto', minHeight: 56, padding: '12px 0' }}>
+                            <span className="dt-c1 dt-muted" data-node-id={KEG_ROW.no}><span data-node-id={KEG_ROW.noT}>{i + 1}.</span></span>
+                            <span className="dt-c2" data-node-id={KEG_ROW.name}>
+                              <span
+                                className="dt-name"
+                                data-node-id={KEG_ROW.nameT}
+                                onClick={() => toggleKeg(k.nama)}
+                                style={{ cursor: 'pointer' }}
+                                title="Klik untuk buka/tutup rincian subkegiatan"
+                              >
+                                {k.nama}
                               </span>
-                            )}
-                          </span>
-                          <span className="dt-num dt-c3" data-node-id={KEG_ROW.ang}><span data-node-id={KEG_ROW.angT}>{formatRupiah(k.apbdp)}</span></span>
-                          <span className="dt-num dt-c4" data-node-id={KEG_ROW.real}><span data-node-id={KEG_ROW.realT}>{formatRupiah(k.realisasi)}</span></span>
-                          <span className="dt-num dt-c5" data-node-id={KEG_ROW.pct}><span data-node-id={KEG_ROW.pctT}>{k.pct ?? '-'}</span></span>
-                          <span className="dt-aksi dt-c6" data-node-id={KEG_ROW.aksi}>
-                            <button
-                              type="button"
-                              className="dt-detail"
-                              onClick={() => setSelectedKeg(k)}
-                              style={{
-                                cursor: 'pointer',
-                                background: '#fff',
-                                color: '#3F3F46',
-                                borderColor: '#D4D4D8'
-                              }}
-                              aria-label={`Buka jendela rincian subkegiatan ${k.nama}`}
-                            >
-                              <span data-node-id={KEG_ROW.chipT}>Rincian sub</span>
-                            </button>
-                          </span>
-                        </div>
-                      </React.Fragment>
-                    ))}
+                              {k.subs && k.subs.length > 0 && (
+                                <button
+                                  type="button"
+                                  onClick={() => toggleKeg(k.nama)}
+                                  style={{
+                                    fontSize: 11.5,
+                                    color: '#005EA2',
+                                    background: 'none',
+                                    border: 'none',
+                                    padding: 0,
+                                    marginTop: 2,
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: 4,
+                                    cursor: 'pointer'
+                                  }}
+                                >
+                                  <span>{k.subs.length} subkegiatan {isExpanded ? '▲' : '▼'}</span>
+                                </button>
+                              )}
+                            </span>
+                            <span className="dt-num dt-c3" data-node-id={KEG_ROW.ang}><span data-node-id={KEG_ROW.angT}>{formatRupiah(k.apbdp)}</span></span>
+                            <span className="dt-num dt-c4" data-node-id={KEG_ROW.real}><span data-node-id={KEG_ROW.realT}>{formatRupiah(k.realisasi)}</span></span>
+                            <span className="dt-num dt-c5" data-node-id={KEG_ROW.pct}><span data-node-id={KEG_ROW.pctT}>{pctStr}</span></span>
+                            <span className="dt-aksi dt-c6" data-node-id={KEG_ROW.aksi}>
+                              <button
+                                type="button"
+                                className="dt-detail"
+                                onClick={() => toggleKeg(k.nama)}
+                                style={{
+                                  cursor: 'pointer',
+                                  background: isExpanded ? '#18181B' : '#fff',
+                                  color: isExpanded ? '#fff' : '#3F3F46',
+                                  borderColor: isExpanded ? '#18181B' : '#D4D4D8',
+                                  transition: 'all 0.15s ease'
+                                }}
+                                aria-expanded={isExpanded}
+                                aria-label={`${isExpanded ? 'Tutup' : 'Buka'} rincian subkegiatan ${k.nama}`}
+                              >
+                                <span data-node-id={KEG_ROW.chipT}>{isExpanded ? 'Tutup sub' : 'Rincian sub'}</span>
+                                <span style={{ display: 'inline-flex', transform: isExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
+                                  <Ico g="chevdown" slot={12} />
+                                </span>
+                              </button>
+                            </span>
+                          </div>
+
+                          {/* Nested Flexible Subkegiatan Rows */}
+                          {isExpanded && k.subs && k.subs.length > 0 && (
+                            <div className="dt-subrows-wrap" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+                              {k.subs.map((s, sIdx) => {
+                                const isDitahan = s.nama.includes('Gaji') || s.apbdp === null;
+                                const subPctStr = s.pct ? (s.pct.includes('%') ? s.pct : `${s.pct}%`) : '-';
+                                return (
+                                  <div
+                                    key={s.nama}
+                                    className="dt-trow dt-subtrow"
+                                    style={{
+                                      background: sIdx % 2 === 0 ? '#F8FAFC' : '#F1F5F9',
+                                      borderBottom: sIdx === k.subs.length - 1 ? 'none' : '1px dashed #E2E8F0',
+                                      height: 'auto',
+                                      minHeight: 48,
+                                      padding: '10px 0'
+                                    }}
+                                  >
+                                    <span className="dt-c1 dt-muted" style={{ fontSize: 11, textAlign: 'center' }}>
+                                      {i + 1}.{sIdx + 1}
+                                    </span>
+                                    <span className="dt-c2" style={{ paddingLeft: 8 }}>
+                                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                        <span style={{ color: '#005EA2', fontWeight: 600, fontSize: 12 }}>↳</span>
+                                        <span style={{ fontWeight: 500, color: '#18181B', fontSize: 12 }}>{s.nama}</span>
+                                      </div>
+                                      {isDitahan && (
+                                        <span style={{ display: 'inline-block', fontSize: 10.5, fontWeight: 600, color: '#B45309', background: '#FEF3C7', padding: '1px 6px', borderRadius: 4, marginTop: 3, marginLeft: 16 }}>
+                                          Status: Ditahan (Selisih LKIP)
+                                        </span>
+                                      )}
+                                    </span>
+                                    <span className="dt-num dt-c3" style={{ fontFamily: 'var(--mono)', fontSize: 12, color: '#3F3F46' }}>
+                                      {formatRupiah(s.apbdp)}
+                                    </span>
+                                    <span className="dt-num dt-c4" style={{ fontFamily: 'var(--mono)', fontSize: 12, color: '#3F3F46' }}>
+                                      {formatRupiah(s.realisasi)}
+                                    </span>
+                                    <span className="dt-num dt-c5" style={{ fontFamily: 'var(--mono)', fontSize: 11.5, fontWeight: 600, color: '#065F46' }}>
+                                      {subPctStr}
+                                    </span>
+                                    <span className="dt-aksi dt-c6" style={{ justifyContent: 'flex-end', paddingRight: 8 }}>
+                                      <button
+                                        type="button"
+                                        onClick={() => setSelectedKeg({ ...k, focusedSub: s })}
+                                        style={{
+                                          background: 'transparent',
+                                          border: 'none',
+                                          color: '#005EA2',
+                                          fontSize: 11,
+                                          cursor: 'pointer',
+                                          textDecoration: 'underline',
+                                          padding: '2px 4px'
+                                        }}
+                                        title="Buka rincian lengkap di jendela modal"
+                                      >
+                                        Modal ↗
+                                      </button>
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </React.Fragment>
+                      );
+                    })}
                   </div>
                 </div>
 
