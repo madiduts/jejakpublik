@@ -22,6 +22,7 @@ h1,h2,h3,h4{letter-spacing:-.02em;line-height:1.25}
 .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
 .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
 .app{min-height:100vh;display:flex;flex-direction:column}
+.app > *{width:100%;max-width:100%}
 main{flex:1}
 
 /* Topbar */
@@ -205,6 +206,9 @@ td.r,th.r{text-align:right}
    Angka diambil dari parity/203-2.figma.json. data-node-id menandai node. */
 /* Kerangka halaman: isi boleh pendek, kaki tetap menempel di dasar layar. */
 .lp{display:flex;flex-direction:column;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--font)}
+/* Anak flex dengan margin:0 auto menyusut selebar isinya; paksa selebar wadah
+   supaya section tetap 1440 px di layar besar. */
+.lp > *{width:100%;max-width:100%}
 .lp *{box-sizing:border-box}
 
 /* header 203:3 */
