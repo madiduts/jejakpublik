@@ -22,3 +22,6 @@ Thumbs.db
 
 # Obsidian workspace cache (keep notes, ignore internal workspace state)
 .obsidian/workspace.json
+.vercel
+.env*
+!.env.example
