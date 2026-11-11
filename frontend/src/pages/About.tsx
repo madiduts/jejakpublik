@@ -183,25 +183,6 @@ export const About: React.FC = () => {
         })}
       </div>
 
-      <div className="ab-timhead" data-node-id="222:136">
-        <h2 className="ab-h2" data-node-id="222:137">Tim</h2>
-      </div>
-
-      <div className="ab-timwrap" data-node-id="222:161">
-        <div className="ab-team" data-node-id="222:138">
-          {TIM.map((m) => (
-            <div className="ab-member" key={m.box} data-node-id={m.box}>
-              <div className="ab-mnamewrap" data-node-id={m.nameWrap}>
-                <span className="ab-mname" data-node-id={m.name}>{m.n}</span>
-              </div>
-              <div className="ab-mrolewrap" data-node-id={m.roleWrap}>
-                <span className="ab-mrole" data-node-id={m.role}>{m.r}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="ab-timhead ab-ref-head">
         <h2 className="ab-h2">Landasan Riset & Rujukan Akademik</h2>
       </div>
@@ -232,6 +213,25 @@ export const About: React.FC = () => {
             </div>
           );
         })}
+      </div>
+
+      <div className="ab-timhead ab-timhead-bawah" data-node-id="222:136">
+        <h2 className="ab-h2" data-node-id="222:137">Tim</h2>
+      </div>
+
+      <div className="ab-timwrap" data-node-id="222:161">
+        <div className="ab-team" data-node-id="222:138">
+          {TIM.map((m) => (
+            <div className="ab-member" key={m.box} data-node-id={m.box}>
+              <div className="ab-mnamewrap" data-node-id={m.nameWrap}>
+                <span className="ab-mname" data-node-id={m.name}>{m.n}</span>
+              </div>
+              <div className="ab-mrolewrap" data-node-id={m.roleWrap}>
+                <span className="ab-mrole" data-node-id={m.role}>{m.r}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
     </section>
