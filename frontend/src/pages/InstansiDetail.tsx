@@ -409,7 +409,7 @@ export const InstansiDetail: React.FC = () => {
                     </div>
                     <div className="dt-legend" data-node-id="235:165">
                       <div className="dt-legend-row" data-node-id="235:166">
-                        <span className="dt-legend-dotwrap" data-node-id="235:175"><i className="dt-legend-dot" data-node-id="235:167" style={{ background: '#1B4332', marginTop: 0 }} /></span>
+                        <span className="dt-legend-dotwrap" data-node-id="235:175"><i className="dt-legend-dot" data-node-id="235:167" style={{ background: '#005EA2', marginTop: 0 }} /></span>
                         <span data-node-id="235:168">
                           <span data-node-id="235:169"><p className="dt-legend-l" data-node-id="235:170">Realisasi</p></span>
                           <span data-node-id="235:171"><p className="dt-legend-v" data-node-id="235:172">{formatRupiahShort(instansi.belanjaRealisasi)}</p></span>

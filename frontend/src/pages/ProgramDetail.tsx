@@ -230,7 +230,7 @@ export const ProgramDetail: React.FC = () => {
                     </div>
                     <div className="dt-legend" data-node-id="247:157">
                       <div className="dt-legend-row" data-node-id="247:158">
-                        <span className="dt-legend-dotwrap" data-node-id="247:167"><i className="dt-legend-dot" data-node-id="247:159" style={{ background: '#1B4332', marginTop: 0 }} /></span>
+                        <span className="dt-legend-dotwrap" data-node-id="247:167"><i className="dt-legend-dot" data-node-id="247:159" style={{ background: '#005EA2', marginTop: 0 }} /></span>
                         <span data-node-id="247:160">
                           <span data-node-id="247:161"><p className="dt-legend-l" data-node-id="247:162">Realisasi</p></span>
                           <span data-node-id="247:163"><p className="dt-legend-v" data-node-id="247:164">{formatRupiahShort(realisasi)}</p></span>
