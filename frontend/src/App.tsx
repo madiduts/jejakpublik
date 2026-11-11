@@ -14,6 +14,7 @@ import { RequireSession } from './components/auth/RequireSession';
 import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Report } from './pages/Report';
+import { ReportForm } from './pages/ReportForm';
 import { CorrectionForm } from './pages/CorrectionForm';
 import { MyReports } from './pages/MyReports';
 import { ModeratorQueue } from './pages/ModeratorQueue';
@@ -39,6 +40,9 @@ export const App: React.FC = () => (
       <Route path="/lupa-kata-sandi" element={<Navigate to="/lupa-password" replace />} />
       <Route path="/lupa-sandi" element={<Navigate to="/lupa-password" replace />} />
       <Route path="/lapor" element={<RequireSession><Report /></RequireSession>} />
+      <Route path="/lapor/koreksi" element={<RequireSession><ReportForm /></RequireSession>} />
+      <Route path="/lapor/observasi" element={<RequireSession><ReportForm /></RequireSession>} />
+      <Route path="/lapor/form" element={<RequireSession><ReportForm /></RequireSession>} />
       <Route path="/koreksi/:id" element={<CorrectionForm />} />
       <Route path="/laporan-saya" element={<MyReports />} />
       <Route path="/moderator" element={<ModeratorQueue />} />

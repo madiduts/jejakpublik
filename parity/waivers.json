@@ -1080,6 +1080,76 @@
       "reason": "Beda metrik font pada merk footer; sama dengan kelas 203:204.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-10"
+    },
+    {
+      "node": "164:33",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:33",
+      "property": "y (lokal)",
+      "reason": "Figma menaruh kapital di awal kotak baris; Chrome membagi leading sehingga glif lebih tinggi dari kotak baris. Tinggi baris dan kotak sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:36",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:45",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:49",
+      "property": "w",
+      "reason": "Beda metrik font pada glif panah → antara canvas Figma dan peramban.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:56",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:59",
+      "property": "w",
+      "reason": "Beda metrik font pada glif panah → antara canvas Figma dan peramban.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:65",
+      "property": "w",
+      "reason": "Frame memakai kotak teks berlebar tetap; mesin membandingkan lebar glif baris terpanjang, bukan lebar kotak. Baris dan jumlah baris sudah sama.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:74",
+      "property": "w",
+      "reason": "Beda metrik font pada merk footer 72 px; sama dengan kelas 203:204 dan 223:2.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "164:74",
+      "property": "y (lokal)",
+      "reason": "Beda metrik font pada merk footer 72 px; sama dengan kelas 203:204 dan 223:2.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
     }
   ]
 }

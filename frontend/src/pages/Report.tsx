@@ -1,265 +1,157 @@
-import React, { useRef, useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { Navbar } from '../components/layout/Navbar';
-import { Footer } from '../components/layout/Footer';
-import { NAV_223, FOOT_223 } from '../lib/frameIds';
-import { getSession } from '../lib/session';
-import { createReport } from '../lib/reports';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Report: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const [params] = useSearchParams();
-  const session = getSession();
-
-  // Wajib masuk (login) terlebih dahulu sebelum membuat laporan
-  if (!session) {
-    return (
-      <Navigate
-        to="/masuk"
-        state={{ from: location.pathname + location.search }}
-        replace
-      />
-    );
-  }
-
-  // Pre-fill informasi target yang dilaporkan dari parameter URL atau default demo
-  const targetDefault =
-    params.get('target') ||
-    'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176';
-  const instansiDefault = params.get('instansi') || 'Dinas Lingkungan Hidup';
-
-  const [category, setCategory] = useState('Nominal tidak sesuai dokumen');
-  const [docUrl, setDocUrl] = useState('');
-  const [title, setTitle] = useState('');
-  const [message, setMessage] = useState('');
-  const [agree, setAgree] = useState(true);
-  const [evidenceUrls, setEvidenceUrls] = useState<string[]>([]);
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState<string | null>(null);
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Upload berkas bukti gambar / PDF ke storage service backend
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    setUploadError(null);
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const res = await fetch('http://localhost:3000/api/v1/reports/upload', {
-        method: 'POST',
-        body: formData
-      });
-      const json = await res.json();
-      if (json.success && json.data?.fileUrl) {
-        setEvidenceUrls((prev) => [...prev, json.data.fileUrl]);
-      } else {
-        setUploadError(json.error || 'Gagal mengunggah berkas bukti.');
-      }
-    } catch {
-      // Fallback simulasi URL jika server backend offline saat pengujian
-      const fallbackUrl = `/uploads/${file.name}`;
-      setEvidenceUrls((prev) => [...prev, fallbackUrl]);
-    } finally {
-      setUploading(false);
-      if (fileInputRef.current) fileInputRef.current.value = '';
-    }
-  };
-
-  const handleRemoveEvidence = (index: number) => {
-    setEvidenceUrls((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const handleSubmit = (isDraft: boolean) => {
-    const r = createReport({
-      kind: 'koreksi',
-      instansi: instansiDefault,
-      target: targetDefault,
-      title: title.trim() || targetDefault,
-      category,
-      docUrl: docUrl.trim(),
-      evidenceUrls,
-      message: message.trim() || 'Penjelasan tidak disertakan.',
-      contact: session.name,
-      isDraft
-    });
-
-    navigate(`/laporan-saya?baru=${r.id}`);
-  };
 
   return (
-    <div className="lp rp-page">
-      <Navbar ids={NAV_223} />
-
-      <main className="rp-wrap">
-        <p className="rp-crumb">
-          <Link to="/">Beranda</Link> / <Link to="/lapor">Lapor</Link> / <span>Koreksi informasi</span>
-        </p>
-
-        <div className="rp-headwrap">
-          <span className="rp-step">LANGKAH 3 DARI 3</span>
-          <h1 className="rp-h1">Koreksi informasi</h1>
+    <div className="rk-page" data-figma-root data-node-id="164:2">
+      {/* Header */}
+      <header className="rk-head" data-node-id="164:3">
+        <div className="rk-brandwrap" data-node-id="164:4">
+          <Link to="/" className="rk-brand" data-node-id="164:5">
+            JejakPublik
+          </Link>
         </div>
 
-        <section className="rp-card">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit(false);
-            }}
+        <nav className="rk-navwrap" data-node-id="164:7" aria-label="Navigasi utama">
+          <div className="rk-navitem" data-node-id="164:8">
+            <Link to="/jelajahi" className="rk-navlink" data-node-id="164:9">
+              Jelajahi Data
+            </Link>
+          </div>
+          <div className="rk-navitem" data-node-id="164:11">
+            <Link to="/panduan" className="rk-navlink" data-node-id="164:12">
+              Panduan
+            </Link>
+          </div>
+          <div className="rk-navitem" data-node-id="164:13">
+            <Link to="/istilah" className="rk-navlink" data-node-id="164:14">
+              Glosarium
+            </Link>
+          </div>
+          <div className="rk-navitem" data-node-id="164:15">
+            <Link to="/tentang" className="rk-navlink" data-node-id="164:16">
+              Tentang
+            </Link>
+          </div>
+          <Link to="/lapor" className="rk-cta" data-node-id="164:17">
+            <span className="rk-ctatxt" data-node-id="164:18">Lapor</span>
+            <span className="rk-ctadot" data-node-id="164:20" aria-hidden="true">
+              <span className="rk-ctaarrow" data-node-id="164:21">→</span>
+            </span>
+          </Link>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main className="rk-main" data-node-id="164:23">
+        {/* Breadcrumb */}
+        <div className="rk-crumbwrap" data-node-id="164:24">
+          <p className="rk-crumb" data-node-id="164:25">
+            <Link to="/" className="rk-crumblink">Beranda</Link> / <strong>Lapor</strong>
+          </p>
+        </div>
+
+        {/* Eyebrow */}
+        <div className="rk-eyebrowwrap" data-node-id="164:27">
+          <div className="rk-tag1wrap" data-node-id="164:28">
+            <span className="rk-tag1" data-node-id="164:29">Laporan</span>
+          </div>
+          <span className="rk-tag2" data-node-id="164:31">Butuh akun</span>
+        </div>
+
+        {/* Heading 1 */}
+        <div className="rk-h1wrap" data-node-id="164:32">
+          <h1 className="rk-h1" data-node-id="164:33">
+            Laporkan apa yang kamu temukan
+          </h1>
+        </div>
+
+        {/* Lede */}
+        <div className="rk-ledewrap" data-node-id="164:69">
+          <p className="rk-lede" data-node-id="164:36">
+            Dua jenis laporan, dua tujuan berbeda. Keduanya diperiksa tim sebelum terbit, dan tidak langsung mengubah data publik.
+          </p>
+        </div>
+
+        {/* Choices */}
+        <div className="rk-choices" data-node-id="164:38">
+          {/* Choice 1: Koreksi informasi */}
+          <Link
+            to={{ pathname: '/lapor/koreksi', search: location.search }}
+            className="rk-choice1"
+            data-node-id="164:39"
           >
-            {/* Field 1: Informasi yang dilaporkan (Readonly) */}
-            <div className="rp-group">
-              <label className="rp-label">INFORMASI YANG DILAPORKAN</label>
-              <span className="rp-hint">Terkunci dari halaman tempat kamu menekan tombol lapor.</span>
-              <div className="rp-locked">
-                <span>{targetDefault}</span>
+            <div className="rk-choice-content" data-node-id="164:40">
+              <div className="rk-choicetitle-wrap" data-node-id="164:41">
+                <h2 className="rk-choicetitle" data-node-id="164:42">
+                  Koreksi informasi
+                </h2>
+              </div>
+              <div className="rk-choicedesc-wrap" data-node-id="164:47">
+                <p className="rk-choicedesc" data-node-id="164:45">
+                  Ada angka, nama, klasifikasi, atau tautan sumber di JejakPublik yang menurutmu keliru. Sertakan dokumen pembanding bila punya.
+                </p>
               </div>
             </div>
+            <div className="rk-circle" data-node-id="164:48" aria-hidden="true">
+              <span className="rk-arrow" data-node-id="164:49">→</span>
+            </div>
+          </Link>
 
-            {/* Field 2 & 3: Grid 2 Kolom Kategori & Dokumen Pembanding */}
-            <div className="rp-grid2">
-              <div className="rp-group">
-                <label className="rp-label" htmlFor="kategori">KATEGORI KOREKSI</label>
-                <select
-                  id="kategori"
-                  className="rp-select"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                >
-                  <option value="Nominal tidak sesuai dokumen">Nominal tidak sesuai dokumen</option>
-                  <option value="Penjumlahan antar-tabel tidak cocok">Penjumlahan antar-tabel tidak cocok</option>
-                  <option value="Salah cetak / tertukar kode rekening">Salah cetak / tertukar kode rekening</option>
-                  <option value="Observasi lapangan / kondisi fisik berbeda">Observasi lapangan / kondisi fisik berbeda</option>
-                </select>
+          {/* Choice 2: Observasi lapangan */}
+          <Link
+            to={{ pathname: '/lapor/observasi', search: location.search }}
+            className="rk-choice2"
+            data-node-id="164:51"
+          >
+            <div className="rk-choice-content" data-node-id="164:52">
+              <div className="rk-choicetitle-wrap" data-node-id="164:53">
+                <h2 className="rk-choicetitle" data-node-id="164:54">
+                  Observasi lapangan
+                </h2>
               </div>
-
-              <div className="rp-group">
-                <label className="rp-label" htmlFor="dokumen">DOKUMEN PEMBANDING</label>
-                <span className="rp-hint">Opsional, tautan publik atau unggah berkas bukti.</span>
-                <div className="rp-upload-wrap">
-                  <div className="rp-upload-field">
-                    <input
-                      id="dokumen"
-                      type="url"
-                      className="rp-input"
-                      placeholder="https://"
-                      value={docUrl}
-                      onChange={(e) => setDocUrl(e.target.value)}
-                    />
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      style={{ display: 'none' }}
-                      accept="image/*,application/pdf"
-                      onChange={handleFileUpload}
-                    />
-                    <button
-                      type="button"
-                      className="rp-file-btn"
-                      onClick={() => fileInputRef.current?.click()}
-                      disabled={uploading}
-                    >
-                      {uploading ? 'Mengunggah...' : 'Unggah bukti'}
-                    </button>
-                  </div>
-
-                  {uploadError && (
-                    <span style={{ fontSize: 11.5, color: '#DC2626' }}>{uploadError}</span>
-                  )}
-
-                  {evidenceUrls.length > 0 && (
-                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 4 }}>
-                      {evidenceUrls.map((url, idx) => (
-                        <span key={url} className="rp-file-badge">
-                          📎 Berkas {idx + 1}
-                          <button
-                            type="button"
-                            className="rp-file-remove"
-                            onClick={() => handleRemoveEvidence(idx)}
-                            aria-label="Hapus berkas"
-                          >
-                            ×
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              <div className="rk-choicedesc-wrap" data-node-id="164:57">
+                <p className="rk-choicedesc" data-node-id="164:56">
+                  Ada kondisi di lokasi yang perlu diketahui publik, misalnya pekerjaan tidak sesuai gambar atau fasilitas tidak berfungsi. Sertakan lokasi dan waktu.
+                </p>
               </div>
             </div>
-
-            {/* Field 4: Judul Laporan */}
-            <div className="rp-group">
-              <label className="rp-label" htmlFor="judul">JUDUL LAPORAN</label>
-              <input
-                id="judul"
-                type="text"
-                className="rp-input"
-                placeholder="Contoh: Nilai APBD-P Tabel 2.4 berbeda dengan Tabel 3.34"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
+            <div className="rk-circle" data-node-id="164:58" aria-hidden="true">
+              <span className="rk-arrow" data-node-id="164:59">→</span>
             </div>
+          </Link>
+        </div>
 
-            {/* Field 5: Penjelasan */}
-            <div className="rp-group">
-              <label className="rp-label" htmlFor="penjelasan">PENJELASAN</label>
-              <textarea
-                id="penjelasan"
-                className="rp-textarea"
-                placeholder="Pada LKIP halaman 26 Tabel 2.4, program ini tercetak Rp67.876.101.084. Pada halaman 96 Tabel 3.34 tercetak Rp3.684.567.176."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-                minLength={15}
-              />
+        {/* Notice Card */}
+        <div className="rk-noticewrap" data-node-id="164:71">
+          <div className="rk-noticecard" data-node-id="164:60">
+            <div className="rk-noticeh3wrap" data-node-id="164:61">
+              <h3 className="rk-noticeh3" data-node-id="164:62">
+                Sebelum mengirim
+              </h3>
             </div>
-
-            {/* Field 6: Checkbox persetujuan */}
-            <label className="rp-checkrow">
-              <input
-                type="checkbox"
-                checked={agree}
-                onChange={(e) => setAgree(e.target.checked)}
-                required
-              />
-              <span className="rp-checktext">
-                Saya setuju laporan ini diperiksa dan ditampilkan sebagai laporan warga, dengan nama akun tidak ditampilkan.
-              </span>
-            </label>
-
-            {/* Tombol aksi: Kirim laporan & Simpan draf */}
-            <div className="rp-actions">
-              <button
-                type="submit"
-                className="rp-btn-primary"
-                disabled={!agree}
-              >
-                Kirim laporan
-              </button>
-              <button
-                type="button"
-                className="rp-btn-sec"
-                onClick={() => handleSubmit(true)}
-              >
-                Simpan draf
-              </button>
+            <div className="rk-noticepwrap" data-node-id="164:64">
+              <p className="rk-noticep" data-node-id="164:65">
+                JejakPublik meninjau laporan dan menampilkannya sebagai <strong>laporan warga</strong>, bukan fakta terverifikasi. Kami tidak menjanjikan instansi akan menindaklanjuti. Untuk aduan resmi, gunakan kanal pemerintah.
+              </p>
             </div>
-          </form>
-        </section>
+          </div>
+        </div>
       </main>
 
-      <Footer ids={FOOT_223} />
+      {/* Footer */}
+      <div className="rk-footwrap" data-node-id="164:80">
+        <footer className="rk-foot" data-node-id="164:72">
+          <div className="rk-footbrandwrap" data-node-id="164:73">
+            <span className="rk-footbrand" data-node-id="164:74">
+              JejakPublik
+            </span>
+          </div>
+          <div className="rk-footlegal" data-node-id="164:76" />
+        </footer>
+      </div>
     </div>
   );
 };
-
-export default Report;

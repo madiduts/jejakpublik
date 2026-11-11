@@ -1,0 +1,2104 @@
+{
+  "frame": {
+    "id": "164:2",
+    "name": "15 Lapor - pilih jenis",
+    "w": 1440,
+    "h": 1105.672,
+    "page": "Eksplorasi · Semua layar foto"
+  },
+  "dumpedAt": "2026-11-11T03:22:44.259Z",
+  "config": {
+    "ROOT_ID": "164:2",
+    "PAGE": 0,
+    "PAGE_BYTES": 40000,
+    "INCLUDE_INVISIBLE": false,
+    "STOP_AT_ICONS": true,
+    "SKIP_NAMES": [],
+    "MAX_TEXT": 200
+  },
+  "total": 56,
+  "page": 0,
+  "pages": 1,
+  "nodes": [
+    {
+      "id": "164:2",
+      "name": "15 Lapor - pilih jenis",
+      "type": "FRAME",
+      "parentId": null,
+      "path": "15 Lapor - pilih jenis",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1105.672,
+      "sizing": [
+        "FIXED",
+        "FIXED"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#ffffff",
+          "opacity": 1
+        }
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          56,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:3",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:2",
+      "path": "15 Lapor - pilih jenis/Container[0]",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 94,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "gap": 0,
+        "pad": [
+          26,
+          48,
+          26,
+          48
+        ],
+        "primary": "SPACE_BETWEEN",
+        "counter": "CENTER",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:4",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:3",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[0]",
+      "x": 48,
+      "y": 32.5,
+      "w": 117,
+      "h": 29,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:5",
+      "name": "JejakPublik",
+      "type": "TEXT",
+      "parentId": "164:4",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[0]/JejakPublik[0]",
+      "x": 48,
+      "y": 32.5,
+      "w": 117,
+      "h": 29,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "JejakPublik",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 23,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:7",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:3",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]",
+      "x": 898,
+      "y": 26,
+      "w": 494,
+      "h": 42,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "gap": 34,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "CENTER",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:8",
+      "name": "Text",
+      "type": "FRAME",
+      "parentId": "164:7",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[0]",
+      "x": 898,
+      "y": 37.5,
+      "w": 82,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:9",
+      "name": "Jelajahi Data",
+      "type": "TEXT",
+      "parentId": "164:8",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[0]/Jelajahi Data[0]",
+      "x": 898,
+      "y": 37.5,
+      "w": 82,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Jelajahi Data",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 15,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:11",
+      "name": "Text",
+      "type": "FRAME",
+      "parentId": "164:7",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[1]",
+      "x": 1014,
+      "y": 37.5,
+      "w": 56,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:12",
+      "name": "Panduan",
+      "type": "TEXT",
+      "parentId": "164:11",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[1]/Panduan[0]",
+      "x": 1014,
+      "y": 37.5,
+      "w": 56,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Panduan",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 15,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:13",
+      "name": "Text",
+      "type": "FRAME",
+      "parentId": "164:7",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[2]",
+      "x": 1104,
+      "y": 37.5,
+      "w": 65,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:14",
+      "name": "Glosarium",
+      "type": "TEXT",
+      "parentId": "164:13",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[2]/Glosarium[0]",
+      "x": 1104,
+      "y": 37.5,
+      "w": 65,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Glosarium",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 15,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:15",
+      "name": "Text",
+      "type": "FRAME",
+      "parentId": "164:7",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[3]",
+      "x": 1203,
+      "y": 37.5,
+      "w": 51,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:16",
+      "name": "Tentang",
+      "type": "TEXT",
+      "parentId": "164:15",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[3]/Tentang[0]",
+      "x": 1203,
+      "y": 37.5,
+      "w": 51,
+      "h": 19,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Tentang",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 15,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:17",
+      "name": "Text",
+      "type": "FRAME",
+      "parentId": "164:7",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[4]",
+      "x": 1288,
+      "y": 26,
+      "w": 104,
+      "h": 42,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "radius": {
+        "all": 999
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "gap": 10,
+        "pad": [
+          12,
+          20,
+          12,
+          20
+        ],
+        "primary": "MIN",
+        "counter": "CENTER",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:18",
+      "name": "Lapor",
+      "type": "TEXT",
+      "parentId": "164:17",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[4]/Lapor[0]",
+      "x": 1308,
+      "y": 38,
+      "w": 36,
+      "h": 18,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#ffffff",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Lapor",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 14,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:20",
+      "name": "Text",
+      "type": "FRAME",
+      "parentId": "164:17",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[4]/Text[0]",
+      "x": 1354,
+      "y": 38,
+      "w": 18,
+      "h": 18,
+      "sizing": [
+        "FIXED",
+        "FIXED"
+      ],
+      "radius": {
+        "all": 9
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#ffffff",
+          "opacity": 1
+        }
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "CENTER",
+        "counter": "CENTER",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:21",
+      "name": "→",
+      "type": "TEXT",
+      "parentId": "164:20",
+      "path": "15 Lapor - pilih jenis/Container[0]/Container[1]/Text[4]/Text[0]/→[0]",
+      "x": 1359.5,
+      "y": 40.5,
+      "w": 7,
+      "h": 13,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "→",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 10,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:23",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:2",
+      "path": "15 Lapor - pilih jenis/Container[1]",
+      "x": 0,
+      "y": 94,
+      "w": 1440,
+      "h": 708.563,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          34,
+          48,
+          0,
+          48
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:24",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:23",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[0]",
+      "x": 48,
+      "y": 128,
+      "w": 1344,
+      "h": 16,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:25",
+      "name": "Beranda / Lapor",
+      "type": "TEXT",
+      "parentId": "164:24",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[0]/Beranda / Lapor[0]",
+      "x": 48,
+      "y": 128,
+      "w": 86,
+      "h": 16,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#6b7a80",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Beranda / Lapor",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 12.5,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#6b7a80",
+            "opacity": 1
+          }
+        ],
+        "mixedSegments": 2,
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:27",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:23",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[1]",
+      "x": 48,
+      "y": 144,
+      "w": 1344,
+      "h": 36,
+      "sizing": [
+        "FIXED",
+        "FIXED"
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "gap": 10,
+        "pad": [
+          22,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:28",
+      "name": "Italic Text",
+      "type": "FRAME",
+      "parentId": "164:27",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[1]/Italic Text[0]",
+      "x": 48,
+      "y": 166,
+      "w": 56,
+      "h": 14,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:29",
+      "name": "Laporan",
+      "type": "TEXT",
+      "parent": "164:28",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[1]/Italic Text[0]/Laporan[0]",
+      "x": 48,
+      "y": 166,
+      "w": 56,
+      "h": 14,
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#aebbc0",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Laporan",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 11.5,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 1.3
+        },
+        "align": "LEFT",
+        "textCase": "UPPER",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#aebbc0",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:31",
+      "name": "Butuh akun",
+      "type": "TEXT",
+      "parentId": "164:27",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[1]/Butuh akun[0]",
+      "x": 114,
+      "y": 166,
+      "w": 79,
+      "h": 14,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#6b7a80",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Butuh akun",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 11.5,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 1.3
+        },
+        "align": "LEFT",
+        "textCase": "UPPER",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#6b7a80",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:32",
+      "name": "Heading 1",
+      "type": "FRAME",
+      "parentId": "164:23",
+      "path": "15 Lapor - pilih jenis/Container[1]/Heading 1[0]",
+      "x": 48,
+      "y": 180,
+      "w": 496.583,
+      "h": 106,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          12,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:33",
+      "name": "Laporkan apa yang kamu temukan",
+      "type": "TEXT",
+      "parentId": "164:32",
+      "path": "15 Lapor - pilih jenis/Container[1]/Heading 1[0]/Laporkan apa yang kamu temukan[0]",
+      "x": 48,
+      "y": 192,
+      "w": 497,
+      "h": 94,
+      "sizing": [
+        "FIXED",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Laporkan apa yang kamu temukan",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 44,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 46.64
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": -1.2
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:69",
+      "name": "Paragraph:margin",
+      "type": "FRAME",
+      "parentId": "164:23",
+      "path": "15 Lapor - pilih jenis/Container[1]/Paragraph:margin[0]",
+      "x": 48,
+      "y": 286,
+      "w": 592,
+      "h": 67,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          14,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:36",
+      "name": "Dua jenis laporan, dua tujuan berbeda. Keduanya di",
+      "type": "TEXT",
+      "parentId": "164:69",
+      "path": "15 Lapor - pilih jenis/Container[1]/Paragraph:margin[0]/Dua jenis laporan, dua tujuan berbeda. Keduanya di[0]",
+      "x": 48,
+      "y": 300,
+      "w": 592,
+      "h": 53,
+      "sizing": [
+        "FIXED",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#3d4b52",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Dua jenis laporan, dua tujuan berbeda. Keduanya diperiksa tim sebelum terbit, dan tidak langsung mengubah data publik.",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 17,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 26.35
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#3d4b52",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:38",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:23",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]",
+      "x": 48,
+      "y": 353,
+      "w": 980,
+      "h": 300.563,
+      "sizing": [
+        "FIXED",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          34,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:39",
+      "name": "Link",
+      "type": "FRAME",
+      "parentId": "164:38",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]",
+      "x": 48,
+      "y": 387,
+      "w": 980,
+      "h": 133.781,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "GRID",
+        "gap": 0,
+        "pad": [
+          28,
+          0,
+          28,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      },
+      "stroke": {
+        "paints": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "weight": {
+          "t": 1,
+          "r": 0,
+          "b": 1,
+          "l": 0
+        },
+        "align": "INSIDE"
+      }
+    },
+    {
+      "id": "164:40",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:39",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]/Container[0]",
+      "x": 48,
+      "y": 416,
+      "w": 920,
+      "h": 75.781,
+      "sizing": [
+        "FILL",
+        "FIXED"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:41",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:40",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]/Container[0]/Container[0]",
+      "x": 48,
+      "y": 416,
+      "w": 920,
+      "h": 25,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:42",
+      "name": "Koreksi informasi",
+      "type": "TEXT",
+      "parentId": "164:41",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]/Container[0]/Container[0]/Koreksi informasi[0]",
+      "x": 48,
+      "y": 416,
+      "w": 146,
+      "h": 25,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Koreksi informasi",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 20,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": -0.3
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:47",
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentId": "164:40",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]/Container[0]/Container:margin[0]",
+      "x": 48,
+      "y": 441,
+      "w": 488,
+      "h": 51,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          6,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:45",
+      "name": "Ada angka, nama, klasifikasi, atau tautan sumber d",
+      "type": "TEXT",
+      "parentId": "164:47",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]/Container[0]/Container:margin[0]/Ada angka, nama, klasifikasi, atau tautan sumber d[0]",
+      "x": 48,
+      "y": 447,
+      "w": 488,
+      "h": 45,
+      "sizing": [
+        "FIXED",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#5a6a72",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Ada angka, nama, klasifikasi, atau tautan sumber di JejakPublik yang menurutmu keliru. Sertakan dokumen pembanding bila punya.",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 14,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 22.4
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#5a6a72",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:48",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:39",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]/Container[1]",
+      "x": 988,
+      "y": 434.891,
+      "w": 38,
+      "h": 38,
+      "sizing": [
+        "FIXED",
+        "FIXED"
+      ],
+      "radius": {
+        "all": 19
+      },
+      "layout": {
+        "mode": "HORIZONTAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "CENTER",
+        "counter": "CENTER",
+        "wrap": "NO_WRAP",
+        "clips": false
+      },
+      "stroke": {
+        "paints": [
+          {
+            "type": "SOLID",
+            "hex": "#dde4e6",
+            "opacity": 1
+          }
+        ],
+        "weight": 1,
+        "align": "INSIDE"
+      }
+    },
+    {
+      "id": "164:49",
+      "name": "→",
+      "type": "TEXT",
+      "parentId": "164:48",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[0]/Container[1]/→[0]",
+      "x": 1002,
+      "y": 443.891,
+      "w": 10,
+      "h": 20,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "→",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 16,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:51",
+      "name": "Link",
+      "type": "FRAME",
+      "parentId": "164:38",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]",
+      "x": 48,
+      "y": 520.781,
+      "w": 980,
+      "h": 132.781,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "GRID",
+        "gap": 0,
+        "pad": [
+          28,
+          0,
+          28,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      },
+      "stroke": {
+        "paints": [
+          {
+            "type": "SOLID",
+            "hex": "#e2e9eb",
+            "opacity": 1
+          }
+        ],
+        "weight": {
+          "t": 0,
+          "r": 0,
+          "b": 1,
+          "l": 0
+        },
+        "align": "INSIDE"
+      }
+    },
+    {
+      "id": "164:52",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:51",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]/Container[0]",
+      "x": 48,
+      "y": 548.781,
+      "w": 920,
+      "h": 75.781,
+      "sizing": [
+        "FILL",
+        "FIXED"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:53",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:52",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]/Container[0]/Container[0]",
+      "x": 48,
+      "y": 548.781,
+      "w": 920,
+      "h": 25,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:54",
+      "name": "Observasi lapangan",
+      "type": "TEXT",
+      "parentId": "164:53",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]/Container[0]/Container[0]/Observasi lapangan[0]",
+      "x": 48,
+      "y": 548.781,
+      "w": 164,
+      "h": 25,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Observasi lapangan",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 20,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": -0.3
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:57",
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentId": "164:52",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]/Container[0]/Container:margin[0]",
+      "x": 48,
+      "y": 573.781,
+      "w": 488,
+      "h": 51,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          6,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:56",
+      "name": "Ada kondisi di lokasi yang perlu diketahui publik,",
+      "type": "TEXT",
+      "parentId": "164:57",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]/Container[0]/Container:margin[0]/Ada kondisi di lokasi yang perlu diketahui publik,[0]",
+      "x": 48,
+      "y": 579.781,
+      "w": 488,
+      "h": 45,
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#5a6a72",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Ada kondisi di lokasi yang perlu diketahui publik, misalnya pekerjaan tidak sesuai gambar atau fasilitas tidak berfungsi. Sertakan lokasi dan waktu.",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 14,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 22.4
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#5a6a72",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:58",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:51",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]/Container[1]",
+      "x": 988,
+      "y": 567.672,
+      "w": 38,
+      "h": 38,
+      "sizing": [
+        "FIXED",
+        "FIXED"
+      ],
+      "radius": {
+        "all": 19
+      },
+      "layout": {
+        "mode": "HORIZONTAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "CENTER",
+        "counter": "CENTER",
+        "wrap": "NO_WRAP",
+        "clips": false
+      },
+      "stroke": {
+        "paints": [
+          {
+            "type": "SOLID",
+            "hex": "#dde4e6",
+            "opacity": 1
+          }
+        ],
+        "weight": 1,
+        "align": "INSIDE"
+      }
+    },
+    {
+      "id": "164:59",
+      "name": "→",
+      "type": "TEXT",
+      "parentId": "164:58",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container[2]/Link[1]/Container[1]/→[0]",
+      "x": 1002,
+      "y": 576.672,
+      "w": 10,
+      "h": 20,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "→",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 16,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:71",
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentId": "164:23",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container:margin[0]",
+      "x": 48,
+      "y": 653.563,
+      "w": 820,
+      "h": 149,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          26,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:60",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:71",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container:margin[0]/Container[0]",
+      "x": 48,
+      "y": 679.563,
+      "w": 820,
+      "h": 123,
+      "sizing": [
+        "FIXED",
+        "HUG"
+      ],
+      "radius": {
+        "all": 12
+      },
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          24,
+          26,
+          24,
+          26
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      },
+      "stroke": {
+        "paints": [
+          {
+            "type": "SOLID",
+            "hex": "#dde4e6",
+            "opacity": 1
+          }
+        ],
+        "weight": 1,
+        "align": "INSIDE"
+      }
+    },
+    {
+      "id": "164:61",
+      "name": "Heading 3",
+      "type": "FRAME",
+      "parentId": "164:60",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container:margin[0]/Container[0]/Heading 3[0]",
+      "x": 75,
+      "y": 704.563,
+      "w": 766,
+      "h": 20,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:62",
+      "name": "Sebelum mengirim",
+      "type": "TEXT",
+      "parentId": "164:61",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container:margin[0]/Container[0]/Heading 3[0]/Sebelum mengirim[0]",
+      "x": 75,
+      "y": 704.563,
+      "w": 131,
+      "h": 20,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "Sebelum mengirim",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 16,
+        "lineHeight": "AUTO",
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#10151a",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:64",
+      "name": "Paragraph",
+      "type": "FRAME",
+      "parentId": "164:60",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container:margin[0]/Container[0]/Paragraph[0]",
+      "x": 75,
+      "y": 724.563,
+      "w": 766,
+      "h": 53,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          8,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:65",
+      "name": "JejakPublik meninjau laporan dan menampilkannya se",
+      "type": "TEXT",
+      "parentId": "164:64",
+      "path": "15 Lapor - pilih jenis/Container[1]/Container:margin[0]/Container[0]/Paragraph[0]/JejakPublik meninjau laporan dan menampilkannya se[0]",
+      "x": 75,
+      "y": 732.563,
+      "w": 766,
+      "h": 45,
+      "sizing": [
+        "FIXED",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#3d4b52",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "JejakPublik meninjau laporan dan menampilkannya sebagai laporan warga, bukan fakta terverifikasi. Kami tidak menjanjikan instansi akan menindaklanjuti. Untuk aduan resmi, gunakan kanal pemerintah.",
+        "family": "Source Sans Pro",
+        "style": "Regular",
+        "weight": 400,
+        "size": 14,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 22.4
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#3d4b52",
+            "opacity": 1
+          }
+        ],
+        "mixedSegments": 3,
+        "autoResize": "HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:80",
+      "name": "Container:margin",
+      "type": "FRAME",
+      "parentId": "164:2",
+      "path": "15 Lapor - pilih jenis/Container:margin[0]",
+      "x": 0,
+      "y": 802.563,
+      "w": 1440,
+      "h": 250,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          72,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:72",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:80",
+      "path": "15 Lapor - pilih jenis/Container:margin[0]/Container[0]",
+      "x": 0,
+      "y": 874.563,
+      "w": 1440,
+      "h": 178,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#10151a",
+          "opacity": 1
+        }
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          44,
+          48,
+          32,
+          48
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:73",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:72",
+      "path": "15 Lapor - pilih jenis/Container:margin[0]/Container[0]/Container[0]",
+      "x": 48,
+      "y": 918.563,
+      "w": 1344,
+      "h": 69,
+      "sizing": [
+        "FILL",
+        "HUG"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    },
+    {
+      "id": "164:74",
+      "name": "JejakPublik",
+      "type": "TEXT",
+      "parentId": "164:73",
+      "path": "15 Lapor - pilih jenis/Container:margin[0]/Container[0]/Container[0]/JejakPublik[0]",
+      "x": 48,
+      "y": 918.563,
+      "w": 339,
+      "h": 69,
+      "sizing": [
+        "HUG",
+        "HUG"
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "hex": "#ffffff",
+          "opacity": 1
+        }
+      ],
+      "text": {
+        "chars": "JejakPublik",
+        "family": "Source Sans Pro",
+        "style": "SemiBold",
+        "weight": 600,
+        "size": 72,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 68.4
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": -2.6
+        },
+        "align": "LEFT",
+        "textCase": "ORIGINAL",
+        "color": [
+          {
+            "type": "SOLID",
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "autoResize": "WIDTH_AND_HEIGHT",
+        "truncation": "DISABLED"
+      }
+    },
+    {
+      "id": "164:76",
+      "name": "Container",
+      "type": "FRAME",
+      "parentId": "164:72",
+      "path": "15 Lapor - pilih jenis/Container:margin[0]/Container[0]/Container[1]",
+      "x": 48,
+      "y": 987.563,
+      "w": 1344,
+      "h": 33,
+      "sizing": [
+        "FIXED",
+        "FIXED"
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "gap": 0,
+        "pad": [
+          20,
+          0,
+          0,
+          0
+        ],
+        "primary": "MIN",
+        "counter": "MIN",
+        "wrap": "NO_WRAP",
+        "clips": false
+      }
+    }
+  ]
+}
