@@ -24,11 +24,11 @@ const PREFILL_DEFAULT = 'Program Pengendalian B3 · Anggaran perubahan · Rp3.68
 
 /** Dua jalur: nilai otomatis dari halaman sebelumnya, atau pilih dari data. */
 const TARGET_GROUPS = (prefilled: string, current: string) => {
-  const auto: { value: string; hint?: string; badge?: string }[] = [
-    { value: prefilled, hint: 'Terisi otomatis dari halaman tempat kamu menekan Lapor', badge: 'Otomatis' },
+  const auto: { value: string; hint?: string }[] = [
+    { value: prefilled, hint: 'Terisi otomatis dari halaman tempat kamu menekan Lapor' },
   ];
   if (current && current !== prefilled) {
-    auto.unshift({ value: current, hint: 'Pilihan kamu sebelumnya', badge: 'Saat ini' });
+    auto.unshift({ value: current, hint: 'Pilihan kamu sebelumnya' });
   }
 
   return [
@@ -74,7 +74,8 @@ export const ReportForm: React.FC = () => {
   const [evidenceUrls, setEvidenceUrls] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
-  const [target, setTarget] = useState(params.get('target') || PREFILL_DEFAULT);
+  const [target, setTarget] = useState('');
+  const [targetError, setTargetError] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const prefilledTarget = params.get('target') || PREFILL_DEFAULT;
@@ -130,6 +131,11 @@ export const ReportForm: React.FC = () => {
   };
 
   const handleSubmit = (isDraft: boolean) => {
+    if (!isDraft && !target.trim()) {
+      setTargetError(true);
+      return;
+    }
+    setTargetError(false);
     const r = createReport({
       kind: 'koreksi',
       instansi: instansiDefault,
@@ -179,10 +185,16 @@ export const ReportForm: React.FC = () => {
                 id="target"
                 value={target}
                 groups={TARGET_GROUPS(prefilledTarget, target)}
-                onChange={setTarget}
+                onChange={(v) => { setTarget(v); setTargetError(false); }}
+                placeholder="Pilih baris yang dilaporkan…"
                 searchPlaceholder="Cari instansi atau program…"
                 ariaLabel="Pilih baris yang dilaporkan"
               />
+              {targetError && (
+                <p className="cf-error" role="alert">
+                  Pilih dulu baris yang kamu laporkan — dari halaman sebelumnya atau lewat pencarian.
+                </p>
+              )}
             </div>
 
             <div className="cf-field">
