@@ -1,5 +1,5 @@
-import React from 'react';
-import { formatRupiahShort } from '../../utils/format';
+import React, { useMemo } from 'react';
+import { formatRupiah, formatRupiahShort } from '../../utils/format';
 
 export interface TrendYearData {
   year: number;
@@ -27,94 +27,141 @@ export const MultiYearTrendChart: React.FC<Props> = ({ instansiJudul, belanja202
   const ang2023 = Math.round(base2025Ang * 0.871);
   const real2023 = Math.round(ang2023 * 0.892);
 
-  const data: TrendYearData[] = [
-    { year: 2023, anggaran: ang2023, realisasi: real2023, pct: (real2023 / ang2023) * 100 },
-    { year: 2024, anggaran: ang2024, realisasi: real2024, pct: (real2024 / ang2024) * 100 },
-    { year: 2025, anggaran: base2025Ang, realisasi: base2025Real, pct: (base2025Real / base2025Ang) * 100 }
-  ];
+  const data: TrendYearData[] = useMemo(
+    () => [
+      { year: 2023, anggaran: ang2023, realisasi: real2023, pct: (real2023 / ang2023) * 100 },
+      { year: 2024, anggaran: ang2024, realisasi: real2024, pct: (real2024 / ang2024) * 100 },
+      { year: 2025, anggaran: base2025Ang, realisasi: base2025Real, pct: (base2025Real / base2025Ang) * 100 }
+    ],
+    [ang2023, real2023, ang2024, real2024, base2025Ang, base2025Real]
+  );
 
-  const maxVal = Math.max(...data.map((d) => d.anggaran)) * 1.15;
+  // Hitung batas skala atas sumbu Y secara dinamis dan bulat
+  const { yMax, yTicks } = useMemo(() => {
+    const rawMax = Math.max(...data.map((d) => d.anggaran));
+    const magnitude = Math.pow(10, Math.floor(Math.log10(rawMax)));
+    const factor = rawMax / magnitude;
+    let niceFactor = 10;
+    if (factor <= 1.2) niceFactor = 1.5;
+    else if (factor <= 2) niceFactor = 2.5;
+    else if (factor <= 4) niceFactor = 5;
+    else if (factor <= 7.5) niceFactor = 8;
+    else niceFactor = 10;
+    const maxVal = niceFactor * magnitude;
+
+    return {
+      yMax: maxVal,
+      yTicks: [
+        maxVal,
+        maxVal * 0.75,
+        maxVal * 0.5,
+        maxVal * 0.25,
+        0
+      ]
+    };
+  }, [data]);
+
+  const plotHeight = 200;
 
   return (
-    <div className="dt-card" style={{ height: 'auto', minHeight: 280, marginTop: 18 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 10, marginBottom: 14 }}>
+    <div className="dt-chart-card">
+      <div className="dt-chart-head">
         <div>
-          <h2 className="dt-h2" style={{ margin: 0 }}>Tren Belanja Multi-Tahun (TA 2023–2025)</h2>
-          <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#71717A' }}>
-            Perbandingan pagu anggaran dan realisasi belanja tiga tahun anggaran terakhir {instansiJudul}.
+          <h2 className="dt-chart-title">Tren Belanja Multi-Tahun (TA 2023–2025)</h2>
+          <p className="dt-chart-desc">
+            Perbandingan pagu anggaran perubahan dan realisasi belanja tiga tahun anggaran terakhir {instansiJudul}
           </p>
         </div>
-        <div style={{ display: 'flex', gap: 14, alignItems: 'center', fontSize: 12 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 12, height: 12, background: '#C9C9CE', borderRadius: 2, display: 'inline-block' }} />
-            <span style={{ color: '#52525B' }}>Pagu Anggaran</span>
+
+        <div className="dt-chart-legend">
+          <div className="dt-legend-item">
+            <span className="dt-swatch pagu" />
+            <span>Pagu Anggaran</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 12, height: 12, background: '#1B4332', borderRadius: 2, display: 'inline-block' }} />
-            <span style={{ color: '#52525B', fontWeight: 600 }}>Realisasi Belanja</span>
+          <div className="dt-legend-item">
+            <span className="dt-swatch realisasi" />
+            <span style={{ fontWeight: 600, color: 'var(--ink)' }}>Realisasi Belanja</span>
           </div>
         </div>
       </div>
 
-      {/* Grouped Bar Chart Area */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, alignItems: 'end', height: 160, padding: '16px 0 10px', borderBottom: '1px solid #EFEFF1' }}>
-        {data.map((item) => {
-          const hAng = Math.max(16, Math.round((item.anggaran / maxVal) * 130));
-          const hReal = Math.max(14, Math.round((item.realisasi / maxVal) * 130));
+      <div className="dt-chart-stage">
+        <div className="dt-chart-yaxis">
+          {yTicks.map((val, idx) => (
+            <span key={idx} className="dt-chart-ylabel">
+              {val === 0 ? 'Rp0' : formatRupiahShort(val)}
+            </span>
+          ))}
+        </div>
 
-          return (
-            <div key={item.year} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 130 }}>
-                {/* Batang Pagu */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                  <span style={{ fontSize: 10.5, color: '#71717A', fontFamily: 'var(--mono)' }}>
-                    {formatRupiahShort(item.anggaran).replace('Rp', '')}
-                  </span>
-                  <div
-                    style={{
-                      width: 28,
-                      height: hAng,
-                      background: '#C9C9CE',
-                      borderRadius: '4px 4px 0 0',
-                      transition: 'height 0.3s ease'
-                    }}
-                    title={`Pagu Anggaran TA ${item.year}: ${formatRupiahShort(item.anggaran)}`}
-                  />
+        <div className="dt-chart-plot">
+          <div className="dt-chart-gridline" style={{ top: '0%' }} />
+          <div className="dt-chart-gridline" style={{ top: '25%' }} />
+          <div className="dt-chart-gridline" style={{ top: '50%' }} />
+          <div className="dt-chart-gridline" style={{ top: '75%' }} />
+
+          <div className="dt-chart-bars">
+            {data.map((item) => {
+              const hAng = Math.max(10, Math.round((item.anggaran / yMax) * (plotHeight - 35)));
+              const hReal = Math.max(8, Math.round((item.realisasi / yMax) * (plotHeight - 35)));
+
+              return (
+                <div key={item.year} className="dt-chart-group">
+                  <div className="dt-chart-col">
+                    <span className="dt-chart-val">
+                      {formatRupiahShort(item.anggaran).replace('Rp', '')}
+                    </span>
+                    <div
+                      className="dt-chart-bar pagu"
+                      style={{ height: `${hAng}px` }}
+                    >
+                      <div className="dt-chart-tooltip">
+                        <strong>Pagu TA {item.year}</strong>
+                        <br />
+                        {formatRupiah(item.anggaran)}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="dt-chart-col">
+                    <span className="dt-chart-val strong">
+                      {formatRupiahShort(item.realisasi).replace('Rp', '')}
+                    </span>
+                    <div
+                      className="dt-chart-bar realisasi"
+                      style={{ height: `${hReal}px` }}
+                    >
+                      <div className="dt-chart-tooltip">
+                        <strong>Realisasi TA {item.year}</strong>
+                        <br />
+                        {formatRupiah(item.realisasi)}
+                        <br />
+                        Serapan: {item.pct.toFixed(2).replace('.', ',')}%
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              );
+            })}
+          </div>
 
-                {/* Batang Realisasi */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                  <span style={{ fontSize: 10.5, fontWeight: 700, color: '#1B4332', fontFamily: 'var(--mono)' }}>
-                    {formatRupiahShort(item.realisasi).replace('Rp', '')}
-                  </span>
-                  <div
-                    style={{
-                      width: 28,
-                      height: hReal,
-                      background: '#1B4332',
-                      borderRadius: '4px 4px 0 0',
-                      transition: 'height 0.3s ease'
-                    }}
-                    title={`Realisasi TA ${item.year}: ${formatRupiahShort(item.realisasi)} (${item.pct.toFixed(2)}%)`}
-                  />
-                </div>
-              </div>
-
-              {/* Label Sumbu X */}
-              <div style={{ textAlign: 'center', marginTop: 4 }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: '#18181B' }}>TA {item.year}</span>
-                <span style={{ display: 'block', fontSize: 11, fontWeight: 600, color: '#065F46', background: '#ECFDF5', padding: '1px 6px', borderRadius: 4, marginTop: 2 }}>
-                  {item.pct.toFixed(2).replace('.', ',')}%
-                </span>
-              </div>
-            </div>
-          );
-        })}
+          <div className="dt-chart-baseline" />
+        </div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 10, fontSize: 11.5, color: '#8A8A94' }}>
+      <div className="dt-chart-xaxis">
+        {data.map((item) => (
+          <div key={item.year} className="dt-chart-xitem">
+            <span className="dt-chart-xyear">TA {item.year}</span>
+            <span className="dt-chart-xsub">
+              Serapan {item.pct.toFixed(2).replace('.', ',')}%
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="dt-chart-footer">
         <span>Sumber: Laporan Realisasi Anggaran BPKD DKI Jakarta & Dokumen Kinerja TA 2023–2025</span>
-        <span style={{ color: '#065F46', fontWeight: 600 }}>Tren Pertumbuhan Serapan Positif (+1,21%)</span>
       </div>
     </div>
   );

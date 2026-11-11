@@ -36,8 +36,18 @@ export const ProgramDetail: React.FC = () => {
   const program = useMemo(() => findAnyProgramBySlug(slug, instansiList), [slug]);
   const [, setTab] = useState('ringkasan');
   const [q, setQ] = useState('');
-  const [expandedKeg, setExpandedKeg] = useState<string | null>(null);
+  const [selectedKeg, setSelectedKeg] = useState<any | null>(null);
   const correction = corrections.find((c) => c.programSlug === slug);
+
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedKeg(null);
+    };
+    if (selectedKeg) {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [selectedKeg]);
 
   const meta = useMemo(
     () => getInstansiMeta(program?.skpdSlug || 'dinas-lingkungan-hidup', program?.skpdJudul || 'Dinas Lingkungan Hidup'),
@@ -272,7 +282,7 @@ export const ProgramDetail: React.FC = () => {
 
             )}
             <div className="pg-listwrap" data-node-id="247:289">
-              <div className="dt-card" data-node-id="247:236" style={{ height: 238 }}>
+              <div className="dt-card" data-node-id="247:236" style={{ minHeight: 238 }}>
                 <div className="dt-tchead" data-node-id="247:237">
                   <h2 className="dt-h2" data-node-id="247:239">Daftar Kegiatan</h2>
                   <div className="dt-tchead" data-node-id="247:240" style={{ gap: 10 }}>
@@ -320,38 +330,19 @@ export const ProgramDetail: React.FC = () => {
                             <button
                               type="button"
                               className="dt-detail"
-                              onClick={() => setExpandedKeg(expandedKeg === k.nama ? null : k.nama)}
+                              onClick={() => setSelectedKeg(k)}
                               style={{
                                 cursor: 'pointer',
-                                background: expandedKeg === k.nama ? '#18181B' : '#fff',
-                                color: expandedKeg === k.nama ? '#fff' : '#3F3F46',
-                                borderColor: expandedKeg === k.nama ? '#18181B' : '#D4D4D8'
+                                background: '#fff',
+                                color: '#3F3F46',
+                                borderColor: '#D4D4D8'
                               }}
-                              aria-label={`Rincian subkegiatan ${k.nama}`}
+                              aria-label={`Buka jendela rincian subkegiatan ${k.nama}`}
                             >
-                              <span data-node-id={KEG_ROW.chipT}>{expandedKeg === k.nama ? 'Tutup rincian' : 'Rincian sub'}</span>
+                              <span data-node-id={KEG_ROW.chipT}>Rincian sub</span>
                             </button>
                           </span>
                         </div>
-                        {expandedKeg === k.nama && k.subs && k.subs.length > 0 && (
-                          <div style={{ background: '#F8FAFC', padding: '14px 20px', borderBottom: '1px solid var(--line-3)' }}>
-                            <p style={{ margin: '0 0 10px 0', fontSize: 11.5, fontWeight: 700, textTransform: 'uppercase', color: '#71717A', letterSpacing: 0.6 }}>
-                              Sub Kegiatan ({k.subs.length}):
-                            </p>
-                            <div style={{ display: 'grid', gap: 6 }}>
-                              {k.subs.map((s, sIdx) => (
-                                <div key={sIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12.5, padding: '6px 0', borderBottom: sIdx === k.subs.length - 1 ? 'none' : '1px dashed #E2E8F0' }}>
-                                  <span style={{ color: 'var(--ink)', maxWidth: '52%' }}>• {s.nama}</span>
-                                  <div style={{ display: 'flex', gap: 14, fontFamily: 'var(--mono)', fontSize: 12 }}>
-                                    <span style={{ color: '#71717A' }}>Pagu: {formatRupiah(s.apbdp)}</span>
-                                    <span style={{ fontWeight: 600, color: 'var(--ink)' }}>Realisasi: {formatRupiah(s.realisasi)}</span>
-                                    <span style={{ fontWeight: 600, color: '#065F46', background: '#ECFDF5', padding: '1px 5px', borderRadius: 3 }}>{s.pct}</span>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
                       </React.Fragment>
                     ))}
                   </div>
@@ -443,6 +434,220 @@ export const ProgramDetail: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Centered Modal: Rincian Subkegiatan */}
+      {selectedKeg && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-subkeg-title"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(16, 21, 26, 0.6)',
+            backdropFilter: 'blur(3px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '20px'
+          }}
+          onClick={() => setSelectedKeg(null)}
+        >
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
+              borderRadius: '14px',
+              width: '100%',
+              maxWidth: '720px',
+              maxHeight: '85vh',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+              border: '1px solid #E4E4E7',
+              overflow: 'hidden'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'space-between',
+                padding: '20px 24px',
+                borderBottom: '1px solid #E4E4E7',
+                background: '#FAFAFA'
+              }}
+            >
+              <div style={{ paddingRight: '16px' }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#71717A', marginBottom: '4px' }}>
+                  <span>Kegiatan #{program.kegs.findIndex((x) => x.nama === selectedKeg.nama) + 1}</span>
+                  <span>·</span>
+                  <span>{selectedKeg.subs?.length || 0} Subkegiatan</span>
+                </div>
+                <h2 id="modal-subkeg-title" style={{ fontSize: '17px', fontWeight: 700, color: '#18181B', lineHeight: 1.35, margin: 0 }}>
+                  {selectedKeg.nama}
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedKeg(null)}
+                aria-label="Tutup jendela rincian"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
+                  border: '1px solid #E4E4E7',
+                  background: '#FFFFFF',
+                  color: '#71717A',
+                  cursor: 'pointer',
+                  fontSize: '18px',
+                  lineHeight: 1,
+                  fontWeight: 600,
+                  flexShrink: 0
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#F4F4F5';
+                  e.currentTarget.style.color = '#18181B';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#FFFFFF';
+                  e.currentTarget.style.color = '#71717A';
+                }}
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Modal KPI Summary */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '12px',
+                padding: '16px 24px',
+                background: '#F8FAFC',
+                borderBottom: '1px solid #E4E4E7'
+              }}
+            >
+              <div style={{ background: '#FFFFFF', padding: '12px 14px', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
+                <span style={{ fontSize: '11px', color: '#71717A', textTransform: 'uppercase', fontWeight: 600 }}>Pagu Perubahan</span>
+                <p style={{ margin: '4px 0 0', fontFamily: 'var(--mono)', fontSize: '13.5px', fontWeight: 700, color: '#18181B' }}>
+                  {formatRupiah(selectedKeg.apbdp)}
+                </p>
+              </div>
+              <div style={{ background: '#FFFFFF', padding: '12px 14px', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
+                <span style={{ fontSize: '11px', color: '#71717A', textTransform: 'uppercase', fontWeight: 600 }}>Realisasi Belanja</span>
+                <p style={{ margin: '4px 0 0', fontFamily: 'var(--mono)', fontSize: '13.5px', fontWeight: 700, color: '#18181B' }}>
+                  {formatRupiah(selectedKeg.realisasi)}
+                </p>
+              </div>
+              <div style={{ background: '#FFFFFF', padding: '12px 14px', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
+                <span style={{ fontSize: '11px', color: '#71717A', textTransform: 'uppercase', fontWeight: 600 }}>Serapan Anggaran</span>
+                <p style={{ margin: '4px 0 0', fontFamily: 'var(--mono)', fontSize: '13.5px', fontWeight: 700, color: '#065F46' }}>
+                  {selectedKeg.pct || '-'}
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Subkegiatan List */}
+            <div style={{ padding: '20px 24px', overflowY: 'auto', flex: 1 }}>
+              <p style={{ fontSize: '12.5px', fontWeight: 700, color: '#3F3F46', textTransform: 'uppercase', letterSpacing: '0.04em', margin: '0 0 12px 0' }}>
+                Daftar Rincian Subkegiatan Pelaksana
+              </p>
+
+              {selectedKeg.subs && selectedKeg.subs.length > 0 ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {selectedKeg.subs.map((s: any, sIdx: number) => (
+                    <div
+                      key={sIdx}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        padding: '12px 16px',
+                        borderRadius: '8px',
+                        background: '#FFFFFF',
+                        border: '1px solid #E4E4E7',
+                        fontSize: '13px'
+                      }}
+                    >
+                      <div style={{ maxWidth: '56%' }}>
+                        <span style={{ fontWeight: 600, color: '#18181B', display: 'block', lineHeight: 1.4 }}>
+                          {sIdx + 1}. {s.nama}
+                        </span>
+                        <span style={{ fontSize: '11px', color: '#71717A' }}>
+                          TA 2025 · Subkegiatan Resmi
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'right' }}>
+                        <div>
+                          <span style={{ display: 'block', fontSize: '12.5px', fontFamily: 'var(--mono)', fontWeight: 600, color: '#18181B' }}>
+                            {formatRupiah(s.realisasi)}
+                          </span>
+                          <span style={{ display: 'block', fontSize: '11px', fontFamily: 'var(--mono)', color: '#71717A' }}>
+                            Pagu: {formatRupiah(s.apbdp)}
+                          </span>
+                        </div>
+                        <span
+                          style={{
+                            fontSize: '11.5px',
+                            fontFamily: 'var(--mono)',
+                            fontWeight: 700,
+                            color: '#065F46',
+                            background: '#ECFDF5',
+                            padding: '3px 8px',
+                            borderRadius: '6px',
+                            border: '1px solid #A7F3D0'
+                          }}
+                        >
+                          {s.pct || '-'}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div style={{ padding: '24px', textAlign: 'center', color: '#71717A', fontSize: '13.5px' }}>
+                  Tidak ada rincian subkegiatan yang terdata untuk kegiatan ini.
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div
+              style={{
+                padding: '14px 24px',
+                borderTop: '1px solid #E4E4E7',
+                background: '#FAFAFA',
+                display: 'flex',
+                justifyContent: 'flex-end'
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setSelectedKeg(null)}
+                style={{
+                  padding: '8px 18px',
+                  borderRadius: '8px',
+                  border: '1px solid #D4D4D8',
+                  background: '#FFFFFF',
+                  color: '#18181B',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
