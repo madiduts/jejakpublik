@@ -4,6 +4,7 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { getSession } from '../lib/session';
 import { createReport } from '../lib/reports';
+import { Dropdown } from '../components/ui/Dropdown';
 
 const KATEGORI = [
   'Nominal tidak sesuai dokumen',
@@ -34,11 +35,12 @@ export const ReportForm: React.FC = () => {
   const [evidenceUrls, setEvidenceUrls] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [target, setTarget] = useState(
+    params.get('target') || 'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176',
+  );
+  const [editingTarget, setEditingTarget] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const targetDefault =
-    params.get('target') ||
-    'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176';
   const instansiDefault = params.get('instansi') || 'Dinas Lingkungan Hidup';
 
   if (!session) {
@@ -94,8 +96,8 @@ export const ReportForm: React.FC = () => {
     const r = createReport({
       kind: 'koreksi',
       instansi: instansiDefault,
-      target: targetDefault,
-      title: title.trim() || targetDefault,
+      target: target.trim() || 'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176',
+      title: title.trim() || target,
       category,
       docUrl: docUrl.trim(),
       evidenceUrls,
@@ -132,28 +134,55 @@ export const ReportForm: React.FC = () => {
           >
             <div className="cf-field">
               <span className="cf-label">Informasi yang dilaporkan</span>
-              <span className="cf-hint">Terkunci dari halaman tempat kamu menekan tombol lapor.</span>
-              <div className="cf-locked">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <rect x="4" y="11" width="16" height="10" rx="2" />
-                  <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                </svg>
-                <span>{targetDefault}</span>
-              </div>
+              <span className="cf-hint">
+                Terisi otomatis dari halaman tempat kamu menekan tombol lapor. Ubah bila
+                yang kamu maksud baris lain.
+              </span>
+              {editingTarget ? (
+                <div className="cf-target-edit">
+                  <input
+                    className="cf-input"
+                    type="text"
+                    value={target}
+                    onChange={(e) => setTarget(e.target.value)}
+                    aria-label="Ubah informasi yang dilaporkan"
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    className="cf-btn-ghost cf-btn-sm"
+                    onClick={() => setEditingTarget(false)}
+                  >
+                    Selesai
+                  </button>
+                </div>
+              ) : (
+                <div className="cf-locked">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <rect x="4" y="11" width="16" height="10" rx="2" />
+                    <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                  </svg>
+                  <span>{target}</span>
+                  <button
+                    type="button"
+                    className="cf-target-edit-btn"
+                    onClick={() => setEditingTarget(true)}
+                  >
+                    Ubah
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="cf-field">
               <label className="cf-label" htmlFor="kategori">Kategori koreksi</label>
-              <select
+              <Dropdown
                 id="kategori"
-                className="cf-select"
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                {KATEGORI.map((k) => (
-                  <option key={k} value={k}>{k}</option>
-                ))}
-              </select>
+                options={KATEGORI}
+                onChange={setCategory}
+                ariaLabel="Kategori koreksi"
+              />
             </div>
 
             <div className="cf-field">
