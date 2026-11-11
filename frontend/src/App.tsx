@@ -19,6 +19,7 @@ import { CorrectionForm } from './pages/CorrectionForm';
 import { MyReports } from './pages/MyReports';
 import { ModeratorQueue } from './pages/ModeratorQueue';
 import { ModeratorReview } from './pages/ModeratorReview';
+import { AuthCallback } from './pages/AuthCallback';
 
 export const App: React.FC = () => (
   <BrowserRouter>
@@ -32,6 +33,7 @@ export const App: React.FC = () => (
       <Route path="/panduan/:slug" element={<GuideArticle />} />
       <Route path="/istilah" element={<Glossary />} />
       <Route path="/tentang" element={<About />} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
       <Route path="/masuk" element={<Login />} />
       <Route path="/login" element={<Navigate to="/masuk" replace />} />
       <Route path="/daftar" element={<Register />} />

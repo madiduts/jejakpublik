@@ -247,6 +247,7 @@ export class AuthController {
       {
         id: user.id,
         email: user.email,
+        name: user.name,
         role: user.role,
         exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60
       },
@@ -256,16 +257,20 @@ export class AuthController {
 
     const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
     const acceptHeader = c.req.header('Accept') || '';
-    if (acceptHeader.includes('text/html')) {
-      return c.redirect(`${frontendUrl}/auth/callback?token=${appToken}`);
+    if (acceptHeader.includes('application/json')) {
+      return c.json({
+        success: true,
+        message: 'Otentikasi Google berhasil.',
+        token: appToken,
+        user
+      });
     }
 
-    return c.json({
-      success: true,
-      message: 'Otentikasi Google berhasil.',
-      token: appToken,
-      user
-    });
+    return c.redirect(
+      `${frontendUrl}/auth/callback?token=${appToken}&name=${encodeURIComponent(
+        user.name
+      )}&email=${encodeURIComponent(user.email)}&role=${encodeURIComponent(user.role)}`
+    );
   }
 
   static async loginWithGoogleToken(c: Context) {

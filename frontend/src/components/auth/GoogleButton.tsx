@@ -28,6 +28,23 @@ export const GoogleButton: React.FC<Props> = ({ label, busy, onStart, onDone, on
     onClick={async () => {
       onStart();
       try {
+        // Simpan target asal sebelum beralih
+        const currentPath = window.location.pathname;
+        if (currentPath !== '/masuk' && currentPath !== '/daftar') {
+          sessionStorage.setItem('jp.auth.redirect', currentPath);
+        }
+
+        // 1. Coba OAuth 2.0 Web redirect via backend (langsung membuka pemilih akun Google resmi)
+        const res = await fetch('http://localhost:3000/api/v1/auth/google/url');
+        if (res.ok) {
+          const json = await res.json();
+          if (json?.data?.auth_url) {
+            window.location.href = json.data.auth_url;
+            return;
+          }
+        }
+
+        // 2. Cadangan GSI lokal
         const { email } = await signInWithGoogle();
         onDone(email);
       } catch (e) {
