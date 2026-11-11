@@ -8,11 +8,19 @@ import { Dropdown } from '../components/ui/Dropdown';
 import { SearchSelect } from '../components/ui/SearchSelect';
 import { instansiList, judulInstansi, programList } from '../lib/data';
 
-const KATEGORI = [
+const KATEGORI_KOREKSI = [
   'Nominal tidak sesuai dokumen',
   'Penjumlahan antar-tabel tidak cocok',
   'Salah cetak / tertukar kode rekening',
-  'Observasi lapangan / kondisi fisik berbeda',
+  'Perbedaan pagu penetapan dan perubahan',
+];
+
+const KATEGORI_OBSERVASI = [
+  'Fasilitas belum terbangun / mangkrak',
+  'Kondisi fisik rusak atau tidak layak fungsi',
+  'Pengadaan barang tidak ditemukan di lokasi',
+  'Layanan publik terhenti padahal anggaran terserap',
+  'Kondisi nyata berbeda dengan klaim output kinerja',
 ];
 
 const SMALL = new Set(['dan', 'di', 'ke', 'dari', 'atau', 'yang', 'untuk', 'pada']);
@@ -52,10 +60,16 @@ const TARGET_GROUPS = (prefilled: string, current: string) => {
   ];
 };
 
-const TIPS = [
+const TIPS_KOREKSI = [
   { t: 'Halaman yang tepat.', d: 'Sebut nomor halaman dan tabel, bukan hanya nama dokumen.' },
   { t: 'Dua sumber lebih baik.', d: 'Bandingkan angka yang bertentangan dalam satu berkas.' },
   { t: 'Hindari data pribadi.', d: 'Jangan unggah NIK, KTP, atau swafoto.' },
+];
+
+const TIPS_OBSERVASI = [
+  { t: 'Foto fisik jelas.', d: 'Sertakan foto papan proyek atau kondisi fasilitas di lokasi riil.' },
+  { t: 'Titik lokasi akurat.', d: 'Sebutkan nama jalan, kelurahan, kecamatan, atau patokan fisik.' },
+  { t: 'Hindari data pribadi.', d: 'Jangan memotret wajah warga tanpa izin atau kartu identitas.' },
 ];
 
 export const ReportForm: React.FC = () => {
@@ -64,9 +78,14 @@ export const ReportForm: React.FC = () => {
   const [params] = useSearchParams();
   const session = getSession();
 
+  const isObservasi = location.pathname.includes('observasi');
+  const categories = isObservasi ? KATEGORI_OBSERVASI : KATEGORI_KOREKSI;
+  const tips = isObservasi ? TIPS_OBSERVASI : TIPS_KOREKSI;
+
   // Semua hook dipanggil sebelum kemungkinan keluar lebih awal, supaya urutan
   // hook tetap sama ketika sesi berubah di tengah pemakaian.
-  const [category, setCategory] = useState(KATEGORI[0]);
+  const [category, setCategory] = useState(categories[0]);
+  const [locationAddress, setLocationAddress] = useState('');
   const [docUrl, setDocUrl] = useState('');
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
@@ -77,6 +96,10 @@ export const ReportForm: React.FC = () => {
   const [target, setTarget] = useState('');
   const [targetError, setTargetError] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    setCategory(isObservasi ? KATEGORI_OBSERVASI[0] : KATEGORI_KOREKSI[0]);
+  }, [isObservasi]);
 
   const prefilledTarget = params.get('target') || PREFILL_DEFAULT;
   const instansiDefault = params.get('instansi') || 'Dinas Lingkungan Hidup';
@@ -137,14 +160,16 @@ export const ReportForm: React.FC = () => {
     }
     setTargetError(false);
     const r = createReport({
-      kind: 'koreksi',
+      kind: isObservasi ? 'observasi' : 'koreksi',
       instansi: instansiDefault,
-      target: target.trim() || 'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176',
+      target: target.trim() || (isObservasi ? 'Observasi Lapangan Fisik' : 'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176'),
       title: title.trim() || target,
       category,
       docUrl: docUrl.trim(),
       evidenceUrls,
-      message: message.trim() || 'Penjelasan tidak disertakan.',
+      message: isObservasi && locationAddress.trim()
+        ? `[Lokasi Temuan: ${locationAddress.trim()}]\n\n${message.trim()}`
+        : (message.trim() || 'Penjelasan tidak disertakan.'),
       contact: session.name,
       isDraft,
     });
@@ -158,13 +183,14 @@ export const ReportForm: React.FC = () => {
 
       <main className="cf-main">
         <p className="cf-crumb">
-          <Link to="/">Beranda</Link> / <Link to="/lapor">Lapor</Link> / <span>Koreksi informasi</span>
+          <Link to="/">Beranda</Link> / <Link to="/lapor">Lapor</Link> / <span>{isObservasi ? 'Observasi lapangan' : 'Koreksi informasi'}</span>
         </p>
         <p className="cf-eyebrow">Langkah 3 dari 3</p>
-        <h1 className="cf-title">Koreksi informasi</h1>
+        <h1 className="cf-title">{isObservasi ? 'Observasi lapangan & fakta fisik' : 'Koreksi informasi data anggaran'}</h1>
         <p className="cf-lede">
-          Bukti menentukan cepat atau lambatnya verifikasi. Kolom di kiri memuat cerita
-          temuanmu, panel di kanan menampung semua lampiran.
+          {isObservasi
+            ? 'Dokumentasi foto dan titik lokasi mempercepat peninjauan. Ceritakan temuan fisik di lapangan yang tidak selaras dengan klaim realisasi anggaran.'
+            : 'Bukti menentukan cepat atau lambatnya verifikasi. Kolom di kiri memuat cerita temuanmu, panel di kanan menampung semua lampiran.'}
         </p>
 
         <div className="cf-grid">
@@ -176,10 +202,11 @@ export const ReportForm: React.FC = () => {
             }}
           >
             <div className="cf-field">
-              <span className="cf-label">Informasi yang dilaporkan</span>
+              <span className="cf-label">{isObservasi ? 'Program atau instansi yang diobservasi' : 'Informasi yang dilaporkan'}</span>
               <span className="cf-hint">
-                Terisi otomatis dari halaman tempat kamu menekan tombol lapor. Klik untuk
-                memilih baris lain lewat pencarian instansi atau program.
+                {isObservasi
+                  ? 'Pilih program atau dinas yang berkaitan dengan proyek atau fasilitas yang kamu amati di lapangan.'
+                  : 'Terisi otomatis dari halaman tempat kamu menekan tombol lapor. Klik untuk memilih baris lain lewat pencarian instansi atau program.'}
               </span>
               <SearchSelect
                 id="target"
@@ -198,15 +225,31 @@ export const ReportForm: React.FC = () => {
             </div>
 
             <div className="cf-field">
-              <label className="cf-label" htmlFor="kategori">Kategori koreksi</label>
+              <label className="cf-label" htmlFor="kategori">{isObservasi ? 'Kategori temuan lapangan' : 'Kategori koreksi'}</label>
               <Dropdown
                 id="kategori"
                 value={category}
-                options={KATEGORI}
+                options={categories}
                 onChange={setCategory}
-                ariaLabel="Kategori koreksi"
+                ariaLabel={isObservasi ? 'Kategori temuan lapangan' : 'Kategori koreksi'}
               />
             </div>
+
+            {isObservasi && (
+              <div className="cf-field">
+                <label className="cf-label" htmlFor="lokasi">Lokasi & alamat temuan</label>
+                <span className="cf-hint">Sebutkan nama jalan, kelurahan, kecamatan, atau patokan fisik terdekat.</span>
+                <input
+                  id="lokasi"
+                  type="text"
+                  className="cf-input"
+                  placeholder="Contoh: TPS 3R Rawasari, Jl. Percetakan Negara IX, Cempaka Putih, Jakarta Pusat"
+                  value={locationAddress}
+                  onChange={(e) => setLocationAddress(e.target.value)}
+                  required
+                />
+              </div>
+            )}
 
             <div className="cf-field">
               <label className="cf-label" htmlFor="judul">Judul laporan</label>
@@ -214,7 +257,7 @@ export const ReportForm: React.FC = () => {
                 id="judul"
                 type="text"
                 className="cf-input"
-                placeholder="Contoh: Nilai APBD-P Tabel 2.4 berbeda dengan Tabel 3.34"
+                placeholder={isObservasi ? 'Contoh: Pengadaan TPS 3R belum beroperasi dan pintu terkunci' : 'Contoh: Nilai APBD-P Tabel 2.4 berbeda dengan Tabel 3.34'}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
@@ -222,12 +265,20 @@ export const ReportForm: React.FC = () => {
             </div>
 
             <div className="cf-field">
-              <label className="cf-label" htmlFor="penjelasan">Penjelasan</label>
-              <span className="cf-hint">Sebutkan halaman, tabel, dan angka pembanding. Minimal 15 karakter.</span>
+              <label className="cf-label" htmlFor="penjelasan">{isObservasi ? 'Deskripsi kondisi nyata di lapangan' : 'Penjelasan'}</label>
+              <span className="cf-hint">
+                {isObservasi
+                  ? 'Jelaskan kondisi riil yang kamu saksikan di lokasi dan ketidaksesuaiannya dengan klaim belanja. Minimal 15 karakter.'
+                  : 'Sebutkan halaman, tabel, dan angka pembanding. Minimal 15 karakter.'}
+              </span>
               <textarea
                 id="penjelasan"
                 className="cf-textarea"
-                placeholder="Pada LKIP halaman 26 Tabel 2.4, program ini tercetak Rp67.876.101.084. Pada halaman 96 Tabel 3.34 tercetak Rp3.684.567.176."
+                placeholder={
+                  isObservasi
+                    ? 'Pada dokumen realisasi anggaran dinyatakan selesai 100%, namun di lokasi fisik bangunan belum beratap dan alat pengolah sampah belum tersedia.'
+                    : 'Pada LKIP halaman 26 Tabel 2.4, program ini tercetak Rp67.876.101.084. Pada halaman 96 Tabel 3.34 tercetak Rp3.684.567.176.'
+                }
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
@@ -260,7 +311,7 @@ export const ReportForm: React.FC = () => {
 
           <aside className="cf-side">
             <section className="cf-panel">
-              <h2 className="cf-panel-h">Bukti pendukung</h2>
+              <h2 className="cf-panel-h">{isObservasi ? 'Foto & bukti lapangan' : 'Bukti pendukung'}</h2>
 
               <input
                 type="file"
@@ -275,15 +326,15 @@ export const ReportForm: React.FC = () => {
                 onClick={() => fileInputRef.current?.click()}
                 disabled={uploading}
               >
-                <strong>{uploading ? 'Mengunggah…' : 'Letakkan berkas di sini'}</strong>
-                <span>atau klik untuk memilih · PNG, JPG, PDF · maks 5 MB</span>
+                <strong>{uploading ? 'Mengunggah…' : isObservasi ? 'Unggah foto bukti fisik' : 'Letakkan berkas di sini'}</strong>
+                <span>{isObservasi ? 'Ambil foto langsung atau unggah · PNG, JPG · maks 5 MB' : 'atau klik untuk memilih · PNG, JPG, PDF · maks 5 MB'}</span>
               </button>
 
               <input
                 className="cf-input cf-input-sm"
                 type="url"
-                aria-label="Tautan dokumen pembanding"
-                placeholder="https:// tautan dokumen publik"
+                aria-label={isObservasi ? 'Tautan dokumen atau foto pembanding' : 'Tautan dokumen pembanding'}
+                placeholder={isObservasi ? 'https:// tautan foto / dokumen pembanding (opsional)' : 'https:// tautan dokumen publik'}
                 value={docUrl}
                 onChange={(e) => setDocUrl(e.target.value)}
               />
@@ -313,7 +364,7 @@ export const ReportForm: React.FC = () => {
             <section className="cf-panel">
               <h2 className="cf-panel-h">Bukti yang kuat</h2>
               <ol className="cf-tips">
-                {TIPS.map((tip, i) => (
+                {tips.map((tip, i) => (
                   <li key={tip.t}>
                     <span className="cf-tipnum">{i + 1}</span>
                     <span><b>{tip.t}</b> {tip.d}</span>

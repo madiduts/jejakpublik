@@ -9,69 +9,55 @@ const TIM = [
   { box: '222:152', nameWrap: '222:153', name: '222:154', roleWrap: '222:155', role: '222:156', n: 'Liaurentino', r: 'Desain UI/UX dan frontend' },
 ];
 
-const FAQ: { q: string; a: React.ReactNode }[] = [
+const FAQ: { q: string; a: string[] }[] = [
   {
     q: 'Portal ini apa?',
-    a: (
-      <>
-        <p>JejakPublik membantu warga membaca anggaran daerah tanpa harus membuka dokumen ratusan halaman: berapa yang direncanakan, berapa yang sudah dibelanjakan, dan hasil apa yang dilaporkan.</p>
-        <p>Setiap angka membawa rujukan ke tabel dan halaman dokumen asalnya, sehingga kamu bisa memeriksanya sendiri. Kami tidak menyimpulkan apakah uang itu dipakai dengan benar; kami hanya memastikan angkanya bisa dilacak.</p>
-      </>
-    ),
+    a: [
+      'JejakPublik membantu warga membaca anggaran daerah tanpa harus membuka dokumen ratusan halaman: berapa yang direncanakan, berapa yang sudah dibelanjakan, dan hasil apa yang dilaporkan.',
+      'Setiap angka membawa rujukan ke tabel dan halaman dokumen asalnya, sehingga kamu bisa memeriksanya sendiri. Kami tidak menyimpulkan apakah uang itu dipakai dengan benar; kami hanya memastikan angkanya bisa dilacak.'
+    ],
   },
   {
     q: 'Dari mana angkanya?',
-    a: (
-      <>
-        <p>3 sumber utama: Dashboard Keuangan BPKD DKI untuk 43 perangkat daerah, LKIP Dinas Lingkungan Hidup 2025 untuk rincian sampai sub kegiatan, dan LKIP Dinas Bina Marga 2025 sebagai pembanding struktur.</p>
-        <p>Semua diambil pada 21 Oktober 2026 dari dokumen tahun anggaran 2025 yang sudah selesai. Tidak ada angka yang kami perkirakan atau isi sendiri; bila sebuah nilai tidak ada di dokumen, ia ditandai tidak dilaporkan.</p>
-      </>
-    ),
+    a: [
+      '3 sumber utama: Dashboard Keuangan BPKD DKI untuk 43 perangkat daerah, LKIP Dinas Lingkungan Hidup 2025 untuk rincian sampai sub kegiatan, dan LKIP Dinas Bina Marga 2025 sebagai pembanding struktur.',
+      'Semua diambil pada 21 Oktober 2026 dari dokumen tahun anggaran 2025 yang sudah selesai. Tidak ada angka yang kami perkirakan atau isi sendiri; bila sebuah nilai tidak ada di dokumen, ia ditandai tidak dilaporkan.'
+    ],
   },
   {
     q: 'Kenapa ada angka yang kosong?',
-    a: (
-      <>
-        <p>Kalau sebuah nilai tidak dapat dipastikan dari dokumen, kami menahannya. Angka itu tampil kosong dengan alasan di bawahnya, tidak dijumlahkan ke total mana pun, dan tidak masuk penyebut persentase.</p>
-        <p>Menganggapnya nol akan membuat total terlihat lebih kecil daripada kenyataan — itu kesalahan yang lebih berbahaya daripada tidak menampilkan apa pun. Contohnya pos pembiayaan: hanya 14 dari 43 instansi yang memuatnya, dan ketiadaan baris itu bukan berarti nilainya nol.</p>
-      </>
-    ),
+    a: [
+      'Kalau sebuah nilai tidak dapat dipastikan dari dokumen, kami menahannya. Angka itu tampil kosong dengan alasan di bawahnya, tidak dijumlahkan ke total mana pun, dan tidak masuk penyebut persentase.',
+      'Menganggapnya nol akan membuat total terlihat lebih kecil daripada kenyataan — itu kesalahan yang lebih berbahaya daripada tidak menampilkan apa pun. Contohnya pos pembiayaan: hanya 14 dari 43 instansi yang memuatnya, dan ketiadaan baris itu bukan berarti nilainya nol.'
+    ],
   },
   {
     q: 'Kalau dua dokumen berbeda?',
-    a: (
-      <>
-        <p>Keduanya ditampilkan. Kami menjumlah ulang seluruh baris, membandingkan dengan total yang tercetak, lalu memakai nilai yang membuat total tercapai. Hasilnya bisa kamu periksa pada halaman perbandingan.</p>
-        <p>Contoh nyata: Tabel 2.4 mencetak Rp67.876.101.084 untuk satu baris, sedangkan Tabel 3.34 mencetak Rp3.684.567.176. Setelah dikurangkan dari total program, sisanya cocok dengan Tabel 3.34 dan dengan total Dashboard BPKD — jadi angka Tabel 3.34 yang kami pakai, dan kedua angka itu tetap ditampilkan.</p>
-      </>
-    ),
+    a: [
+      'Keduanya ditampilkan. Kami menjumlah ulang seluruh baris, membandingkan dengan total yang tercetak, lalu memakai nilai yang membuat total tercapai. Hasilnya bisa kamu periksa pada halaman perbandingan.',
+      'Contoh nyata: Tabel 2.4 mencetak Rp67.876.101.084 untuk satu baris, sedangkan Tabel 3.34 mencetak Rp3.684.567.176. Setelah dikurangkan dari total program, sisanya cocok dengan Tabel 3.34 dan dengan total Dashboard BPKD — jadi angka Tabel 3.34 yang kami pakai, dan kedua angka itu tetap ditampilkan.'
+    ],
   },
   {
     q: 'Apakah ini data resmi?',
-    a: (
-      <>
-        <p>Angkanya berasal dari dokumen resmi, tetapi halaman ini bukan produk Pemerintah Provinsi DKI Jakarta dan bukan pengganti dokumen aslinya.</p>
-        <p>Karena itu setiap baris menyebut nama dokumen, nomor tabel, dan tanggal pengambilan. Kalau kamu menemukan selisih, rujukan itu yang menjadi titik awal pemeriksaan.</p>
-      </>
-    ),
+    a: [
+      'Angkanya berasal dari dokumen resmi, tetapi halaman ini bukan produk Pemerintah Provinsi DKI Jakarta dan bukan pengganti dokumen aslinya.',
+      'Karena itu setiap baris menyebut nama dokumen, nomor tabel, dan tanggal pengambilan. Kalau kamu menemukan selisih, rujukan itu yang menjadi titik awal pemeriksaan.'
+    ],
   },
   {
     q: 'Apa yang tidak kami lakukan?',
-    a: (
-      <>
-        <p>Kami tidak memutuskan apakah uang dipakai dengan benar atau tidak — itu ranah audit dan penegakan hukum, bukan portal data.</p>
-        <p>Kami juga bukan kanal pengaduan resmi, tidak menyajikan data waktu nyata, tidak menjanjikan instansi menindaklanjuti laporan, dan tidak pernah meminta NIK, KTP, atau data biometrik.</p>
-      </>
-    ),
+    a: [
+      'Kami tidak memutuskan apakah uang dipakai dengan benar atau tidak — itu ranah audit dan penegakan hukum, bukan portal data.',
+      'Kami juga bukan kanal pengaduan resmi, tidak menyajikan data waktu nyata, tidak menjanjikan instansi menindaklanjuti laporan, dan tidak pernah meminta NIK, KTP, atau data biometrik.'
+    ],
   },
   {
     q: 'Siapa yang membuat?',
-    a: (
-      <>
-        <p>Tiga orang: Muhammad Zayyan Rizka (data dan knowledge), Mahdi Imantaka Sutejo (frontend dan mesin data keuangan), Liaurentino (desain UI/UX dan frontend).</p>
-        <p>Proyek ini dibuat untuk WIA MIA 2026 dengan tema keterbukaan data publik. Kode dan metodologinya dapat diperiksa, termasuk daftar koreksi yang pernah dilakukan.</p>
-      </>
-    ),
+    a: [
+      'Tiga orang: Muhammad Zayyan Rizka (data dan knowledge), Mahdi Imantaka Sutejo (frontend dan mesin data keuangan), Liaurentino (desain UI/UX dan frontend).',
+      'Proyek ini dibuat untuk WIA MIA 2026 dengan tema keterbukaan data publik. Kode dan metodologinya dapat diperiksa, termasuk daftar koreksi yang pernah dilakukan.'
+    ],
   },
 ];
 
@@ -117,7 +103,11 @@ export const About: React.FC = () => {
                 <span className="ab-faq-n">{String(i + 1).padStart(2, '0')}</span>
               </button>
               <div className="ab-faq-a" id={`faq-${i}`}>
-                <div className="ab-faq-inner">{f.a}</div>
+                <div className="ab-faq-inner">
+                  {f.a.map((paragraph, pIdx) => (
+                    <p key={pIdx}>{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </div>
           );

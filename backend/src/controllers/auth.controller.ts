@@ -255,7 +255,7 @@ export class AuthController {
       'HS256'
     );
 
-    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5250';
     const acceptHeader = c.req.header('Accept') || '';
     if (acceptHeader.includes('application/json')) {
       return c.json({

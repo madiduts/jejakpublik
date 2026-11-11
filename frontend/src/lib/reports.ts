@@ -1,4 +1,4 @@
-export type ReportKind = 'koreksi' | 'sanggahan' | 'sumber';
+export type ReportKind = 'koreksi' | 'observasi' | 'sanggahan' | 'sumber';
 export type ReportStatus = 'baru' | 'diperiksa' | 'diterima' | 'ditolak' | 'draft';
 
 export interface ReportEvent { at: string; actor: string; action: string; note?: string }
@@ -23,6 +23,7 @@ const KEY = 'jp.reports.v1';
 
 export const KIND_LABEL: Record<ReportKind, string> = {
   koreksi: 'Angka salah',
+  observasi: 'Observasi lapangan',
   sanggahan: 'Penjelasan angka',
   sumber: 'Dokumen sumber baru',
 };
@@ -101,7 +102,7 @@ export function createReport(input: ReportInput): Report {
         title: report.title,
         description: report.message,
         skpd_id: report.instansi,
-        report_type: report.kind === 'koreksi' ? 'salah_ketik' : report.kind === 'sumber' ? 'observasi_lapangan' : 'anomali_angka',
+        report_type: report.kind === 'observasi' ? 'observasi_lapangan' : report.kind === 'sumber' ? 'sumber' : 'salah_ketik',
         reporter_email: report.contact,
         evidence_urls: report.evidenceUrls || (report.docUrl ? [report.docUrl] : []),
         is_draft: isDraft
