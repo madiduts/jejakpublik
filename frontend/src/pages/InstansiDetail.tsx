@@ -199,8 +199,6 @@ export const InstansiDetail: React.FC = () => {
             <div className="dt-doc-headercard">
               <div className="dt-doc-badge-row">
                 <span className="dt-doc-badge">DOKUMEN SUMBER RESMI · AUDIT PUBLIK TA 2025</span>
-                <span className="dt-doc-badge verified">TERVERIFIKASI BPKD DKI</span>
-                <span className="dt-doc-badge date">STATUS: FINAL LAPORAN PERUBAHAN</span>
               </div>
 
               <h2 className="dt-doc-title">
@@ -301,9 +299,6 @@ export const InstansiDetail: React.FC = () => {
                     Rincian nomor rekening APBD, dokumen sumber resmi, halaman rujukan, dan tautan akses data langsung per program.
                   </p>
                 </div>
-                <span style={{ fontSize: 12, fontWeight: 600, color: '#1B4332', background: '#ECFDF5', padding: '4px 10px', borderRadius: 6, border: '1px solid #A7F3D0' }}>
-                  {instansiPrograms.length} Nomenklatur Program Terdata
-                </span>
               </div>
 
               <div style={{ overflowX: 'auto', marginTop: 16 }}>
@@ -365,8 +360,9 @@ export const InstansiDetail: React.FC = () => {
                             rel="noopener noreferrer"
                             className="dt-doc-link-btn"
                             title={`Buka rujukan dokumen ${p.refDoc || meta.dokumenNama}`}
+                            aria-label={`Buka rujukan dokumen ${p.refDoc || meta.dokumenNama}`}
                           >
-                            ↗
+                            <Ico g="diag" slot={14} />
                           </a>
                         </td>
                       </tr>
