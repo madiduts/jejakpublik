@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { LayoutShell } from '../components/layout/LayoutShell';
+import { Breadcrumbs } from '../components/layout/Breadcrumbs';
 import { Badge, Empty } from '../components/ui';
 import { getReport, setStatus, KIND_LABEL, STATUS_LABEL, Report, ReportStatus } from '../lib/reports';
 import { getSession } from '../lib/session';
@@ -32,8 +33,9 @@ export const ModeratorReview: React.FC = () => {
 
   if (!session) {
     return (
-      <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }]}>
+      <LayoutShell>
         <div className="wrap page" style={{ maxWidth: 620 }}>
+          <Breadcrumbs items={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }]} />
           <Empty title="Ruang moderator terkunci">
             <Link to="/masuk" state={{ from: '/moderator' }}>Masuk</Link> untuk memeriksa laporan.
           </Empty>
@@ -44,8 +46,9 @@ export const ModeratorReview: React.FC = () => {
 
   if (!report) {
     return (
-      <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }]}>
+      <LayoutShell>
         <div className="wrap page">
+          <Breadcrumbs items={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }]} />
           <Empty title="Laporan tidak ditemukan">
             <Link to="/moderator">Kembali ke antrean</Link>.
           </Empty>
@@ -64,8 +67,9 @@ export const ModeratorReview: React.FC = () => {
   if (report.docUrl && !bukti.includes(report.docUrl)) bukti.push(report.docUrl);
 
   return (
-    <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }, { label: report.id }]}>
+    <LayoutShell>
       <div className="mr-wrap">
+        <Breadcrumbs items={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }, { label: report.id }]} />
         <div className="mr-head">
           <div>
             <p className="mr-eyebrow">{KIND_LABEL[report.kind]}</p>
