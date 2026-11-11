@@ -426,7 +426,7 @@ export const ProgramDetail: React.FC = () => {
                                     <span className="dt-num dt-c4" style={{ fontFamily: 'var(--mono)', fontSize: 12, color: '#3F3F46' }}>
                                       {formatRupiah(s.realisasi)}
                                     </span>
-                                    <span className="dt-num dt-c5" style={{ fontFamily: 'var(--mono)', fontSize: 11.5, fontWeight: 600, color: '#065F46' }}>
+                                    <span className="dt-num dt-c5" style={{ fontFamily: 'var(--mono)', fontSize: 11.5, fontWeight: 600, color: '#005EA2' }}>
                                       {subPctStr}
                                     </span>
                                     <span className="dt-aksi dt-c6" style={{ justifyContent: 'flex-end', paddingRight: 8 }}>
@@ -652,7 +652,7 @@ export const ProgramDetail: React.FC = () => {
               </div>
               <div style={{ background: '#FFFFFF', padding: '12px 14px', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
                 <span style={{ fontSize: '11px', color: '#71717A', textTransform: 'uppercase', fontWeight: 600 }}>Serapan Anggaran</span>
-                <p style={{ margin: '4px 0 0', fontFamily: 'var(--mono)', fontSize: '13.5px', fontWeight: 700, color: '#065F46' }}>
+                <p style={{ margin: '4px 0 0', fontFamily: 'var(--mono)', fontSize: '13.5px', fontWeight: 700, color: '#005EA2' }}>
                   {selectedKeg.pct || '-'}
                 </p>
               </div>
@@ -702,11 +702,11 @@ export const ProgramDetail: React.FC = () => {
                             fontSize: '11.5px',
                             fontFamily: 'var(--mono)',
                             fontWeight: 700,
-                            color: '#065F46',
-                            background: '#ECFDF5',
+                            color: '#005EA2',
+                            background: '#EAF3FB',
                             padding: '3px 8px',
                             borderRadius: '6px',
-                            border: '1px solid #A7F3D0'
+                            border: '1px solid #C6DCEE'
                           }}
                         >
                           {s.pct || '-'}

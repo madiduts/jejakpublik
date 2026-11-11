@@ -345,7 +345,7 @@ export const InstansiDetail: React.FC = () => {
                         <td style={{ textAlign: 'right', fontFamily: 'var(--mono)', fontSize: 12.5, color: 'var(--ink)' }}>
                           {formatRupiah(p.realisasi)}
                         </td>
-                        <td style={{ textAlign: 'center', fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 600, color: '#065F46' }}>
+                        <td style={{ textAlign: 'center', fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 600, color: '#005EA2' }}>
                           {p.pct}
                         </td>
                         <td style={{ textAlign: 'center' }}>

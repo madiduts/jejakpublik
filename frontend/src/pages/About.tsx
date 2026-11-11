@@ -61,8 +61,77 @@ const FAQ: { q: string; a: string[] }[] = [
   },
 ];
 
+const REFS: { q: string; a: React.ReactNode }[] = [
+  {
+    q: 'Riset empiris kepercayaan publik',
+    a: (
+      <>
+        <p>
+          Hamzah, M., Surahman, F., Abdurahman, Imam, A., Saputri, E., &amp; Basyarahil, A. (2024). Transparansi anggaran publik
+          sebagai kunci peningkatan kepercayaan masyarakat terhadap pemerintah daerah.{' '}
+          <em>Assyarikah: Journal of Islamic Economic Business</em>, 5(2), 199–221.{' '}
+          <a href="https://doi.org/10.35905/assyarikah.v5i2.1891" target="_blank" rel="noopener noreferrer">
+            https://doi.org/10.35905/assyarikah.v5i2.1891
+          </a>
+        </p>
+        <p className="ab-ref-find">
+          Temuan kunci: survei 400 responden menunjukkan transparansi data anggaran berpengaruh positif dan signifikan
+          terhadap kepercayaan warga (R² = 0,391, koefisien regresi 0,625).
+        </p>
+      </>
+    ),
+  },
+  {
+    q: 'Telaah masalah keuangan negara',
+    a: (
+      <>
+        <p>
+          Widodo, T. (2025). Akuntabilitas dan rekonsiliasi data belanja daerah dalam sistem pengelolaan keuangan publik.{' '}
+          <em>Jurnal Budget: Isu dan Masalah Keuangan Negara</em>, 10(1), 1–21.
+        </p>
+        <p className="ab-ref-find">
+          Temuan kunci: rekonsiliasi data belanja secara independen diperlukan untuk mencegah bias pencatatan dan
+          memudahkan audit partisipatif warga.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: 'Tolok ukur internasional',
+    a: (
+      <>
+        <p>
+          International Budget Partnership. (2023). <em>Open budget survey 2023: Indonesia country report</em>. IBP.{' '}
+          <a
+            href="https://internationalbudget.org/open-budget-survey/country-results/2023/indonesia"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            internationalbudget.org/open-budget-survey
+          </a>
+        </p>
+        <p className="ab-ref-find">
+          Temuan kunci: skor transparansi anggaran Indonesia 70/100, sedangkan skor partisipasi publik dalam pengawasan
+          anggaran baru 26/100.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: 'Dasar hukum dan standar aksesibilitas',
+    a: (
+      <>
+        <p>• <strong>Undang-Undang Nomor 14 Tahun 2008</strong> tentang Keterbukaan Informasi Publik (KIP).</p>
+        <p>• <strong>Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020</strong> tentang Pedoman Teknis Pengelolaan Keuangan Daerah.</p>
+        <p>• <strong>W3C Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> untuk keterbacaan kontras tinggi dan navigasi inklusif.</p>
+      </>
+    ),
+  },
+];
+
 export const About: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number[]>([0]);
+  const [openRef, setOpenRef] = useState<number[]>([0]);
 
   return (
   <div className="lp" data-figma-root data-node-id="222:2">
@@ -137,59 +206,32 @@ export const About: React.FC = () => {
         <h2 className="ab-h2">Landasan Riset & Rujukan Akademik</h2>
       </div>
 
-      <div style={{ marginTop: 16, background: '#fff', border: '1px solid var(--line)', borderRadius: 14, padding: '24px 28px' }}>
-        <p style={{ margin: '0 0 16px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-soft)' }}>
-          Metodologi dan perancangan platform JejakPublik didasarkan pada riset empiris transparansi fiskal, standar akuntabilitas pelaporan pemerintah, dan telaah literatur ilmiah berstandar APA 7th Edition:
-        </p>
+      <p className="ab-ref-lead">
+        Metodologi dan perancangan platform JejakPublik didasarkan pada riset empiris transparansi fiskal, standar
+        akuntabilitas pelaporan pemerintah, dan telaah literatur ilmiah berstandar APA 7th Edition.
+      </p>
 
-        <div style={{ display: 'grid', gap: 14 }}>
-          <div style={{ padding: '14px 18px', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 10 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: '#1B4332', background: '#ECFDF5', padding: '2px 8px', borderRadius: 4, textTransform: 'uppercase' }}>
-              Riset Empiris Kepercayaan Publik (SINTA Terakreditasi)
-            </span>
-            <p style={{ margin: '8px 0 4px', fontSize: 13, lineHeight: 1.6, color: '#1E293B', fontFamily: 'inherit' }}>
-              Hamzah, M., Surahman, F., Abdurahman, Imam, A., Saputri, E., & Basyarahil, A. (2024). Transparansi anggaran publik sebagai kunci peningkatan kepercayaan masyarakat terhadap pemerintah daerah. <em>Assyarikah: Journal of Islamic Economic Business</em>, 5(2), 199–221. https://doi.org/10.35905/assyarikah.v5i2.1891
-            </p>
-            <span style={{ fontSize: 11.5, color: '#64748B' }}>
-              Temuan Kunci: Survei 400 responden membuktikan transparansi data anggaran berpengaruh positif dan signifikan terhadap kepercayaan warga (R² = 0,391, koefisien regresi 0,625).
-            </span>
-          </div>
-
-          <div style={{ padding: '14px 18px', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 10 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: '#0369A1', background: '#F0F9FF', padding: '2px 8px', borderRadius: 4, textTransform: 'uppercase' }}>
-              Telaah Masalah Keuangan Negara (Setjen DPR RI)
-            </span>
-            <p style={{ margin: '8px 0 4px', fontSize: 13, lineHeight: 1.6, color: '#1E293B', fontFamily: 'inherit' }}>
-              Widodo, T. (2025). Akuntabilitas dan rekonsiliasi data belanja daerah dalam sistem pengelolaan keuangan publik. <em>Jurnal Budget: Isu dan Masalah Keuangan Negara</em>, 10(1), 1–21.
-            </p>
-            <span style={{ fontSize: 11.5, color: '#64748B' }}>
-              Temuan Kunci: Urgensi rekonsiliasi data belanja secara independen guna mencegah bias pencatatan dan memfasilitasi audit partisipatif warga.
-            </span>
-          </div>
-
-          <div style={{ padding: '14px 18px', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 10 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: '#B45309', background: '#FFFBEB', padding: '2px 8px', borderRadius: 4, textTransform: 'uppercase' }}>
-              Tolok Ukur Internasional (Global Benchmark)
-            </span>
-            <p style={{ margin: '8px 0 4px', fontSize: 13, lineHeight: 1.6, color: '#1E293B', fontFamily: 'inherit' }}>
-              International Budget Partnership. (2023). <em>Open budget survey 2023: Indonesia country report</em>. IBP. https://internationalbudget.org/open-budget-survey/country-results/2023/indonesia
-            </p>
-            <span style={{ fontSize: 11.5, color: '#64748B' }}>
-              Temuan Kunci: Skor transparansi anggaran Indonesia mencapai 70/100, namun skor partisipasi publik dalam pengawasan anggaran baru 26/100.
-            </span>
-          </div>
-
-          <div style={{ padding: '14px 18px', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 10 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: '#475569', background: '#F1F5F9', padding: '2px 8px', borderRadius: 4, textTransform: 'uppercase' }}>
-              Dasar Hukum & Standar Aksesibilitas
-            </span>
-            <p style={{ margin: '8px 0 0', fontSize: 12.5, lineHeight: 1.6, color: '#334155' }}>
-              • <strong>Undang-Undang Nomor 14 Tahun 2008</strong> tentang Keterbukaan Informasi Publik (KIP).<br />
-              • <strong>Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020</strong> tentang Pedoman Teknis Pengelolaan Keuangan Daerah.<br />
-              • <strong>W3C Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> untuk keterbacaan kontras tinggi dan navigasi inklusif.
-            </p>
-          </div>
-        </div>
+      <div className="ab-faq ab-ref">
+        {REFS.map((r, i) => {
+          const open = openRef.includes(i);
+          return (
+            <div className={`ab-faq-item${open ? ' open' : ''}`} key={r.q}>
+              <button
+                type="button"
+                className="ab-faq-q"
+                aria-expanded={open}
+                aria-controls={`ref-${i}`}
+                onClick={() => setOpenRef((cur) => (cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i]))}
+              >
+                <span>{r.q}</span>
+                <span className="ab-faq-n">{String(i + 1).padStart(2, '0')}</span>
+              </button>
+              <div className="ab-faq-a" id={`ref-${i}`}>
+                <div className="ab-faq-inner">{r.a}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
     </section>
