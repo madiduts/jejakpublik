@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
@@ -28,6 +28,31 @@ const SEMUA = 'Semua';
 
 export const Guide: React.FC = () => {
   const [active, setActive] = useState(SEMUA);
+  // Tinggi daftar saat semua panduan tampil, dipakai sebagai lantai supaya
+  // kaki halaman tidak naik ketika kategori berisi lebih sedikit kartu.
+  const listRef = useRef<HTMLDivElement>(null);
+  const [reserved, setReserved] = useState<number>();
+  // Lantai tinggi hanya berguna saat daftar dua kolom; di ponsel satu kolom
+  // ruang kosongnya jadi terlalu panjang, jadi dibiarkan menyusut.
+  const [wide, setWide] = useState(() => window.matchMedia('(min-width: 861px)').matches);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 861px)');
+    const onChange = () => setWide(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
+    if (active !== SEMUA) return;
+    const el = listRef.current;
+    if (!el) return;
+    const measure = () => setReserved(el.offsetHeight);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [active]);
 
   const counts = useMemo(() => {
     const map: Record<string, number> = {};
@@ -91,7 +116,12 @@ export const Guide: React.FC = () => {
 
         <div className="gd-gridwrap">
           <div className="gd-grid" data-node-id="219:41">
-            <div className="gd-list" data-node-id="219:42">
+            <div
+              className="gd-list"
+              data-node-id="219:42"
+              ref={listRef}
+              style={active !== SEMUA && wide ? { minHeight: reserved } : undefined}
+            >
               <div className="gd-listinner" data-node-id="219:43" key={active}>
                 {shown.map((a, order) => {
                   const i = ARTICLES.indexOf(a);
