@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
+import { Ico } from '../components/detail/icons';
 import { NAV_223, FOOT_223 } from '../lib/frameIds';
 import { listReports, Report } from '../lib/reports';
 
@@ -316,12 +317,13 @@ export const MyReports: React.FC = () => {
                   <button
                     type="button"
                     className="myr-btn-open"
+                    aria-label={`Buka laporan ${r.id}`}
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedId(r.id);
                     }}
                   >
-                    Buka +
+                    <Ico g="chev" slot={18} color="currentColor" />
                   </button>
                 </div>
               </div>
@@ -415,18 +417,8 @@ export const MyReports: React.FC = () => {
 
               <ul className="myr-timeline">
                 {selectedReport.timeline.map((step, idx) => (
-                  <li key={idx} className="myr-tl-item">
-                    <div
-                      className={`myr-tl-dot ${
-                        step.status === 'done'
-                          ? 'done'
-                          : step.status === 'active'
-                          ? 'active'
-                          : ''
-                      }`}
-                    >
-                      {step.status === 'done' ? '✓' : idx + 1}
-                    </div>
+                  <li key={idx} className={`myr-tl-item ${step.status}`}>
+                    <span className="myr-tl-dot" aria-hidden="true" />
                     <div className="myr-tl-content">
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
                         <span className="myr-tl-title">{step.title}</span>
