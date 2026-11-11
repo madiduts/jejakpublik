@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { Navbar } from '../components/layout/Navbar';
@@ -7,12 +7,65 @@ import { NAV_223, FOOT_223 } from '../lib/frameIds';
 import { listReports } from '../lib/reports';
 import { buildQueue, ModQueueItem } from '../lib/modqueue';
 import { getSession } from '../lib/session';
+import { bisaModerasiApi, semuaLaporan, LaporanApi, labelJenis } from '../lib/moderationApi';
+
+const KATEGORI: Record<string, ModQueueItem['category']> = {
+  pending: 'perlu_periksa',
+  diperiksa: 'perlu_info',
+  forwarded: 'perlu_info',
+  verified: 'terbit',
+  diterima: 'terbit',
+  rejected: 'ditolak',
+  ditolak: 'ditolak',
+};
+
+const STATUS_TAMPIL: Record<ModQueueItem['category'], ModQueueItem['status']> = {
+  perlu_periksa: 'Baru',
+  perlu_info: 'Perlu informasi',
+  terbit: 'Terbit',
+  ditolak: 'Ditolak',
+};
+
+const keItem = (r: LaporanApi): ModQueueItem => {
+  const kategori = KATEGORI[r.status] ?? 'perlu_periksa';
+  return {
+    id: r.id,
+    tiket: r.ticket_number,
+    title: r.title,
+    context: `${labelJenis(r.report_type)} \u00b7 ${r.ticket_number}`,
+    date: new Date(r.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
+    status: STATUS_TAMPIL[kategori],
+    category: kategori,
+  };
+};
 
 export const ModeratorQueue: React.FC = () => {
   const session = getSession();
   const userReports = listReports();
 
-  const allItems = useMemo<ModQueueItem[]>(() => buildQueue(userReports), [userReports]);
+  // Bila backend aktif dan sesi punya token, antrean diambil dari basis data.
+  const [laporanApi, setLaporanApi] = useState<ModQueueItem[] | null>(null);
+  const [galatApi, setGalatApi] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!bisaModerasiApi()) return;
+    let batal = false;
+    semuaLaporan()
+      .then((rows) => {
+        if (!batal) setLaporanApi(rows.map(keItem));
+      })
+      .catch((err: Error) => {
+        if (!batal) setGalatApi(err.message);
+      });
+    return () => {
+      batal = true;
+    };
+  }, []);
+
+  const allItems = useMemo<ModQueueItem[]>(
+    () => laporanApi ?? buildQueue(userReports),
+    [laporanApi, userReports]
+  );
 
   const [tab, setTab] = useState<'perlu_periksa' | 'terbit' | 'ditolak' | 'perlu_info'>('perlu_periksa');
 
@@ -66,7 +119,13 @@ export const ModeratorQueue: React.FC = () => {
         </div>
 
         {/* Tab Filter */}
-        <div className="myr-tabs">
+        {galatApi && (
+            <p style={{ fontSize: 12.5, color: '#B42318', marginBottom: 10 }}>
+              Antrean backend gagal dimuat: {galatApi}
+            </p>
+          )}
+
+          <div className="myr-tabs">
           <button
             type="button"
             className={`myr-tab${tab === 'perlu_periksa' ? ' on' : ''}`}
@@ -119,7 +178,7 @@ export const ModeratorQueue: React.FC = () => {
                   className="myr-row"
                   style={{ gridTemplateColumns: '140px minmax(280px, 1fr) 140px 140px 108px' }}
                 >
-                  <div className="myr-ticket">{item.id}</div>
+                  <div className="myr-ticket">{item.tiket ?? item.id}</div>
                   <div className="myr-titleblock">
                     <span className="myr-title">{item.title}</span>
                     <span className="myr-sub">{item.context}</span>

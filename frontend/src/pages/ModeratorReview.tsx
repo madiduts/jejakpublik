@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { LayoutShell } from '../components/layout/LayoutShell';
 import { Breadcrumbs } from '../components/layout/Breadcrumbs';
@@ -7,6 +7,7 @@ import { getReport, setStatus, KIND_LABEL, STATUS_LABEL, Report, ReportStatus } 
 import { getSession } from '../lib/session';
 import { corrections } from '../lib/data';
 import { formatRupiah } from '../utils/format';
+import { bisaModerasiApi, detailLaporan, putuskanLaporan, keReport, KeputusanApi } from '../lib/moderationApi';
 
 const tone = (s: ReportStatus) => (s === 'diterima' ? 'ok' : s === 'ditolak' ? 'hold' : s === 'diperiksa' ? 'warn' : 'info') as 'ok' | 'hold' | 'warn' | 'info';
 
@@ -16,7 +17,29 @@ export const ModeratorReview: React.FC = () => {
   const session = getSession();
   const [note, setNote] = useState('');
   const [version, setVersion] = useState(0);
+  const [apiRep, setApiRep] = useState<Report | null>(null);
+  const [apiTiket, setApiTiket] = useState<string | null>(null);
+  const [memproses, setMemproses] = useState(false);
+  const [galatApi, setGalatApi] = useState<string | null>(null);
   const localRep = getReport(id);
+
+  // Bila backend aktif dan sesi punya token, laporan dibaca dari basis data.
+  useEffect(() => {
+    if (!bisaModerasiApi()) return;
+    let batal = false;
+    detailLaporan(id)
+      .then((r) => {
+        if (batal) return;
+        setApiRep(keReport(r));
+        setApiTiket(r.ticket_number);
+      })
+      .catch((err: Error) => {
+        if (!batal) setGalatApi(err.message);
+      });
+    return () => {
+      batal = true;
+    };
+  }, [id]);
   const fallbackDemo: Report = {
     id,
     kind: 'koreksi' as const,
@@ -29,7 +52,8 @@ export const ModeratorReview: React.FC = () => {
     createdAt: new Date().toISOString(),
     events: [{ at: new Date().toISOString(), actor: 'pelapor', action: 'Laporan dikirim', note: 'Laporan tercatat.' }],
   };
-  const report = version >= 0 ? localRep || fallbackDemo : undefined;
+  const report = apiRep ?? (version >= 0 ? localRep || fallbackDemo : undefined);
+  const tiket = apiTiket ?? report?.id ?? id;
 
   if (!session) {
     return (
@@ -57,7 +81,26 @@ export const ModeratorReview: React.FC = () => {
     );
   }
 
-  const act = (status: ReportStatus) => {
+  const act = async (status: ReportStatus) => {
+    if (apiRep) {
+      const peta: Record<ReportStatus, KeputusanApi> = {
+        diterima: 'diterima',
+        ditolak: 'ditolak',
+        diperiksa: 'diperiksa',
+        baru: 'diperiksa',
+        draft: 'diperiksa',
+      };
+      setMemproses(true);
+      setGalatApi(null);
+      try {
+        await putuskanLaporan(apiRep.id, peta[status], note);
+        navigate('/moderator');
+      } catch (err) {
+        setGalatApi((err as Error).message);
+        setMemproses(false);
+      }
+      return;
+    }
     setStatus(id, status, note || 'Tanpa catatan tambahan.');
     setVersion((v) => v + 1);
     navigate('/moderator');
@@ -69,18 +112,24 @@ export const ModeratorReview: React.FC = () => {
   return (
     <LayoutShell>
       <div className="mr-wrap">
-        <Breadcrumbs items={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }, { label: report.id }]} />
+        <Breadcrumbs items={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }, { label: tiket }]} />
         <div className="mr-head">
           <div>
             <p className="mr-eyebrow">{KIND_LABEL[report.kind]}</p>
             <h1 className="mr-title">{report.target}</h1>
             <p className="mr-meta">
-              <span className="mr-ticket">{report.id}</span> · {report.instansi} · dikirim{' '}
+              <span className="mr-ticket">{tiket}</span> · {report.instansi} · dikirim{' '}
               {new Date(report.createdAt).toLocaleString('id-ID')}
             </p>
           </div>
           <Badge tone={tone(report.status)}>{STATUS_LABEL[report.status]}</Badge>
         </div>
+
+        {galatApi && (
+          <p className="mr-alert" role="alert">
+            {galatApi}
+          </p>
+        )}
 
         <div className="mr-grid">
           <div className="mr-main">
@@ -181,10 +230,12 @@ export const ModeratorReview: React.FC = () => {
                   />
                 </div>
                 <div className="mr-actions">
-                  <button type="button" className="mr-btn primary" onClick={() => act('diterima')}>Terima</button>
-                  <button type="button" className="mr-btn danger" onClick={() => act('ditolak')}>Tolak</button>
+                  <button type="button" className="mr-btn primary" onClick={() => act('diterima')} disabled={memproses}>
+                    {memproses ? 'Menyimpan...' : 'Terima'}
+                  </button>
+                  <button type="button" className="mr-btn danger" onClick={() => act('ditolak')} disabled={memproses}>Tolak</button>
                 </div>
-                <button type="button" className="mr-btn ghost mr-btn-block" onClick={() => act('diperiksa')}>
+                <button type="button" className="mr-btn ghost mr-btn-block" onClick={() => act('diperiksa')} disabled={memproses}>
                   Tandai sedang diperiksa
                 </button>
                 <p className="mr-note">Menolak wajib beralasan; alasan ditampilkan kepada pelapor.</p>

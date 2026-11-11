@@ -2,6 +2,8 @@ import { listReports, Report } from './reports';
 
 export interface ModQueueItem {
   id: string;
+  /** Teks tiket yang ditampilkan; bila kosong dipakai id. */
+  tiket?: string;
   title: string;
   context: string;
   date: string;

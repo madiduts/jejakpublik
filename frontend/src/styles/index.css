@@ -1561,6 +1561,8 @@ td.r,th.r{text-align:right}
   text-transform:uppercase;color:#AEBBC0}
 .mr-title{margin:0 0 6px;max-width:760px;font-size:26px;line-height:32px;font-weight:700;letter-spacing:-.6px;color:var(--ink)}
 .mr-head .badge{border-color:transparent}
+.mr-alert{margin:0 0 16px;padding:11px 14px;border:1px solid #FECACA;border-radius:10px;
+  background:#FEF3F2;color:#B42318;font-size:12.5px;line-height:19px}
 .mr-meta{margin:0;font-size:13px;color:var(--muted)}
 .mr-ticket{font-family:var(--mono);font-weight:700;color:var(--ink-soft)}
 

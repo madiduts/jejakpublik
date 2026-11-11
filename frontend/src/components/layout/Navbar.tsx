@@ -5,6 +5,7 @@ import { Ico } from '../detail/icons';
 import { NavIds, NAV_203 } from '../../lib/frameIds';
 import { getSession, signOut } from '../../lib/session';
 import { countPerluPeriksa } from '../../lib/modqueue';
+import { bisaModerasiApi, antreanModerasi } from '../../lib/moderationApi';
 
 const LINKS = [
   { label: 'Beranda', to: '/' },
@@ -47,7 +48,21 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
 
   const initial = session?.name ? session.name.charAt(0).toUpperCase() : 'U';
   const isMod = session?.role === 'moderator';
-  const antrean = isMod ? countPerluPeriksa() : 0;
+  // Angka antrean mengikuti backend bila aktif; tanpa backend memakai hitungan lokal.
+  const [antreanApi, setAntreanApi] = useState<number | null>(null);
+  useEffect(() => {
+    if (!isMod || !bisaModerasiApi()) return;
+    let batal = false;
+    antreanModerasi()
+      .then((rows) => {
+        if (!batal) setAntreanApi(rows.length);
+      })
+      .catch(() => {});
+    return () => {
+      batal = true;
+    };
+  }, [isMod]);
+  const antrean = antreanApi ?? (isMod ? countPerluPeriksa() : 0);
 
   return (
     <header className="lp-head" data-node-id={ids.head}>
