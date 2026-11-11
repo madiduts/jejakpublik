@@ -4,6 +4,7 @@ import { User, LogOut, FileText, Shield, LogIn, PlusCircle } from 'lucide-react'
 import { Ico } from '../detail/icons';
 import { NavIds, NAV_203 } from '../../lib/frameIds';
 import { getSession, signOut } from '../../lib/session';
+import { countPerluPeriksa } from '../../lib/modqueue';
 
 const LINKS = [
   { label: 'Beranda', to: '/' },
@@ -44,6 +45,7 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
 
   const initial = session?.name ? session.name.charAt(0).toUpperCase() : 'U';
   const isMod = session?.role === 'moderator';
+  const antrean = isMod ? countPerluPeriksa() : 0;
 
   return (
     <header className="lp-head" data-node-id={ids.head}>
@@ -217,11 +219,13 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
           to="/moderator"
           className="lp-cta lp-cta-mod"
           data-node-id={ids.cta}
-          aria-label="Buka Antrean Moderasi"
-          style={{ width: 'auto', padding: '10px 18px', gap: 6, background: '#1B4332' }}
+          aria-label={antrean > 0 ? `Buka Antrean Moderasi, ${antrean} laporan menunggu` : 'Buka Antrean Moderasi'}
         >
-          <Shield size={15} />
+          <Shield size={15} aria-hidden="true" />
           <span data-node-id={ids.ctaText}>Antrean Moderasi</span>
+          {antrean > 0 && (
+            <span className="lp-cta-jml" aria-hidden="true">{antrean}</span>
+          )}
         </Link>
       ) : (
         <Link to="/lapor" className="lp-cta" data-node-id={ids.cta}>

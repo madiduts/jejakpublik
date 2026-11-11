@@ -3,104 +3,17 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { NAV_223, FOOT_223 } from '../lib/frameIds';
-import { listReports, Report } from '../lib/reports';
+import { listReports } from '../lib/reports';
+import { DEFAULT_MOD_QUEUE, ModQueueItem, toModQueueItems } from '../lib/modqueue';
 import { getSession } from '../lib/session';
-
-interface ModQueueItem {
-  id: string;
-  title: string;
-  context: string;
-  date: string;
-  status: 'Baru' | 'Perlu informasi' | 'Siap terbit' | 'Terbit' | 'Ditolak';
-  category: 'perlu_periksa' | 'terbit' | 'ditolak' | 'perlu_info';
-}
-
-const DEFAULT_MOD_QUEUE: ModQueueItem[] = [
-  {
-    id: 'L-2026-0031',
-    title: 'Koreksi nominal B3',
-    context: 'Koreksi informasi · Program Pengendalian B3',
-    date: '8 Nov 2026',
-    status: 'Baru',
-    category: 'perlu_periksa'
-  },
-  {
-    id: 'L-2026-0030',
-    title: 'Angka realisasi Bina Marga',
-    context: 'Koreksi informasi · Halaman instansi',
-    date: '7 Nov 2026',
-    status: 'Baru',
-    category: 'perlu_periksa'
-  },
-  {
-    id: 'L-2026-0027',
-    title: 'Trotoar Jalan Sabang rusak',
-    context: 'Observasi lapangan · Jakarta Pusat',
-    date: '2 Nov 2026',
-    status: 'Perlu informasi',
-    category: 'perlu_info'
-  },
-  {
-    id: 'L-2026-0024',
-    title: 'Istilah efisiensi',
-    context: 'Koreksi informasi · Glosarium',
-    date: '29 Okt 2026',
-    status: 'Siap terbit',
-    category: 'perlu_periksa'
-  },
-  {
-    id: 'L-2026-0018',
-    title: 'Sisa anggaran operasional DLH',
-    context: 'Koreksi informasi · Rekapitulasi belanja',
-    date: '25 Okt 2026',
-    status: 'Terbit',
-    category: 'terbit'
-  },
-  {
-    id: 'L-2026-0012',
-    title: 'Klaim pemborosan dana fiktif',
-    context: 'Observasi lapangan · Penafsiran keliru',
-    date: '18 Okt 2026',
-    status: 'Ditolak',
-    category: 'ditolak'
-  }
-];
 
 export const ModeratorQueue: React.FC = () => {
   const session = getSession();
   const userReports = listReports();
 
-  // Konversi laporan lokal jika ada
-  const dynamicItems = useMemo<ModQueueItem[]>(() => {
-    return userReports.map((r: Report) => {
-      let st: ModQueueItem['status'] = 'Baru';
-      let cat: ModQueueItem['category'] = 'perlu_periksa';
-
-      if (r.status === 'diperiksa') {
-        st = 'Perlu informasi';
-        cat = 'perlu_info';
-      } else if (r.status === 'diterima') {
-        st = 'Terbit';
-        cat = 'terbit';
-      } else if (r.status === 'ditolak') {
-        st = 'Ditolak';
-        cat = 'ditolak';
-      }
-
-      return {
-        id: r.id,
-        title: r.title || r.target,
-        context: `${r.kind === 'koreksi' ? 'Koreksi informasi' : 'Observasi lapangan'} · ${r.instansi}`,
-        date: new Date(r.createdAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
-        status: st,
-        category: cat
-      };
-    });
+  const allItems = useMemo<ModQueueItem[]>(() => {
+    return [...toModQueueItems(userReports), ...DEFAULT_MOD_QUEUE];
   }, [userReports]);
-
-  const allItems = useMemo(() => {
-    return [...dynamicItems, ...DEFAULT_MOD_QUEUE];
-  }, [dynamicItems]);
 
   const [tab, setTab] = useState<'perlu_periksa' | 'terbit' | 'ditolak' | 'perlu_info'>('perlu_periksa');
 
