@@ -2,9 +2,21 @@ import React, { useRef, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
-import { NAV_223, FOOT_223 } from '../lib/frameIds';
 import { getSession } from '../lib/session';
 import { createReport } from '../lib/reports';
+
+const KATEGORI = [
+  'Nominal tidak sesuai dokumen',
+  'Penjumlahan antar-tabel tidak cocok',
+  'Salah cetak / tertukar kode rekening',
+  'Observasi lapangan / kondisi fisik berbeda',
+];
+
+const TIPS = [
+  { t: 'Halaman yang tepat.', d: 'Sebut nomor halaman dan tabel, bukan hanya nama dokumen.' },
+  { t: 'Dua sumber lebih baik.', d: 'Bandingkan angka yang bertentangan dalam satu berkas.' },
+  { t: 'Hindari data pribadi.', d: 'Jangan unggah NIK, KTP, atau swafoto.' },
+];
 
 export const ReportForm: React.FC = () => {
   const navigate = useNavigate();
@@ -12,7 +24,23 @@ export const ReportForm: React.FC = () => {
   const [params] = useSearchParams();
   const session = getSession();
 
-  // Wajib masuk (login) terlebih dahulu sebelum membuat laporan
+  // Semua hook dipanggil sebelum kemungkinan keluar lebih awal, supaya urutan
+  // hook tetap sama ketika sesi berubah di tengah pemakaian.
+  const [category, setCategory] = useState(KATEGORI[0]);
+  const [docUrl, setDocUrl] = useState('');
+  const [title, setTitle] = useState('');
+  const [message, setMessage] = useState('');
+  const [agree, setAgree] = useState(true);
+  const [evidenceUrls, setEvidenceUrls] = useState<string[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const targetDefault =
+    params.get('target') ||
+    'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176';
+  const instansiDefault = params.get('instansi') || 'Dinas Lingkungan Hidup';
+
   if (!session) {
     return (
       <Navigate
@@ -23,29 +51,11 @@ export const ReportForm: React.FC = () => {
     );
   }
 
-  // Moderator tidak diperkenankan membuat laporan (mencegah conflict of interest)
+  // Moderator tidak diperkenankan membuat laporan (mencegah conflict of interest).
   if (session.role === 'moderator') {
     return <Navigate to="/moderator" replace />;
   }
 
-  // Pre-fill informasi target yang dilaporkan dari parameter URL atau default demo
-  const targetDefault =
-    params.get('target') ||
-    'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176';
-  const instansiDefault = params.get('instansi') || 'Dinas Lingkungan Hidup';
-
-  const [category, setCategory] = useState('Nominal tidak sesuai dokumen');
-  const [docUrl, setDocUrl] = useState('');
-  const [title, setTitle] = useState('');
-  const [message, setMessage] = useState('');
-  const [agree, setAgree] = useState(true);
-  const [evidenceUrls, setEvidenceUrls] = useState<string[]>([]);
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState<string | null>(null);
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Upload berkas bukti gambar / PDF ke storage service backend
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -59,7 +69,7 @@ export const ReportForm: React.FC = () => {
     try {
       const res = await fetch('http://localhost:3000/api/v1/reports/upload', {
         method: 'POST',
-        body: formData
+        body: formData,
       });
       const json = await res.json();
       if (json.success && json.data?.fileUrl) {
@@ -68,9 +78,8 @@ export const ReportForm: React.FC = () => {
         setUploadError(json.error || 'Gagal mengunggah berkas bukti.');
       }
     } catch {
-      // Fallback simulasi URL jika server backend offline saat pengujian
-      const fallbackUrl = `/uploads/${file.name}`;
-      setEvidenceUrls((prev) => [...prev, fallbackUrl]);
+      // Backend belum menyala saat pengujian: simpan nama berkas sebagai rujukan.
+      setEvidenceUrls((prev) => [...prev, `/uploads/${file.name}`]);
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = '';
@@ -92,121 +101,67 @@ export const ReportForm: React.FC = () => {
       evidenceUrls,
       message: message.trim() || 'Penjelasan tidak disertakan.',
       contact: session.name,
-      isDraft
+      isDraft,
     });
 
     navigate(`/laporan-saya?baru=${r.id}`);
   };
 
   return (
-    <div className="lp rp-page">
-      <Navbar ids={NAV_223} />
+    <div className="lp">
+      <Navbar />
 
-      <main className="rp-wrap">
-        <p className="rp-crumb">
+      <main className="cf-main">
+        <p className="cf-crumb">
           <Link to="/">Beranda</Link> / <Link to="/lapor">Lapor</Link> / <span>Koreksi informasi</span>
         </p>
+        <p className="cf-eyebrow">Langkah 3 dari 3</p>
+        <h1 className="cf-title">Koreksi informasi</h1>
+        <p className="cf-lede">
+          Bukti menentukan cepat atau lambatnya verifikasi. Kolom di kiri memuat cerita
+          temuanmu, panel di kanan menampung semua lampiran.
+        </p>
 
-        <div className="rp-headwrap">
-          <span className="rp-step">LANGKAH 3 DARI 3</span>
-          <h1 className="rp-h1">Koreksi informasi</h1>
-        </div>
-
-        <section className="rp-card">
+        <div className="cf-grid">
           <form
+            className="cf-form"
             onSubmit={(e) => {
               e.preventDefault();
               handleSubmit(false);
             }}
           >
-            {/* Field 1: Informasi yang dilaporkan (Readonly) */}
-            <div className="rp-group">
-              <label className="rp-label">INFORMASI YANG DILAPORKAN</label>
-              <span className="rp-hint">Terkunci dari halaman tempat kamu menekan tombol lapor.</span>
-              <div className="rp-locked">
+            <div className="cf-field">
+              <span className="cf-label">Informasi yang dilaporkan</span>
+              <span className="cf-hint">Terkunci dari halaman tempat kamu menekan tombol lapor.</span>
+              <div className="cf-locked">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <rect x="4" y="11" width="16" height="10" rx="2" />
+                  <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                </svg>
                 <span>{targetDefault}</span>
               </div>
             </div>
 
-            {/* Field 2 & 3: Grid 2 Kolom Kategori & Dokumen Pembanding */}
-            <div className="rp-grid2">
-              <div className="rp-group">
-                <label className="rp-label" htmlFor="kategori">KATEGORI KOREKSI</label>
-                <select
-                  id="kategori"
-                  className="rp-select"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                >
-                  <option value="Nominal tidak sesuai dokumen">Nominal tidak sesuai dokumen</option>
-                  <option value="Penjumlahan antar-tabel tidak cocok">Penjumlahan antar-tabel tidak cocok</option>
-                  <option value="Salah cetak / tertukar kode rekening">Salah cetak / tertukar kode rekening</option>
-                  <option value="Observasi lapangan / kondisi fisik berbeda">Observasi lapangan / kondisi fisik berbeda</option>
-                </select>
-              </div>
-
-              <div className="rp-group">
-                <label className="rp-label" htmlFor="dokumen">DOKUMEN PEMBANDING</label>
-                <span className="rp-hint">Opsional, tautan publik atau unggah berkas bukti.</span>
-                <div className="rp-upload-wrap">
-                  <div className="rp-upload-field">
-                    <input
-                      id="dokumen"
-                      type="url"
-                      className="rp-input"
-                      placeholder="https://"
-                      value={docUrl}
-                      onChange={(e) => setDocUrl(e.target.value)}
-                    />
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      style={{ display: 'none' }}
-                      accept="image/*,application/pdf"
-                      onChange={handleFileUpload}
-                    />
-                    <button
-                      type="button"
-                      className="rp-file-btn"
-                      onClick={() => fileInputRef.current?.click()}
-                      disabled={uploading}
-                    >
-                      {uploading ? 'Mengunggah...' : 'Unggah bukti'}
-                    </button>
-                  </div>
-
-                  {uploadError && (
-                    <span style={{ fontSize: 11.5, color: '#DC2626' }}>{uploadError}</span>
-                  )}
-
-                  {evidenceUrls.length > 0 && (
-                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 4 }}>
-                      {evidenceUrls.map((url, idx) => (
-                        <span key={url} className="rp-file-badge">
-                          📎 Berkas {idx + 1}
-                          <button
-                            type="button"
-                            className="rp-file-remove"
-                            onClick={() => handleRemoveEvidence(idx)}
-                            aria-label="Hapus berkas"
-                          >
-                            ×
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
+            <div className="cf-field">
+              <label className="cf-label" htmlFor="kategori">Kategori koreksi</label>
+              <select
+                id="kategori"
+                className="cf-select"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                {KATEGORI.map((k) => (
+                  <option key={k} value={k}>{k}</option>
+                ))}
+              </select>
             </div>
 
-            {/* Field 4: Judul Laporan */}
-            <div className="rp-group">
-              <label className="rp-label" htmlFor="judul">JUDUL LAPORAN</label>
+            <div className="cf-field">
+              <label className="cf-label" htmlFor="judul">Judul laporan</label>
               <input
                 id="judul"
                 type="text"
-                className="rp-input"
+                className="cf-input"
                 placeholder="Contoh: Nilai APBD-P Tabel 2.4 berbeda dengan Tabel 3.34"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -214,12 +169,12 @@ export const ReportForm: React.FC = () => {
               />
             </div>
 
-            {/* Field 5: Penjelasan */}
-            <div className="rp-group">
-              <label className="rp-label" htmlFor="penjelasan">PENJELASAN</label>
+            <div className="cf-field">
+              <label className="cf-label" htmlFor="penjelasan">Penjelasan</label>
+              <span className="cf-hint">Sebutkan halaman, tabel, dan angka pembanding. Minimal 15 karakter.</span>
               <textarea
                 id="penjelasan"
-                className="rp-textarea"
+                className="cf-textarea"
                 placeholder="Pada LKIP halaman 26 Tabel 2.4, program ini tercetak Rp67.876.101.084. Pada halaman 96 Tabel 3.34 tercetak Rp3.684.567.176."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -228,41 +183,105 @@ export const ReportForm: React.FC = () => {
               />
             </div>
 
-            {/* Field 6: Checkbox persetujuan */}
-            <label className="rp-checkrow">
+            <label className="cf-check">
               <input
                 type="checkbox"
                 checked={agree}
                 onChange={(e) => setAgree(e.target.checked)}
                 required
               />
-              <span className="rp-checktext">
-                Saya setuju laporan ini diperiksa dan ditampilkan sebagai laporan warga, dengan nama akun tidak ditampilkan.
+              <span>
+                Saya setuju laporan ini diperiksa dan ditampilkan sebagai laporan warga,
+                dengan nama akun tidak ditampilkan.
               </span>
             </label>
 
-            {/* Tombol aksi: Kirim laporan & Simpan draf */}
-            <div className="rp-actions">
-              <button
-                type="submit"
-                className="rp-btn-primary"
-                disabled={!agree}
-              >
+            <div className="cf-actions">
+              <button className="cf-btn-primary" type="submit" disabled={!agree}>
                 Kirim laporan
               </button>
-              <button
-                type="button"
-                className="rp-btn-sec"
-                onClick={() => handleSubmit(true)}
-              >
+              <button className="cf-btn-ghost" type="button" onClick={() => handleSubmit(true)}>
                 Simpan draf
               </button>
             </div>
           </form>
-        </section>
+
+          <aside className="cf-side">
+            <section className="cf-panel">
+              <h2 className="cf-panel-h">Bukti pendukung</h2>
+
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                accept="image/*,application/pdf"
+                onChange={handleFileUpload}
+              />
+              <button
+                type="button"
+                className="cf-drop"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+              >
+                <strong>{uploading ? 'Mengunggah…' : 'Letakkan berkas di sini'}</strong>
+                <span>atau klik untuk memilih · PNG, JPG, PDF · maks 5 MB</span>
+              </button>
+
+              <input
+                className="cf-input cf-input-sm"
+                type="url"
+                aria-label="Tautan dokumen pembanding"
+                placeholder="https:// tautan dokumen publik"
+                value={docUrl}
+                onChange={(e) => setDocUrl(e.target.value)}
+              />
+
+              {uploadError && (
+                <p className="cf-error" role="alert">{uploadError}</p>
+              )}
+
+              {evidenceUrls.length > 0 && (
+                <ul className="cf-files" aria-label="Berkas bukti yang dilampirkan">
+                  {evidenceUrls.map((url, idx) => (
+                    <li key={`${url}-${idx}`} className="cf-file">
+                      <span>{url.split('/').pop() || `Berkas ${idx + 1}`}</span>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveEvidence(idx)}
+                        aria-label={`Hapus berkas ${idx + 1}`}
+                      >
+                        ×
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+
+            <section className="cf-panel">
+              <h2 className="cf-panel-h">Bukti yang kuat</h2>
+              <ol className="cf-tips">
+                {TIPS.map((tip, i) => (
+                  <li key={tip.t}>
+                    <span className="cf-tipnum">{i + 1}</span>
+                    <span><b>{tip.t}</b> {tip.d}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className="cf-panel">
+              <h2 className="cf-panel-h">Perkiraan waktu</h2>
+              <p className="cf-panel-p">
+                Moderator biasanya memeriksa dalam 1–2 hari kerja. Hasil muncul di
+                halaman <Link to="/laporan-saya">Laporan Saya</Link>.
+              </p>
+            </section>
+          </aside>
+        </div>
       </main>
 
-      <Footer ids={FOOT_223} />
+      <Footer />
     </div>
   );
 };
