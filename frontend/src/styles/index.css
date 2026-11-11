@@ -1396,6 +1396,29 @@ td.r,th.r{text-align:right}
 .cf-opt[aria-selected="true"]{font-weight:600}
 .cf-tick{color:#0F766E;font-size:12px;flex:none}
 
+/* Pemilih target dengan pencarian */
+.cf-target-btn{justify-content:space-between}
+.cf-target-value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:6px}
+.cf-menu-search{padding:0;overflow:hidden;display:flex;flex-direction:column;max-height:420px}
+.cf-searchwrap{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line-3);background:#fff;position:sticky;top:0;z-index:1}
+.cf-searchinput{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:0;margin:0;
+  font-family:inherit;font-size:13.5px;line-height:18px;color:var(--ink);-webkit-appearance:none;appearance:none}
+.cf-searchinput::-webkit-search-decoration,.cf-searchinput::-webkit-search-cancel-button{display:none}
+.cf-searchclear{flex:none;width:22px;height:22px;border:0;border-radius:50%;background:#F4F4F5;color:#71717A;
+  font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cf-searchclear:hover{background:#E4E4E7;color:var(--ink)}
+.cf-searchinput::placeholder{color:#A1A1AA}
+.cf-optlist{overflow-y:auto;padding:6px;max-height:360px}
+.cf-optgroup + .cf-optgroup{margin-top:4px;border-top:1px solid var(--line-3);padding-top:4px}
+.cf-optgroup-h{margin:6px 10px 4px;font-size:10.5px;line-height:14px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#A1A1AA}
+.cf-opt-rich{align-items:flex-start;gap:12px}
+.cf-opttext{display:flex;flex-direction:column;min-width:0}
+.cf-optlabel{font-size:13.5px;line-height:18px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cf-opthint{font-size:11.5px;line-height:16px;color:#8A8A94}
+.cf-optbadge{flex:none;margin-left:auto;font-size:10px;line-height:14px;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;color:#0F766E;background:#CCFBF1;border-radius:5px;padding:2px 6px;white-space:nowrap}
+.cf-optempty{margin:0;padding:16px 12px;font-size:12.5px;line-height:18px;color:#71717A;text-align:center}
+
 /* Target laporan: bisa diubah bila baris yang dimaksud berbeda */
 .cf-target-edit{display:flex;gap:10px;align-items:center}
 .cf-target-edit .cf-input{flex:1}

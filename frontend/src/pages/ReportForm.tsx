@@ -5,6 +5,8 @@ import { Footer } from '../components/layout/Footer';
 import { getSession } from '../lib/session';
 import { createReport } from '../lib/reports';
 import { Dropdown } from '../components/ui/Dropdown';
+import { SearchSelect } from '../components/ui/SearchSelect';
+import { instansiList, judulInstansi, programList } from '../lib/data';
 
 const KATEGORI = [
   'Nominal tidak sesuai dokumen',
@@ -12,6 +14,43 @@ const KATEGORI = [
   'Salah cetak / tertukar kode rekening',
   'Observasi lapangan / kondisi fisik berbeda',
 ];
+
+const SMALL = new Set(['dan', 'di', 'ke', 'dari', 'atau', 'yang', 'untuk', 'pada']);
+/** Singkatan nama instansi supaya "dlh" ikut menemukan Dinas Lingkungan Hidup. */
+const initials = (nama: string): string =>
+  nama.split(/\s+/).filter((w) => w && !SMALL.has(w.toLowerCase())).map((w) => w[0].toLowerCase()).join('');
+
+const PREFILL_DEFAULT = 'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176';
+
+/** Dua jalur: nilai otomatis dari halaman sebelumnya, atau pilih dari data. */
+const TARGET_GROUPS = (prefilled: string, current: string) => {
+  const auto: { value: string; hint?: string; badge?: string }[] = [
+    { value: prefilled, hint: 'Terisi otomatis dari halaman tempat kamu menekan Lapor', badge: 'Otomatis' },
+  ];
+  if (current && current !== prefilled) {
+    auto.unshift({ value: current, hint: 'Pilihan kamu sebelumnya', badge: 'Saat ini' });
+  }
+
+  return [
+    { label: 'Dari halaman sebelumnya', items: auto },
+    {
+      label: 'Program Dinas Lingkungan Hidup',
+      items: programList.map((p) => ({
+        value: `${p.judul} · TA 2025`,
+        hint: 'Program · Dinas Lingkungan Hidup',
+        keywords: p.nama,
+      })),
+    },
+    {
+      label: 'Instansi daerah',
+      items: instansiList.map((i) => ({
+        value: judulInstansi(i.nama),
+        hint: 'Instansi · TA 2025',
+        keywords: `${i.nama} ${initials(i.nama)}`,
+      })),
+    },
+  ];
+};
 
 const TIPS = [
   { t: 'Halaman yang tepat.', d: 'Sebut nomor halaman dan tabel, bukan hanya nama dokumen.' },
@@ -35,12 +74,10 @@ export const ReportForm: React.FC = () => {
   const [evidenceUrls, setEvidenceUrls] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
-  const [target, setTarget] = useState(
-    params.get('target') || 'Program Pengendalian B3 · Anggaran perubahan · Rp3.684.567.176',
-  );
-  const [editingTarget, setEditingTarget] = useState(false);
+  const [target, setTarget] = useState(params.get('target') || PREFILL_DEFAULT);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const prefilledTarget = params.get('target') || PREFILL_DEFAULT;
   const instansiDefault = params.get('instansi') || 'Dinas Lingkungan Hidup';
 
   if (!session) {
@@ -135,43 +172,17 @@ export const ReportForm: React.FC = () => {
             <div className="cf-field">
               <span className="cf-label">Informasi yang dilaporkan</span>
               <span className="cf-hint">
-                Terisi otomatis dari halaman tempat kamu menekan tombol lapor. Ubah bila
-                yang kamu maksud baris lain.
+                Terisi otomatis dari halaman tempat kamu menekan tombol lapor. Klik untuk
+                memilih baris lain lewat pencarian instansi atau program.
               </span>
-              {editingTarget ? (
-                <div className="cf-target-edit">
-                  <input
-                    className="cf-input"
-                    type="text"
-                    value={target}
-                    onChange={(e) => setTarget(e.target.value)}
-                    aria-label="Ubah informasi yang dilaporkan"
-                    autoFocus
-                  />
-                  <button
-                    type="button"
-                    className="cf-btn-ghost cf-btn-sm"
-                    onClick={() => setEditingTarget(false)}
-                  >
-                    Selesai
-                  </button>
-                </div>
-              ) : (
-                <div className="cf-locked">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <rect x="4" y="11" width="16" height="10" rx="2" />
-                    <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                  </svg>
-                  <span>{target}</span>
-                  <button
-                    type="button"
-                    className="cf-target-edit-btn"
-                    onClick={() => setEditingTarget(true)}
-                  >
-                    Ubah
-                  </button>
-                </div>
-              )}
+              <SearchSelect
+                id="target"
+                value={target}
+                groups={TARGET_GROUPS(prefilledTarget, target)}
+                onChange={setTarget}
+                searchPlaceholder="Cari instansi atau program…"
+                ariaLabel="Pilih baris yang dilaporkan"
+              />
             </div>
 
             <div className="cf-field">
