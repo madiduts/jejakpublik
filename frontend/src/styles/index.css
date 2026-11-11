@@ -476,13 +476,13 @@ td.r,th.r{text-align:right}
 .dt-tab.on{color:#18181B;font-weight:600;border-bottom-color:#18181B}
 
 .dt-body{max-width:1440px;margin:0 auto;padding:18px 44px 0}
-.dt-grid{display:grid;grid-template-columns:934px 1072px;gap:0;height:730px;align-items:start}
+.dt-grid{display:grid;grid-template-columns:934px 1072px;gap:0;align-items:start}
 .dt-main{width:934px;display:flex;flex-direction:column;gap:0}
 .dt-main > * + *{margin-top:18px}
 .dt-row{display:grid;grid-template-columns:458px 476px;gap:0;height:250px}
 .dt-row > * + *{margin-left:18px}
 .dt-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;height:250px}
-.dt-card.tall{height:462px}
+.dt-card.tall{min-height:462px}
 .dt-h2{margin:0;font-size:17px;line-height:21px;font-weight:700;letter-spacing:-.2px;color:#18181B}
 .dt-pwrap{padding-top:10px}
 .dt-prose{margin:0;font-size:13px;line-height:22.1px;color:#3F3F46}
@@ -637,7 +637,7 @@ td.r,th.r{text-align:right}
 .lp-foot-legaltext{margin:0;font-size:10.5px;line-height:17px;color:#8A969B}
 
 
-.pg .dt-grid{height:888.578px}
+.pg .dt-grid{}
 
 .dt-pwrap.pg-batas{padding-top:5px;height:51px}
 .pg-batas .dt-prose{font-size:12.5px;line-height:21.25px;color:#3F3F46}
@@ -753,8 +753,10 @@ td.r,th.r{text-align:right}
   /* Detail Instansi & Program */
   .dt-herocard{grid-template-columns:240px minmax(0,1fr);gap:20px}
   .dt-summary{grid-column:1 / -1;width:100%;max-width:none;height:auto}
+  .dt-counters{grid-template-columns:repeat(3,minmax(0,1fr))}
   .dt-contacts{flex-wrap:wrap;height:auto;gap:10px 18px}
-  .dt-grid{grid-template-columns:1fr;gap:24px}
+  .dt-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .dt-main,.dt-side{min-width:0}
   .dt-side{width:100%;margin-left:0}
   .dt-row{grid-template-columns:1fr;gap:16px}
   .dt-donutrow{flex-wrap:wrap;justify-content:center}

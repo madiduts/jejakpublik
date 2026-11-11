@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Ico } from '../components/detail/icons';
-import { NAV_247, FOOT_247 } from '../lib/frameIds';
+import { NAV_247 } from '../lib/frameIds';
 import { corrections, instansiList, unitTotal } from '../lib/data';
 import { findAnyProgramBySlug, getInstansiMeta } from '../lib/skpdDirectory';
 import { formatRupiah, formatRupiahShort } from '../utils/format';
@@ -444,7 +444,7 @@ export const ProgramDetail: React.FC = () => {
         </div>
       </section>
 
-      <Footer ids={FOOT_247} />
+      <Footer />
     </div>
   );
 };

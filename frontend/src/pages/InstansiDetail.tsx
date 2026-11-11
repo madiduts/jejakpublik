@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Ico } from '../components/detail/icons';
-import { NAV_235, FOOT_235 } from '../lib/frameIds';
+import { NAV_235 } from '../lib/frameIds';
 import { getInstansi, unitTotal } from '../lib/data';
 import { getProgramsForInstansi, getInstansiMeta, downloadInstansiCsv } from '../lib/skpdDirectory';
 import { MultiYearTrendChart } from '../components/detail/MultiYearTrendChart';
@@ -609,7 +609,7 @@ export const InstansiDetail: React.FC = () => {
         )}
       </section>
 
-      <Footer ids={FOOT_235} />
+      <Footer />
     </div>
   );
 };
