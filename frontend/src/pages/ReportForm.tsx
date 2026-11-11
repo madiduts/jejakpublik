@@ -23,6 +23,11 @@ export const ReportForm: React.FC = () => {
     );
   }
 
+  // Moderator tidak diperkenankan membuat laporan (mencegah conflict of interest)
+  if (session.role === 'moderator') {
+    return <Navigate to="/moderator" replace />;
+  }
+
   // Pre-fill informasi target yang dilaporkan dari parameter URL atau default demo
   const targetDefault =
     params.get('target') ||

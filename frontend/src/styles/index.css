@@ -263,6 +263,8 @@ td.r,th.r{text-align:right}
 .lp-bubble-unauth-desc{font-size:12px;line-height:16px;color:var(--muted);margin:0}
 
 .lp-cta{display:flex;align-items:center;justify-content:center;width:128px;height:39px;padding:11px 18px;border-radius:8px;background:var(--ink-2);color:#fff;font-size:13.5px;line-height:17px;font-weight:600;flex:none}
+.lp-cta-mod{background:#1B4332;color:#fff;display:inline-flex;align-items:center;justify-content:center;transition:background .15s ease}
+.lp-cta-mod:hover{background:#2D6A4F;color:#fff;text-decoration:none}
 .lp-cta:hover{background:#27272A;text-decoration:none}
 
 /* hero 203:24 */

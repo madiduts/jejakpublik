@@ -1,11 +1,18 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Ico } from '../components/detail/icons';
+import { getSession } from '../lib/session';
 
 export const Report: React.FC = () => {
   const location = useLocation();
+  const session = getSession();
+
+  // Akun moderator diarahkan ke antrean verifikasi laporan
+  if (session?.role === 'moderator') {
+    return <Navigate to="/moderator" replace />;
+  }
 
   return (
     <div className="lp rp-select-page">

@@ -117,37 +117,49 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
                 <div className="lp-bubble-divider" />
 
                 <div className="lp-bubble-menu">
-                  <Link
-                    to="/laporan-saya"
-                    className="lp-bubble-item"
-                    role="menuitem"
-                    onClick={() => setOpenProfile(false)}
-                  >
-                    <FileText size={15} />
-                    <span>Laporan Saya</span>
-                  </Link>
-
-                  {isMod && (
-                    <Link
-                      to="/moderator"
-                      className="lp-bubble-item"
-                      role="menuitem"
-                      onClick={() => setOpenProfile(false)}
-                    >
-                      <Shield size={15} />
-                      <span>Antrean Moderator</span>
-                    </Link>
+                  {isMod ? (
+                    <>
+                      <Link
+                        to="/moderator"
+                        className="lp-bubble-item"
+                        role="menuitem"
+                        onClick={() => setOpenProfile(false)}
+                      >
+                        <Shield size={15} />
+                        <span>Antrean Verifikasi</span>
+                      </Link>
+                      <Link
+                        to="/jelajahi"
+                        className="lp-bubble-item"
+                        role="menuitem"
+                        onClick={() => setOpenProfile(false)}
+                      >
+                        <FileText size={15} />
+                        <span>Audit Data Instansi</span>
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        to="/laporan-saya"
+                        className="lp-bubble-item"
+                        role="menuitem"
+                        onClick={() => setOpenProfile(false)}
+                      >
+                        <FileText size={15} />
+                        <span>Laporan Saya</span>
+                      </Link>
+                      <Link
+                        to="/lapor"
+                        className="lp-bubble-item"
+                        role="menuitem"
+                        onClick={() => setOpenProfile(false)}
+                      >
+                        <PlusCircle size={15} />
+                        <span>Lapor Anggaran Baru</span>
+                      </Link>
+                    </>
                   )}
-
-                  <Link
-                    to="/lapor"
-                    className="lp-bubble-item"
-                    role="menuitem"
-                    onClick={() => setOpenProfile(false)}
-                  >
-                    <PlusCircle size={15} />
-                    <span>Lapor Anggaran Baru</span>
-                  </Link>
                 </div>
 
                 <div className="lp-bubble-divider" />
@@ -200,9 +212,22 @@ export const Navbar: React.FC<{ ids?: NavIds }> = ({ ids = NAV_203 }) => {
         )}
       </div>
 
-      <Link to="/lapor" className="lp-cta" data-node-id={ids.cta}>
-        <span data-node-id={ids.ctaText}>Lapor Anggaran</span>
-      </Link>
+      {isMod ? (
+        <Link
+          to="/moderator"
+          className="lp-cta lp-cta-mod"
+          data-node-id={ids.cta}
+          aria-label="Buka Antrean Moderasi"
+          style={{ width: 'auto', padding: '10px 18px', gap: 6, background: '#1B4332' }}
+        >
+          <Shield size={15} />
+          <span data-node-id={ids.ctaText}>Antrean Moderasi</span>
+        </Link>
+      ) : (
+        <Link to="/lapor" className="lp-cta" data-node-id={ids.cta}>
+          <span data-node-id={ids.ctaText}>Lapor Anggaran</span>
+        </Link>
+      )}
     </header>
   );
 };
