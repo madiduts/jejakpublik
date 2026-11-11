@@ -203,7 +203,8 @@ td.r,th.r{text-align:right}
 
 /* ── Landing "01 Landing gabungan" (frame 203:2) ─────────────────────────
    Angka diambil dari parity/203-2.figma.json. data-node-id menandai node. */
-.lp{background:var(--bg);color:var(--ink);font-family:var(--font)}
+/* Kerangka halaman: isi boleh pendek, kaki tetap menempel di dasar layar. */
+.lp{display:flex;flex-direction:column;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--font)}
 .lp *{box-sizing:border-box}
 
 /* header 203:3 */
@@ -323,7 +324,7 @@ td.r,th.r{text-align:right}
 .lp-arrow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 /* footer 203:202 */
-.lp-footwrap{padding-top:44px}
+.lp-footwrap{margin-top:auto;padding-top:44px}
 .lp-footwrap.compact{padding-top:28px}
 .lp-foot{background:var(--dark);padding:44px max(44px, calc((100% - 1440px) / 2 + 44px)) 30px}
 .lp-foot-brandwrap{height:73px}
@@ -1042,7 +1043,7 @@ td.r,th.r{text-align:right}
 }
 
 /* ── Lapor / Koreksi Informasi (Mockup Slicing Langkah 3 dari 3) ─────── */
-.rp-page{min-height:100vh;background:#F7F7F8;padding-bottom:60px}
+.rp-page{min-height:100vh;background:#F7F7F8}
 .rp-wrap{width:100%;max-width:880px;margin:0 auto;padding:36px 24px 0}
 .rp-crumb{margin:0;font-size:12px;line-height:16px;color:var(--muted);letter-spacing:.4px}
 .rp-crumb a{color:var(--muted);text-decoration:none}
@@ -1098,7 +1099,7 @@ td.r,th.r{text-align:right}
 }
 
 /* ── Frame 13: Laporan saya + status (Dashboard Tiket Warga & Moderator) ─ */
-.myr-page{min-height:100vh;background:#F7F7F8;padding-bottom:60px}
+.myr-page{min-height:100vh;background:#F7F7F8}
 .myr-wrap{width:100%;max-width:1200px;margin:0 auto;padding:36px 24px 0}
 .myr-crumb{margin:0;font-size:12px;line-height:16px;color:var(--muted);letter-spacing:.4px}
 .myr-crumb a{color:var(--muted);text-decoration:none}

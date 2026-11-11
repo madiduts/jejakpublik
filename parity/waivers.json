@@ -1200,6 +1200,110 @@
       "reason": "Keputusan pemilik: tombol panah kartu diganti chevron Lucide 20 px tanpa wadah, sama seperti halaman Lapor. Ukuran dan posisi glif ikut berubah.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-11"
+    },
+    {
+      "node": "203:17",
+      "property": "w",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "203:18",
+      "property": "x (lokal)",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "222:19",
+      "property": "w",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "222:20",
+      "property": "x (lokal)",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "247:19",
+      "property": "w",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "247:20",
+      "property": "x (lokal)",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "235:19",
+      "property": "w",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "235:20",
+      "property": "x (lokal)",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit tim a92f6a5), sehingga ruang kosong menyusut dan ikon cari bergeser 74 px. Bukan perubahan halaman ini.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:19",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:20",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:228",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:52",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:55",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:53",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:100",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "204:59",
+      "reason": "Panel filter Jelajahi dirombak tim (commit 75294ba dan 00deb06): baris chip di atas dihapus dan kartu filter diselaraskan tinggi dengan tabel. Frame 204:2 belum diperbarui mengikuti perubahan itu.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
     }
   ]
 }
