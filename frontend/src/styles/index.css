@@ -563,13 +563,13 @@ td.r,th.r{text-align:right}
 .dt-doc-copy-btn:hover{background:#27272A}
 .dt-doc-citation-text{margin:0;font-size:13px;line-height:20px;color:#1E293B;font-family:inherit}
 .dt-doc-citation-text em{font-style:italic}
-.dt-doc-action-row{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-.dt-doc-primary-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;background:#1B4332;color:#fff;font-size:13px;font-weight:600;text-decoration:none;transition:background .15s ease}
-.dt-doc-primary-btn:hover{background:#2D6A4F;color:#fff;text-decoration:none}
-.dt-doc-secondary-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;background:#fff;border:1px solid #D4D4D8;color:#18181B;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s ease}
-.dt-doc-secondary-btn:hover{background:#FAFAFB}
-.dt-doc-outline-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;background:transparent;border:1px solid #D4D4D8;color:#52525B;font-size:13px;font-weight:500;text-decoration:none;transition:background .15s ease}
-.dt-doc-outline-btn:hover{background:#FAFAFB;color:#18181B;text-decoration:none}
+.dt-doc-action-row{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;align-items:center}
+.dt-doc-primary-btn{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border:0;border-radius:8px;background:#18181B;color:#fff;font-size:13px;font-weight:600;text-decoration:none;transition:background .15s ease}
+.dt-doc-primary-btn:hover{background:#27272A;color:#fff;text-decoration:none}
+.dt-doc-secondary-btn{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:8px;background:#fff;border:1px solid #D4D4D8;color:#18181B;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s ease,border-color .15s ease}
+.dt-doc-secondary-btn:hover{background:#FAFAFB;border-color:#A1A1AA}
+.dt-doc-tertiary-link{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#3F3F46;text-decoration:underline;text-underline-offset:3px;transition:color .15s ease}
+.dt-doc-tertiary-link:hover{color:var(--ink);text-decoration:underline}
 .dt-doc-abstract-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 28px}
 .dt-doc-section-title{margin:0 0 12px;font-size:16px;line-height:22px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
 .dt-doc-abstract-p{margin:0;font-size:13.5px;line-height:22px;color:#3F3F46}

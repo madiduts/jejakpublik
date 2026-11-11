@@ -254,8 +254,8 @@ export const InstansiDetail: React.FC = () => {
                   rel="noopener noreferrer"
                   className="dt-doc-primary-btn"
                 >
-                  <span>Buka Dokumen PDF / Portal Sumber</span>
-                  <span>↗</span>
+                  <Ico g="file" slot={15} />
+                  Buka Dokumen PDF
                 </a>
 
                 <button
@@ -263,18 +263,18 @@ export const InstansiDetail: React.FC = () => {
                   className="dt-doc-secondary-btn"
                   onClick={() => downloadInstansiCsv(instansi, instansiPrograms)}
                 >
-                  <span>Unduh Dataset CSV ({instansiPrograms.length} Program)</span>
-                  <span>↓</span>
+                  <Ico g="dl" slot={15} />
+                  Unduh CSV · {instansiPrograms.length} Program
                 </button>
 
                 <a
                   href={meta.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="dt-doc-outline-btn"
+                  className="dt-doc-tertiary-link"
                 >
-                  <span>Kunjungi Situs Resmi {instansi.judul}</span>
-                  <span>↗</span>
+                  Kunjungi Situs Resmi {instansi.judul}
+                  <Ico g="diag" slot={13} />
                 </a>
               </div>
             </div>
