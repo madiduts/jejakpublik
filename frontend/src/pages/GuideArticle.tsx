@@ -24,7 +24,7 @@ export const GuideArticle: React.FC = () => {
   }
 
   return (
-    <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Panduan', to: '/panduan' }, { label: article.title }]}>
+    <LayoutShell mainClass="ga-main" crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Panduan', to: '/panduan' }, { label: article.title }]}>
       <div className="wrap page">
         <div className="eyebrow">{article.reading}</div>
         <h1 style={{ fontSize: 30, fontWeight: 750, maxWidth: 820 }}>{article.title}</h1>

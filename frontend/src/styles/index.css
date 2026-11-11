@@ -1265,6 +1265,25 @@ td.r,th.r{text-align:right}
   .ab-mnamewrap,.ab-mrolewrap{height:auto}
 }
 
+/* Halaman bacaan panduan: <main> diberi tinggi sama dengan isi halaman indeks
+   (hero 190 + isi 638 = 828 px), dikurangi 35 px baris remah yang sudah ada di
+   atas <main>, supaya kaki halaman duduk di posisi yang sama saat artikelnya
+   pendek. */
+.ga-main{min-height:793px}
+
+/* Perpindahan halaman: setiap rute memasang kerangka baru, jadi animasi ini
+   berjalan sendiri saat halaman berganti tanpa perlu pustaka transisi. */
+@keyframes page-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.lp,.app{animation:page-in .28s cubic-bezier(.22,.61,.36,1) both}
+
+@media (max-width: 900px){
+  .ga-main{min-height:0}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .lp,.app{animation:none}
+}
+
 /* Navbar bersama di layar sempit: dua baris, tautan bisa digulir sendiri.
    Tanpa ini seluruh halaman melebar 870-1390 px pada ponsel 390 px. */
 @media (max-width: 900px) {
