@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
+import { Ico } from '../components/detail/icons';
 
 export const Report: React.FC = () => {
   const location = useLocation();
@@ -43,8 +44,8 @@ export const Report: React.FC = () => {
                 <span className="rp-chip">Klasifikasi subkegiatan</span>
               </div>
             </div>
-            <div className="rp-card-btn" aria-label="Pilih koreksi informasi">
-              <span aria-hidden="true">→</span>
+            <div className="rp-card-btn" aria-hidden="true">
+              <Ico g="chev" slot={20} color="currentColor" />
             </div>
           </Link>
 
@@ -65,8 +66,8 @@ export const Report: React.FC = () => {
                 <span className="rp-chip">Perkiraan waktu temuan</span>
               </div>
             </div>
-            <div className="rp-card-btn" aria-label="Pilih observasi lapangan">
-              <span aria-hidden="true">→</span>
+            <div className="rp-card-btn" aria-hidden="true">
+              <Ico g="chev" slot={20} color="currentColor" />
             </div>
           </Link>
         </div>

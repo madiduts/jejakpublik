@@ -25,3 +25,25 @@ Dump mesin (`parity_diff.py`) belum tersimpan sebagai berkas karena sesi ini
 tidak menuliskan keluaran `use_figma` ke disk; bila diperlukan, jalankan
 `dump-frame.js` dengan `ROOT_ID = "163:2"` lalu simpan hasilnya sebagai
 `parity/163-2.figma.json`.
+
+## 164:2 — 15 Lapor - pilih jenis
+
+Frame ini semula dipakai sebagai acuan independen dan diukur pada commit
+`dd6202e` (390 COCOK, 0 selisih terbuka, 10 waiver metrik font).
+
+Pada 11 November 2026 pemilik meminta area utama didesain ulang. Dari empat
+usulan, **Varian B** dipilih, lalu tombol panah diganti chevron Lucide.
+Karena desainnya berasal dari kode, frame `164:2` **dibangun ulang dari kode**
+(gaya Varian B + Navbar + Footer bersama), sehingga kini frame itu adalah
+*cermin* hasil kerja, bukan sumber acuan independen.
+
+Konsekuensinya: mengukur kode terhadap frame ini bersifat sirkular — angka
+COCOK-nya hanya membuktikan kedua sisi (React dan Figma) konsisten satu sama
+lain, bukan bahwa keduanya sesuai maksud desain. Karena itu laporan
+`164-2.parity.md` yang ada adalah bukti untuk **versi frame sebelum redesign**,
+dan status untuk tampilan sekarang dicatat **Belum diverifikasi** sebagai
+pemeriksaan independen.
+
+Bila nanti frame ini dijadikan acuan lagi (mis. digambar ulang manual oleh
+desainer), jalankan `dump-frame.js` dengan `ROOT_ID = "164:2"`, tambahkan
+`data-node-id` pada `Report.tsx`, lalu ukur seperti frame lain.

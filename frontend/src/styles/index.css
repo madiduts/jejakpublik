@@ -1387,24 +1387,25 @@ td.r,th.r{text-align:right}
   border-radius: 6px;
   color: #3F3F46;
 }
+/* Varian B — chevron telanjang, tanpa wadah */
 .rp-card-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 22px;
-  border: 1.5px solid #DDE4E6;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  color: var(--ink);
-  transition: all 0.2s ease;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: #52525B;
+  transition: transform 0.2s ease, color 0.2s ease;
   flex-shrink: 0;
 }
 .rp-choice-card:hover .rp-card-btn {
-  background: #005EA2;
-  border-color: #005EA2;
-  color: #ffffff;
-  transform: translateX(4px);
+  color: #005EA2;
+  transform: translateX(6px);
+}
+.rp-card-btn svg {
+  display: block;
 }
 
 .rp-notice-box {
