@@ -811,17 +811,27 @@ td.r,th.r{text-align:right}
 .gd-cardbody{min-width:0}
 .gd-meta{display:flex;align-items:center;gap:8px;font-size:11.5px;line-height:16px;color:#8A8A94}
 .gd-no{font-weight:700;color:#3F3F46;font-variant-numeric:tabular-nums}
-.gd-badge{font-size:10.5px;line-height:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:#0F766E;background:#CCFBF1;border-radius:6px;padding:2px 7px}
 .gd-titlewrap{padding-top:2px}
 .gd-title{display:block;font-size:15px;line-height:20px;font-weight:600;color:#18181B}
 .gd-card:hover .gd-title{color:#005EA2}
 .gd-descwrap{padding-top:2px}
 .gd-desc{display:block;font-size:12.5px;line-height:18px;color:#8A8A94}
-.gd-arrow{display:flex;align-items:center;justify-content:center;width:30px;height:30px;margin-top:auto;
-  align-self:flex-end;border:1px solid #E0E0E4;border-radius:16px;font-size:12px;line-height:15px;color:#52525B}
-.gd-arrowicon{display:flex;align-items:center;justify-content:center;width:8px;height:15px}
+.gd-arrow{display:flex;align-items:center;justify-content:center;width:28px;height:28px;margin-top:auto;
+  align-self:flex-end;border:0;background:transparent;color:#52525B;
+  transition:transform .2s ease,color .2s ease}
+.gd-card:hover .gd-arrow{color:#005EA2;transform:translateX(6px)}
+.gd-arrowicon{display:flex;align-items:center;justify-content:center}
+.gd-arrowicon svg{display:block}
 .gd-empty{grid-column:1/-1;margin:0;padding:26px 2px;font-size:13px;line-height:20px;color:#71717A}
+
+@keyframes gd-in{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+.gd-listinner .gd-card{animation:gd-in .3s cubic-bezier(.22,.61,.36,1) both}
+.gd-listinner .gd-empty{animation:gd-in .3s cubic-bezier(.22,.61,.36,1) both}
+
+@media (prefers-reduced-motion: reduce){
+  .gd-listinner .gd-card,.gd-listinner .gd-empty{animation:none}
+  .gd-card,.gd-arrow{transition:none}
+}
 
 @media (max-width:1439px){
   .gd-sec{padding-left:24px;padding-right:24px}
@@ -1244,6 +1254,29 @@ td.r,th.r{text-align:right}
   .au-foot-brand{font-size:44px;line-height:46px;letter-spacing:-1.6px}
 }
 
+
+/* Pita Tim Tentang: tiga kolom tetap 1352 px membuat halaman melebar di ponsel. */
+@media (max-width: 900px) {
+  .ab-timhead,.ab-timwrap{max-width:none;width:100%}
+  .ab-team{grid-template-columns:minmax(0,1fr);height:auto}
+  .ab-member{height:auto;padding:14px 0}
+  .ab-member + .ab-member{border-left-width:0;border-top:1px solid #E0E0E4;padding-left:0}
+  .ab-mnamewrap,.ab-mrolewrap{height:auto}
+}
+
+/* Navbar bersama di layar sempit: dua baris, tautan bisa digulir sendiri.
+   Tanpa ini seluruh halaman melebar 870-1390 px pada ponsel 390 px. */
+@media (max-width: 900px) {
+  .lp-head{height:auto;flex-wrap:wrap;row-gap:10px;column-gap:16px;padding:14px 20px;align-items:center}
+  .lp-brand{order:1}
+  .lp-gap{display:none}
+  .lp-searchic{order:2;margin-left:auto}
+  .lp-profile-anchor{order:3}
+  .lp-cta{order:4}
+  .lp-links{order:5;width:100%;height:auto;gap:20px;overflow-x:auto;flex-wrap:nowrap;
+    scrollbar-width:none;-ms-overflow-style:none}
+  .lp-links::-webkit-scrollbar{display:none}
+}
 
 /* ── Halaman Pilih Jenis Laporan (Varian B) ─────────────────────────── */
 .rp-select-page {

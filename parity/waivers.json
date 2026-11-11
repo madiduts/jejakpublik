@@ -1150,6 +1150,56 @@
       "reason": "Beda metrik font pada merk footer 72 px; sama dengan kelas 203:204 dan 223:2.",
       "owner": "Muhammad Zayyan Rizka",
       "date": "2026-11-11"
+    },
+    {
+      "node": "219:19",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit a92f6a5 dari tim), sehingga ruang kosong menyusut dan ikon cari bergeser; bukan perubahan halaman Panduan.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11",
+      "property": "w"
+    },
+    {
+      "node": "219:20",
+      "reason": "Navbar bersama mendapat tombol profil 34 px (commit a92f6a5 dari tim), sehingga ruang kosong menyusut dan ikon cari bergeser; bukan perubahan halaman Panduan.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11",
+      "property": "x (lokal)"
+    },
+    {
+      "node": "219:54",
+      "reason": "Keputusan pemilik: tombol panah kartu diganti chevron Lucide 20 px tanpa wadah, sama seperti halaman Lapor. Ukuran dan posisi glif ikut berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "219:64",
+      "reason": "Keputusan pemilik: tombol panah kartu diganti chevron Lucide 20 px tanpa wadah, sama seperti halaman Lapor. Ukuran dan posisi glif ikut berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "219:73",
+      "reason": "Keputusan pemilik: tombol panah kartu diganti chevron Lucide 20 px tanpa wadah, sama seperti halaman Lapor. Ukuran dan posisi glif ikut berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "219:82",
+      "reason": "Keputusan pemilik: tombol panah kartu diganti chevron Lucide 20 px tanpa wadah, sama seperti halaman Lapor. Ukuran dan posisi glif ikut berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "219:91",
+      "reason": "Keputusan pemilik: tombol panah kartu diganti chevron Lucide 20 px tanpa wadah, sama seperti halaman Lapor. Ukuran dan posisi glif ikut berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
+    },
+    {
+      "node": "219:100",
+      "reason": "Keputusan pemilik: tombol panah kartu diganti chevron Lucide 20 px tanpa wadah, sama seperti halaman Lapor. Ukuran dan posisi glif ikut berubah.",
+      "owner": "Muhammad Zayyan Rizka",
+      "date": "2026-11-11"
     }
   ]
 }

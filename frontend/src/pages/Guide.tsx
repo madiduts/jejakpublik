@@ -92,18 +92,23 @@ export const Guide: React.FC = () => {
         <div className="gd-gridwrap">
           <div className="gd-grid" data-node-id="219:41">
             <div className="gd-list" data-node-id="219:42">
-              <div className="gd-listinner" data-node-id="219:43">
-                {shown.map((a) => {
+              <div className="gd-listinner" data-node-id="219:43" key={active}>
+                {shown.map((a, order) => {
                   const i = ARTICLES.indexOf(a);
                   const ids = CARDS[i];
                   return (
-                    <Link className="gd-card" key={a.slug} to={`/panduan/${a.slug}`} data-node-id={ids.box}>
+                    <Link
+                      className="gd-card"
+                      key={a.slug}
+                      to={`/panduan/${a.slug}`}
+                      data-node-id={ids.box}
+                      style={{ animationDelay: `${order * 35}ms` }}
+                    >
                       <div className="gd-cardbody" data-node-id={ids.body}>
                         <div className="gd-meta">
                           <span className="gd-no">{String(i + 1).padStart(2, '0')}</span>
                           <span aria-hidden="true">·</span>
                           <span>{a.reading}</span>
-                          {i === 0 && <span className="gd-badge">Mulai di sini</span>}
                         </div>
                         <div className="gd-titlewrap" data-node-id={ids.tw}>
                           <span className="gd-title" data-node-id={ids.title}>{a.title}</span>
@@ -114,7 +119,7 @@ export const Guide: React.FC = () => {
                       </div>
                       <span className="gd-arrow" data-node-id={ids.btn} aria-hidden="true">
                         <span className="gd-arrowicon" data-node-id={ids.arrow}>
-                          <Ico g="arrow" slot={13} />
+                          <Ico g="chev" slot={20} color="currentColor" />
                         </span>
                       </span>
                     </Link>
