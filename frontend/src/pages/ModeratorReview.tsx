@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { LayoutShell } from '../components/layout/LayoutShell';
-import { Card, CardHead, PageHead, Badge, Empty, Notice, DataValue } from '../components/ui';
-import { getReport, setStatus, KIND_LABEL, STATUS_LABEL, ReportStatus } from '../lib/reports';
+import { Badge, Empty } from '../components/ui';
+import { getReport, setStatus, KIND_LABEL, STATUS_LABEL, Report, ReportStatus } from '../lib/reports';
 import { getSession } from '../lib/session';
 import { corrections } from '../lib/data';
 import { formatRupiah } from '../utils/format';
@@ -16,7 +16,7 @@ export const ModeratorReview: React.FC = () => {
   const [note, setNote] = useState('');
   const [version, setVersion] = useState(0);
   const localRep = getReport(id);
-  const fallbackDemo = {
+  const fallbackDemo: Report = {
     id,
     kind: 'koreksi' as const,
     instansi: 'Dinas Lingkungan Hidup',
@@ -26,15 +26,17 @@ export const ModeratorReview: React.FC = () => {
     contact: 'warga@jejakpublik.id',
     status: 'baru' as const,
     createdAt: new Date().toISOString(),
-    events: [{ at: new Date().toISOString(), actor: 'pelapor', action: 'Laporan dikirim', note: 'Laporan tercatat.' }]
+    events: [{ at: new Date().toISOString(), actor: 'pelapor', action: 'Laporan dikirim', note: 'Laporan tercatat.' }],
   };
-  const report = version >= 0 ? (localRep || fallbackDemo) : undefined;
+  const report = version >= 0 ? localRep || fallbackDemo : undefined;
 
   if (!session) {
     return (
       <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }]}>
         <div className="wrap page" style={{ maxWidth: 620 }}>
-          <Empty title="Ruang moderator terkunci"><Link to="/masuk" state={{ from: '/moderator' }}>Masuk</Link> untuk memeriksa laporan.</Empty>
+          <Empty title="Ruang moderator terkunci">
+            <Link to="/masuk" state={{ from: '/moderator' }}>Masuk</Link> untuk memeriksa laporan.
+          </Empty>
         </div>
       </LayoutShell>
     );
@@ -43,7 +45,11 @@ export const ModeratorReview: React.FC = () => {
   if (!report) {
     return (
       <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }]}>
-        <div className="wrap page"><Empty title="Laporan tidak ditemukan"><Link to="/moderator">Kembali ke antrean</Link>.</Empty></div>
+        <div className="wrap page">
+          <Empty title="Laporan tidak ditemukan">
+            <Link to="/moderator">Kembali ke antrean</Link>.
+          </Empty>
+        </div>
       </LayoutShell>
     );
   }
@@ -54,76 +60,156 @@ export const ModeratorReview: React.FC = () => {
     navigate('/moderator');
   };
 
+  const bukti = [...(report.evidenceUrls ?? [])];
+  if (report.docUrl && !bukti.includes(report.docUrl)) bukti.push(report.docUrl);
+
   return (
     <LayoutShell crumbs={[{ label: 'Beranda', to: '/' }, { label: 'Moderator', to: '/moderator' }, { label: report.id }]}>
-      <div className="wrap page" style={{ maxWidth: 900 }}>
-        <PageHead
-          eyebrow={KIND_LABEL[report.kind]}
-          title={report.target}
-          desc={`${report.instansi} · dikirim ${new Date(report.createdAt).toLocaleString('id-ID')}`}
-          right={<Badge tone={tone(report.status)}>{STATUS_LABEL[report.status]}</Badge>}
-        />
+      <div className="mr-wrap">
+        <div className="mr-head">
+          <div>
+            <p className="mr-eyebrow">{KIND_LABEL[report.kind]}</p>
+            <h1 className="mr-title">{report.target}</h1>
+            <p className="mr-meta">
+              <span className="mr-ticket">{report.id}</span> · {report.instansi} · dikirim{' '}
+              {new Date(report.createdAt).toLocaleString('id-ID')}
+            </p>
+          </div>
+          <Badge tone={tone(report.status)}>{STATUS_LABEL[report.status]}</Badge>
+        </div>
 
-        <div className="grid g2" style={{ alignItems: 'start' }}>
-          <div style={{ display: 'grid', gap: 14 }}>
-            <Card>
-              <CardHead title="Isi laporan" sub={`Tiket ${report.id}`} />
-              <div className="card-pad" style={{ fontSize: 13.5, lineHeight: 1.65 }}>{report.message}</div>
-            </Card>
+        <div className="mr-grid">
+          <div className="mr-main">
+            <section className="mr-panel">
+              <div className="mr-panel-h">
+                <h2>Isi laporan</h2>
+                <span>dari pelapor</span>
+              </div>
+              <div className="mr-panel-b mr-prose">{report.message}</div>
+            </section>
 
-            <Card>
-              <CardHead title="Angka pembanding dari data kami" sub="Gunakan ini saat memutuskan" />
-              <div className="card-pad">
-                <table>
+            <section className="mr-panel">
+              <div className="mr-panel-h">
+                <h2>Angka pembanding</h2>
+                <span>dari data kami</span>
+              </div>
+              <div className="mr-panel-b">
+                <table className="mr-table">
                   <tbody>
-                    {corrections[0] && (
+                    {corrections[0] ? (
                       <>
-                        <tr><td style={{ color: 'var(--muted)' }}>Tabel 2.4</td><td className="r num">{formatRupiah(corrections[0].printed.value)}</td></tr>
-                        <tr><td style={{ color: 'var(--muted)' }}>Tabel 3.34</td><td className="r num">{formatRupiah(corrections[0].verified.value)}</td></tr>
-                        <tr><td style={{ color: 'var(--muted)' }}>Selisih</td><td className="r num">{formatRupiah(corrections[0].formula?.result ?? 0)}</td></tr>
-                        <tr><td style={{ color: 'var(--muted)' }}>Nilai ditahan</td><td className="r"><DataValue value={null} /></td></tr>
+                        <tr>
+                          <td className="k">{corrections[0].printed.label}</td>
+                          <td className="v">{formatRupiah(corrections[0].printed.value)}</td>
+                        </tr>
+                        <tr>
+                          <td className="k">{corrections[0].verified.label}</td>
+                          <td className="v">{formatRupiah(corrections[0].verified.value)}</td>
+                        </tr>
+                        <tr className="diff">
+                          <td className="k">Selisih</td>
+                          <td className="v">{formatRupiah(Math.abs(corrections[0].printed.value - corrections[0].verified.value))}</td>
+                        </tr>
+                        <tr>
+                          <td className="k">Status angka</td>
+                          <td className="v">
+                            <Badge tone={corrections[0].state === 'ditahan' ? 'hold' : 'ok'}>
+                              {corrections[0].state === 'ditahan' ? 'Ditahan' : 'Sudah dikoreksi'}
+                            </Badge>
+                          </td>
+                        </tr>
                       </>
+                    ) : (
+                      <tr><td className="k">Data pembanding</td><td className="v">Tidak tersedia</td></tr>
                     )}
                   </tbody>
                 </table>
               </div>
-            </Card>
+            </section>
 
-            <Card>
-              <CardHead title="Putuskan" sub="Keputusan tercatat pada jejak pemeriksaan" />
-              <div className="card-pad">
-                <div className="field">
-                  <label htmlFor="catatan">Catatan untuk pelapor</label>
-                  <textarea id="catatan" className="textarea" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Contoh: angka cocok dengan Tabel 3.34, usulan diterima." />
-                </div>
-                <div className="rowgap">
-                  <button className="btn btn-primary" onClick={() => act('diterima')}>Terima</button>
-                  <button className="btn" onClick={() => act('diperiksa')}>Tandai sedang diperiksa</button>
-                  <button className="btn" onClick={() => act('ditolak')}>Tolak</button>
-                </div>
-                <Notice tone="warn" title="Menolak wajib beralasan.">Alasan ditampilkan kepada pelapor; laporan tidak hilang.</Notice>
+            <section className="mr-panel">
+              <div className="mr-panel-h">
+                <h2>Bukti dari pelapor</h2>
+                <span>{bukti.length > 0 ? `${bukti.length} berkas` : 'tidak ada'}</span>
               </div>
-            </Card>
+              <div className="mr-panel-b">
+                {bukti.length === 0 ? (
+                  <p className="mr-empty">
+                    Pelapor tidak melampirkan berkas atau tautan. Putusan sebaiknya berdasar angka pembanding di atas.
+                  </p>
+                ) : (
+                  <div className="mr-files">
+                    {bukti.map((url) => {
+                      const tanpaQuery = url.split('?')[0];
+                      const nama = tanpaQuery.split('/').filter(Boolean).pop() || url;
+                      const ekst = nama.split('.').pop()?.toLowerCase() ?? '';
+                      const jenis = ekst === 'pdf' ? 'PDF' : ['png', 'jpg', 'jpeg', 'webp'].includes(ekst) ? 'IMG' : 'FILE';
+                      return (
+                        <a key={url} className="mr-file" href={url} target="_blank" rel="noreferrer">
+                          <span className="mr-file-ico" aria-hidden="true">{jenis}</span>
+                          <span style={{ minWidth: 0 }}>
+                            <span className="mr-file-nm">{nama}</span>
+                            <span className="mr-file-sz">{url.startsWith('/uploads/') ? 'berkas lokal' : 'tautan pelapor'}</span>
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </section>
+            <section className="mr-panel">
+              <div className="mr-panel-h">
+                <h2>Jejak pemeriksaan</h2>
+                <span>{report.events.length} catatan</span>
+              </div>
+              <div className="mr-panel-b">
+                <ol className="mr-tl">
+                  {report.events.map((e, i) => (
+                    <li key={i} className="mr-tl-item">
+                      <div className="mr-tl-when">{new Date(e.at).toLocaleString('id-ID')} · {e.actor}</div>
+                      <div className="mr-tl-act">{e.action}</div>
+                      {e.note && <div className="mr-tl-note">{e.note}</div>}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </section>
           </div>
 
-          <Card>
-            <CardHead title="Jejak pemeriksaan" sub={`${report.events.length} catatan`} />
-            <div className="card-pad">
-              <ol style={{ listStyle: 'none', display: 'grid', gap: 14 }}>
-                {report.events.map((e, i) => (
-                  <li key={i} style={{ borderLeft: '2px solid var(--line)', paddingLeft: 12 }}>
-                    <div style={{ fontSize: 12, color: 'var(--muted)' }}>{new Date(e.at).toLocaleString('id-ID')} · {e.actor}</div>
-                    <div style={{ fontWeight: 650, fontSize: 13.5 }}>{e.action}</div>
-                    {e.note && <div style={{ fontSize: 12.5, color: 'var(--muted)' }}>{e.note}</div>}
-                  </li>
-                ))}
-              </ol>
-              <div className="divider" />
-              <Link to="/moderator" className="btn btn-sm">Kembali ke antrean</Link>
-            </div>
-          </Card>
+          <aside className="mr-rail">
+            <section className="mr-panel">
+              <div className="mr-panel-h">
+                <h2>Keputusan</h2>
+              </div>
+              <div className="mr-panel-b">
+                <div className="mr-field">
+                  <label htmlFor="catatan">Catatan untuk pelapor</label>
+                  <textarea
+                    id="catatan"
+                    className="mr-textarea"
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                    placeholder="Contoh: angka cocok dengan Tabel 3.34, usulan diterima."
+                  />
+                </div>
+                <div className="mr-actions">
+                  <button type="button" className="mr-btn primary" onClick={() => act('diterima')}>Terima</button>
+                  <button type="button" className="mr-btn danger" onClick={() => act('ditolak')}>Tolak</button>
+                </div>
+                <button type="button" className="mr-btn ghost mr-btn-block" onClick={() => act('diperiksa')}>
+                  Tandai sedang diperiksa
+                </button>
+                <p className="mr-note">Menolak wajib beralasan; alasan ditampilkan kepada pelapor.</p>
+                <div className="mr-rail-foot"><Link to="/moderator" className="mr-btn ghost">Kembali ke antrean</Link></div>
+              </div>
+            </section>
+
+          </aside>
         </div>
       </div>
     </LayoutShell>
   );
 };
+
+export default ModeratorReview;
