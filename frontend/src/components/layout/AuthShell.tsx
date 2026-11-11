@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navbar } from './Navbar';
+import { Footer } from './Footer';
 
 /**
- * Kerangka tiga layar akun (masuk, daftar, lupa kata sandi).
- * Kepalanya memakai Navbar bersama supaya sama dengan halaman lain; isi panel
- * mengikuti frame 14 Masuk (163:2): foto 520 px, kolom formulir 560 px, kaki ringkas.
+ * Kerangka layar akun (masuk, daftar, lupa kata sandi).
+ * Memakai Navbar dan Footer bersama agar konsisten dengan halaman lain.
  */
 export const AuthShell: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="au">
@@ -27,11 +27,6 @@ export const AuthShell: React.FC<{ children: React.ReactNode }> = ({ children })
       <main className="au-panel">{children}</main>
     </div>
 
-    <div className="au-footwrap">
-      <footer className="au-foot">
-        <span className="au-foot-brand">JejakPublik</span>
-        <div className="au-foot-legal" />
-      </footer>
-    </div>
+    <Footer />
   </div>
 );
